@@ -44,43 +44,62 @@ async function processFile(inputFile) {
     const sql = buffer.toString();
     console.log('running ' + inputFile)
     result = await runQuery(sql);
-    console.log(result);
 
+    return new Promise(resolve => {
+       resolve(result);
+    })
+
+}
+
+async function mailerSend(mailOptions,transporter){
+    return new Promise((resolve,reject)=>{
+    
+    //let transporter = nodemailer.createTransport(transporter);
+
+ transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+        console.log("error is "+error);
+       resolve(false); // or use rejcet(false) but then you will have to handle errors
+    }
+   else {
+       console.log('Email sent: ' + info.response);
+       resolve(true);
+    }
+   });
+})
+}
+
+async function mailer(result) {
     var mailOptions = {
         from: gmailuser,
         to: gmailuser,
         subject: 'FFCSA Automated report',
         text: result
     };
-var transporter = nodemailer.createTransport({
- host: 'smtp.gmail.com',
-    port: 465,
-    secure: true,
-    auth: {
-       user: gmailuser,
-       pass: gmailpassword
-    }
-});
-   transporter.sendMail(mailOptions, function(error, info){
-      if (error) {
-       console.log(error);
-      } else {
-       console.log('Email sent: ' + info.response);
-    }
-    });
 
-    return new Promise(resolve => {
-       resolve('resolved');
-    })
+    var transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+        auth: {
+           user: gmailuser,
+           pass: gmailpassword
+        }
+   });
 
+   const response = await mailerSend(mailOptions,transporter);
+   return new Promise(resolve => { resolve('email sent'); })
 }
-
 
 
 
 // Make async function main to wait for processing to complete before exiting
 (async function main() {
-    const result = await processFile(__dirname + "/scripts/vendor_by_month.sql");
-    //process.exit();
+    const sqlResult = await processFile(__dirname + "/scripts/vendor_by_month.sql");
+    console.log(sqlResult);
+
+    emailResult = await mailer(result);
+
+    process.exit();
 })()
 
