@@ -10,3 +10,4 @@ node runner.py
 ```
 
 To install, need to create a config directory with default.json specifying connection parameters
+Also, for gmail settings be sure to use app password.  see config settings
