@@ -1,12 +1,16 @@
 const mysql = require('mysql');
 const fs = require("fs");
 const config = require('config');
+var nodemailer = require('nodemailer');
 
 // Fetch configuration parameters
 const host = config.get("server.host");
 const user = config.get("server.user");
 const password = config.get("server.password");
 const database = config.get("server.database");
+
+const gmailuser = config.get("gmail.user");
+const gmailpassword = config.get("gmail.password");
 
 // Create connection
 const con = mysql.createConnection({
@@ -41,16 +45,42 @@ async function processFile(inputFile) {
     console.log('running ' + inputFile)
     result = await runQuery(sql);
     console.log(result);
+
+    var mailOptions = {
+        from: gmailuser,
+        to: gmailuser,
+        subject: 'FFCSA Automated report',
+        text: result
+    };
+var transporter = nodemailer.createTransport({
+ host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: {
+       user: gmailuser,
+       pass: gmailpassword
+    }
+});
+   transporter.sendMail(mailOptions, function(error, info){
+      if (error) {
+       console.log(error);
+      } else {
+       console.log('Email sent: ' + info.response);
+    }
+    });
+
     return new Promise(resolve => {
        resolve('resolved');
     })
 
 }
 
+
+
+
 // Make async function main to wait for processing to complete before exiting
 (async function main() {
-    const result = await processFile(__dirname + "/scripts/shop_product.sql");
-    console.log(result);
-    process.exit();
+    const result = await processFile(__dirname + "/scripts/vendor_by_month.sql");
+    //process.exit();
 })()
 
