@@ -4,7 +4,7 @@ gantt
     dateFormat  X
     axisFormat %s
 
-    section deck family farm
+    section deck_family_farm
     71   : 0, 20000
     section wovenroots
     36   : 0, 3000
