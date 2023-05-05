@@ -1,3 +1,4 @@
+```mermaid
 %%{init: {"pie": {"textPosition": 0.5}, "themeVariables": {"pieOuterStrokeWidth": "5px"}} }%%
 pie showData
     title Key elements in Product X
@@ -5,3 +6,4 @@ pie showData
     "Potassium" : 50.05
     "Magnesium" : 10.01
     "Iron" :  5
+```
