@@ -15,6 +15,12 @@ gantt
     section camasswale
     92    : 0, 92
 ```
+```mermaid
+pie
+"Dogs" : 20000
+"Cats" : 14
+"Rats" : 4000
+```
 
 ```mermaid
 graph TD;
