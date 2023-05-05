@@ -1,10 +1,10 @@
 ```mermaid
 gantt
-    title Git Issues - days since last update
+   Orders by Producer
     dateFormat  X
     axisFormat %s
 
-    section deckfamilyfarm
+    section deck family farm
     71   : 0, 20000
     section wovenroots
     36   : 0, 3000
