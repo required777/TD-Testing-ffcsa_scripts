@@ -5,15 +5,15 @@ gantt
     axisFormat %s
 
     section deck family farm
-    71   : 0, 20000
+    20000   : 0, 20000
     section wovenroots
-    36   : 0, 3000
+    3000   : 0, 3000
     section realitykitchen
     34   : 0, 34
     section grazersgarden
-    9    : 0, 4100
+    4100    : 0, 4100
     section camasswale
-    5    : 0, 92
+    92    : 0, 92
 ```
 
 ```mermaid
