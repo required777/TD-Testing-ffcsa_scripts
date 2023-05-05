@@ -1,8 +1,19 @@
 ```mermaid
-bar title Pets adopted by volunteers
-    "Dogs" : 386
-    "Cats" : 85
-    "Rats" : 15
+gantt
+    title Git Issues - days since last update
+    dateFormat  X
+    axisFormat %s
+
+    section deckfamilyfarm
+    71   : 0, 20000
+    section wovenroots
+    36   : 0, 3000
+    section realitykitchen
+    34   : 0, 34
+    section grazersgarden
+    9    : 0, 4100
+    section camasswale
+    5    : 0, 92
 ```
 
 ```mermaid
