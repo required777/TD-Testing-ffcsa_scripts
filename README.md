@@ -3,10 +3,15 @@ publicly available scripts on FFCSA database
 
 Need to install npm packages: mysql, config, fs
 
-run like:
 
+To run the monthly script files, run like:
 ```
-node runner.py
+node runner.sh
+```
+
+To run one-off exports 
+```
+node runner-onetime.sh
 ```
 
 To install, need to create a config directory with default.json specifying connection parameters

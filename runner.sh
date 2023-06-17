@@ -53,7 +53,7 @@ async function processFile(inputFile) {
 
 async function mailerSend(mailOptions,transporter){
     return new Promise((resolve,reject)=>{
-    
+
     //let transporter = nodemailer.createTransport(transporter);
 
  transporter.sendMail(mailOptions, function(error, info){
@@ -69,11 +69,12 @@ async function mailerSend(mailOptions,transporter){
 })
 }
 
-async function mailer(result) {
+async function mailer(result,subject) {
     var mailOptions = {
         from: gmailuser,
-        to: gmailuser,
-        subject: 'FFCSA Automated report',
+        to: "fullfarmcsa@deckfamilyfarm.com",
+        cc: gmailuser,
+        subject: subject,
         text: result
     };
 
@@ -95,10 +96,15 @@ async function mailer(result) {
 
 // Make async function main to wait for processing to complete before exiting
 (async function main() {
-    const sqlResult = await processFile(__dirname + "/scripts/vendor_by_month.sql");
+    if (process.argv.length <= 2) {
+      console.error('Expected at least one argument! node process.sh scripts/filename.sql "subject"');
+      process.exit(1);
+    }
+
+    const sqlResult = await processFile(__dirname + "/" + process.argv[2]);
     console.log(sqlResult);
 
-    emailResult = await mailer(result);
+    emailResult = await mailer(result, process.argv[3]);
 
     process.exit();
 })()
