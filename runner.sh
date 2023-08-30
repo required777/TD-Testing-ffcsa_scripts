@@ -104,7 +104,7 @@ async function mailer(result,subject) {
     const sqlResult = await processFile(__dirname + "/" + process.argv[2]);
     console.log(sqlResult);
 
-    emailResult = await mailer(result, process.argv[3]);
+    //emailResult = await mailer(result, process.argv[3]);
 
     process.exit();
 })()

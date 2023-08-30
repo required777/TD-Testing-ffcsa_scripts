@@ -4,9 +4,12 @@ publicly available scripts on FFCSA database
 Need to install npm packages: mysql, config, fs
 
 
-To run the monthly script files, run like:
 ```
-node runner.sh
+#To generate an excel spreadsheet 
+node query-to-xlsx.sh script/vapg.sql
+
+#run the monthly script files and email 
+node runner.sh script/product_export.sql "message"
 ```
 
 To run one-off exports 
