@@ -32,7 +32,7 @@ async function writeDeliveryOrderPDF(filename) {
                 // Process the sorted data
                 sortedData.forEach((row) => {
                     const customerName = row['Customer'];
-                    const product = row['Product'];
+                    const product = row['Product'] + ' - ' + row['Package Name'];
                     const quantity = Math.round(parseFloat(row['Quantity']));
                     const itemUnit = row['Item Unit']
                     const vendor = row['Vendor']
@@ -154,13 +154,18 @@ async function writeDeliveryOrderPDF(filename) {
                 doc.on('finish', () => {
                     console.log('PDF created successfully.');
                     console.log(pdf_file);
-                    resolve(pdf_file);
                 });
 
                 doc.on('error', (error) => {
                     console.error('PDF creation error:', error);
                     reject(error);
                 });
+                
+                // TODO: figure out appropriate aync methods to enable finishing PDF creation
+                setTimeout(() => {
+                    console.log("Success!")
+                    resolve(pdf_file); // Promise is resolved with "Success!"
+                  }, 1000);
             });
     });
 }
@@ -175,10 +180,9 @@ This function creates the following
 async function writeChecklistPDF(dairy_file_path, frozen_file_path, delivery_order_file_path) {
     return new Promise((resolve, reject) => {
         const pdf_file = 'data/dropsite_checklist.pdf'
-
         // Create a new PDF document
         const doc = new PDFDocument();
-        doc.pipe(fs.createWriteStream(pdf_file));
+        doc.pipe(fs.createWriteStream(pdf_file))
 
         // Initialize variables to group items by "Fulfillment Name"
         const dropsites = {};
@@ -225,7 +229,9 @@ async function writeChecklistPDF(dairy_file_path, frozen_file_path, delivery_ord
                                     customerPhone = row['Phone']
                                     category = row['Membership']
                                     quantity = Math.round(parseFloat(row['Quantity']));
-                                    product = row['Product'];
+                                    //product = row['Product'];
+                                    product = row['Product'] + ' - ' + row['Package Name'];
+
                                     itemUnit = row['Item Unit']
                                     vendor = row['Vendor']
 
@@ -344,27 +350,32 @@ async function writeChecklistPDF(dairy_file_path, frozen_file_path, delivery_ord
                                 doc.table(tableOptions);
                                 doc.addPage();
 
-
                                 // Product specific Packlist
                                 productSpecificPackList(doc, dropsitesAll, 'frozen')
+                                doc.addPage();
                                 productSpecificPackList(doc, dropsitesAll, 'dairy')
-
-
+                                
                                 doc.end();
                                 // Wait for the stream to finish and then resolve with the file path
                                 doc.on('finish', () => {
                                     console.log('PDF created successfully.');
-                                    console.log(pdf_file);
-                                    resolve(pdf_file);
+                                    resolve(pdf_file)
                                 });
-
                                 doc.on('error', (error) => {
                                     console.error('PDF creation error:', error);
                                     reject(error);
                                 });
-                            });
+
+                                // TODO: figure out appropriate aync methods to enable finishing PDF creation
+                                setTimeout(() => {
+                                    console.log("Success!")
+                                    resolve(pdf_file); // Promise is resolved with "Success!"
+                                  }, 1000);
+
+                            })
 
                     })
+
                     .catch((error) => {
                         console.error('Error:', error);
                     });
@@ -373,7 +384,9 @@ async function writeChecklistPDF(dairy_file_path, frozen_file_path, delivery_ord
             .catch((error) => {
                 console.error('Error:', error);
             });
+
     });
+
 }
 
 function productSpecificPackList(doc, dropsitesAll, disposition) {
@@ -394,7 +407,7 @@ function productSpecificPackList(doc, dropsitesAll, disposition) {
             if (count > 0) {
                 doc.addPage();
             }
-            doc.fontSize(14).text(dropsiteName +" " + disposition.charAt(0).toUpperCase() + disposition.slice(1) + " Product Packlist", { bold: true });
+            doc.fontSize(14).text(dropsiteName + " " + disposition.charAt(0).toUpperCase() + disposition.slice(1) + " Product Packlist", { bold: true });
             doc.moveDown();
 
             for (const customerName in selectedCustomers) {
@@ -417,7 +430,7 @@ function productSpecificPackList(doc, dropsitesAll, disposition) {
 
                     addPageIfNecessary(dropsiteName, tableData, doc);
                     doc.table(tableOptions);
-                    doc.moveDown();
+                    // doc.moveDown();
 
                 }
                 count++
@@ -432,21 +445,14 @@ function addPageIfNecessary(dropsiteName, data, doc) {
     const cellHeight = 50; // Set your desired cell height
     const totalRowsHeight = data.length * cellHeight;
     const headerHeight = cellHeight; // Assuming header height is the same as cell height
-    const totalHeight = totalRowsHeight + headerHeight;
-
+    const tableHeight = totalRowsHeight + headerHeight;
 
     remainingHeight = doc.page.height - doc.y
 
-    //console.log(dropsiteName, doc.y + "  : " + remainingHeight)
-    if (remainingHeight < totalHeight) {        
-
-        console.log('adding page to ' + dropsiteName)
+    if (tableHeight > remainingHeight) {
         doc.addPage();
         doc.text(dropsiteName + " (next page...)")
     }
-    //if (doc.y > doc.page.height - totalHeight) {
-    //  doc.addPage();
-    // }
 }
 
 function updateCategoryForProductID(jsonData, productIDsToUpdate, value) {
@@ -513,12 +519,12 @@ writeDeliveryOrderPDF('data/orders_list_view_full_farm_csa_26_Oct_2023.csv')
 */
 
 // Example usage:
-
-writeChecklistPDF('data/dairy.xlsx', 'data/frozen.xlsx', 'data/orders_list_view_full_farm_csa_26_Oct_2023.csv')
+/*
+writeChecklistPDF('data/dairy.xlsx', 'data/frozen.xlsx', 'data/orders_list_2023-10-31.csv')
     .then((pdfFilePath) => {
         console.log('PDF file path:', pdfFilePath);
     })
     .catch((error) => {
         console.error('Error:', error);
     });
-
+    */

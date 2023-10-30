@@ -2,6 +2,8 @@ var request = require('request');
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
+const nodemailer = require("nodemailer");
+
 
 
 // Utilitiy functions for date formatting
@@ -126,7 +128,7 @@ async function pollStatus(id, accessToken) {
     return ""; // Return an empty string
 }
 
-async function downloadData(file_path) {
+async function downloadData(file_path, filename) {
     return new Promise((resolve, reject) => {
         const options = {
             method: 'GET',
@@ -148,7 +150,7 @@ async function downloadData(file_path) {
 
                 // Extract the filename from the URL
                 const urlParts = options.url.split('/');
-                const filename = urlParts[urlParts.length - 1];
+                //const filename = urlParts[urlParts.length - 1];
 
                 // Determine the file path for the downloaded CSV file
                 filePath = path.join(downloadDirectory, filename);
@@ -162,24 +164,65 @@ async function downloadData(file_path) {
     });
 }
 
-async function downloadBinaryData(url,fileName, accessToken) {
+async function downloadBinaryData(url, fileName, accessToken) {
     try {
-
+        return fileName;
         const headers = {
             'Authorization': `Bearer ${accessToken}`
-          };
-      const response = await axios.get(url, { responseType: 'arraybuffer', headers });
-      //const fileName = filename; // You can change the file name if needed
-  
-      // Write the binary data to a file
-      fs.writeFileSync(fileName, response.data);
-  
-      return fileName; // Return the path to the downloaded file
-    } catch (error) {
-      throw error;
-    }
-  }
+        };
+        const response = await axios.get(url, { responseType: 'arraybuffer', headers });
 
+        // Write the binary data to a file
+        fs.writeFileSync(fileName, response.data);
+
+        return fileName; // Return the path to the downloaded file
+    } catch (error) {
+        throw error;
+    }
+}
+
+async function sendEmail(filepath, filename, subject) {
+    console.log('function here to email the file ' + filepath)
+    // Create a Nodemailer transporter
+    const transporter = nodemailer.createTransport({
+        service: "Gmail", // e.g., "Gmail" or use your SMTP settings
+        auth: {
+            user: process.env.MAIL_USER,
+            pass: process.env.MAIL_ACCESS ,
+        },
+    });
+
+    // Email information
+    const emailOptions = {
+        from: "jdeck88@gmail.com",
+        to: "jdeck88@gmail.com",
+        subject: subject,
+        text: "Please see the attached file.  Reports are generated twice per week in advance of fullfillment dates.",
+    };
+
+    // File to attach
+    const filePath = filepath;
+
+    // Read the file as a buffer
+    const fileBuffer = fs.readFileSync(filepath);
+
+    // Attach the file to the email
+    emailOptions.attachments = [
+        {
+            filename: filename, // Change the filename as needed
+            content: fileBuffer, // Attach the file buffer
+        },
+    ];
+
+    // Send the email with the attachment
+    transporter.sendMail(emailOptions, (error, info) => {
+        if (error) {
+            console.error("Error sending email:", error);
+        } else {
+            console.log("Email sent:", info.response);
+        }
+    });
+}
 
 module.exports = {
     formatDate,
@@ -188,5 +231,6 @@ module.exports = {
     checkRequestId,
     pollStatus,
     downloadData,
-    downloadBinaryData
+    downloadBinaryData,
+    sendEmail
 };

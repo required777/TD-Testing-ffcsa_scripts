@@ -10,8 +10,11 @@ const utilities = require('./utilities');
 require('dotenv').config();
 
 // Build all check-lists
-async function checklist(delivery_order_file_path) {
+async function checklist(fullfillmentDate) {
   try {
+    console.log("running checklist builder")
+    delivery_order_file_path = 'data/orders_list_' + fullfillmentDate + ".csv"
+
     dairy_data = {}
     frozen_data = {}
     dairy_file_path = ''
@@ -26,32 +29,39 @@ async function checklist(delivery_order_file_path) {
     // frozen and turkey
     frozen_url = 'https://localline.ca/api/backoffice/v2/products/export/?internal_tags=2245,2266&direct=true'
 
+    dairy_file = 'data/dairy.xlsx'
+    frozen_file = 'data/frozen.xlsx'
     // Download File
-    utilities.downloadBinaryData(dairy_url, 'data/dairy.xlsx', accessToken)
-      .then((dairy_file_path) => {
-        console.log('dairy file:', dairy_file_path);
-        utilities.downloadBinaryData(frozen_url, 'data/frozen.xlsx', accessToken)
-          .then((frozen_file_path) => {
-            console.log('frozen file:', frozen_file_path);
-            console.log(delivery_order_file_path)
-
-            pdfFile = pdf_writer_functions.writeChecklistPDF(dairy_file_path, frozen_file_path, delivery_order_file_path)
-
-            // Send Email with pdf attachment
+    utilities.downloadBinaryData(dairy_url, dairy_file, accessToken)
+      .then((dairy_file) => {
+        utilities.downloadBinaryData(frozen_url, frozen_file, accessToken)
+          .then((frozen_file) => {
+            pdf_writer_functions.writeChecklistPDF(dairy_file, frozen_file, delivery_order_file_path)
+              .then((checklist_pdf) => {                
+                utilities.sendEmail(checklist_pdf, 'checklists.pdf', 'FFCSA Reports: Checklists for ' + fullfillmentDate)
+              }).catch((error) => {
+                console.error("Error in writeChecklistPDF:", error);
+              });
           })
           .catch((error) => {
-            console.error('Error:', error);
+            console.log('error fetching frozen products list, continuing to run checklist process using local copy as this file often halts....');
+            pdf_writer_functions.writeChecklistPDF(dairy_file, frozen_file, delivery_order_file_path)
+              .then((checklist_pdf) => {
+                utilities.sendEmail(checklist_pdf, 'checklists.pdf', 'FFCSA Reports: Checklists for ' + fullfillmentDate)
+              }).catch((error) => {
+                console.error("Error in writeChecklistPDF:", error);
+              });
           });
       })
       .catch((error) => {
-        console.error('Error:', error);
+        console.error('error fetching dairy products list');
       });
 
   } catch (error) {
-    console.error('An error occurred:', error);
+    console.error('A general occurred:', error);
   }
 }
 
 // Run the checklist script
-delivery_order_file = 'data/orders_list_view_full_farm_csa_28_Oct_2023.csv_zhshi.csv'
-checklist(delivery_order_file);
+fullfillmentDate = '2023-10-31'
+checklist(fullfillmentDate);
