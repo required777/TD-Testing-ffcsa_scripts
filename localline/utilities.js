@@ -166,7 +166,6 @@ async function downloadData(file_path, filename) {
 
 async function downloadBinaryData(url, fileName, accessToken) {
     try {
-        return fileName;
         const headers = {
             'Authorization': `Bearer ${accessToken}`
         };
