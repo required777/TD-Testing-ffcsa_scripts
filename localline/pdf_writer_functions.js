@@ -165,6 +165,13 @@ async function writeDeliveryOrderPDF(filename) {
     });
 }
 
+/*
+This function creates the following
+1. a checklist for each dropsite showing totes, dairy, frozen
+2. a master checklist
+3. a packlist of frozen products by customer for each dropsite
+4. a dairy packlist for all dropsites
+*/
 async function writeChecklistPDF(dairy_file_path, frozen_file_path, delivery_order_file_path) {
     return new Promise((resolve, reject) => {
         const pdf_file = 'data/dropsite_checklist.pdf'
@@ -175,6 +182,8 @@ async function writeChecklistPDF(dairy_file_path, frozen_file_path, delivery_ord
 
         // Initialize variables to group items by "Fulfillment Name"
         const dropsites = {};
+        const dropsitesAll = {};
+
         const masterdropsites = {};
         const customers = {}
         let currentDropsiteName = null;
@@ -211,43 +220,65 @@ async function writeChecklistPDF(dairy_file_path, frozen_file_path, delivery_ord
                                 updatedData.forEach((row) => {
                                     dropsiteName = row['Fulfillment Name']
                                     disposition = row['disposition']
+                                    customerName = row['Customer']
+                                    fullfillmentDate = utilities.formatDate(row['Fulfillment Date'])
+                                    customerPhone = row['Phone']
+                                    category = row['Membership']
+                                    quantity = Math.round(parseFloat(row['Quantity']));
+                                    product = row['Product'];
+                                    itemUnit = row['Item Unit']
+                                    vendor = row['Vendor']
 
-                                    // If the customerName changes, start a new section
                                     if (dropsiteName !== currentDropsiteName) {
                                         currentDropsiteName = dropsiteName;
-
                                         dropsites[dropsiteName] = {
                                             customers: []
                                         };
                                         masterdropsites[dropsiteName] = []
+                                        dropsitesAll[dropsiteName] = {
+                                            customers: []
+                                        };
                                     }
 
-                                    // Add customers to dropsite
-                                    customerName = row['Customer']
-                                     fullfillmentDate = utilities.formatDate(row['Fulfillment Date'])
-
-                                    customerPhone = row['Phone']
-                                    category = row['Membership']
                                     if (customerName !== currentCustomerName) {
                                         currentCustomerName = customerName
                                         dropsites[dropsiteName].customers[customerName] = []
-                                    }
-                                    dropsites[dropsiteName].customers[customerName].push({ name: customerName, phone: customerPhone, disposition: disposition });
+                                        dropsitesAll[dropsiteName].customers[customerName] = []
 
+                                    }
+
+                                    dropsites[dropsiteName].customers[customerName].push({
+                                        name: customerName,
+                                        phone: customerPhone,
+                                        quantity: quantity,
+                                        product: product,
+                                        itemUnit: itemUnit,
+                                        disposition: disposition
+                                    });
+                                    dropsitesAll[dropsiteName].customers[customerName].push({
+                                        name: customerName,
+                                        phone: customerPhone,
+                                        quantity: quantity,
+                                        product: product,
+                                        itemUnit: itemUnit,
+                                        disposition: disposition
+                                    });
                                 });
                                 dispositionCounts = {}
+
                                 // Iterate through items and generate the PDF content
                                 for (const dropsiteName in dropsites) {
                                     const dropsiteData = dropsites[dropsiteName];
 
-
                                     // Group and sum the "disposition" values
                                     for (const customerName in dropsites[dropsiteName].customers) {
                                         customerData = dropsites[dropsiteName].customers[customerName]
+                                        quantity = customerData[0].quantity
+
                                         dispositionCounts = customerData.reduce((accumulator, item) => {
                                             const disposition = item.disposition;
                                             if (disposition === 'dairy') {
-                                                accumulator[disposition] = (accumulator[disposition] || 0) + 1;
+                                                accumulator[disposition] = (accumulator[disposition] || 0) + item.quantity;
                                             } else if (disposition === 'tote' || disposition === 'frozen') {
                                                 accumulator[disposition] = 1
                                             }
@@ -299,9 +330,9 @@ async function writeChecklistPDF(dairy_file_path, frozen_file_path, delivery_ord
                                     );
 
                                     masterdropsites[dropsiteName] = sums
-                                }                                
+                                }
                                 doc.addPage();
-                                doc.fontSize(16).text("Master Checklist", { bold: true });                            
+                                doc.fontSize(16).text("Master Checklist", { bold: true });
                                 const tableData = [
                                     ...Object.entries(masterdropsites).map(([dropsite, values]) => [dropsite, values.tote, values.dairy, values.frozen]),
                                 ];
@@ -311,7 +342,12 @@ async function writeChecklistPDF(dairy_file_path, frozen_file_path, delivery_ord
                                     rows: tableData
                                 };
                                 doc.table(tableOptions);
+                                doc.addPage();
 
+
+                                // Product specific Packlist
+                                productSpecificPackList(doc, dropsitesAll, 'frozen')
+                                productSpecificPackList(doc, dropsitesAll, 'dairy')
 
 
                                 doc.end();
@@ -337,9 +373,80 @@ async function writeChecklistPDF(dairy_file_path, frozen_file_path, delivery_ord
             .catch((error) => {
                 console.error('Error:', error);
             });
-
-
     });
+}
+
+function productSpecificPackList(doc, dropsitesAll, disposition) {
+
+    count = 0;
+    for (const dropsiteName in dropsitesAll) {
+        const selectedCustomers = {};
+        for (const customerName in dropsitesAll[dropsiteName].customers) {
+            const customerData = dropsitesAll[dropsiteName].customers[customerName];
+            const frozenProducts = customerData.filter((product) => product.disposition === disposition);
+
+            if (frozenProducts.length > 0) {
+                selectedCustomers[customerName] = frozenProducts;
+            }
+        }
+        // only print dropsites that have desired product
+        if (Object.keys(selectedCustomers).length > 0) {
+            if (count > 0) {
+                doc.addPage();
+            }
+            doc.fontSize(14).text(dropsiteName +" " + disposition.charAt(0).toUpperCase() + disposition.slice(1) + " Product Packlist", { bold: true });
+            doc.moveDown();
+
+            for (const customerName in selectedCustomers) {
+                customerData = selectedCustomers[customerName]
+
+                const tableData = [
+                    ...Object.entries(customerData).map(([dropsite, values]) => [
+                        values.product,
+                        values.itemUnit,
+                        values.quantity,
+                    ]),
+                ];
+
+                if (tableData.length > 0) {
+                    // Define the table options
+                    const tableOptions = {
+                        headers: [customerName, '', ''],
+                        rows: tableData
+                    };
+
+                    addPageIfNecessary(dropsiteName, tableData, doc);
+                    doc.table(tableOptions);
+                    doc.moveDown();
+
+                }
+                count++
+            }
+        }
+    }
+}
+
+// Function to add a new page if the remaining space is less than the table height
+function addPageIfNecessary(dropsiteName, data, doc) {
+    //threshold = 100
+    const cellHeight = 50; // Set your desired cell height
+    const totalRowsHeight = data.length * cellHeight;
+    const headerHeight = cellHeight; // Assuming header height is the same as cell height
+    const totalHeight = totalRowsHeight + headerHeight;
+
+
+    remainingHeight = doc.page.height - doc.y
+
+    //console.log(dropsiteName, doc.y + "  : " + remainingHeight)
+    if (remainingHeight < totalHeight) {        
+
+        console.log('adding page to ' + dropsiteName)
+        doc.addPage();
+        doc.text(dropsiteName + " (next page...)")
+    }
+    //if (doc.y > doc.page.height - totalHeight) {
+    //  doc.addPage();
+    // }
 }
 
 function updateCategoryForProductID(jsonData, productIDsToUpdate, value) {

@@ -47,9 +47,6 @@ async function checklist(delivery_order_file_path) {
         console.error('Error:', error);
       });
 
-
-
-
   } catch (error) {
     console.error('An error occurred:', error);
   }
