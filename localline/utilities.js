@@ -223,6 +223,36 @@ async function sendEmail(filepath, filename, subject) {
     });
 }
 
+function getNextTuesdayOrSaturday() {
+    const today = new Date();
+  
+    // Calculate the days until the next Tuesday and Saturday.
+    const daysUntilNextTuesday = (2 - today.getDay() + 7) % 7;
+    const daysUntilNextSaturday = (6 - today.getDay() + 7) % 7;
+  
+    // Calculate the date for the next Tuesday and Saturday.
+    const nextTuesday = new Date(today);
+    nextTuesday.setDate(today.getDate() + daysUntilNextTuesday);
+    const nextSaturday = new Date(today);
+    nextSaturday.setDate(today.getDate() + daysUntilNextSaturday);
+  
+    // Determine which is closer to the current date.
+    return nextTuesday < nextSaturday ? nextTuesday : nextSaturday;
+  }
+  
+  function formatDateToYYYYMMDD(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
+  
+  function getNextFullfillmentDate() {
+    const nextTuesdayOrSaturday = getNextTuesdayOrSaturday();
+    const formattedDate = formatDateToYYYYMMDD(nextTuesdayOrSaturday);
+    return formattedDate;
+  }
+  
 module.exports = {
     formatDate,
     getAccessToken,
@@ -231,5 +261,6 @@ module.exports = {
     pollStatus,
     downloadData,
     downloadBinaryData,
-    sendEmail
+    sendEmail,
+    getNextFullfillmentDate
 };

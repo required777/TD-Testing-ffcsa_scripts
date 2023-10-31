@@ -57,5 +57,5 @@ async function delivery_order(fullfillmentDate) {
 }
 
 // Run the delivery_order script
-fullfillmentDate = '2023-10-31'
-delivery_order(fullfillmentDate);
+//fullfillmentDate = '2023-10-31'
+delivery_order(utilities.getNextFullfillmentDate());
