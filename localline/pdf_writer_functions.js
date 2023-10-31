@@ -382,7 +382,16 @@ async function writeChecklistPDF(dairy_file_path, frozen_file_path, delivery_ord
                                 updatedData = updateCategoryForProductID(sortedData, dairy_ids, 'dairy');
                                 updatedData = updateCategoryForProductID(updatedData, frozen_ids, 'frozen');
 
-                                updatedData.sort((a, b) => a['Fulfillment Name'].localeCompare(b['Fulfillment Name']));
+                                //updatedData.sort((a, b) => a['Fulfillment Name'].localeCompare(b['Fulfillment Name']));
+
+                                updatedData.sort((a, b) => {
+                                    const nameComparison = a['Fulfillment Name'].localeCompare(b['Fulfillment Name']);
+                                    if (nameComparison === 0) {
+                                      // If the 'Fulfillment Name' is the same, sort by 'Customer' column
+                                      return a['Customer'].localeCompare(b['Customer']);
+                                    }
+                                    return nameComparison;
+                                  });
 
                                 // We want to create an array of dropsites that contains an array of customers (the dropsite)
                                 // contains just the dropsite name and the customers contain the Customer, Phone
@@ -566,7 +575,13 @@ function productSpecificPackList(doc, dropsitesAll, disposition) {
             if (frozenProducts.length > 0) {
                 selectedCustomers[customerName] = frozenProducts;
             }
+            if (dropsiteName === "W 11th") {
+                console.log(customerName + " = " + JSON.stringify(customerData))
+            }
         }
+
+       
+
         // only print dropsites that have desired product
         if (Object.keys(selectedCustomers).length > 0) {
             if (count > 0) {
