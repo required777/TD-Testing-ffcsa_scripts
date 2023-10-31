@@ -205,6 +205,8 @@ async function writeVendorsPDF(products_file_path, filename) {
                             const price = (parseFloat(row['Product Subtotal']) / quantity).toFixed(2);
                             const totalPrice = row['Product Subtotal']
                             const category = row['Category']
+                            const fullfillmentDate = row['Fulfillment Date']
+
 
                             // If the customerName changes, start a new section
                             if (vendorName !== currentVendorName) {
@@ -218,7 +220,7 @@ async function writeVendorsPDF(products_file_path, filename) {
 
                             //console.log(mergedObject)
                             if (category !== 'Membership') {
-                                vendors[vendorName].products.push({ productID, product, quantity, price, totalPrice });
+                                vendors[vendorName].products.push({ productID, product, quantity, price, totalPrice, fullfillmentDate });
                             }
                         });
 
@@ -228,7 +230,8 @@ async function writeVendorsPDF(products_file_path, filename) {
 
                             if (vendorData.products.length > 0) {
 
-                                doc.fontSize(16).text(vendorName, { bold: true });
+
+   
 
                                 const items = vendorData.products;
 
@@ -247,9 +250,15 @@ async function writeVendorsPDF(products_file_path, filename) {
                                     productID = parseInt(itemRow.productID, 10);
                                     product = itemRow.product;
                                     quantity = itemRow.quantity;
+                                    fullfillmentDate = itemRow.fullfillmentDate;
+
                                     itemRow.price = lookupPackagePrice(productID, products_data);
                                     itemRow.totalPrice = quantity * itemRow.price;
                                 }
+
+                                fullfillmentDate = utilities.formatDate(fullfillmentDate)
+                                doc.fontSize(16).text(fullfillmentDate, { align: 'right' });
+                                doc.fontSize(16).text(vendorName, { bold: true });
 
                                 // Set the table column widths
                                 const itemsAsData = items.map(item => [item.product, item.quantity, item.price, item.totalPrice]);
