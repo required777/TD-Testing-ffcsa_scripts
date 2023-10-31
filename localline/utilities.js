@@ -253,6 +253,8 @@ function getNextTuesdayOrSaturday() {
     return formattedDate;
   }
   
+  
+
 module.exports = {
     formatDate,
     getAccessToken,
@@ -261,6 +263,6 @@ module.exports = {
     pollStatus,
     downloadData,
     downloadBinaryData,
-    sendEmail,
+    sendEmail, 
     getNextFullfillmentDate
 };
