@@ -622,7 +622,7 @@ function productSpecificPackList(doc, dropsitesAll, disposition) {
 // Function to add a new page if the remaining space is less than the table height
 function addPageIfNecessary(dropsiteName, data, doc) {
     //threshold = 100
-    const cellHeight = 50; // Set your desired cell height
+    const cellHeight = 80; // Set your desired cell height
     const totalRowsHeight = data.length * cellHeight;
     const headerHeight = cellHeight; // Assuming header height is the same as cell height
     const tableHeight = totalRowsHeight + headerHeight;
