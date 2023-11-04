@@ -10,7 +10,7 @@ const utilities = require('./utilities');
 require('dotenv').config();
 
 // Build customer delivery orders (picklists)
-async function delivery_order(fullfillmentDate) {
+async function delivery_order(fullfillmentDateStart,fullfillmentDateEnd) {
   try {
     console.log("running delivery_order builder")
 
@@ -24,8 +24,8 @@ async function delivery_order(fullfillmentDate) {
     // Download Orders
     url = 'https://localline.ca/api/backoffice/v2/orders/export/?' +
       'file_type=orders_list_view&send_to_email=false&destination_email=fullfarmcsa%40deckfamilyfarm.com&direct=true&' +
-      `fulfillment_date_start=${fullfillmentDate}&` +
-      `fulfillment_date_end=${fullfillmentDate}&` +
+      `fulfillment_date_start=${fullfillmentDateStart}&` +
+      `fulfillment_date_end=${fullfillmentDateEnd}&` +
       '&status=OPEN&status=NEEDS_APPROVAL&status=CANCELLED&status=CLOSED'
     data = await utilities.getRequestID(url, accessToken);
     const id = JSON.parse(data).id;
@@ -35,7 +35,7 @@ async function delivery_order(fullfillmentDate) {
 
     // Download File
     if (orders_result_url !== "") {
-      utilities.downloadData(orders_result_url, 'orders_list_' + fullfillmentDate + ".csv")
+      utilities.downloadData(orders_result_url, 'orders_list_' + fullfillmentDateEnd + ".csv")
         .then((orders_file_path) => {
           console.log('Downloaded file path:', orders_file_path);
           pdf_writer_functions.writeDeliveryOrderPDF(orders_file_path)
@@ -58,4 +58,5 @@ async function delivery_order(fullfillmentDate) {
 
 // Run the delivery_order script
 //fullfillmentDate = '2023-10-31'
-delivery_order(utilities.getNextFullfillmentDate());
+fullfillmentDateObject = utilities.getNextFullfillmentDate()
+delivery_order(utilities.getNextFullfillmentDate().start,utilities.getNextFullfillmentDate().end);

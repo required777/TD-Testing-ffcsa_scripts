@@ -187,7 +187,7 @@ async function sendEmail(filepath, filename, subject) {
         service: "Gmail", // e.g., "Gmail" or use your SMTP settings
         auth: {
             user: process.env.MAIL_USER,
-            pass: process.env.MAIL_ACCESS ,
+            pass: process.env.MAIL_ACCESS,
         },
     });
 
@@ -226,35 +226,52 @@ async function sendEmail(filepath, filename, subject) {
 
 function getNextTuesdayOrSaturday() {
     const today = new Date();
-  
+
     // Calculate the days until the next Tuesday and Saturday.
     const daysUntilNextTuesday = (2 - today.getDay() + 7) % 7;
     const daysUntilNextSaturday = (6 - today.getDay() + 7) % 7;
-  
+
     // Calculate the date for the next Tuesday and Saturday.
     const nextTuesday = new Date(today);
     nextTuesday.setDate(today.getDate() + daysUntilNextTuesday);
     const nextSaturday = new Date(today);
     nextSaturday.setDate(today.getDate() + daysUntilNextSaturday);
-  
+
     // Determine which is closer to the current date.
     return nextTuesday < nextSaturday ? nextTuesday : nextSaturday;
-  }
-  
-  function formatDateToYYYYMMDD(date) {
+}
+
+function formatDateToYYYYMMDD(date) {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
     return `${year}-${month}-${day}`;
-  }
-  
-  function getNextFullfillmentDate() {
+}
+
+
+// Get the next fullfillmentDate to query, which is either Tuesday or Friday/Saturday
+function getNextFullfillmentDate() {
     const nextTuesdayOrSaturday = getNextTuesdayOrSaturday();
-    const formattedDate = formatDateToYYYYMMDD(nextTuesdayOrSaturday);
+    const end = nextTuesdayOrSaturday;
+    start = new Date(nextTuesdayOrSaturday);
+    
+    // if date is a saturday, then include Friday as start date
+    if (end.getDay() === 6) {
+        start.setDate(nextTuesdayOrSaturday.getDate() - 1);
+    // otherwise, set this date to same as end date
+    } else {
+        start.setDate(nextTuesdayOrSaturday.getDate());
+    }
+
+    const formattedDate = {}
+    formattedDate.start = formatDateToYYYYMMDD(start);
+    formattedDate.end = formatDateToYYYYMMDD(end);
+    formattedDate.date = formatDateToYYYYMMDD(end);
+
     return formattedDate;
-  }
-  
-  
+}
+
+
 
 module.exports = {
     formatDate,
@@ -264,6 +281,6 @@ module.exports = {
     pollStatus,
     downloadData,
     downloadBinaryData,
-    sendEmail, 
+    sendEmail,
     getNextFullfillmentDate
 };

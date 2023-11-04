@@ -52,5 +52,5 @@ async function vendors(fullfillmentDate) {
 
 // Run the checklist script
 //fullfillmentDate = '2023-10-31'
-//vendors(fullfillmentDate);
-vendors(utilities.getNextFullfillmentDate());
+fullfillmentDateObject = utilities.getNextFullfillmentDate()
+vendors(fullfillmentDateObject.date);

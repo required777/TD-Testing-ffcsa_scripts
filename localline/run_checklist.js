@@ -64,4 +64,6 @@ async function checklist(fullfillmentDate) {
 
 // Run the checklist script
 ///fullfillmentDate = '2023-10-31'
-checklist(utilities.getNextFullfillmentDate());
+fullfillmentDateObject = utilities.getNextFullfillmentDate()
+
+checklist(fullfillmentDateObject.date);
