@@ -180,6 +180,48 @@ async function downloadBinaryData(url, fileName, accessToken) {
     }
 }
 
+async function sendSubscribersEmail(filepath, filename, subject) {
+    console.log('function here to email the file ' + filepath)
+    // Create a Nodemailer transporter
+    const transporter = nodemailer.createTransport({
+        service: "Gmail", // e.g., "Gmail" or use your SMTP settings
+        auth: {
+            user: process.env.MAIL_USER,
+            pass: process.env.MAIL_ACCESS,
+        },
+    });
+
+    // Email information
+    const emailOptions = {
+        from: "jdeck88@gmail.com",
+        to: "jdeck88@gmail.com",        
+        subject: subject,
+        text: "Please see the attached file.  Subscribers report is run daily.",
+    };
+
+    // File to attach
+    const filePath = filepath;
+
+    // Read the file as a buffer
+    const fileBuffer = fs.readFileSync(filepath);
+
+    // Attach the file to the email
+    emailOptions.attachments = [
+        {
+            filename: filename, // Change the filename as needed
+            content: fileBuffer, // Attach the file buffer
+        },
+    ];
+
+    // Send the email with the attachment
+    transporter.sendMail(emailOptions, (error, info) => {
+        if (error) {
+            console.error("Error sending email:", error);
+        } else {
+            console.log("Email sent:", info.response);
+        }
+    });
+}
 async function sendEmail(filepath, filename, subject) {
     console.log('function here to email the file ' + filepath)
     // Create a Nodemailer transporter
@@ -282,5 +324,6 @@ module.exports = {
     downloadData,
     downloadBinaryData,
     sendEmail,
+    sendSubscribersEmail,
     getNextFullfillmentDate
 };
