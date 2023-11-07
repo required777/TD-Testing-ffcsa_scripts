@@ -1,6 +1,3 @@
-// TODO: Generate the fullfillment date to run these reports to generate the First Tuesday or the First Saturday after running
-// also, check to make sure order is closed (run Thursday after 1am or Monday after 1am)
-
 // Using the following get  the "access" property
 const pdf_writer_functions = require('./pdf_writer_functions');
 var request = require('request');
@@ -16,10 +13,12 @@ async function subscription(fullfillmentDate) {
     console.log("running subscription updater")
 
     url = 'https://localline.ca/api/backoffice/v2/orders/export/?' +
-      'file_type=orders_list_view&send_to_email=false&destination_email=fullfarmcsa%40deckfamilyfarm.com&direct=true&' +
-      `fulfillment_date_start=${fullfillmentDate}&` +
-      `fulfillment_date_end=${fullfillmentDate}&` +
-      'payment__status=PAID&payment__status=AUTHORIZED&vendors=3148&price_lists=2719&status=OPEN'
+      'file_type=orders_list_view&' +
+      'send_to_email=false&destination_email=fullfarmcsa%40deckfamilyfarm.com&direct=true&' +
+      `start_date=${fullfillmentDate}&` +
+      `end_date=${fullfillmentDate}&` +
+      'payment__status=PAID&payment__status=AUTHORIZED&' +
+      'vendors=3148&price_lists=2719&status=OPEN'
 
     data = {}
 
