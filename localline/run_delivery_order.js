@@ -40,7 +40,7 @@ async function delivery_order(fullfillmentDateStart,fullfillmentDateEnd) {
           console.log('Downloaded file path:', orders_file_path);
           pdf_writer_functions.writeDeliveryOrderPDF(orders_file_path)
             .then((delivery_order_pdf) => {
-              utilities.sendEmail(delivery_order_pdf, 'delivery_orders.pdf', 'FFCSA Reports: Delivery Orders for ' + fullfillmentDate)
+              utilities.sendEmail(delivery_order_pdf, 'delivery_orders.pdf', 'FFCSA Reports: Delivery Orders for ' + fullfillmentDateEnd)
             }).catch((error) => {
               console.error("Error in writeDeliveryOrderPDF:", error);
             });
