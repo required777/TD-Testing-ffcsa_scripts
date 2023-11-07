@@ -120,6 +120,7 @@ async function pollStatus(id, accessToken) {
 
         if (Date.now() - pollingStartTime >= maxPollingTime) {
             console.error("Status not COMPLETE after 1 minute. Stopping polling.");
+            throw new Error ("Status not COMPLETE after 1 minute. Stopping polling.")
         }
 
         await new Promise((resolve) => setTimeout(resolve, pollInterval));
@@ -176,7 +177,7 @@ async function downloadBinaryData(url, fileName, accessToken) {
 
         return fileName; // Return the path to the downloaded file
     } catch (error) {
-        throw error;
+        throw new Error(error)
     }
 }
 
@@ -221,6 +222,36 @@ async function sendSubscribersEmail(filepath, filename, subject) {
             console.log("Email sent:", info.response);
         }
     });
+}
+
+async function sendErrorEmail(error) {
+    console.log('function here to email an error')
+    // Create a Nodemailer transporter
+    const transporter = nodemailer.createTransport({
+        service: "Gmail", // e.g., "Gmail" or use your SMTP settings
+        auth: {
+            user: process.env.MAIL_USER,
+            pass: process.env.MAIL_ACCESS,
+        },
+    });
+
+    // Email information
+    const emailOptions = {
+        from: "jdeck88@gmail.com",
+        to: "jdeck88@gmail.com",        
+        subject: "FFCSA Reports: Error Message",
+        text: "Error Message: " + error,
+    };
+
+    // Send the email with the attachment
+    transporter.sendMail(emailOptions, (error, info) => {
+        if (error) {
+            console.error("Error sending email:", error);
+        } else {
+            console.log("Email sent:", info.response);
+        }
+    });
+    //process.exit()
 }
 async function sendEmail(filepath, filename, subject) {
     console.log('function here to email the file ' + filepath)
@@ -325,5 +356,6 @@ module.exports = {
     downloadBinaryData,
     sendEmail,
     sendSubscribersEmail,
+    sendErrorEmail,
     getNextFullfillmentDate
 };

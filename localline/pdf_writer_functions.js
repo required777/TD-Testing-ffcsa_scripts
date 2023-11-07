@@ -314,6 +314,7 @@ async function writeVendorsPDF(products_file_path, filename) {
 
                         doc.on('error', (error) => {
                             console.error('PDF creation error:', error);
+                            throw new Error("PDF creation error")
                             reject(error);
                         });
 
@@ -537,6 +538,7 @@ async function writeChecklistPDF(dairy_file_path, frozen_file_path, delivery_ord
                                 });
                                 doc.on('error', (error) => {
                                     console.error('PDF creation error:', error);
+                                    throw new Error ("PDF creation error")
                                     reject(error);
                                 });
 
@@ -552,11 +554,13 @@ async function writeChecklistPDF(dairy_file_path, frozen_file_path, delivery_ord
 
                     .catch((error) => {
                         console.error('Error:', error);
+                        throw new Error(error)
                     });
 
             })
             .catch((error) => {
                 console.error('Error:', error);
+                throw new Error(error)
             });
 
     });
@@ -675,7 +679,7 @@ async function readVendorsExcel(filePath) {
         return dataArray
 
     } catch (error) {
-        throw error;
+        throw new Error(error)
     }
 
 }
@@ -711,7 +715,7 @@ async function readLocalExcelAndExtractColumnData(filePath) {
 
         return localLineProductIDs;
     } catch (error) {
-        throw error;
+        throw new Error(error)
     }
 }
 

@@ -43,16 +43,20 @@ async function delivery_order(fullfillmentDateStart,fullfillmentDateEnd) {
               utilities.sendEmail(delivery_order_pdf, 'delivery_orders.pdf', 'FFCSA Reports: Delivery Orders for ' + fullfillmentDateEnd)
             }).catch((error) => {
               console.error("Error in writeDeliveryOrderPDF:", error);
+              utilities.sendErrorEmail(error)
             });
         })
         .catch((error) => {
           console.error('Error:', error);
+          utilities.sendErrorEmail(error)
         });
     } else {
-      console.log('file generation not completed in 1 minute')
+      console.error('file generation not completed in 1 minute')
+      utilities.sendErrorEmail(error)
     }
   } catch (error) {
     console.error('An error occurred:', error);
+    utilities.sendErrorEmail(error)
   }
 }
 

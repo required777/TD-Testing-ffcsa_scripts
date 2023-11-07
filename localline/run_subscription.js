@@ -15,47 +15,66 @@ async function subscription(fullfillmentDate) {
   try {
     console.log("running subscription updater")
 
+    url = 'https://localline.ca/api/backoffice/v2/orders/export/?' +
+      'file_type=orders_list_view&send_to_email=false&destination_email=fullfarmcsa%40deckfamilyfarm.com&direct=true&' +
+      `fulfillment_date_start=${fullfillmentDate}&` +
+      `fulfillment_date_end=${fullfillmentDate}&` +
+      'payment__status=PAID&payment__status=AUTHORIZED&vendors=3148&price_lists=2719&status=OPEN'
+
     data = {}
 
     // Login
     data = await utilities.getAccessToken();
     const accessToken = JSON.parse(data).access;
 
-    // Download Orders
-   /* url = 'https://localline.ca/api/backoffice/v2/orders/export/?' +
-      'file_type=orders_list_view&send_to_email=false&destination_email=fullfarmcsa%40deckfamilyfarm.com&direct=true&' +
-      `fulfillment_date_start=${fullfillmentDateStart}&` +
-      `fulfillment_date_end=${fullfillmentDateEnd}&` +
-      '&status=OPEN&status=NEEDS_APPROVAL&status=CANCELLED&status=CLOSED'
-*/
-    url = 'https://localline.ca/api/backoffice/v2/orders/export/?' + 
-    'file_type=orders_list_view&send_to_email=false&destination_email=fullfarmcsa%40deckfamilyfarm.com&direct=true&' +    
-    `fulfillment_date_start=${fullfillmentDate}&` +
-    `fulfillment_date_end=${fullfillmentDate}&` +
-    'payment__status=PAID&payment__status=AUTHORIZED&vendors=3148&price_lists=2719&status=OPEN'
-    data = await utilities.getRequestID(url, accessToken);
-    const id = JSON.parse(data).id;
 
-    // Wait for report to finish
-    const subscription_result_url = await utilities.pollStatus(id, accessToken);
+    // Call the function and wait for the response
+    (async () => {
+      try {
+        console.log("fetching customers ...")
+        const customerData = await subscriptions.populateCustomers(accessToken);
+        //console.log('Customer data:', customerData);
 
-    // Download File
-    if (subscription_result_url !== "") {
-      utilities.downloadData(subscription_result_url, 'subscriptions_' + fullfillmentDate + ".csv", accessToken)
-        .then((subscription_file_path) => {
-          console.log('Downloaded file path:', subscription_file_path);
-          subscriptions.run(subscription_file_path).then((subscriptions_pdf) => {
-            utilities.sendSubscribersEmail(subscriptions_pdf, 'subscriptions.pdf', 'Subscriptions made on ... ' + fullfillmentDate)
-          })                   
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-        });
-    } else {
-      console.log('file generation not completed in 1 minute')
-    }
+        // TODO: validate customerData makes sense
+        data = await utilities.getRequestID(url, accessToken);
+        const id = JSON.parse(data).id;
+
+        // Wait for report to finish
+        const subscription_result_url = await utilities.pollStatus(id, accessToken);
+
+        // Download File
+        if (subscription_result_url !== "") {
+          utilities.downloadData(subscription_result_url, 'subscriptions_' + fullfillmentDate + ".csv", accessToken)
+            .then((subscription_file_path) => {
+              console.log('Downloaded file path:', subscription_file_path);
+              subscriptions.run(subscription_file_path, customerData).then((subscriptions_pdf) => {
+                try {
+                  utilities.sendSubscribersEmail(subscriptions_pdf, 'subscriptions.pdf', 'Subscriptions made on ... ' + fullfillmentDate)
+                } catch (error) {
+                  console.error('Error:', error);
+                  utilities.sendErrorEmail(error)
+                }
+              }).catch((error) => {
+                console.error('Error:', error);
+                utilities.sendErrorEmail(error)
+              })
+            })
+            .catch((error) => {
+              console.error('Error:', error);
+              utilities.sendErrorEmail(error)
+            });
+        } else {
+          console.error('file generation not completed in 1 minute')
+          utilities.sendErrorEmail("file generation not completed in 1 minute")
+        }
+      } catch (error) {
+        console.error('Error in the main function:', error);
+        utilities.sendErrorEmail(error)
+      }
+    })();
   } catch (error) {
     console.error('An error occurred:', error);
+    utilities.sendErrorEmail(error)
   }
 }
 

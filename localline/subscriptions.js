@@ -1,10 +1,12 @@
 const fs = require('fs');
 const fastcsv = require('fast-csv');
 const PDFDocument = require('pdfkit-table');
+const axios = require('axios');
+
 
 const utilities = require('./utilities');
 
-async function run(filename) {
+async function run(filename, customerData) {
     return new Promise((resolve, reject) => {
         const pdf_file = 'data/subscriptions.pdf';
         const doc = new PDFDocument();
@@ -14,7 +16,7 @@ async function run(filename) {
         });
 
         doc.on('error', (error) => {
-            console.error('PDF creation error:', error);
+            console.error('PDF creation error:', error);            
             reject(error);
         });
 
@@ -29,6 +31,7 @@ async function run(filename) {
                     subscribers.push({
                         Date: row['Date'],
                         Customer: row['Customer'],
+                        email: row['Email'],
                         'Package Name': row['Package Name'],
                         'Product Subtotal': row['Product Subtotal'],
                     });
@@ -37,21 +40,36 @@ async function run(filename) {
             .on('end', () => {
                 subscribers.sort((a, b) => a['Package Name'].localeCompare(b['Package Name']));
 
-                const items = subscribers.map((subscriber) => ({
-                    subscription_date: subscriber['Date'],
-                    customer: subscriber['Customer'],
-                    level: subscriber['Package Name'],
-                    amount: subscriber['Product Subtotal'],
-                }));
+                // Combine the two arrays based on the "email" field and add "id" to the subscribers array
+                const combinedData = subscribers.map(subscriber => {
+                    const customer = customerData.find(cust => cust.email === subscriber.email);
+                    return {
+                        id: customer ? customer.id : null,
+                        customer: subscriber.Customer,
+                        email: subscriber.email,
+                        subscription_date: subscriber.Date,
+                        level: subscriber['Package Name'],
+                        amount: subscriber['Product Subtotal'],
+                    };
+                });
+
+                ///console.log(combinedData);
+
 
                 const table = {
                     title: '',
-                    headers: ['Subscription Date', 'Customer', 'Level', 'Total'],
-                    rows: items.map(item => [item.subscription_date, item.customer, item.level, item.amount]),
+                    headers: ['CustomerID', 'Customer', 'Email', 'Subscription Date', 'Level', 'Total'],
+                    rows: combinedData.map(item => [item.id, item.customer,item.email, item.subscription_date, item.level, item.amount]),
                 };
-                //console.log(items)
                 doc.table(table);
                 doc.end();
+
+
+                // TODO: In this loop pull out id and call IP to increment by set amount
+                for (const entry of combinedData) {
+                    console.log(`ID: ${entry.id}, Amount: ${entry.amount}  ${entry.email}`);
+                  }
+
 
                 // TODO: figure out appropriate aync methods to enable finishing PDF creation
                 setTimeout(() => {
@@ -59,15 +77,55 @@ async function run(filename) {
                     resolve(pdf_file); // Promise is resolved with "Success!"
                 }, 1000);
 
+
             })
             .on('error', (error) => {
                 reject(error);
-            });      
+            });
     });
 }
 
+
+async function populateCustomers(accessToken) {
+    apiUrl = 'https://localline.ca/api/backoffice/v2/customers/?page=1&page_size=50'; // Initial API URL
+
+    let allCustomers = []; // Array to store customer data
+
+    while (apiUrl) {
+        try {
+            const headers = {
+                'Authorization': `Bearer ${accessToken}`
+            };
+
+            const response = await axios.get(apiUrl, {
+                headers: headers
+            });
+
+            const { results, next } = response.data;
+
+            // Extract and push "id" and "email" of each customer to the array
+            results.forEach(customer => {
+                allCustomers.push({ id: customer.id, email: customer.email });
+            });
+
+            // Check if there is a next page
+            apiUrl = next ? next : null;
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            throw new Error(error)
+        }
+    }
+
+    // Now, allCustomers array contains the "id" and "email" of all customers
+    return allCustomers; // Return the array when done
+
+}
+
+
+
 module.exports = {
-    run
+    run,
+    populateCustomers
 };
 
 /*

@@ -41,6 +41,7 @@ async function checklist(fullfillmentDate) {
                 utilities.sendEmail(checklist_pdf, 'checklists.pdf', 'FFCSA Reports: Checklists for ' + fullfillmentDate)
               }).catch((error) => {
                 console.error("Error in writeChecklistPDF:", error);
+                utilities.sendErrorEmail(error)
               });
           })
           .catch((error) => {
@@ -50,15 +51,18 @@ async function checklist(fullfillmentDate) {
                 utilities.sendEmail(checklist_pdf, 'checklists.pdf', 'FFCSA Reports: Checklists for ' + fullfillmentDate)
               }).catch((error) => {
                 console.error("Error in writeChecklistPDF:", error);
+                utilities.sendErrorEmail(error)
               });
           });
       })
       .catch((error) => {
         console.error('error fetching dairy products list');
+        utilities.sendErrorEmail(error)
       });
 
   } catch (error) {
     console.error('A general occurred:', error);
+    utilities.sendErrorEmail(error)
   }
 }
 
