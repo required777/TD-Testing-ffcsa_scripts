@@ -8,15 +8,15 @@ const subscriptions = require('./subscriptions');
 require('dotenv').config();
 
 // Build customer delivery orders (picklists)
-async function subscription(fullfillmentDate) {
+async function subscription(yesterday) {
   try {
     console.log("running subscription updater")
 
     url = 'https://localline.ca/api/backoffice/v2/orders/export/?' +
       'file_type=orders_list_view&' +
       'send_to_email=false&destination_email=fullfarmcsa%40deckfamilyfarm.com&direct=true&' +
-      `start_date=${fullfillmentDate}&` +
-      `end_date=${fullfillmentDate}&` +
+      `start_date=${yesterday}&` +
+      `end_date=${yesterday}&` +
       'payment__status=PAID&payment__status=AUTHORIZED&' +
       'vendors=3148&price_lists=2719&status=OPEN'
 
@@ -43,12 +43,12 @@ async function subscription(fullfillmentDate) {
 
         // Download File
         if (subscription_result_url !== "") {
-          utilities.downloadData(subscription_result_url, 'subscriptions_' + fullfillmentDate + ".csv", accessToken)
+          utilities.downloadData(subscription_result_url, 'subscriptions_' + yesterday + ".csv", accessToken)
             .then((subscription_file_path) => {
               console.log('Downloaded file path:', subscription_file_path);
-              subscriptions.run(subscription_file_path, customerData,fullfillmentDate).then((subscriptions_pdf) => {
+              subscriptions.run(subscription_file_path, customerData,yesterday).then((subscriptions_pdf) => {
                 try {
-                  utilities.sendSubscribersEmail(subscriptions_pdf, 'subscriptions_' + fullfillmentDate +'.pdf', 'Subscriptions made on ... ' + fullfillmentDate)
+                  utilities.sendSubscribersEmail(subscriptions_pdf, 'subscriptions_' + yesterday+'.pdf', 'Subscriptions made on ... ' + yesterday)
                 } catch (error) {
                   console.error('Error:', error);
                   utilities.sendErrorEmail(error)
@@ -78,8 +78,15 @@ async function subscription(fullfillmentDate) {
 }
 
 // Run the delivery_order script
-//fullfillmentDate = '2023-10-31'
-fullfillmentDateObject = utilities.getNextFullfillmentDate()
-fullfillmentDate = fullfillmentDateObject.date;
+//yesterdayFormatted = '2023-10-31'
+const today = new Date();
+const yesterday = new Date(today);
+yesterday.setDate(today.getDate() - 1);
 
-subscription(fullfillmentDate);
+const year = yesterday.getFullYear();
+const month = String(yesterday.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+const day = String(yesterday.getDate()).padStart(2, '0');
+
+const yesterdayFormatted = `${year}-${month}-${day}`;
+
+subscription(yesterdayFormatted);
