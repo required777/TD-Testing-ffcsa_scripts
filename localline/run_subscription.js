@@ -46,9 +46,9 @@ async function subscription(fullfillmentDate) {
           utilities.downloadData(subscription_result_url, 'subscriptions_' + fullfillmentDate + ".csv", accessToken)
             .then((subscription_file_path) => {
               console.log('Downloaded file path:', subscription_file_path);
-              subscriptions.run(subscription_file_path, customerData).then((subscriptions_pdf) => {
+              subscriptions.run(subscription_file_path, customerData,fullfillmentDate).then((subscriptions_pdf) => {
                 try {
-                  utilities.sendSubscribersEmail(subscriptions_pdf, 'subscriptions.pdf', 'Subscriptions made on ... ' + fullfillmentDate)
+                  utilities.sendSubscribersEmail(subscriptions_pdf, 'subscriptions_' + fullfillmentDate +'.pdf', 'Subscriptions made on ... ' + fullfillmentDate)
                 } catch (error) {
                   console.error('Error:', error);
                   utilities.sendErrorEmail(error)
