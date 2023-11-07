@@ -1,2 +1,4 @@
 .env
 data/*
+data/dairy.xlsx
+data/frozen.xlsx
