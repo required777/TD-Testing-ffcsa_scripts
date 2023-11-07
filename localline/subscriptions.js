@@ -6,9 +6,9 @@ const axios = require('axios');
 
 const utilities = require('./utilities');
 
-async function run(filename, customerData) {
+async function run(filename, customerData, fullfillmentDate) {
     return new Promise((resolve, reject) => {
-        const pdf_file = 'data/subscriptions.pdf';
+        const pdf_file = 'data/subscriptions_'+fullfillmentDate+'.pdf';
         const doc = new PDFDocument();
 
         doc.on('finish', () => {
