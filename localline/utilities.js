@@ -120,7 +120,7 @@ async function pollStatus(id, accessToken) {
 
         if (Date.now() - pollingStartTime >= maxPollingTime) {
             console.error("Status not COMPLETE after 1 minute. Stopping polling.");
-            throw new Error ("Status not COMPLETE after 1 minute. Stopping polling.")
+            throw new Error("Status not COMPLETE after 1 minute. Stopping polling.")
         }
 
         await new Promise((resolve) => setTimeout(resolve, pollInterval));
@@ -195,7 +195,7 @@ async function sendSubscribersEmail(filepath, filename, subject) {
     // Email information
     const emailOptions = {
         from: "jdeck88@gmail.com",
-        to: "jdeck88@gmail.com",        
+        to: "jdeck88@gmail.com",
         subject: subject,
         text: "Please see the attached file.  Subscribers report is run daily.",
     };
@@ -238,7 +238,7 @@ async function sendErrorEmail(error) {
     // Email information
     const emailOptions = {
         from: "jdeck88@gmail.com",
-        to: "jdeck88@gmail.com",        
+        to: "jdeck88@gmail.com",
         subject: "FFCSA Reports: Error Message",
         text: "Error Message: " + error,
     };
@@ -327,11 +327,11 @@ function getNextFullfillmentDate() {
     const nextTuesdayOrSaturday = getNextTuesdayOrSaturday();
     const end = nextTuesdayOrSaturday;
     start = new Date(nextTuesdayOrSaturday);
-    
+
     // if date is a saturday, then include Friday as start date
     if (end.getDay() === 6) {
         start.setDate(nextTuesdayOrSaturday.getDate() - 1);
-    // otherwise, set this date to same as end date
+        // otherwise, set this date to same as end date
     } else {
         start.setDate(nextTuesdayOrSaturday.getDate());
     }
@@ -343,7 +343,18 @@ function getNextFullfillmentDate() {
 
     return formattedDate;
 }
+function getYesterday() {
+    const today = new Date();
+    const yesterday = new Date(today);
+    yesterday.setDate(today.getDate() - 1);
 
+    const year = yesterday.getFullYear();
+    const month = String(yesterday.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+    const day = String(yesterday.getDate()).padStart(2, '0');
+
+    const yesterdayFormatted = `${year}-${month}-${day}`;
+    return yesterdayFormatted;
+}
 
 
 module.exports = {
@@ -357,5 +368,6 @@ module.exports = {
     sendEmail,
     sendSubscribersEmail,
     sendErrorEmail,
-    getNextFullfillmentDate
+    getNextFullfillmentDate,
+    getYesterday
 };

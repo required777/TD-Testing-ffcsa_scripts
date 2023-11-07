@@ -79,14 +79,5 @@ async function subscription(yesterday) {
 
 // Run the delivery_order script
 //yesterdayFormatted = '2023-10-31'
-const today = new Date();
-const yesterday = new Date(today);
-yesterday.setDate(today.getDate() - 1);
 
-const year = yesterday.getFullYear();
-const month = String(yesterday.getMonth() + 1).padStart(2, '0'); // Months are 0-based
-const day = String(yesterday.getDate()).padStart(2, '0');
-
-const yesterdayFormatted = `${year}-${month}-${day}`;
-
-subscription(yesterdayFormatted);
+subscription(utilities.getYesterday());
