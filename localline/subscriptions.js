@@ -66,15 +66,22 @@ async function run(filename, customerData, yesterdayFormatted) {
 
 
                 // TODO: In this loop pull out id and call IP to increment by set amount
+                num_subscriptions = 0;
                 for (const entry of combinedData) {
                     console.log(`ID: ${entry.id}, Amount: ${entry.amount}  ${entry.email}`);
+                    num_subscriptions = num_subscriptions + 1
                   }
+                console.log(num_subscriptions + " subscriptions made")
 
-
+                const results = {
+                    count: num_subscriptions, 
+                    pdf_file: pdf_file
+                  };
+                
                 // TODO: figure out appropriate aync methods to enable finishing PDF creation
                 setTimeout(() => {
                     console.log("Success!")
-                    resolve(pdf_file); // Promise is resolved with "Success!"
+                    resolve(results); // Promise is resolved with "Success!"
                 }, 1000);
 
 
@@ -131,7 +138,7 @@ module.exports = {
 /*
 run('data/subscriptions_2023-10-31.csv')
     .then((results) => {
-        console.log('results:', results);
+        console.log('results:', results.pdf_file);
     })
     .catch((error) => {
         console.error('Error:', error);

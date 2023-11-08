@@ -46,17 +46,18 @@ async function subscription(yesterday) {
           utilities.downloadData(subscription_result_url, 'subscriptions_' + yesterday + ".csv", accessToken)
             .then((subscription_file_path) => {
               console.log('Downloaded file path:', subscription_file_path);
-              subscriptions.run(subscription_file_path, customerData,yesterday).then((subscriptions_pdf) => {
-                try {
-                  utilities.sendSubscribersEmail(subscriptions_pdf, 'subscriptions_' + yesterday+'.pdf', 'Subscriptions made on ... ' + yesterday)
-                } catch (error) {
+              subscriptions.run(subscription_file_path, customerData, yesterday)
+                .then((results) => {
+                  try {
+                    utilities.sendSubscribersEmail(results, 'subscriptions_' + yesterday + '.pdf', 'Subscriptions made on ... ' + yesterday)
+                  } catch (error) {
+                    console.error('Error:', error);
+                    utilities.sendErrorEmail(error)
+                  }
+                }).catch((error) => {
                   console.error('Error:', error);
                   utilities.sendErrorEmail(error)
-                }
-              }).catch((error) => {
-                console.error('Error:', error);
-                utilities.sendErrorEmail(error)
-              })
+                })
             })
             .catch((error) => {
               console.error('Error:', error);

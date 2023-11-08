@@ -181,8 +181,8 @@ async function downloadBinaryData(url, fileName, accessToken) {
     }
 }
 
-async function sendSubscribersEmail(filepath, filename, subject) {
-    console.log('function here to email the file ' + filepath)
+async function sendSubscribersEmail(results, filename, subject) {
+    console.log('function here to email the file ' + filename)
     // Create a Nodemailer transporter
     const transporter = nodemailer.createTransport({
         service: "Gmail", // e.g., "Gmail" or use your SMTP settings
@@ -192,27 +192,34 @@ async function sendSubscribersEmail(filepath, filename, subject) {
         },
     });
 
+    bodytext = "Please see the attached file.  Subscribers report is run daily."
+    if (parseInt(results.count) < 1) {
+        bodytext = "No new subscribers this day. No file to attach"
+    }
+
     // Email information
     const emailOptions = {
         from: "jdeck88@gmail.com",
         to: "jdeck88@gmail.com",
         subject: subject,
-        text: "Please see the attached file.  Subscribers report is run daily.",
+        text: bodytext,
     };
 
-    // File to attach
-    const filePath = filepath;
+    if (results.count > 0) {
+        // File to attach
+        const filePath = results.pdf_file;
 
-    // Read the file as a buffer
-    const fileBuffer = fs.readFileSync(filepath);
+        // Read the file as a buffer
+        const fileBuffer = fs.readFileSync(results.pdf_file);
 
-    // Attach the file to the email
-    emailOptions.attachments = [
-        {
-            filename: filename, // Change the filename as needed
-            content: fileBuffer, // Attach the file buffer
-        },
-    ];
+        // Attach the file to the email
+        emailOptions.attachments = [
+            {
+                filename: filename, // Change the filename as needed
+                content: fileBuffer, // Attach the file buffer
+            },
+        ];
+    }
 
     // Send the email with the attachment
     transporter.sendMail(emailOptions, (error, info) => {
@@ -343,6 +350,28 @@ function getNextFullfillmentDate() {
 
     return formattedDate;
 }
+function getLastMonth() {
+    const today = new Date();
+    const lastMonth = new Date(today);
+
+    // Set the date to the first day of the current month
+    lastMonth.setDate(1);
+
+    // Subtract one day to get the last day of the previous month
+    lastMonth.setDate(0);
+
+    const year = lastMonth.getFullYear();
+    const month = String(lastMonth.getMonth() + 1).padStart(2, '0');
+
+    const firstDate = `${year}-${month}-01`;
+    const lastDate = `${year}-${month}-${String(lastMonth.getDate()).padStart(2, '0')}`;
+
+    return {
+        first: firstDate,
+        last: lastDate,
+    };
+}
+
 function getYesterday() {
     const today = new Date();
     const yesterday = new Date(today);
@@ -369,5 +398,6 @@ module.exports = {
     sendSubscribersEmail,
     sendErrorEmail,
     getNextFullfillmentDate,
-    getYesterday
+    getYesterday,
+    getLastMonth
 };
