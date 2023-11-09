@@ -42,7 +42,7 @@ async function vendor(lastMonth) {
               console.log('Downloaded file path:', vendor_file_path);
               vendors.run(vendor_file_path,lastMonth.last).then((vendors_pdf) => {
                 try {
-                  utilities.sendEmail(vendors_pdf, 'vendors_' + lastMonth.last+'.pdf', 'Vendor Report Summary Ran ' + lastMonth.last)
+                  utilities.sendEmail(vendors_pdf, 'vendors_' + lastMonth.last+'.pdf', 'FFCSA Reports: Monthly Vendor Report for ' + lastMonth.last)
                 } catch (error) {
                   console.error('Error:', error);
                   utilities.sendErrorEmail(error)
