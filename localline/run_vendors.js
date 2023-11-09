@@ -1,56 +1,77 @@
-// TODO: Generate the fullfillment date to run these reports to generate the First Tuesday or the First Saturday after running
-// also, check to make sure order is closed (run Thursday after 1am or Monday after 1am)
-
 // Using the following get  the "access" property
 const pdf_writer_functions = require('./pdf_writer_functions');
 var request = require('request');
 const fs = require('fs');
 const path = require('path');
 const utilities = require('./utilities');
+const vendors = require('./vendors');
 require('dotenv').config();
 
-// Build all check-lists
-async function vendors(fullfillmentDate) {
+// Build customer delivery orders (picklists)
+async function vendor(lastMonth) {
   try {
-    console.log("running checklist builder")
-    delivery_order_file_path = 'data/orders_list_' + fullfillmentDate + ".csv"
+    console.log("running vendor report updater")
 
-    vendor_file_path = ''
+    url = 'https://localline.ca/api/backoffice/v2/orders/export/?' +
+    'file_type=orders_list_view&send_to_email=false&destination_email=fullfarmcsa%40deckfamilyfarm.com&direct=true&' +
+    `fulfillment_date_start=${lastMonth.first}&` +
+    `fulfillment_date_end=${lastMonth.last}&` +
+    '&status=OPEN&status=NEEDS_APPROVAL&status=CANCELLED&status=CLOSED'
 
+    console.log(url)
+    data = {}
+
+    // Login
     data = await utilities.getAccessToken();
     const accessToken = JSON.parse(data).access;
 
-    products_url = 'https://localline.ca/api/backoffice/v2/products/export/?direct=true'
-    products_file = 'data/products.xlsx'
+    // Call the function and wait for the response
+    (async () => {
+      try {
+        console.log("fetching vendors ...")
+        data = await utilities.getRequestID(url, accessToken);
+        const id = JSON.parse(data).id;
 
+        // Wait for report to finish
+        const vendor_result_url = await utilities.pollStatus(id, accessToken);
 
-    // Download File
-    utilities.downloadBinaryData(products_url, products_file, accessToken)
-      .then((products_file) => {
-        pdf_writer_functions.writeVendorsPDF(products_file, delivery_order_file_path)
-          .then((vendors_pdf) => {
-            utilities.sendEmail(vendors_pdf, 'vendors.pdf', 'FFCSA Reports: Vendors Data for ' + fullfillmentDate)
-          }).catch((error) => {
-            console.error("Error in writeChecklistPDF:", error);
-          });
-      })
-      .catch((error) => {
-        console.log('error fetching vendorsfile, continuing to run checklist process using local copy as this file often halts....');
-        pdf_writer_functions.writeVendorsPDF(products_file, delivery_order_file_path)
-          .then((vendors_pdf) => {
-            utilities.sendEmail(vendors_pdf, 'vendors.pdf', 'FFCSA Reports: Vendorts Data for ' + fullfillmentDate)
-          }).catch((error) => {
-            console.error("Error in writeChecklistPDF:", error);
-          });
-      })
-
-
+        // Download File
+        if (vendor_result_url !== "") {
+          utilities.downloadData(vendor_result_url, 'vendors_' + lastMonth.last + ".csv", accessToken)
+            .then((vendor_file_path) => {
+              console.log('Downloaded file path:', vendor_file_path);
+              vendors.run(vendor_file_path,lastMonth.last).then((vendors_pdf) => {
+                try {
+                  utilities.sendEmail(vendors_pdf, 'vendors_' + lastMonth.last+'.pdf', 'Vendor Report Summary Ran ' + lastMonth.last)
+                } catch (error) {
+                  console.error('Error:', error);
+                  utilities.sendErrorEmail(error)
+                }
+              }).catch((error) => {
+                console.error('Error:', error);
+                utilities.sendErrorEmail(error)
+              })
+            })
+            .catch((error) => {
+              console.error('Error:', error);
+              utilities.sendErrorEmail(error)
+            });
+        } else {
+          console.error('file generation not completed in 1 minute')
+          utilities.sendErrorEmail("file generation not completed in 1 minute")
+        }
+      } catch (error) {
+        console.error('Error in the main function:', error);
+        utilities.sendErrorEmail(error)
+      }
+    })();
   } catch (error) {
-    console.error('A general occurred:', error);
+    console.error('An error occurred:', error);
+    utilities.sendErrorEmail(error)
   }
 }
 
-// Run the checklist script
-//fullfillmentDate = '2023-10-31'
-fullfillmentDateObject = utilities.getNextFullfillmentDate()
-vendors(fullfillmentDateObject.date);
+// Run the delivery_order script
+//yesterdayFormatted = '2023-10-31'
+
+vendor(utilities.getLastMonth());
