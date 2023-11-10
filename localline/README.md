@@ -21,7 +21,7 @@ scripts
 
 ```
 # Run Subscriptions every day at 03:01 PT which is 11:00 UTC
-1 0 * * * /home/exouser/code/ffcsa_scripts/localline/run.sh subscription.js
+1 11 * * * /home/exouser/code/ffcsa_scripts/localline/run.sh subscription.js
 
 # Run all on Monday at 06:00 PT which is 14:00 UTC
 0 14 * * 1  /home/exouser/code/ffcsa_scripts/localline/run.sh delivery_orders.js 
@@ -33,7 +33,7 @@ scripts
 0 14 * * 4 /home/exouser/code/ffcsa_scripts/localline/run.sh checklists.js
 0 14 * * 4 /home/exouser/code/ffcsa_scripts/localline/run.sh vendors.js
 
-# Run monthly_vendors report on the 1st of the month at 4:01 PT which is 12:00 UTC
+# Run monthly_vendors report on the 1st of the month at 04:01 PT which is 12:00 UTC
 1 12 1 * * /home/exouser/code/ffcsa_scripts/localline/run.sh monthly_vendors.js
 ```
 
