@@ -21,7 +21,7 @@ scripts
 
 ```
 # Run Subscriptions every day at 03:01 PT which is 11:00 UTC
-1 11 * * * /home/exouser/code/ffcsa_scripts/localline/run.sh subscription.js
+1 11 * * * /home/exouser/code/ffcsa_scripts/localline/run.sh subscriptions.js
 
 # Run all on Monday at 06:00 PT which is 14:00 UTC
 0 14 * * 1  /home/exouser/code/ffcsa_scripts/localline/run.sh delivery_orders.js 
