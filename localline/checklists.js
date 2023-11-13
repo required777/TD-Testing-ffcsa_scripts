@@ -279,9 +279,9 @@ function productSpecificPackList(doc, dropsitesAll, disposition) {
       if (frozenProducts.length > 0) {
         selectedCustomers[customerName] = frozenProducts;
       }
-      if (dropsiteName === "W 11th") {
-        console.log(customerName + " = " + JSON.stringify(customerData))
-      }
+      //if (dropsiteName === "W 11th") {
+             // console.log(customerName + " = " + JSON.stringify(customerData))
+            //}
     }
 
 
