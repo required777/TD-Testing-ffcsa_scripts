@@ -393,10 +393,11 @@ function getLastMonth() {
     };
 }
 
-function getYesterday() {
+// * Order day is two days previous to allow chance for bad card reconciliation
+function getOrderDay() {
     const today = new Date();
     const yesterday = new Date(today);
-    yesterday.setDate(today.getDate() - 1);
+    yesterday.setDate(today.getDate() - 2);
 
     const year = yesterday.getFullYear();
     const month = String(yesterday.getMonth() + 1).padStart(2, '0'); // Months are 0-based
@@ -418,6 +419,6 @@ module.exports = {
     sendEmail,
     sendErrorEmail,
     getNextFullfillmentDate,
-    getYesterday,
+    getOrderDay,
     getLastMonth
 };

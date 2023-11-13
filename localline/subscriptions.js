@@ -9,9 +9,9 @@ const utilities = require('./utilities');
 
 require('dotenv').config();
 
-async function run(filename, customerData, yesterdayFormatted) {
+async function run(filename, customerData, orderDayFormatted) {
     return new Promise((resolve, reject) => {
-        const pdf_file = 'data/subscriptions_' + yesterdayFormatted + '.pdf';
+        const pdf_file = 'data/subscriptions_' + orderDayFormatted + '.pdf';
         const doc = new PDFDocument();
 
         doc.on('finish', () => {
@@ -25,28 +25,46 @@ async function run(filename, customerData, yesterdayFormatted) {
 
         doc.pipe(fs.createWriteStream(pdf_file));
         const subscribers = [];
+        const subscribers_issues = [];
 
         fs.createReadStream(filename)
             .pipe(fastcsv.parse({ headers: true }))
             .on('data', (row) => {
                 const productSubtotal = parseFloat(row['Product Subtotal']);
+
+                // payment__status=PAID&payment__status=AUTHORIZED&' +
                 if ([200.00, 300.00, 500.00].includes(productSubtotal)) {
-                    subscribers.push({
-                        Date: row['Date'],
-                        Customer: row['Customer'],
-                        email: row['Email'],
-                        'Package Name': row['Package Name'],
-                        'Product Subtotal': row['Product Subtotal'],
-                    });
+                    if (row['Payment Status'] === "PAID" || row['Payment Status'] === "AUTHORIZED") {
+                        subscribers.push({
+                            Success: "SUCCESS",
+                            Date: row['Date'],
+                            Customer: row['Customer'],
+                            email: row['Email'],
+                            'Package Name': row['Package Name'],
+                            'Product Subtotal': row['Product Subtotal'],
+                        });
+                    } else {
+                        subscribers_issues.push({
+                            Success: "FAIL",
+                            Date: row['Date'],
+                            Customer: row['Customer'],
+                            email: row['Email'],
+                            'Package Name': row['Package Name'],
+                            'Product Subtotal': row['Product Subtotal'],
+                        });
+                    }
                 }
             })
             .on('end', () => {
                 subscribers.sort((a, b) => a['Package Name'].localeCompare(b['Package Name']));
+                subscribers_issues.sort((a, b) => a['Package Name'].localeCompare(b['Package Name']));
+
 
                 // Combine the two arrays based on the "email" field and add "id" to the subscribers array
                 const combinedData = subscribers.map(subscriber => {
                     const customer = customerData.find(cust => cust.email === subscriber.email);
                     return {
+                        success: subscriber.Success,
                         id: customer ? customer.id : null,
                         customer: subscriber.Customer,
                         email: subscriber.email,
@@ -56,25 +74,47 @@ async function run(filename, customerData, yesterdayFormatted) {
                     };
                 });
 
-                ///console.log(combinedData);
+                // Combine the two arrays based on the "email" field and add "id" to the subscribers array
+                const combinedDataIssues = subscribers_issues.map(subscriber => {
+                    const customer = customerData.find(cust => cust.email === subscriber.email);
+                    return {
+                        success: subscriber.Success,
+                        id: customer ? customer.id : null,
+                        customer: subscriber.Customer,
+                        email: subscriber.email,
+                        subscription_date: subscriber.Date,
+                        level: subscriber['Package Name'],
+                        amount: subscriber['Product Subtotal'],
+                    };
+                });
 
+                const allCombinedData = combinedData.concat(combinedDataIssues);
 
                 const table = {
                     title: '',
-                    headers: ['CustomerID', 'Customer', 'Email', 'Subscription Date', 'Level', 'Total'],
-                    rows: combinedData.map(item => [item.id, item.customer, item.email, item.subscription_date, item.level, item.amount]),
+                    headers: ['Success', 'CustomerID', 'Customer', 'Email', 'Subscription Date', 'Level', 'Total'],
+                    rows: allCombinedData.map(item => [item.success, item.id, item.customer, item.email, item.subscription_date, item.level, item.amount]),
                 };
-                doc.table(table);
+                doc.text('Results for '+orderDayFormatted )
+                doc.text("SUCCESS -- member will have their balance credited.")
+                doc.text("FAIL -- requires manual check later to see if their card was charged.")
+                doc.table(table);                            
                 doc.end();
-
 
                 // TODO: In this loop pull out id and call IP to increment by set amount
                 num_subscriptions = 0;
                 for (const entry of combinedData) {
+                    console.log("in this space push the amount to the customer!")
                     console.log(`ID: ${entry.id}, Amount: ${entry.amount}  ${entry.email}`);
                     num_subscriptions = num_subscriptions + 1
                 }
-                console.log(num_subscriptions + " subscriptions made")
+                
+                for (const entry of combinedDataIssues) {
+                    console.log("issues:")
+                    console.log(`ID: ${entry.id}, Amount: ${entry.amount}  ${entry.email}`);
+                    num_subscriptions = num_subscriptions + 1
+                }
+                console.log(num_subscriptions + " subscriptions made, including ones with issues")
 
                 const results = {
                     count: num_subscriptions,
@@ -140,7 +180,7 @@ async function subscriptions(yesterday) {
             'send_to_email=false&destination_email=fullfarmcsa%40deckfamilyfarm.com&direct=true&' +
             `start_date=${yesterday}&` +
             `end_date=${yesterday}&` +
-            'payment__status=PAID&payment__status=AUTHORIZED&' +
+            //'payment__status=PAID&payment__status=AUTHORIZED&' +
             'vendors=3148&price_lists=2719&status=OPEN'
 
         data = {}
@@ -189,8 +229,8 @@ async function subscriptions(yesterday) {
                                         if (results.count > 0) {
                                             emailOptions.attachments = [
                                                 {
-                                                    filename: 'subscriptions_' + yesterday + '.pdf', 
-                                                    content: fs.readFileSync(results.pdf_file), 
+                                                    filename: 'subscriptions_' + yesterday + '.pdf',
+                                                    content: fs.readFileSync(results.pdf_file),
                                                 },
                                             ];
                                         }
@@ -225,6 +265,6 @@ async function subscriptions(yesterday) {
 }
 
 // Run the delivery_order script
-//yesterdayFormatted = '2023-10-31'
+//orderDayFormatted = '2023-10-31'
 
-subscriptions(utilities.getYesterday());
+subscriptions(utilities.getOrderDay());
