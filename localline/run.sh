@@ -28,5 +28,17 @@ fi
 # Execute the Node.js script
 node "$node_script" >> data/output.log 2>&1
 
-
-
+# Run github push when subscriptions file is run...
+echo $1
+if [ "$1" == "subscriptions.js" ]; then
+  # Check if there are changes in the data directory
+  if [[ -n $(git status -s data/order_data_*) ]]; then
+    # Changes detected, commit and push
+    git add data/order_data_*
+    git commit -m "Update data files"
+    git push
+    echo "Changes pushed to GitHub."
+  else
+    echo "No changes in data files."
+  fi
+fi
