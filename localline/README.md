@@ -33,8 +33,11 @@ scripts
 2 14 * * 4 /home/exouser/code/ffcsa_scripts/localline/run.sh checklists.js
 4 14 * * 4 /home/exouser/code/ffcsa_scripts/localline/run.sh vendors.js
 
+# Run monthly_customers report on the 1st of the month at 01:01 PT which is 09:00 UTC
+1 9 1 * * /home/exouser/code/ffcsa_scripts/localline/run.sh monthly_customers.js
 # Run monthly_vendors report on the 1st of the month at 04:01 PT which is 12:00 UTC
 1 12 1 * * /home/exouser/code/ffcsa_scripts/localline/run.sh monthly_vendors.js
+
 ```
 
 `run.sh` sets up the node environment using NVM. It is important that we point to both

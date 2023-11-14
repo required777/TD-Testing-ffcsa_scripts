@@ -407,6 +407,17 @@ function getOrderDay() {
     return yesterdayFormatted;
 }
 
+function getToday() {
+    const today = new Date();
+
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+    const day = String(today.getDate()).padStart(2, '0');
+
+    const todayFormatted = `${year}-${month}-${day}`;
+    return todayFormatted;
+}
+
 
 module.exports = {
     formatDate,
@@ -420,5 +431,6 @@ module.exports = {
     sendErrorEmail,
     getNextFullfillmentDate,
     getOrderDay,
-    getLastMonth
+    getLastMonth,
+    getToday
 };
