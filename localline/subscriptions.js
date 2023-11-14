@@ -328,4 +328,3 @@ async function subscriptions(yesterday) {
 //orderDayFormatted = '2023-10-31'
 
 subscriptions(utilities.getOrderDay());
-//subscriptions('2023-11-03');
