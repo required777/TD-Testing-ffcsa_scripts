@@ -9,9 +9,41 @@ const utilities = require('./utilities');
 
 require('dotenv').config();
 
+function readExistingEntries(filePath) {
+    try {
+      const fileContent = fs.readFileSync(filePath, 'utf-8');
+      const uniqueIds = new Set(); // Use a Set to store unique IDs
+      const entries = fileContent.split('\n').map(line => {
+        const [id, amount, email] = line.split(',').map(item => item.trim()); // Assuming CSV format
+        if (id) {
+          uniqueIds.add(id);
+        }
+      });
+  
+      // Convert Set to an array and return
+      return [...uniqueIds];
+    } catch (error) {
+      // If the file doesn't exist or an error occurs, return an empty array
+      return [];
+    }
+  }
+
+// Function to write a new entry to the CSV file
+function writeEntryToCSV(filePath, newEntry) {
+    try {
+        const entryString = `${newEntry.id},${newEntry.amount},${newEntry.email}\n`;
+        fs.appendFileSync(filePath, entryString, 'utf-8');
+    } catch (error) {
+        console.error('Error writing entry to file:', error);
+    }
+}
+
 async function run(filename, customerData, orderDayFormatted) {
     return new Promise((resolve, reject) => {
         const pdf_file = 'data/subscriptions_' + orderDayFormatted + '.pdf';
+        const order_data_success_file = 'data/order_data_success_' + process.env.ENVIRONMENT + '.csv'
+        const order_data_fail_file = 'data/order_data_fail_' + process.env.ENVIRONMENT + '.csv'
+
         const doc = new PDFDocument();
 
         doc.on('finish', () => {
@@ -95,23 +127,51 @@ async function run(filename, customerData, orderDayFormatted) {
                     headers: ['Success', 'CustomerID', 'Customer', 'Email', 'Subscription Date', 'Level', 'Total'],
                     rows: allCombinedData.map(item => [item.success, item.id, item.customer, item.email, item.subscription_date, item.level, item.amount]),
                 };
-                doc.text('Results for '+orderDayFormatted )
+                doc.text('Results for ' + orderDayFormatted)
                 doc.text("SUCCESS -- member will have their balance credited.")
                 doc.text("FAIL -- requires manual check later to see if their card was charged.")
-                doc.table(table);                            
+                doc.table(table);
                 doc.end();
 
                 // TODO: In this loop pull out id and call IP to increment by set amount
                 num_subscriptions = 0;
+                const orderDataSuccessFile = readExistingEntries(order_data_success_file);
+                const orderDataFailFile = readExistingEntries(order_data_fail_file);
+
                 for (const entry of combinedData) {
-                    console.log("in this space push the amount to the customer!")
-                    console.log(`ID: ${entry.id}, Amount: ${entry.amount}  ${entry.email}`);
+                    // Track transactions by Order Number in PRODUCTION environment
+                    if (process.env.ENVIRONMENT === 'PRODUCTION') {
+                        //if (orderDataSuccessFile.some(existingEntry => existingEntry.id === entry.id)) {
+                        if (orderDataSuccessFile.includes(entry.id.toString())) {
+                            console.log(`${entry} EXISTS, DO NOTHING (PRODUCTION ENVIRONMENT)`)
+                        } else {
+                            // TODO: Write the CREDIT FUNCTION
+                            //console.log(`ID: ${entry.id}, Amount: ${entry.amount}  ${entry.email}`);
+                            console.log(`${entry} DOES NOT EXIST, CREDIT ACCOUNT! (PRODUCTION ENVIRONMENT)`)
+                            writeEntryToCSV(order_data_success_file, entry);
+                        }
+                    } else {
+                        if (orderDataSuccessFile.includes(entry.id.toString())) {
+                            // console.log(entry)
+                            //if (orderDataSuccessFile.some(existingEntry => existingEntry.id === entry.id)) {
+                            console.log(`${entry} EXISTS, DO NOTHING (DEVELOPMENT ENVIRONMENT)`)
+                        } else {
+                            console.log(`${entry} DOES NOT EXIST (DEVELOPMENT ENVIRONMENT)`)
+                            writeEntryToCSV(order_data_success_file, entry);
+                        }
+                    }
                     num_subscriptions = num_subscriptions + 1
                 }
+
                 
-                for (const entry of combinedDataIssues) {
-                    console.log("issues:")
-                    console.log(`ID: ${entry.id}, Amount: ${entry.amount}  ${entry.email}`);
+                for (const entry of combinedDataIssues) {                
+                    if (orderDataFailFile.includes(entry.id.toString())) {
+                        //if (orderDataFailFile.some(existingEntry => existingEntry.id === entry.id)) {
+                        console.log(`${entry} EXISTS FAIL FILE, DO NOTHING (DEVELOPMENT ENVIRONMENT)`)
+                    } else {
+                        console.log(`${entry} DOES NOT EXIST FAIL FILE, ADD... (DEVELOPMENT ENVIRONMENT)`)
+                        writeEntryToCSV(order_data_fail_file, entry);
+                    }
                     num_subscriptions = num_subscriptions + 1
                 }
                 console.log(num_subscriptions + " subscriptions made, including ones with issues")
@@ -268,3 +328,4 @@ async function subscriptions(yesterday) {
 //orderDayFormatted = '2023-10-31'
 
 subscriptions(utilities.getOrderDay());
+//subscriptions('2023-11-03');
