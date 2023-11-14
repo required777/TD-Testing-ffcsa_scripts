@@ -14,7 +14,7 @@ function readExistingEntries(filePath) {
       const fileContent = fs.readFileSync(filePath, 'utf-8');
       const uniqueIds = new Set(); // Use a Set to store unique IDs
       const entries = fileContent.split('\n').map(line => {
-        const [id, amount, email] = line.split(',').map(item => item.trim()); // Assuming CSV format
+        const [id, amount, email, subscription_date] = line.split(',').map(item => item.trim()); // Assuming CSV format
         if (id) {
           uniqueIds.add(id);
         }
@@ -31,7 +31,7 @@ function readExistingEntries(filePath) {
 // Function to write a new entry to the CSV file
 function writeEntryToCSV(filePath, newEntry) {
     try {
-        const entryString = `${newEntry.id},${newEntry.amount},${newEntry.email}\n`;
+        const entryString = `${newEntry.id},${newEntry.amount},${newEntry.email},${newEntry.subscription_date}\n`;
         fs.appendFileSync(filePath, entryString, 'utf-8');
     } catch (error) {
         console.error('Error writing entry to file:', error);
@@ -41,8 +41,8 @@ function writeEntryToCSV(filePath, newEntry) {
 async function run(filename, customerData, orderDayFormatted) {
     return new Promise((resolve, reject) => {
         const pdf_file = 'data/subscriptions_' + orderDayFormatted + '.pdf';
-        const order_data_success_file = 'data/order_data_success_' + process.env.ENVIRONMENT + '.csv'
-        const order_data_fail_file = 'data/order_data_fail_' + process.env.ENVIRONMENT + '.csv'
+        const order_data_success_file = 'data/order_data_' + process.env.ENVIRONMENT + '_success.csv'
+        const order_data_fail_file = 'data/order_data_' + process.env.ENVIRONMENT + '_fail.csv'
 
         const doc = new PDFDocument();
 
