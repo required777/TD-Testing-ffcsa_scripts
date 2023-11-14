@@ -139,7 +139,7 @@ async function vendor(lastMonth) {
                                         to: "fullfarmcsa@deckfamilyfarm.com",
                                         cc: "jdeck88@gmail.com",
                                         subject: 'FFCSA Reports: Monthly Vendor Report for ' + lastMonth.last,
-                                        text: "Please see the attached file.  Reports are generated twice per week in advance of fullfillment dates.",
+                                        text: "Please see the attached file.",
                                     };
 
                                     emailOptions.attachments = [
