@@ -42,6 +42,7 @@ async function writeVendorsPDF(products_file_path, filename) {
                             const productID = row['Product ID']
                             const vendorName = row['Vendor']
                             const product = row['Item Unit'] + ',' + row['Product'] + ' - ' + row['Package Name'];
+                            const packageName = row['Package Name'];
                             const quantity = Math.round(parseFloat(row['Quantity']));
                             const price = (parseFloat(row['Product Subtotal']) / quantity).toFixed(2);
                             const totalPrice = row['Product Subtotal']
@@ -57,11 +58,9 @@ async function writeVendorsPDF(products_file_path, filename) {
                                 };
                             }
 
-
-
                             //console.log(mergedObject)
                             if (category !== 'Membership') {
-                                vendors[vendorName].products.push({ productID, product, quantity, price, totalPrice, fullfillmentDate });
+                                vendors[vendorName].products.push({ productID, product, quantity, price, totalPrice, fullfillmentDate, packageName });
                             }
                         });
 
@@ -70,10 +69,6 @@ async function writeVendorsPDF(products_file_path, filename) {
                             const vendorData = vendors[vendorName];
 
                             if (vendorData.products.length > 0) {
-
-
-
-
                                 const items = vendorData.products;
 
                                 // Sort the dataset by the 'product' property
@@ -92,8 +87,9 @@ async function writeVendorsPDF(products_file_path, filename) {
                                     product = itemRow.product;
                                     quantity = itemRow.quantity;
                                     fullfillmentDate = itemRow.fullfillmentDate;
+                                    packageName = itemRow.packageName;
 
-                                    itemRow.price = lookupPackagePrice(productID, products_data);
+                                    itemRow.price = lookupPackagePrice(productID, packageName, products_data);
                                     itemRow.totalPrice = quantity * itemRow.price;
                                 }
 
@@ -124,8 +120,6 @@ async function writeVendorsPDF(products_file_path, filename) {
 
                                     sumTotal += totalPrice
                                 });
-
-
 
                                 // Convert the summary object to an array of arrays
                                 const grouped = Object.entries(summary).map(([key, values]) => [key, values.quantity, values.price, values.totalPrice.toFixed(2)]);
@@ -169,8 +163,10 @@ async function writeVendorsPDF(products_file_path, filename) {
     })
 }
 
-function lookupPackagePrice(productID, productsData) {
-    const product = productsData.find((product) => product['Local Line Product ID'] === productID);
+function lookupPackagePrice(productID, packageName, productsData) {
+    const product = productsData.find((product) => 
+        product['Local Line Product ID'] === productID && product['Package Name'] === packageName
+    );
     if (product) {
         return product['Package Price'];
     }
