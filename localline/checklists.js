@@ -93,7 +93,7 @@ async function writeChecklistPDF(dairy_file_path, frozen_file_path, delivery_ord
                   }
                   return nameComparison;
                 });
-
+//console.log(updatedData)
                 // We want to create an array of dropsites that contains an array of customers (the dropsite)
                 // contains just the dropsite name and the customers contain the Customer, Phone
                 updatedData.forEach((row) => {
@@ -155,9 +155,9 @@ async function writeChecklistPDF(dairy_file_path, frozen_file_path, delivery_ord
                   for (const customerName in dropsites[dropsiteName].customers) {
                     customerData = dropsites[dropsiteName].customers[customerName]
                     quantity = customerData[0].quantity
-
                     dispositionCounts = customerData.reduce((accumulator, item) => {
                       const disposition = item.disposition;
+
                       if (disposition === 'dairy') {
                         accumulator[disposition] = (accumulator[disposition] || 0) + item.quantity;
                       } else if (disposition === 'tote' || disposition === 'frozen') {
@@ -166,7 +166,9 @@ async function writeChecklistPDF(dairy_file_path, frozen_file_path, delivery_ord
                       return accumulator;
                     }, {});
 
+
                     dropsites[dropsiteName].customers[customerName] = { ...customerData.customers, ...dispositionCounts }
+                    //console.log(quantity + "=" + JSON.stringify(dropsites[dropsiteName].customers[customerName]))
                   }
                 }
 
@@ -342,11 +344,11 @@ function addPageIfNecessary(dropsiteName, data, doc) {
 
 function updateCategoryForProductID(jsonData, productIDsToUpdate, value) {
   jsonData.forEach((item) => {
-    product_id_string = item['Product ID'].toString().trim();
-
+    product_id_string = Math.floor(item['Product ID'].toString().trim()).toString();
     if (productIDsToUpdate.includes(product_id_string)) {
+      //console.log('adding ' + item.disposition)
       item.disposition = value;
-    }
+    } 
   });
   return jsonData;
 }
@@ -356,8 +358,8 @@ function sendEmail(file_location, filename, subject) {
   // Email information
   const emailOptions = {
     from: "jdeck88@gmail.com",
-    to: "fullfarmcsa@deckfamilyfarm.com",
-    cc: "jdeck88@gmail.com",
+    //to: "fullfarmcsa@deckfamilyfarm.com",
+    to: "jdeck88@gmail.com",
     subject: subject,
     text: "Please see the attached file.  Reports are generated twice per week in advance of fullfillment dates.",
   };
