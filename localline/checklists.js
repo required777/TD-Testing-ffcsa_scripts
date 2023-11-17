@@ -280,13 +280,8 @@ function productSpecificPackList(doc, dropsitesAll, disposition) {
 
       if (frozenProducts.length > 0) {
         selectedCustomers[customerName] = frozenProducts;
-      }
-      //if (dropsiteName === "W 11th") {
-             // console.log(customerName + " = " + JSON.stringify(customerData))
-            //}
+      }      
     }
-
-
 
     // only print dropsites that have desired product
     if (Object.keys(selectedCustomers).length > 0) {
@@ -296,31 +291,26 @@ function productSpecificPackList(doc, dropsitesAll, disposition) {
       doc.fontSize(14).text(dropsiteName + " " + disposition.charAt(0).toUpperCase() + disposition.slice(1) + " Product Packlist", { bold: true });
       doc.moveDown();
 
+      allCustomersTable = []
       for (const customerName in selectedCustomers) {
         customerData = selectedCustomers[customerName]
 
         const tableData = [
           ...Object.entries(customerData).map(([dropsite, values]) => [
+            customerName,
             values.product,
             values.itemUnit,
             values.quantity,
           ]),
         ];
-
-        if (tableData.length > 0) {
-          // Define the table options
-          const tableOptions = {
-            headers: [customerName, '', ''],
-            rows: tableData
-          };
-
-          addPageIfNecessary(dropsiteName, tableData, doc);
-          doc.table(tableOptions);
-          // doc.moveDown();
-
-        }
-        count++
+        allCustomersTable.push(...tableData);        
       }
+      const tableOptions = {
+        headers: ['Name', 'Product', 'Unit', 'Quantity'],
+        rows: allCustomersTable
+      };
+      doc.table(tableOptions)
+      count++
     }
   }
 }
