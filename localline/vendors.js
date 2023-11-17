@@ -8,7 +8,7 @@ const utilities = require('./utilities');
 const ExcelJS = require('exceljs');
 
 
-async function writeVendorsPDF(products_file_path, filename) {
+async function writeVendorsPDF(products_file_path, vendors_file_path, filename) {
     return new Promise((resolve, reject) => {
         const pdf_file = 'data/vendors.pdf'
 
@@ -22,149 +22,176 @@ async function writeVendorsPDF(products_file_path, filename) {
 
         const sortedData = [];
 
+        readVendorsCSVFile(vendors_file_path)
+            .then((vendors_email) => {
+                readVendorsExcel(products_file_path)
+                    .then((products_data) => {
+                        fs.createReadStream(filename)
+                            .pipe(fastcsv.parse({ headers: true }))
+                            .on('data', (row) => {
+                                sortedData.push(row);
+                            })
+                            .on('end', () => {
+                                // Sort the data by "Customer Name"
+                                sortedData.sort((a, b) => a['Vendor'].localeCompare(b['Vendor']));
 
-        readVendorsExcel(products_file_path)
-            .then((products_data) => {
-                //console.log(products_data)
-                //resolve('')
-                // Read the CSV file and sort by "Customer Name" before processing
-                fs.createReadStream(filename)
-                    .pipe(fastcsv.parse({ headers: true }))
-                    .on('data', (row) => {
-                        sortedData.push(row);
-                    })
-                    .on('end', () => {
-                        // Sort the data by "Customer Name"
-                        sortedData.sort((a, b) => a['Vendor'].localeCompare(b['Vendor']));
-
-                        // Process the sorted data
-                        sortedData.forEach((row) => {
-                            const productID = row['Product ID']
-                            const vendorName = row['Vendor']
-                            const product = row['Item Unit'] + ',' + row['Product'] + ' - ' + row['Package Name'];
-                            const packageName = row['Package Name'];
-                            const quantity = Math.round(parseFloat(row['Quantity']));
-                            const price = (parseFloat(row['Product Subtotal']) / quantity).toFixed(2);
-                            const totalPrice = row['Product Subtotal']
-                            const category = row['Category']
-                            const fullfillmentDate = row['Fulfillment Date']
+                                // Process the sorted data
+                                sortedData.forEach((row) => {
+                                    const productID = row['Product ID']
+                                    const vendorName = row['Vendor']
+                                    const product = row['Item Unit'] + ',' + row['Product'] + ' - ' + row['Package Name'];
+                                    const packageName = row['Package Name'];
+                                    const quantity = Math.round(parseFloat(row['Quantity']));
+                                    const price = (parseFloat(row['Product Subtotal']) / quantity).toFixed(2);
+                                    const totalPrice = row['Product Subtotal']
+                                    const category = row['Category']
+                                    const fullfillmentDate = row['Fulfillment Date']
 
 
-                            // If the customerName changes, start a new section
-                            if (vendorName !== currentVendorName) {
-                                currentVendorName = vendorName;
-                                vendors[vendorName] = {
-                                    products: []
-                                };
-                            }
-
-                            //console.log(mergedObject)
-                            if (category !== 'Membership') {
-                                vendors[vendorName].products.push({ productID, product, quantity, price, totalPrice, fullfillmentDate, packageName });
-                            }
-                        });
-
-                        // Iterate through items and generate the PDF content
-                        for (const vendorName in vendors) {
-                            const vendorData = vendors[vendorName];
-
-                            if (vendorData.products.length > 0) {
-                                const items = vendorData.products;
-
-                                // Sort the dataset by the 'product' property
-                                items.sort((a, b) => {
-                                    if (a.product < b.product) {
-                                        return -1; // a should come before b
-                                    } else if (a.product > b.product) {
-                                        return 1; // a should come after b
+                                    // If the customerName changes, start a new section
+                                    if (vendorName !== currentVendorName) {
+                                        currentVendorName = vendorName;
+                                        vendors[vendorName] = {
+                                            products: []
+                                        };
                                     }
-                                    return 0; // a and b are equal in terms of 'vendor'
+
+                                    //console.log(mergedObject)
+                                    if (category !== 'Membership') {
+                                        vendors[vendorName].products.push({ productID, product, quantity, price, totalPrice, fullfillmentDate, packageName });
+                                    }
                                 });
 
-                                // Update price and total price based on vendor pricing
-                                for (const itemRow of items) {
-                                    productID = parseInt(itemRow.productID, 10);
-                                    product = itemRow.product;
-                                    quantity = itemRow.quantity;
-                                    fullfillmentDate = itemRow.fullfillmentDate;
-                                    packageName = itemRow.packageName;
+                                // Iterate through items and generate the PDF content
+                                for (const vendorName in vendors) {
+                                    const vendorData = vendors[vendorName];
 
-                                    itemRow.price = lookupPackagePrice(productID, packageName, products_data);
-                                    itemRow.totalPrice = quantity * itemRow.price;
+                                    if (vendorData.products.length > 0) {
+                                        const items = vendorData.products;
+
+                                        // Sort the dataset by the 'product' property
+                                        items.sort((a, b) => {
+                                            if (a.product < b.product) {
+                                                return -1; // a should come before b
+                                            } else if (a.product > b.product) {
+                                                return 1; // a should come after b
+                                            }
+                                            return 0; // a and b are equal in terms of 'vendor'
+                                        });
+
+                                        // Update price and total price based on vendor pricing
+                                        for (const itemRow of items) {
+                                            productID = parseInt(itemRow.productID, 10);
+                                            product = itemRow.product;
+                                            quantity = itemRow.quantity;
+                                            fullfillmentDate = itemRow.fullfillmentDate;
+                                            packageName = itemRow.packageName;
+
+                                            itemRow.price = lookupPackagePrice(productID, packageName, products_data);
+                                            itemRow.totalPrice = quantity * itemRow.price;
+                                        }
+
+                                        fullfillmentDate = utilities.formatDate(fullfillmentDate)
+                                        doc.fontSize(16).text(fullfillmentDate, { align: 'right' });
+                                        doc.fontSize(16).text(vendorName, { bold: true });
+
+                                        // Set the table column widths
+                                        const itemsAsData = items.map(item => [item.product, item.quantity, item.price, item.totalPrice]);
+
+                                        // Create an object to store the summary
+                                        const summary = {};
+                                        sumTotal = 0;
+                                        // Iterate through the data and update the summary
+                                        itemsAsData.forEach((row) => {
+                                            const key = row[0];
+                                            const quantity = parseInt(row[1], 10);
+                                            const price = parseFloat(row[2])
+                                            const totalPrice = parseFloat(row[3]);
+
+                                            if (!summary[key]) {
+                                                summary[key] = { quantity: 0, price: 0, totalPrice: 0 };
+                                            }
+
+                                            summary[key].quantity += quantity;
+                                            summary[key].price = price;
+                                            summary[key].totalPrice += totalPrice;
+
+                                            sumTotal += totalPrice
+                                        });
+
+                                        // Convert the summary object to an array of arrays
+                                        const grouped = Object.entries(summary).map(([key, values]) => [key, values.quantity, values.price, values.totalPrice.toFixed(2)]);
+
+                                        const pageWidth = 600
+
+                                        table = {
+                                            title: '',
+                                            widths: [ 300, '*'],                                                
+                                            headers: ['Product', 'Quantity', 'Price', 'Total Price'],
+                                            rows: grouped,
+                                        };
+
+                                        doc.table(table);
+                                        doc.text('Total Price ' + sumTotal.toFixed(2), { align: 'right', bold: true })
+                                        doc.addPage();
+
+                                        // Handle sending vendors their own email
+                                        const email = vendors_email[vendorName]
+                                        if (email !== null && email !== '' && email !== undefined) {
+                                            console.log(vendors_email[vendorName])
+                                            // Create a PDF document to send to the vendor
+                                            // TODO: only mail this if the Vendor has an email in the system 
+                                            vendorDoc = new PDFDocument();
+                                            vendorDoc.fontSize(16).text('Fulfillment Sheet for Full Farm CSA, LLC', { align: 'right' });
+                                            vendorDoc.fontSize(16).text(utilities.getToday(), { align: 'right' });
+                                            vendorDoc.fontSize(16).text(vendorName, { bold: true });
+                                            vendorDoc.table(table)
+                                            vendorDoc.text('Total Price ' + sumTotal.toFixed(2), { align: 'right', bold: true })
+
+                                            const mailOptions = {
+                                                from: 'fullfarmcsa@deckfamilyfarm.com', // sender address
+                                                to: email,
+                                                cc: 'jdeck88@gmail.com',
+                                                subject: "Full Farm CSA - " + vendorName + " - " + utilities.getToday(), // Subject line
+                                                text: "This report will be soon be replacing the metabase report from Local Line and should contain the same data." +
+                                                    "The attached PDF file contains the Full Farm CSA Order for the next fulfillment Cycle.  "+
+                                                    "Respond to this email with questions!"
+                                            }
+                                            utilities.mailADocument(vendorDoc, mailOptions, 'vendor_fulfillment.pdf');
+                                            setTimeout(() => {
+                                                console.log("waiting for emails to process")
+                                            }, 500);
+                                        }
+
+                                    }
                                 }
 
-                                fullfillmentDate = utilities.formatDate(fullfillmentDate)
-                                doc.fontSize(16).text(fullfillmentDate, { align: 'right' });
-                                doc.fontSize(16).text(vendorName, { bold: true });
-
-                                // Set the table column widths
-                                const itemsAsData = items.map(item => [item.product, item.quantity, item.price, item.totalPrice]);
-
-                                // Create an object to store the summary
-                                const summary = {};
-                                sumTotal = 0;
-                                // Iterate through the data and update the summary
-                                itemsAsData.forEach((row) => {
-                                    const key = row[0];
-                                    const quantity = parseInt(row[1], 10);
-                                    const price = parseFloat(row[2])
-                                    const totalPrice = parseFloat(row[3]);
-
-                                    if (!summary[key]) {
-                                        summary[key] = { quantity: 0, price: 0, totalPrice: 0 };
-                                    }
-
-                                    summary[key].quantity += quantity;
-                                    summary[key].price = price;
-                                    summary[key].totalPrice += totalPrice;
-
-                                    sumTotal += totalPrice
+                                doc.end();
+                                // Wait for the stream to finish and then resolve with the file path
+                                doc.on('finish', () => {
+                                    console.log('PDF created successfully.');
+                                    //console.log(pdf_file);
                                 });
 
-                                // Convert the summary object to an array of arrays
-                                const grouped = Object.entries(summary).map(([key, values]) => [key, values.quantity, values.price, values.totalPrice.toFixed(2)]);
+                                doc.on('error', (error) => {
+                                    console.error('PDF creation error:', error);
+                                    throw new Error("PDF creation error")
+                                    reject(error);
+                                });
 
-                                const pageWidth = 600
-
-                                table = {
-                                    title: '',
-                                    widths: [pageWidth], // Set the width to the page width
-                                    headers: ['Product', 'Quantity', 'Price', 'Total Price', 'Received'],
-                                    rows: grouped,
-                                };
-
-                                doc.table(table);
-                                doc.text('Total Price ' + sumTotal.toFixed(2), { align: 'right', bold: true })
-
-                                doc.addPage();
-                            }
-                        }
-
-                        doc.end();
-                        // Wait for the stream to finish and then resolve with the file path
-                        doc.on('finish', () => {
-                            console.log('PDF created successfully.');
-                            //console.log(pdf_file);
-                        });
-
-                        doc.on('error', (error) => {
-                            console.error('PDF creation error:', error);
-                            throw new Error("PDF creation error")
-                            reject(error);
-                        });
-
-                        // TODO: figure out appropriate aync methods to enable finishing PDF creation
-                        setTimeout(() => {
-                            console.log("Success!")
-                            resolve(pdf_file); // Promise is resolved with "Success!"
-                        }, 1000);
+                                // TODO: figure out appropriate aync methods to enable finishing PDF creation
+                                setTimeout(() => {
+                                    console.log("Success!")
+                                    resolve(pdf_file); // Promise is resolved with "Success!"
+                                }, 1000);
+                            });
                     });
             });
     })
 }
 
 function lookupPackagePrice(productID, packageName, productsData) {
-    const product = productsData.find((product) => 
+    const product = productsData.find((product) =>
         product['Local Line Product ID'] === productID && product['Package Name'] === packageName
     );
     if (product) {
@@ -174,6 +201,37 @@ function lookupPackagePrice(productID, packageName, productsData) {
     return null; // Return null if no matching product is found
 }
 
+async function readVendorsCSVFile(filePath) {
+    try {
+        const dataObject = {};
+
+        // Read the CSV file
+        await new Promise((resolve, reject) => {
+            const stream = fs.createReadStream(filePath);
+
+            // Parse the CSV data
+            fastcsv.parseStream(stream, { headers: true })
+                .on('data', (row) => {
+                    const vendorName = row['Vendor'];
+                    const email = row['Email'];
+
+                    if (vendorName && email) {
+                        dataObject[vendorName] = email; // Use vendorName as the key
+                    }
+                })
+                .on('end', () => {
+                    resolve();
+                })
+                .on('error', (error) => {
+                    reject(error);
+                });
+        });
+
+        return dataObject;
+    } catch (error) {
+        throw new Error(error);
+    }
+}
 async function readVendorsExcel(filePath) {
     try {
         const workbook = new ExcelJS.Workbook();
@@ -222,47 +280,47 @@ async function vendors(fullfillmentDate) {
         products_file = 'data/products.xlsx'
 
 
-        // Download File
-        utilities.downloadBinaryData(products_url, products_file, accessToken)
-            .then((products_file) => {
-                writeVendorsPDF(products_file, delivery_order_file_path)
-                    .then((vendors_pdf) => {
 
-                        // Email information
-                        const emailOptions = {
-                            from: "jdeck88@gmail.com",
-                            to: "fullfarmcsa@deckfamilyfarm.com",
-                            cc: "jdeck88@gmail.com",
-                            subject: 'FFCSA Reports: Vendors Data for ' + fullfillmentDate,
-                            text: "Please see the attached file.  Reports are generated twice per week in advance of fullfillment dates.",
-                        };
+        vendors_url = 'https://localline.ca/api/backoffice/v2/vendors/export/?direct=true'
+        vendors_file = 'data/vendors.csv'
+        utilities.downloadBinaryData(vendors_url, vendors_file, accessToken)
+            .then((vendors_file) => {
+                utilities.downloadBinaryData(products_url, products_file, accessToken)
+                    .then((products_file) => {
+                        writeVendorsPDF(products_file, vendors_file, delivery_order_file_path)
+                            .then((vendors_pdf) => {
 
-                        // Attach the file to the email
-                        emailOptions.attachments = [
-                            {
-                                filename: "vendors.pdf",
-                                content: fs.readFileSync(vendors_pdf),
-                            }]
+                                // Email information
+                                const emailOptions = {
+                                    from: "jdeck88@gmail.com",
+                                    to: "fullfarmcsa@deckfamilyfarm.com",
+                                    cc: "jdeck88@gmail.com",
+                                    subject: 'FFCSA Reports: Vendors Data for ' + fullfillmentDate,
+                                    text: "Please see the attached file.  Reports are generated twice per week in advance of fullfillment dates.",
+                                };
 
-                        utilities.sendEmail(emailOptions)
+                                // Attach the file to the email
+                                emailOptions.attachments = [
+                                    {
+                                        filename: "vendors.pdf",
+                                        content: fs.readFileSync(vendors_pdf),
+                                    }]
 
-                    }).catch((error) => {
-                        console.error("Error in writeChecklistPDF:", error);
-                    });
+                                utilities.sendEmail(emailOptions)
+
+                            }).catch((error) => {
+                                console.error("Error in writeChecklistPDF:", error);
+                            });
+                    })
+                    .catch((error) => {
+                        console.log('error fetching products file ....');
+                        utilities.sendErrorEmail(error)
+                    })
             })
             .catch((error) => {
-                console.log('error fetching vendorsfile, continuing to run checklist process using local copy as this file often halts....');
+                console.log('error fetching vendors file ....');
                 utilities.sendErrorEmail(error)
-                /*writeVendorsPDF(products_file, delivery_order_file_path)
-                   .then((vendors_pdf) => {
-                     utilities.sendEmail(vendors_pdf, 'vendors.pdf', 'FFCSA Reports: Vendorts Data for ' + fullfillmentDate)
-                   }).catch((error) => {
-                     console.error("Error in writeChecklistPDF:", error);
-                   });
-                   */
             })
-
-
     } catch (error) {
         console.error('A general occurred:', error);
     }
