@@ -279,51 +279,6 @@ async function sendEmail(emailOptions) {
         }
     });
 }
-/*
-async function sendEmailOld(filepath, filename, subject) {
-    console.log('function here to email the file ' + filepath)
-    // Create a Nodemailer transporter
-    const transporter = nodemailer.createTransport({
-        service: "Gmail", // e.g., "Gmail" or use your SMTP settings
-        auth: {
-            user: process.env.MAIL_USER,
-            pass: process.env.MAIL_ACCESS,
-        },
-    });
-
-    // Email information
-    const emailOptions = {
-        from: "jdeck88@gmail.com",
-        to: "fullfarmcsa@deckfamilyfarm.com",
-        cc: "jdeck88@gmail.com",
-        subject: subject,
-        text: "Please see the attached file.  Reports are generated twice per week in advance of fullfillment dates.",
-    };
-
-    // File to attach
-    const filePath = filepath;
-
-    // Read the file as a buffer
-    const fileBuffer = fs.readFileSync(filepath);
-
-    // Attach the file to the email
-    emailOptions.attachments = [
-        {
-            filename: filename, // Change the filename as needed
-            content: fileBuffer, // Attach the file buffer
-        },
-    ];
-
-    // Send the email with the attachment
-    transporter.sendMail(emailOptions, (error, info) => {
-        if (error) {
-            console.error("Error sending email:", error);
-        } else {
-            console.log("Email sent:", info.response);
-        }
-    });
-}
-*/
 
 function getNextTuesdayOrSaturday() {
     const today = new Date();
@@ -419,6 +374,32 @@ function getToday() {
 }
 
 
+function mailADocument(doc, mailOptions, fileName) {
+    // Create a buffer to store the PDF in-memory
+    let pdfBuffer = Buffer.from([]);
+    doc.on('data', chunk => {
+      pdfBuffer = Buffer.concat([pdfBuffer, chunk]);
+    });
+  
+    // Event handler for when the PDF document is finished
+    doc.on('end', () => {
+      // Add the PDF attachment to mailOptions
+      mailOptions.attachments = [
+        {
+          filename: fileName,
+          content: pdfBuffer,
+          encoding: 'base64'
+        }
+      ];
+  
+      // Send the email with the attached PDF
+      sendEmail(mailOptions);
+    });
+  
+    // Close the PDF document
+    doc.end();
+  }
+
 module.exports = {
     formatDate,
     getAccessToken,
@@ -432,5 +413,6 @@ module.exports = {
     getNextFullfillmentDate,
     getOrderDay,
     getLastMonth,
-    getToday
+    getToday,
+    mailADocument
 };
