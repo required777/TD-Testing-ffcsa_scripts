@@ -33,8 +33,12 @@ scripts
 2 14 * * 4 /home/exouser/code/ffcsa_scripts/localline/run.sh checklists.js
 4 14 * * 4 /home/exouser/code/ffcsa_scripts/localline/run.sh vendors.js
 
+# Run pricelist check script to print results Friday morning 03:00 PT which is 11:00 UTC
+0 11 * * 5 /home/exouser/code/ffcsa_scripts/localline/run.sh pricelist_checker.js
+
 # Run monthly_customers report on the 1st of the month at 01:01 PT which is 09:00 UTC
 1 9 1 * * /home/exouser/code/ffcsa_scripts/localline/run.sh monthly_customers.js
+
 # Run monthly_vendors report on the 1st of the month at 04:01 PT which is 12:00 UTC
 1 12 1 * * /home/exouser/code/ffcsa_scripts/localline/run.sh monthly_vendors.js
 
