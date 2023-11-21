@@ -9,6 +9,8 @@ const utilities = require('./utilities');
 run_analyzer('herdshare', 'https://localline.ca/api/backoffice/v2/price-lists/2966/products/export/?direct=true')
 run_analyzer('members', 'https://localline.ca/api/backoffice/v2/price-lists/2718/products/export/?direct=true')
 run_analyzer('guest', 'https://localline.ca/api/backoffice/v2/price-lists/3124/products/export/?direct=true')
+run_analyzer('membership_purchases', 'https://localline.ca/api/backoffice/v2/price-lists/2719/products/export/?direct=true')
+
 
 async function run_analyzer(pricelist_name, url) {
 
