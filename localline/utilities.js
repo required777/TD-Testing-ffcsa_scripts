@@ -227,7 +227,7 @@ async function sendSubscribersEmail(results, filename, subject) {
 }*/
 
 async function sendErrorEmail(error) {
-    console.log('function here to email an error')
+    console.log('function here to email an error'+ error)
     // Create a Nodemailer transporter
     const transporter = nodemailer.createTransport({
         service: "Gmail", // e.g., "Gmail" or use your SMTP settings

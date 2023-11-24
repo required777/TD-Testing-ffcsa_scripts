@@ -38,7 +38,7 @@ function writeEntryToCSV(filePath, newEntry) {
     }
 }
 
-async function run(filename, customerData, orderDayFormatted) {
+async function run(filename, customerData, orderDayFormatted, accessToken) {
     return new Promise((resolve, reject) => {
         const pdf_file = 'data/subscriptions_' + orderDayFormatted + '.pdf';
         const order_data_success_file = 'data/order_data_' + process.env.ENVIRONMENT + '_success.csv'
@@ -141,19 +141,16 @@ async function run(filename, customerData, orderDayFormatted) {
                 for (const entry of combinedData) {
                     // Track transactions by Order Number in PRODUCTION environment
                     if (process.env.ENVIRONMENT === 'PRODUCTION') {
-                        //if (orderDataSuccessFile.some(existingEntry => existingEntry.id === entry.id)) {
                         if (orderDataSuccessFile.includes(entry.id.toString())) {
                             console.log(`${entry} EXISTS, DO NOTHING (PRODUCTION ENVIRONMENT)`)
                         } else {
-                            // TODO: Write the CREDIT FUNCTION
-                            //console.log(`ID: ${entry.id}, Amount: ${entry.amount}  ${entry.email}`);
-                            console.log(`${entry} DOES NOT EXIST, CREDIT ACCOUNT! (PRODUCTION ENVIRONMENT)`)
+                            // storeCredit Function -- this is the part that Credits a customer
+			    storeCredit( entry.id, entry.amount, accessToken)
+                            console.log(`${entry.id} CREDIT ACCOUNT! (PRODUCTION ENVIRONMENT)`)
                             writeEntryToCSV(order_data_success_file, entry);
                         }
                     } else {
                         if (orderDataSuccessFile.includes(entry.id.toString())) {
-                            // console.log(entry)
-                            //if (orderDataSuccessFile.some(existingEntry => existingEntry.id === entry.id)) {
                             console.log(`${entry} EXISTS, DO NOTHING (DEVELOPMENT ENVIRONMENT)`)
                         } else {
                             console.log(`${entry} DOES NOT EXIST (DEVELOPMENT ENVIRONMENT)`)
@@ -269,7 +266,7 @@ async function subscriptions(yesterday) {
                     utilities.downloadData(subscription_result_url, 'subscriptions_' + yesterday + ".csv", accessToken)
                         .then((subscription_file_path) => {
                             console.log('Downloaded file path:', subscription_file_path);
-                            run(subscription_file_path, customerData, yesterday)
+                            run(subscription_file_path, customerData, yesterday, accessToken)
                                 .then((results) => {
                                     try {
 
@@ -322,6 +319,63 @@ async function subscriptions(yesterday) {
         console.error('An error occurred:', error);
         utilities.sendErrorEmail(error)
     }
+}
+
+let isProcessing = false;
+
+async function storeCredit(customerID, amount, accessToken) {
+  // If already processing, wait for the completion before proceeding
+  while (isProcessing) {
+    await new Promise(resolve => setTimeout(resolve, 100)); // Add a delay to avoid busy-waiting
+  }
+
+  try {
+    isProcessing = true;
+
+    customerID = Number(customerID);
+    amount = Number(amount);
+
+    // Validate customerID and amount
+    if (typeof customerID !== 'number' || isNaN(customerID) || customerID <= 0) {
+      throw new Error('Invalid customerID. It must be a positive number.');
+    }
+
+    if (typeof amount !== 'number' || isNaN(amount) || amount <= 0) {
+      throw new Error('Invalid amount. It must be a positive number.');
+    }
+
+    // Convert customerID and amount to proper formats
+    customerID = String(customerID); // Convert to string
+    amount = parseFloat(amount.toFixed(2)); // Convert to float with 2 decimal places
+
+    var options = {
+      'method': 'POST',
+      'url': `https://localline.ca/api/backoffice/v2/customers/${customerID}/store-credit-transaction/`,
+      'headers': {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${accessToken}`
+      },
+      body: JSON.stringify({
+        "amount": amount
+      })
+    };
+
+    await new Promise((resolve, reject) => {
+      request(options, function (error, response) {
+        if (error) {
+          reject(error);
+        } else {
+          console.log(response.body);
+          resolve();
+        }
+      });
+    });
+  } catch (error) {
+    // Handle errors as needed
+    console.error('Error in storeCredit:', error);
+  } finally {
+    isProcessing = false;
+  }
 }
 
 // Run the delivery_order script
