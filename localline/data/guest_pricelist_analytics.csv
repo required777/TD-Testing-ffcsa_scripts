@@ -1,25 +1,21 @@
 ﻿Vendor,Product,Visible,Item Unit,Charge Unit,Package Name,# of Items,Purchase Price,Retail Price,Margin
 Grazier's Garden,Spearmint,Y,bu,bu,each,1,3.5,3.5,0
-OGC,Crimini Mushrooms,Y,lb,lb,1 lb,1,6,6,0
 Grazier's Garden,Delicata Squash,Y,ea,ea,each,1,3.25,3.25,0
-OGC,Shiitake Mushrooms,Y,1/2 lb,1/2 lb,1/2 lb,1,6,6,0
 Grazier's Garden,Rainbow Chard,Y,bu,bu,each,1,4.25,4.25,0
 The Fungi Pharm,Dual Extract Reishi Tincture,Y,ea,ea,2 oz,1,31,31,0
 Grazier's Garden,Red Russian Kale,Y,bu,bu,bu,1,1.75,1.75,0
-Grazier's Garden,Russet potatoes,Y,pound,pound,pound,1,2,2,0
 Grazier's Garden,Acorn squash,Y,ea,ea,Each,1,4.75,4.75,0
+Grazier's Garden,Purple Viking potatoes,Y,pound,pound,pound,1,4,4,0
+Grazier's Garden,Green Tomatoes,Y,lb,lb,1 lb,1,2.5,2.56,2
 Grazier's Garden,Purple Shvelisi Garlic,Y,1/2 lb,1/2 lb,1/2 lb,1,7.25,8.25,12
 Deck Family Farm,SALE - Red Ranger Roaster,Y,ea,ea,"Small, 3-4 Lbs",1,22.4,25.76,13
 Deck Family Farm,SALE - Roasting Chicken,Y,ea,ea,"Large, 4.3-5 lbs.",1,28,32.2,13
+Deck Family Farm,Ground Beef - All Natural,Y,ea,ea,4 lbs,4,37.12,42.69,13
 Grazier's Garden,Cone cabbage,Y,ea,ea,ea,1,3,3.5,14
 RL Plants,Dark Purple Iris Rhizome,Y,ea,ea,each,1,5,6,17
-RL Plants,Yellow Iris Rhizome,Y,ea,ea,each,1,5,6,17
-Grazier's Garden,Pea Shoots,Y,bag,bag,6 oz,1,4.5,5.5,18
-RL Plants,Hen and Chicks Succulents,Y,ea,ea,each,1,4,5,20
-RL Plants,Sedum Palmeri Succulents,Y,ea,ea,each,1,4,5,20
-RL Plants,"Sedum Rupestre ""Blue Spruce""",Y,ea,ea,each,1,4,5,20
-Creole Me Up,Pickleez with a Little Bit of Sass,Y,ea,ea,16.06oz,1,12,15,20
+The Extra Loaf,Country Loaf,Y,ea,ea,ea,1,12,15,20
 Grazier's Garden,Purple curly kale,Y,ea,ea,ea,1,2,2.5,20
+Grazier's Garden,Russet potatoes,Y,pound,pound,pound,1,2,2.5,20
 River Ranch Oregon Olive OIl,Flavor Infused Olive Oil- Red Pepper,Y,ea,ea,8.45oz (250mL),1,21.95,28,22
 Deck Family Farm,Organic Pasture Raised Chicken Eggs,Y,ea,ea,1 dozen,1,7.7,10.01,23
 Deck Family Farm,Rendered Pork Back Fat,Y,ea,ea,16 oz,1,8.4,10.92,23
@@ -63,7 +59,6 @@ Deck Family Farm,Beef Tri-Tip,Y,ea,ea,2.2 - 2.4 lbs.,1,29.82,38.77,23
 Deck Family Farm,Beef Back Ribs,Y,ea,ea,3.1 - 3.6lbs.,1,33.39,43.41,23
 Deck Family Farm,Beef Flank Steak,Y,ea,ea,1.7-1.77 lbs.,1,27.26,35.44,23
 Deck Family Farm,Beef Flat Iron Steak,Y,ea,ea,1.2 - 1.5 lbs.,1,23.1,30.03,23
-Deck Family Farm,Beef Oxtail,Y,ea,ea,1.4- 2.1  lbs.,1,16.17,21.02,23
 Deck Family Farm,Pork Bones,Y,ea,ea,3-5 lbs.,1,7,9.1,23
 Deck Family Farm,Chicken Feet,Y,ea,ea,2 lbs,1,11.2,14.56,23
 Deck Family Farm,Pet Food Pork and Lamb Ground Organ Blend,Y,ea,ea,1 lb,1,10.15,13.2,23
@@ -77,24 +72,61 @@ Deck Family Farm,Baby Back Ribs,Y,pk,pk,pk 1- 1.3 Lbs,1,13.2,17.16,23
 Deck Family Farm,Chicken Hearts,Y,pk,pk,1/2 lb. pk,1,4.2,5.46,23
 Deck Family Farm,Chicken Gizzards,Y,pk,pk,1/2 lb pk,1,3.5,4.55,23
 Grazier's Garden,Celeriac,Y,ea,ea,lb,1,3,4,25
-Camas Country Mill,Emmer Farro,Y,ea,ea,5 lbs,1,15,20.25,26
+The Extra Loaf,Organic Granola,Y,bag,bag,bag,1,15,20.25,26
 Full Farm CSA,Wildcraft Hot Sauce,Y,ea,ea,ea,1,9,12.25,27
 Grazier's Garden,Watermelon Radish,Y,lb,lb,Each,1,2.5,3.5,29
-Red Tail Growers,Salad Chicory Mix,Y,1/2 lb,1/2 lb,1/2 lb,1,3.5,5,30
-Red Tail Growers,Braising Chicory Mix,Y,1/2 lb,1/2 lb,1/2 lb,1,3.5,5,30
+Jar Joy Goods,The Daily Jar Tote/Jar Bag: Organic Waxed Canvas-WFTO Certified,Y,ea,ea,each,1,41.95,59.99,30
+Jar Joy Goods,The Insulated Jar Tote/Jar Bag: Hemp + Natural Rubber (Yulex),Y,ea,ea,each,1,110.5,158.02,30
+Kiko Denzer,Handcrafted Egg Pushers,Y,ea,ea,each,1,8,11.44,30
+RL Plants,Hen and Chicks Succulents,Y,ea,ea,each,1,4,5.72,30
+RL Plants,Sedum Palmeri Succulents,Y,ea,ea,each,1,4,5.72,30
+RL Plants,"Sedum Rupestre ""Blue Spruce""",Y,ea,ea,each,1,4,5.72,30
+RL Plants,Yellow Iris Rhizome,Y,ea,ea,each,1,5,7.15,30
+Massimo's Fruit,Quince,Y,ea,ea,each,1,1,1.43,30
+Red Tail Growers,Baby Mustard Salad Mix,Y,bag,bag,1/2 lb,1,3.5,5.01,30
+Camas Swale Farm,Escarole,Y,bu,bu,each,1,2.35,3.36,30
+Grazier's Garden,Yukon Potatoes,Y,lb,lb,1 lb,1,3.5,5.01,30
+OGC,Champion Club Microgreens Broccoli Mix 2 oz,Y,ea,ea,2 oz,1,5.45,7.79,30
+OGC,Champion Club Microgreens Power Mix,Y,ea,ea,2 oz,1,5.45,7.79,30
+OGC,Champion Club Microgreens Rainbow Mix,Y,ea,ea,2 oz,1,5.45,7.79,30
+OGC,Crimini Mushrooms,Y,lb,lb,1 lb,1,3.95,5.65,30
+Camas Swale Farm,Red Onion,Y,lb,lb,1 lb,1,1.25,1.79,30
+OGC,Shiitake Mushrooms,Y,1/2 lb,1/2 lb,1/2 lb,1,3.63,5.19,30
+Camas Swale Farm,Shallots,Y,lb,lb,1 lb,1,3.5,5.01,30
+Camas Swale Farm,Sugarloaf Chicory,Y,bu,bu,each,1,2.34,3.35,30
+Red Tail Growers,Braising Mix,Y,ea,ea,1/2 lb,1,3,4.29,30
+Red Tail Growers,Yacon Tuber,Y,lb,lb,1 lb,1,2.5,3.58,30
+Radiant Coffee Roasters,Vietnam Lotus - Light Roast Coffee,Y,ea,ea,16 oz,1,11,15.73,30
+Elegant Elephant Baking Co.,Box of 5 Cupcakes,Y,ea,ea,each,1,6,8.58,30
+Camas Country Mill,Emmer Farro,Y,ea,ea,5 lbs,1,10.4,14.87,30
+Camas Country Mill,Organic 7-Grain Cereal,Y,ea,ea,4 lbs,1,6.9,9.87,30
+Camas Country Mill,Oregon Wild Rice,Y,ea,ea,16 oz,1,10,14.3,30
+Queen of Hearts Superfood,Queen of Hearts Green Goddess Dressing,Y,ea,ea,each,1,6.6,9.44,30
+Queen of Hearts Superfood,Queen of Hearts Herb Ranch Dressing,Y,ea,ea,each,1,6.6,9.44,30
+Queen of Hearts Superfood,Queen of Hearts Sassy Italian Dressing,Y,ea,ea,each,1,6.6,9.44,30
+Queen of Hearts Superfood,Queen of Hearts Spicy Sesame Dressing,Y,ea,ea,each,1,6.6,9.44,30
+Queen of Hearts Superfood,Queen of Hearts Zesty Caesar Dressing,Y,ea,ea,each,1,6.6,9.44,30
+Radiant Coffee Roasters,Radiant Breakfast Blend - Light Roast,Y,ea,ea,16 oz,1,11,15.73,30
+Radiant Coffee Roasters,Radiant Decaf Columbia Coffee,Y,ea,ea,12 oz,1,11,15.73,30
+Radiant Coffee Roasters,Radiant Midnight Blend - Dark Roast,Y,ea,ea,16 oz,1,11,15.73,30
+Creole Me Up,Pickleez with a Little Bit of Sass,Y,ea,ea,16.06oz,1,8.35,11.94,30
+Creole Me Up,Pickleez Zonyon in Purple (Pickled Onions),Y,ea,ea,16oz,1,9,12.87,30
+Red Tail Growers,Chioggia Beets,Y,bu,bu,1 Lb,1,1,1.43,30
+Red Tail Growers,Red Beets,Y,bu,bu,1 Lb,1,1,1.43,30
+Red Tail Growers,Leeks,Y,pound,pound,pound,1,1.75,2.5,30
+Red Tail Growers,Salad Chicory Mix,Y,1/2 lb,1/2 lb,1/2 lb,1,3.5,5.01,30
+Red Tail Growers,Braising Chicory Mix,Y,1/2 lb,1/2 lb,1/2 lb,1,3.5,5.01,30
 Deck Family Farm,Fresh Pork Chaurice Sausage,Y,pk,pk,pk,1,12.6,18,30
 Deck Family Farm,Fresh Pork Loukaniko Sausage,Y,pk,pk,pk,1,12.6,18,30
-Red Tail Growers,Baby Mustard Salad Mix,Y,bag,bag,1/2 lb,1,3.5,5.04,31
+Massimo's Fruit,Persimmon,Y,ea,ea,ea,1,1,1.43,30
 Elegant Elephant Baking Co.,Gluten Free Mixed Berry Pie,Y,ea,ea,"9""",1,17,24.5,31
-Camas Country Mill,Oregon Wild Rice,Y,ea,ea,16 oz,1,13.75,19.8,31
 Camas Country Mill,Organic Red Floriani Corn Flour,Y,ea,ea,2 lbs,1,5.88,8.5,31
 Camas Country Mill,Purple Karma Barley Flakes,Y,ea,ea,3 lbs,1,5.52,8,31
-Barrett Baking,Organic Artisan Sourdough Loaf,Y,ea,ea,ea,1,8,11.52,31
+The Extra Loaf,Blueberry Scones,Y,ea,ea,4 pack,1,11,15.84,31
 Grazier's Garden,Spanish Onion,Y,pound,pound,pound,1,3.75,5.51,32
 Deck Family Farm,Stewing Hen,Y,ea,ea,2 - 3.8 lbs,1,10,15,33
 Grazier's Garden,Alpine Daikon Radish,Y,ea,ea,1 Lb,1,2.35,3.5,33
-Red Tail Growers,Braising Mix,Y,ea,ea,1/2 lb,1,3,4.5,33
-Radiant Coffee Roasters,Vietnam Lotus - Light Roast Coffee,Y,ea,ea,16 oz,1,11,16.5,33
+Reality Kitchen Nonprofit,Challah Sandwich Loaf,Y,ea,ea,each,1,4.85,7.25,33
 BNF Kombucha and Jun,Peach Rose Kombucha,Y,ea,ea,16 fl. oz,1,3.09,4.6,33
 Elegant Elephant Baking Co.,Gluten Free Dinner Rolls,Y,ea,ea,bag of 6,1,5.35,8,33
 Spoiled Rotten Vinegar,Blackberry Vinegar,Y,ea,ea,16 fl. oz,1,12,18,33
@@ -103,10 +135,6 @@ Camas Country Mill,Camas Pizza Blend,Y,ea,ea,3.5 lbs,1,3.66,5.5,33
 Lonesome Whistle,Cayenne Kettle Corn,Y,ea,ea,0.4 lb bag,1,3.33,5,33
 Lonesome Whistle,Einkorn Fusilli,Y,ea,ea,0.5 lb bag,1,3.33,5,33
 Lonesome Whistle,Plain Kettle Corn,Y,ea,ea,0.4 lb bag,1,3.33,5,33
-Radiant Coffee Roasters,Radiant Breakfast Blend - Light Roast,Y,ea,ea,16 oz,1,11,16.5,33
-Radiant Coffee Roasters,Radiant Decaf Columbia Coffee,Y,ea,ea,12 oz,1,11,16.5,33
-Radiant Coffee Roasters,Radiant Midnight Blend - Dark Roast,Y,ea,ea,16 oz,1,11,16.5,33
-Camas Country Mill,Three Sisters Porridge,Y,ea,ea,3 lbs,1,5.19,7.75,33
 Elegant Elephant Baking Co.,Gluten Free Apple Pie,Y,ea,ea,"6""",1,7.5,11.25,33
 Grazier's Garden,"Radish, Purple Daikon",Y,pound,pound,pound,1,2.5,3.75,33
 Grazier's Garden,Scallions,Y,bu,bu,bu,1,2.5,3.75,33
@@ -116,20 +144,23 @@ Grazier's Garden,Parsley,Y,bu,bu,bu,1,2.5,3.75,33
 Elegant Elephant Baking Co.,Blackberry Hand Pie,Y,ea,ea,each,1,2.95,4.5,34
 Elegant Elephant Baking Co.,Gluten Free Cheddar Rolls,Y,ea,ea,bag of 4,1,6.1,9.25,34
 Elegant Elephant Baking Co.,Gluten Free Potato Loaf with Teff,Y,ea,ea,each,1,6.25,9.5,34
-Camas Country Mill,Organic 7-Grain Cereal,Y,ea,ea,4 lbs,1,6.63,10,34
 Lonesome Whistle,Up & At 'Em Pancake Mix,Y,ea,ea,1.6 lbs,1,5.33,8.25,35
+Barrett Baking,Organic Artisan Sourdough Loaf,Y,ea,ea,ea,1,8,12.4,35
 Elegant Elephant Baking Co.,Gluten Free Cinnamon Roll Pan,Y,ea,ea,"6""",1,6,9.5,37
 Camas Country Mill,Organic Flax Seeds,Y,ea,ea,2.5 lbs,1,4.38,7,37
 Grazier's Garden,Fresh Thyme,Y,bu,bu,each,1,2.5,4,38
 Elegant Elephant Baking Co.,Gluten Free Brownie Bite with Chocolate Chips,Y,ea,ea,each,1,2.5,4,38
 Elegant Elephant Baking Co.,Gluten Free Half Almond Loaf Sliced,Y,ea,ea,each,1,5,8,38
 Elegant Elephant Baking Co.,Gluten Free Mini Banana Bread Loaf,Y,ea,ea,each,1,5,8,38
-Red Tail Growers,Leeks,Y,pound,pound,pound,1,1.75,2.84,38
 Elegant Elephant Baking Co.,Gluten Free Blueberry Scone,Y,ea,ea,each,1,2.9,4.75,39
 Sweet Creek,Blueberry Fruit Spread,Y,ea,ea,10 oz,1,3.8,6.25,39
+Reality Kitchen Nonprofit,Sourdough Rye Sandwich Loaf,Y,ea,ea,each,1,4.75,8,41
+Reality Kitchen Nonprofit,Wholewheat Multigrain Sandwich Loaf,Y,ea,ea,each,1,4.75,8,41
 Elegant Elephant Baking Co.,Chocolate Donut,Y,ea,ea,each,1,2.35,4,41
 Elegant Elephant Baking Co.,Pizza Dough,Y,ea,ea,each,1,4.75,8,41
 Grazier's Garden,Frozen Strawberries,Y,bag,bag,~1.2 lbs,1,7,12,42
+Reality Kitchen Nonprofit,Braided Challah (plain),Y,ea,ea,each,1,4.35,7.5,42
+Reality Kitchen Nonprofit,Braided Challah (seeded),Y,ea,ea,each,1,4.35,7.5,42
 Grazier's Garden,Green Curly Kale,Y,bu,bu,each,1,2,3.5,43
 Grazier's Garden,Fresh Sage,Y,bu,bu,each,1,2.29,4,43
 Elegant Elephant Baking Co.,Gluten Free Banana Cream Pie,Y,ea,ea,"6""",1,8,14,43
@@ -139,12 +170,7 @@ Elegant Elephant Baking Co.,Larry and Son's Bagels 4 pack- Cinnamon Rasin,Y,ea,e
 Grazier's Garden,Pinto Gold Potatoes,Y,pound,pound,pound,1,2,3.5,43
 Elegant Elephant Baking Co.,Seven Layer Cookie,Y,ea,ea,each,1,2.5,4.5,44
 Elegant Elephant Baking Co.,Croutons,Y,ea,ea,each,1,5.25,9.98,47
-Massimo's Fruit,Quince,Y,ea,ea,each,1,1,2,50
 Small is Beautiful Farm,"Mixed Apple ""Seconds""",Y,ea,ea,each,1,0.5,1,50
 Small is Beautiful Farm,Mixed Apples,Y,ea,ea,each,1,1,2,50
 Grazier's Garden,Baby Bok Choi,Y,bu,bu,each,1,2,4,50
-Elegant Elephant Baking Co.,Box of 5 Cupcakes,Y,ea,ea,each,1,6,12,50
 My Brothers Farm,Roasted Hazelnuts,Y,ea,ea,4 oz bag,1,4.5,9,50
-Massimo's Fruit,Persimmon,Y,ea,ea,ea,1,1,2,50
-Red Tail Growers,Chioggia Beets,Y,bu,bu,1 Lb,1,1,2.5,60
-Red Tail Growers,Red Beets,Y,bu,bu,1 Lb,1,1,2.5,60
