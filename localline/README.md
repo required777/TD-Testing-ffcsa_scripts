@@ -20,28 +20,29 @@ NOTE: always run `delivery_orders.js` first since that downloads necessary files
 scripts
 
 ```
-# Run Subscriptions every day at 03:01 PT which is 11:00 UTC
-1 11 * * * /home/exouser/code/ffcsa_scripts/localline/run.sh subscriptions.js
+##################################################
+# Local Line Scripts (NOTE: UTC is +8 hours)
+##################################################
+# Run Subscriptions every day at 02:01 PT which is 10:00 UTC
+1 10 * * * /home/exouser/code/ffcsa_scripts/localline/run.sh subscriptions.js
 
-# Run all on Monday at 06:00 PT which is 14:00 UTC
-0 14 * * 1  /home/exouser/code/ffcsa_scripts/localline/run.sh delivery_orders.js 
-2 14 * * 1  /home/exouser/code/ffcsa_scripts/localline/run.sh checklists.js
-4 14 * * 1  /home/exouser/code/ffcsa_scripts/localline/run.sh vendors.js
+# Run all on Monday at 03:00 PT which is 11:00 UTC
+0 11 * * 1  /home/exouser/code/ffcsa_scripts/localline/run.sh delivery_orders.js
+2 11 * * 1  /home/exouser/code/ffcsa_scripts/localline/run.sh checklists.js
+4 11 * * 1  /home/exouser/code/ffcsa_scripts/localline/run.sh vendors.js
 
-# Run all on Thursday at 06:00 PT which is 14:00 UTC
-0 14 * * 4 /home/exouser/code/ffcsa_scripts/localline/run.sh delivery_orders.js
-2 14 * * 4 /home/exouser/code/ffcsa_scripts/localline/run.sh checklists.js
-4 14 * * 4 /home/exouser/code/ffcsa_scripts/localline/run.sh vendors.js
+# Run all on Thursday at 03:00 PT which is 11:00 UTC
+0 11 * * 4 /home/exouser/code/ffcsa_scripts/localline/run.sh delivery_orders.js
+2 11 * * 4 /home/exouser/code/ffcsa_scripts/localline/run.sh checklists.js
+4 11 * * 4 /home/exouser/code/ffcsa_scripts/localline/run.sh vendors.js
 
-# Run pricelist check script to print results Friday morning 03:00 PT which is 11:00 UTC
-0 11 * * 5 /home/exouser/code/ffcsa_scripts/localline/run.sh pricelist_checker.js
+# Run pricelist check script to print results Friday morning 03:10 PT which is 11:10 UTC
+10 11 * * 5 /home/exouser/code/ffcsa_scripts/localline/run.sh pricelist_checker.js
 
 # Run monthly_customers report on the 1st of the month at 01:01 PT which is 09:00 UTC
 1 9 1 * * /home/exouser/code/ffcsa_scripts/localline/run.sh monthly_customers.js
-
 # Run monthly_vendors report on the 1st of the month at 04:01 PT which is 12:00 UTC
 1 12 1 * * /home/exouser/code/ffcsa_scripts/localline/run.sh monthly_vendors.js
-
 ```
 
 `run.sh` sets up the node environment using NVM. It is important that we point to both

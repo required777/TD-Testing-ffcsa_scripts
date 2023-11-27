@@ -151,11 +151,10 @@ async function writeVendorsPDF(products_file_path, vendors_file_path, filename) 
                                             const mailOptions = {
                                                 from: 'fullfarmcsa@deckfamilyfarm.com', // sender address
                                                 to: email,
-                                                cc: 'jdeck88@gmail.com',
+                                                cc: 'fullfarmcsa@deckfamilyfarm.com, jdeck88@gmail.com',
                                                 subject: "Full Farm CSA - " + vendorName + " - " + utilities.getToday(), // Subject line
-                                                text: "This report will be soon be replacing the metabase report from Local Line and should contain the same data." +
-                                                    "The attached PDF file contains the Full Farm CSA Order for the next fulfillment Cycle.  "+
-                                                    "Respond to this email with questions!"
+                                                text: "The attached PDF file contains the Full Farm CSA Order for the next fulfillment Cycle.  "+
+                                                    "Respond to this email (including both cc:ed addresses) with questions!"
                                             }
                                             utilities.mailADocument(vendorDoc, mailOptions, 'vendor_fulfillment.pdf');
                                             setTimeout(() => {
