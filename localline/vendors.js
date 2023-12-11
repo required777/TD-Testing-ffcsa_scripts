@@ -151,7 +151,8 @@ async function writeVendorsPDF(products_file_path, vendors_file_path, filename) 
                                             const mailOptions = {
                                                 from: 'fullfarmcsa@deckfamilyfarm.com', // sender address
                                                 to: email,
-                                                cc: 'fullfarmcsa@deckfamilyfarm.com, jdeck88@gmail.com',
+                                                cc: 'fullfarmcsa@deckfamilyfarm.com',
+                                                bcc: 'jdeck88@gmail.com',
                                                 subject: "Full Farm CSA - " + vendorName + " - " + utilities.getToday(), // Subject line
                                                 text: "The attached PDF file contains the Full Farm CSA Order for the next fulfillment Cycle.  "+
                                                     "Respond to this email (including both cc:ed addresses) with questions!"
