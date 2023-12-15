@@ -1,6 +1,5 @@
 ﻿Vendor,Product,Visible,Item Unit,Charge Unit,Package Name,# of Items,Purchase Price,Retail Price,Margin
-,Handcrafted Wooden Spoons,Y,ea,ea,each,1,32.5,27,-20
-Grazier's Garden,Green Tomatoes,Y,lb,lb,1 lb,1,2.5,2.55,2
+Grazier's Garden,Leeks,Y,bu,bu,each,1,4.75,4,-19
 Deck Family Farm,SALE Rosette D' Oregon Salami,Y,ea,ea,4.5 oz,1,12.6,14,10
 Deck Family Farm,Organic Pasture Raised Chicken Eggs,Y,ea,ea,1 dozen,1,7.7,9.24,17
 Deck Family Farm,Rendered Pork Back Fat,Y,ea,ea,16 oz,1,8.4,10.08,17
@@ -21,10 +20,10 @@ Deck Family Farm,Roasting Chicken,Y,ea,ea,"Large, 4.3-5 lbs.",1,28,33.6,17
 Deck Family Farm,Chicken Hindquarter,Y,ea,ea,1.3 - 1.75 lbs,1,19.6,23.52,17
 Deck Family Farm,Chicken Liver,Y,ea,ea,1/2 lb,1,3.5,4.2,17
 Deck Family Farm,Sage and Sea Salt Pork Breakfast Sausage,Y,pk,pk,each,1,9.8,11.76,17
-Deck Family Farm,Chicken Wings,Y,ea,ea,1.8 - 2.2 lbs,1,21.56,25.87,17
 Deck Family Farm,Smoked Polish Kielbasa Sausage,Y,pk,pk,12 oz,1,11.55,13.86,17
 Deck Family Farm,Stewing Hen,Y,ea,ea,2 - 3.8 lbs,1,10.85,13.02,17
 Deck Family Farm,Fresh Garlic Sausage Links,Y,pk,pk,12 oz / 4 count,1,11.55,13.86,17
+Deck Family Farm,Ground Beef - All Natural,Y,ea,ea,1 lb,1,9.28,11.14,17
 Deck Family Farm,Ground Beef - Organic,Y,ea,ea,1 lb,1,9.28,11.14,17
 Deck Family Farm,Ground Pork,Y,ea,ea,1 lb,1,10.15,12.18,17
 Deck Family Farm,Tamari Pressed Beef Jerky,Y,pk,pk,3 oz,1,10.5,12.6,17
@@ -35,7 +34,7 @@ Deck Family Farm,Lamb Neck Slices,Y,ea,ea,1.4-1.8 lb,1,16.7,20.04,17
 Deck Family Farm,Lamb Shank - Whole,Y,ea,ea,2 - 2.5 lbs,1,28,33.6,17
 Deck Family Farm,Lamb Shoulder Roast,Y,ea,ea,2.5 - 3 lbs,1,42,50.4,17
 Deck Family Farm,Landgaeger Jerky,Y,pk,pk,3 count / 3 oz,1,9.8,11.76,17
-Deck Family Farm,New York Steak,Y,ea,ea,1.3 - 1.5,1,32.55,39.06,17
+Deck Family Farm,New York Steak,Y,ea,ea,Double Pack 1.3 - 1.5 Lbs,1,32.55,39.06,17
 Deck Family Farm,Nitrite-Free Old World Hot Dogs,Y,pk,pk,14 oz / 4 count,1,12.6,15.12,17
 Deck Family Farm,Peppered Knife Cut Beef Jerky,Y,pk,pk,3 oz,1,10.5,12.6,17
 Deck Family Farm,Bulk Raw Honey,Y,ea,ea,4 gallon,1,245,294,17
@@ -72,7 +71,6 @@ Reality Kitchen Nonprofit,Challah Sandwich Loaf,Y,ea,ea,each,1,4.85,6.25,22
 Kiko Denzer,"Handcrafted Wooden Bowls, Small 14 oz",Y,ea,ea,each,1,30,39.6,24
 Kiko Denzer,Handcrafted Wooden Plain Kitchen Stir Stix,Y,ea,ea,each,1,9,11.88,24
 Kiko Denzer,Handcrafted Wooden Fancy Egg Pushers,Y,ea,ea,ea,1,12,15.84,24
-Kiko Denzer,Handcrafted Maple Candle Holder,Y,ea,ea,ea,1,15,19.8,24
 "Creamy Cow, LLC",Live Culture Yogurt,Y,ea,ea,8 oz,1,6,7.98,25
 Jar Joy Goods,The Daily Jar Tote/Jar Bag: Organic Waxed Canvas-WFTO Certified,Y,ea,ea,each,1,41.95,55.79,25
 Jar Joy Goods,The Insulated Jar Tote/Jar Bag: Hemp + Natural Rubber (Yulex),Y,ea,ea,each,1,110.5,146.97,25
@@ -80,6 +78,7 @@ Kiko Denzer,Handcrafted Whisk Brooms,Y,ea,ea,each,1,20,26.6,25
 Kiko Denzer,Handcrafted Egg Pushers,Y,ea,ea,each,1,8,10.64,25
 Kiko Denzer,Handcrafted Wooden Chopsticks,Y,ea,ea,each,1,9,11.97,25
 Kiko Denzer,Handcrafted Wooden Fancy Kitchen Spoons,Y,ea,ea,each,1,20,26.6,25
+,Handcrafted Wooden Spoons,Y,ea,ea,each,1,32.5,43.23,25
 RL Plants,Dark Purple Iris Rhizome,Y,ea,ea,each,1,5,6.65,25
 RL Plants,Hen and Chicks Succulents,Y,ea,ea,each,1,4,5.32,25
 RL Plants,Sedum Palmeri Succulents,Y,ea,ea,each,1,4,5.32,25
@@ -105,12 +104,8 @@ Grazier's Garden,Cilantro,Y,bu,bu,each,1,3.5,4.66,25
 Grazier's Garden,Delicata Squash,Y,ea,ea,each,1,2.75,3.66,25
 OGC,Parsnips,Y,lb,lb,1 lb,1,2.2,2.93,25
 OGC,Shiitake Mushrooms,Y,1/2 lb,1/2 lb,1/2 lb,1,3.63,4.83,25
-Camas Swale Farm,Salad Turnips,Y,ea,ea,bu,1,1.67,2.22,25
-Camas Swale Farm,Shallots,Y,lb,lb,1 lb,1,3.5,4.66,25
 Grazier's Garden,Purple Shvelisi Garlic,Y,1/2 lb,1/2 lb,1/2 lb,1,5,6.65,25
 Grazier's Garden,Rainbow Chard,Y,bu,bu,each,1,3.5,4.66,25
-Camas Swale Farm,Braising Mix,Y,bag,bag,1/2 lb,1,3,3.99,25
-Red Tail Growers,Yacon Tuber,Y,lb,lb,1 lb,1,2.5,3.33,25
 Elegant Elephant Baking Co.,Blackberry Hand Pie,Y,ea,ea,each,1,2.95,3.92,25
 Elegant Elephant Baking Co.,Box of 5 Cupcakes,Y,ea,ea,each,1,6,7.98,25
 Elegant Elephant Baking Co.,Gluten Free Dinner Rolls,Y,ea,ea,bag of 6,1,5.35,7.12,25
@@ -134,28 +129,29 @@ Queen of Hearts Superfood,Queen of Hearts Sassy Italian Dressing,Y,ea,ea,each,1,
 Camas Country Mill,Organic Red Floriani Corn Flour,Y,ea,ea,2 lbs,1,6.12,8.14,25
 Queen of Hearts Superfood,Queen of Hearts Spicy Sesame Dressing,Y,ea,ea,each,1,6.6,8.78,25
 Queen of Hearts Superfood,Queen of Hearts Zesty Caesar Dressing,Y,ea,ea,each,1,6.6,8.78,25
-Radiant Coffee Roasters,Radiant Breakfast Blend - Light Roast,Y,ea,ea,16 oz,1,11,14.63,25
 Camas Country Mill,Sues Soup Mix,Y,ea,ea,2 lbs,1,9,11.97,25
 Creole Me Up,Creole Marinade with Sass,Y,ea,ea,8oz,1,7.5,9.98,25
 Creole Me Up,Pickleez with a Little Bit of Sass,Y,ea,ea,16.06oz,1,8.35,11.11,25
 Creole Me Up,Pickleez Zonyon in Purple (Pickled Onions),Y,ea,ea,16oz,1,9,11.97,25
 The Fungi Pharm,Dual Extract Reishi Tincture,Y,ea,ea,2 oz,1,25,33.25,25
 Grazier's Garden,Red Russian Kale,Y,bu,bu,bu,1,2.33,3.1,25
-Red Tail Growers,Chioggia Beets,Y,bu,bu,1 Lb,1,1,1.33,25
-Red Tail Growers,Red Beets,Y,bu,bu,1 Lb,1,1,1.33,25
+Full Farm CSA,Chioggia Beets,Y,bu,bu,1 Lb,1,1,1.33,25
+Full Farm CSA,Red Beets,Y,bu,bu,1 Lb,1,1,1.33,25
 Full Farm CSA,Wildcraft Hot Sauce,Y,ea,ea,ea,1,9,11.97,25
 Grazier's Garden,"Radish, Purple Daikon",Y,pound,pound,pound,1,2.6,3.46,25
 Grazier's Garden,Pinto Gold Potatoes,Y,pound,pound,pound,1,2.25,2.99,25
 Grazier's Garden,Spanish Onion,Y,pound,pound,pound,1,3.75,4.99,25
 Grazier's Garden,Red Norland Potatoes,Y,pound,pound,ea,1,2.25,2.99,25
 Grazier's Garden,Orange Carrots,Y,bu,bu,1 lb,1,3,3.99,25
+Little Wings,Dino Lacinato Kale,Y,bu,bu,bu,1,2.25,2.99,25
 Grazier's Garden,Parsley,Y,bu,bu,bu,1,2.5,3.33,25
+Full Farm CSA,Braising Chicory Mix,Y,1/2 lb,1/2 lb,1/2 lb,1,3.5,4.66,25
 Massimo's Fruit,Persimmon,Y,ea,ea,ea,1,1,1.33,25
 Grazier's Garden,Acorn squash,Y,ea,ea,Each,1,4,5.32,25
-Grazier's Garden,Cone cabbage,Y,ea,ea,ea,1,3,3.99,25
 Grazier's Garden,Purple curly kale,Y,ea,ea,ea,1,2.25,2.99,25
+Barrett Baking,Organic Artisan Sourdough Loaf,Y,ea,ea,ea,1,8,10.64,25
 Grazier's Garden,Russet potatoes,Y,pound,pound,pound,1,2,2.66,25
-Grazier's Garden,Purple Viking potatoes,Y,pound,pound,pound,1,3,3.99,25
+Grazier's Garden,Purple Viking potatoes,Y,pound,pound,pound,1,2.25,2.99,25
 Grazier's Garden,Honeynut squash,Y,ea,ea,ea,1,3,3.99,25
 Spoiled Rotten Vinegar,Quince Vinegar,Y,ea,ea,8 fl oz,1,8,10.64,25
 Spoiled Rotten Vinegar,Pear Vinegar,Y,ea,ea,8 fl. oz,1,7,9.31,25
@@ -170,9 +166,6 @@ Elegant Elephant Baking Co.,Gluten Free Cinnamon Roll Pan,Y,ea,ea,"6""",1,6,8.5,
 Elegant Elephant Baking Co.,Gluten Free Half Almond Loaf Sliced,Y,ea,ea,each,1,5,7,29
 Elegant Elephant Baking Co.,Gluten Free Mini Banana Bread Loaf,Y,ea,ea,each,1,5,7,29
 Elegant Elephant Baking Co.,Gluten Free Apple Pie,Y,ea,ea,"6""",1,7.5,10.5,29
-Grazier's Garden,Frozen Strawberries,Y,bag,bag,~1.2 lbs,1,7,10,30
-BNF Kombucha and Jun,Moonfruit Yerbe Mate Kombucha,Y,ea,ea,16 fl. oz,1,3.09,4.42,30
-BNF Kombucha and Jun,Chai Cider,Y,ea,ea,ea,1,4.75,6.79,30
 Elegant Elephant Baking Co.,Pizza Dough,Y,ea,ea,each,1,4.75,6.89,31
 Reality Kitchen Nonprofit,Sourdough Rye Sandwich Loaf,Y,ea,ea,each,1,4.75,7,32
 Reality Kitchen Nonprofit,Wholewheat Multigrain Sandwich Loaf,Y,ea,ea,each,1,4.75,7,32
