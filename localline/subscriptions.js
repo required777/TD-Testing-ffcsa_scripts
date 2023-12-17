@@ -65,31 +65,34 @@ async function run(filename, customerData, orderDayFormatted, accessToken) {
                 const productSubtotal = parseFloat(row['Product Subtotal']);
 
                 // payment__status=PAID&payment__status=AUTHORIZED&' +
-                if ([200.00, 300.00, 500.00].includes(productSubtotal)) {
+                if ([200.00, 300.00, 500.00, 86.00].includes(productSubtotal)) {
                     if (row['Payment Status'] === "PAID" || row['Payment Status'] === "AUTHORIZED") {
+                        //console.log(row)
                         subscribers.push({
                             Success: "SUCCESS",
+                            Status: row['Payment Status'],
                             Date: row['Date'],
                             Customer: row['Customer'],
                             email: row['Email'],
-                            'Package Name': row['Package Name'],
+                            'Product': row['Product'],
                             'Product Subtotal': row['Product Subtotal'],
                         });
                     } else {
                         subscribers_issues.push({
                             Success: "FAIL",
+                            Status: row['Payment Status'],
                             Date: row['Date'],
                             Customer: row['Customer'],
                             email: row['Email'],
-                            'Package Name': row['Package Name'],
+                            'Product': row['Product'],
                             'Product Subtotal': row['Product Subtotal'],
                         });
                     }
                 }
             })
             .on('end', () => {
-                subscribers.sort((a, b) => a['Package Name'].localeCompare(b['Package Name']));
-                subscribers_issues.sort((a, b) => a['Package Name'].localeCompare(b['Package Name']));
+                subscribers.sort((a, b) => a['Product'].localeCompare(b['Product']));
+                subscribers_issues.sort((a, b) => a['Product'].localeCompare(b['Product']));
 
 
                 // Combine the two arrays based on the "email" field and add "id" to the subscribers array
@@ -97,11 +100,12 @@ async function run(filename, customerData, orderDayFormatted, accessToken) {
                     const customer = customerData.find(cust => cust.email === subscriber.email);
                     return {
                         success: subscriber.Success,
+                        status: subscriber.Status,
                         id: customer ? customer.id : null,
                         customer: subscriber.Customer,
                         email: subscriber.email,
                         subscription_date: subscriber.Date,
-                        level: subscriber['Package Name'],
+                        level: subscriber['Product'],
                         amount: subscriber['Product Subtotal'],
                     };
                 });
@@ -111,11 +115,12 @@ async function run(filename, customerData, orderDayFormatted, accessToken) {
                     const customer = customerData.find(cust => cust.email === subscriber.email);
                     return {
                         success: subscriber.Success,
+                        status: subscriber.Status,
                         id: customer ? customer.id : null,
                         customer: subscriber.Customer,
                         email: subscriber.email,
                         subscription_date: subscriber.Date,
-                        level: subscriber['Package Name'],
+                        level: subscriber['Product'],
                         amount: subscriber['Product Subtotal'],
                     };
                 });
@@ -124,8 +129,8 @@ async function run(filename, customerData, orderDayFormatted, accessToken) {
 
                 const table = {
                     title: '',
-                    headers: ['Success', 'CustomerID', 'Customer', 'Email', 'Subscription Date', 'Level', 'Total'],
-                    rows: allCombinedData.map(item => [item.success, item.id, item.customer, item.email, item.subscription_date, item.level, item.amount]),
+                    headers: ['Success', 'Status', 'CustomerID', 'Customer', 'Email', 'Subscription Date', 'Level', 'Total'],
+                    rows: allCombinedData.map(item => [item.success, item.status, item.id, item.customer, item.email, item.subscription_date, item.level, item.amount]),
                 };
                 doc.text('Results for ' + orderDayFormatted)
                 doc.text("SUCCESS -- member will have their balance credited.")
@@ -145,15 +150,32 @@ async function run(filename, customerData, orderDayFormatted, accessToken) {
                             console.log(`${entry} EXISTS, DO NOTHING (PRODUCTION ENVIRONMENT)`)
                         } else {
                             // storeCredit Function -- this is the part that Credits a customer
-			    storeCredit( entry.id, entry.amount, accessToken)
+                            amount = entry.amount
+                            // account for Feed-a-Friend -- doubles the contribution
+                            if (entry.amount == 86.00) {
+                                amount = entry.amount * 2
+                            }
+                            amount = amount.toString()
+
+			                storeCredit( entry.id, entry.amount, accessToken)
                             console.log(`${entry.id} CREDIT ACCOUNT! (PRODUCTION ENVIRONMENT)`)
                             writeEntryToCSV(order_data_success_file, entry);
                         }
                     } else {
                         if (orderDataSuccessFile.includes(entry.id.toString())) {
-                            console.log(`${entry} EXISTS, DO NOTHING (DEVELOPMENT ENVIRONMENT)`)
+                            amount = entry.amount
+                            if (entry.amount == 86.00) {
+                                amount = entry.amount * 2
+                            }
+                            amount = amount.toString()
+                            console.log(`${entry} EXISTS, DO NOTHING (DEVELOPMENT ENVIRONMENT) = `+ amount)                         
                         } else {
-                            console.log(`${entry} DOES NOT EXIST (DEVELOPMENT ENVIRONMENT)`)
+                            amount = entry.amount
+                            if (entry.amount == 86.00) {
+                                amount = entry.amount * 2
+                            }
+                            amount = amount.toString()
+                            console.log(`${entry} DOES NOT EXIST -- (DEVELOPMENT ENVIRONMENT) amount to credit = ` + amount)
                             writeEntryToCSV(order_data_success_file, entry);
                         }
                     }
@@ -238,7 +260,7 @@ async function subscriptions(yesterday) {
             `start_date=${yesterday}&` +
             `end_date=${yesterday}&` +
             //'payment__status=PAID&payment__status=AUTHORIZED&' +
-            'vendors=3148&price_lists=2719&status=OPEN'
+            'vendors=3148&price_lists=2719,2895&status=OPEN'
 
         data = {}
 
@@ -381,4 +403,5 @@ async function storeCredit(customerID, amount, accessToken) {
 // Run the delivery_order script
 //orderDayFormatted = '2023-10-31'
 
-subscriptions(utilities.getOrderDay());
+//subscriptions(utilities.getOrderDay());
+subscriptions('2023-11-29');
