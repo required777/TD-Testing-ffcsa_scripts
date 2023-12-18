@@ -157,7 +157,7 @@ async function run(filename, customerData, orderDayFormatted, accessToken) {
                             }
                             amount = amount.toString()
 
-			                storeCredit( entry.id, entry.amount, accessToken)
+			                storeCredit( entry.id, amount, accessToken)
                             console.log(`${entry.id} CREDIT ACCOUNT! (PRODUCTION ENVIRONMENT)`)
                             writeEntryToCSV(order_data_success_file, entry);
                         }
@@ -403,5 +403,4 @@ async function storeCredit(customerID, amount, accessToken) {
 // Run the delivery_order script
 //orderDayFormatted = '2023-10-31'
 
-//subscriptions(utilities.getOrderDay());
-subscriptions('2023-11-29');
+subscriptions(utilities.getOrderDay());
