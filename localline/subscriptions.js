@@ -31,7 +31,7 @@ function readExistingEntries(filePath) {
 // Function to write a new entry to the CSV file
 function writeEntryToCSV(filePath, newEntry) {
     try {
-        const entryString = `${newEntry.id},${newEntry.amount},${newEntry.email},${newEntry.subscription_date}\n`;
+        const entryString = `${newEntry.order},${newEntry.amount},${newEntry.email},${newEntry.subscription_date}\n`;
         fs.appendFileSync(filePath, entryString, 'utf-8');
     } catch (error) {
         console.error('Error writing entry to file:', error);
@@ -76,6 +76,7 @@ async function run(filename, customerData, orderDayFormatted, accessToken) {
                             email: row['Email'],
                             'Product': row['Product'],
                             'Product Subtotal': row['Product Subtotal'],
+							'Order': row['Order']
                         });
                     } else {
                         subscribers_issues.push({
@@ -86,6 +87,7 @@ async function run(filename, customerData, orderDayFormatted, accessToken) {
                             email: row['Email'],
                             'Product': row['Product'],
                             'Product Subtotal': row['Product Subtotal'],
+							'Order': row['Order']
                         });
                     }
                 }
@@ -107,6 +109,7 @@ async function run(filename, customerData, orderDayFormatted, accessToken) {
                         subscription_date: subscriber.Date,
                         level: subscriber['Product'],
                         amount: subscriber['Product Subtotal'],
+                        order: subscriber['Order']
                     };
                 });
 
@@ -122,6 +125,7 @@ async function run(filename, customerData, orderDayFormatted, accessToken) {
                         subscription_date: subscriber.Date,
                         level: subscriber['Product'],
                         amount: subscriber['Product Subtotal'],
+                        order: subscriber['Order']
                     };
                 });
 
@@ -129,8 +133,8 @@ async function run(filename, customerData, orderDayFormatted, accessToken) {
 
                 const table = {
                     title: '',
-                    headers: ['Success', 'Status', 'CustomerID', 'Customer', 'Email', 'Subscription Date', 'Level', 'Total'],
-                    rows: allCombinedData.map(item => [item.success, item.status, item.id, item.customer, item.email, item.subscription_date, item.level, item.amount]),
+                    headers: ['Success', 'Status', 'CustomerID', 'OrderID', 'Customer', 'Email', 'Subscription Date', 'Level', 'Total'],
+                    rows: allCombinedData.map(item => [item.success, item.status, item.id, item.order, item.customer, item.email, item.subscription_date, item.level, item.amount]),
                 };
                 doc.text('Results for ' + orderDayFormatted)
                 doc.text("SUCCESS -- member will have their balance credited.")
@@ -146,7 +150,7 @@ async function run(filename, customerData, orderDayFormatted, accessToken) {
                 for (const entry of combinedData) {
                     // Track transactions by Order Number in PRODUCTION environment
                     if (process.env.ENVIRONMENT === 'PRODUCTION') {
-                        if (orderDataSuccessFile.includes(entry.id.toString())) {
+                        if (orderDataSuccessFile.includes(entry.order.toString())) {
                             console.log(`${entry} EXISTS, DO NOTHING (PRODUCTION ENVIRONMENT)`)
                         } else {
                             // storeCredit Function -- this is the part that Credits a customer
@@ -156,18 +160,20 @@ async function run(filename, customerData, orderDayFormatted, accessToken) {
                                 amount = entry.amount * 2
                             }
                             amount = amount.toString()
+                            entry.amount = amount
 
 			                storeCredit( entry.id, amount, accessToken)
                             console.log(`${entry.id} CREDIT ACCOUNT! (PRODUCTION ENVIRONMENT)`)
                             writeEntryToCSV(order_data_success_file, entry);
                         }
                     } else {
-                        if (orderDataSuccessFile.includes(entry.id.toString())) {
+                        if (orderDataSuccessFile.includes(entry.order.toString())) {
                             amount = entry.amount
                             if (entry.amount == 86.00) {
                                 amount = entry.amount * 2
                             }
                             amount = amount.toString()
+                            entry.amount = amount
                             console.log(`${entry} EXISTS, DO NOTHING (DEVELOPMENT ENVIRONMENT) = `+ amount)                         
                         } else {
                             amount = entry.amount
@@ -175,6 +181,7 @@ async function run(filename, customerData, orderDayFormatted, accessToken) {
                                 amount = entry.amount * 2
                             }
                             amount = amount.toString()
+                            entry.amount = amount
                             console.log(`${entry} DOES NOT EXIST -- (DEVELOPMENT ENVIRONMENT) amount to credit = ` + amount)
                             writeEntryToCSV(order_data_success_file, entry);
                         }
@@ -184,7 +191,7 @@ async function run(filename, customerData, orderDayFormatted, accessToken) {
 
                 
                 for (const entry of combinedDataIssues) {                
-                    if (orderDataFailFile.includes(entry.id.toString())) {
+                    if (orderDataFailFile.includes(entry.order.toString())) {
                         //if (orderDataFailFile.some(existingEntry => existingEntry.id === entry.id)) {
                         console.log(`${entry} EXISTS FAIL FILE, DO NOTHING (DEVELOPMENT ENVIRONMENT)`)
                     } else {
@@ -403,4 +410,5 @@ async function storeCredit(customerID, amount, accessToken) {
 // Run the delivery_order script
 //orderDayFormatted = '2023-10-31'
 
-subscriptions(utilities.getOrderDay());
+//subscriptions(utilities.getOrderDay());
+subscriptions('2023-12-27');
