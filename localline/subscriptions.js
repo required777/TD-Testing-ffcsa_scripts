@@ -151,7 +151,7 @@ async function run(filename, customerData, orderDayFormatted, accessToken) {
                     // Track transactions by Order Number in PRODUCTION environment
                     if (process.env.ENVIRONMENT === 'PRODUCTION') {
                         if (orderDataSuccessFile.includes(entry.order.toString())) {
-                            console.log(`${entry} EXISTS, DO NOTHING (PRODUCTION ENVIRONMENT)`)
+                            console.log(`${entry.order} EXISTS, DO NOTHING (PRODUCTION ENVIRONMENT)`)
                         } else {
                             // storeCredit Function -- this is the part that Credits a customer
                             amount = entry.amount
@@ -162,8 +162,8 @@ async function run(filename, customerData, orderDayFormatted, accessToken) {
                             amount = amount.toString()
                             entry.amount = amount
 
-			                storeCredit( entry.id, amount, accessToken)
-                            console.log(`${entry.id} CREDIT ACCOUNT! (PRODUCTION ENVIRONMENT)`)
+		            storeCredit( entry.id, amount, accessToken)
+                            console.log(`${entry.order} CREDIT ACCOUNT! (PRODUCTION ENVIRONMENT)`)
                             writeEntryToCSV(order_data_success_file, entry);
                         }
                     } else {
@@ -174,7 +174,7 @@ async function run(filename, customerData, orderDayFormatted, accessToken) {
                             }
                             amount = amount.toString()
                             entry.amount = amount
-                            console.log(`${entry} EXISTS, DO NOTHING (DEVELOPMENT ENVIRONMENT) = `+ amount)                         
+                            console.log(`${entry.order} EXISTS, DO NOTHING (DEVELOPMENT ENVIRONMENT) = `+ amount)                         
                         } else {
                             amount = entry.amount
                             if (entry.amount == 86.00) {
@@ -182,7 +182,7 @@ async function run(filename, customerData, orderDayFormatted, accessToken) {
                             }
                             amount = amount.toString()
                             entry.amount = amount
-                            console.log(`${entry} DOES NOT EXIST -- (DEVELOPMENT ENVIRONMENT) amount to credit = ` + amount)
+                            console.log(`${entry.order} DOES NOT EXIST -- (DEVELOPMENT ENVIRONMENT) amount to credit = ` + amount)
                             writeEntryToCSV(order_data_success_file, entry);
                         }
                     }
@@ -193,9 +193,9 @@ async function run(filename, customerData, orderDayFormatted, accessToken) {
                 for (const entry of combinedDataIssues) {                
                     if (orderDataFailFile.includes(entry.order.toString())) {
                         //if (orderDataFailFile.some(existingEntry => existingEntry.id === entry.id)) {
-                        console.log(`${entry} EXISTS FAIL FILE, DO NOTHING (DEVELOPMENT ENVIRONMENT)`)
+                        console.log(`${entry.order} EXISTS FAIL FILE, DO NOTHING (DEVELOPMENT ENVIRONMENT)`)
                     } else {
-                        console.log(`${entry} DOES NOT EXIST FAIL FILE, ADD... (DEVELOPMENT ENVIRONMENT)`)
+                        console.log(`${entry.order} DOES NOT EXIST FAIL FILE, ADD... (DEVELOPMENT ENVIRONMENT)`)
                         writeEntryToCSV(order_data_fail_file, entry);
                     }
                     num_subscriptions = num_subscriptions + 1
@@ -410,5 +410,4 @@ async function storeCredit(customerID, amount, accessToken) {
 // Run the delivery_order script
 //orderDayFormatted = '2023-10-31'
 
-//subscriptions(utilities.getOrderDay());
-subscriptions('2023-12-27');
+subscriptions(utilities.getOrderDay());
