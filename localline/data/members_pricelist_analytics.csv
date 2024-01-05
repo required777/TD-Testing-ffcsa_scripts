@@ -1,25 +1,25 @@
 ﻿Vendor,Product,Visible,Item Unit,Charge Unit,Package Name,# of Items,Purchase Price,Retail Price,Margin
-Deck Family Farm,SALE Rosette D' Oregon Salami,Y,ea,ea,4.5 oz,1,12.6,14,10
 Deck Family Farm,Organic Pasture Raised Chicken Eggs,Y,ea,ea,1 dozen,1,7.7,9.24,17
 Deck Family Farm,Rendered Pork Back Fat,Y,ea,ea,16 oz,1,8.4,10.08,17
-Deck Family Farm,Pork Chops,Y,ea,ea,1- 1.5 lbs,1,17.33,20.8,17
+Deck Family Farm,Pork Chops Bone-In,Y,ea,ea,1.5- 1.8 lbs,1,20.79,24.95,17
 Deck Family Farm,Bacon Ends & Pieces,Y,pk,pk,8 oz,1,8.4,10.08,17
 Deck Family Farm,Pork Shoulder Roast,Y,ea,ea,2.0 - 3.0 lbs,1,34.65,41.58,17
 Deck Family Farm,Beef Bones,Y,bag,bag,3 - 5 lbs,1,14,16.8,17
-Deck Family Farm,Beef Brisket,Y,ea,ea,2.3-3.3 lbs,1,35.81,42.97,17
+Deck Family Farm,Beef Brisket,Y,ea,ea,"Xtra-Large, 5.2 -5.8 Lbs",1,62.93,75.52,17
 Deck Family Farm,Beef Chuck Roast,Y,ea,ea,2 - 3 lbs,1,32.55,39.06,17
 Deck Family Farm,Beef Heart,Y,ea,ea,2.5 - 3 lb,1,16.8,20.16,17
 Deck Family Farm,Red Ranger Roaster,Y,ea,ea,Large 5.1- 5.7 Lbs,1,39.9,47.88,17
 Deck Family Farm,Rendered Beef Tallow,Y,ea,ea,16 oz,1,8.4,10.08,17
 Deck Family Farm,Beef Patties,Y,pk,pk,1 lb / 3 Patties,1,9.28,11.14,17
 Deck Family Farm,Beef Stew Meat,Y,ea,ea,1.2 - 1.4 lbs,1,15.19,18.23,17
+Deck Family Farm,Ribeye Steak,Y,ea,ea,0.8 - 1 lbs,1,23.1,27.72,17
 Deck Family Farm,Bone-In Chicken Breast,Y,ea,ea,1.2 -1.8 lbs,1,25.2,30.24,17
 Deck Family Farm,"Roast Beef, Sliced",Y,pk,pk,8 oz,1,11.55,13.86,17
 Deck Family Farm,Roasting Chicken,Y,ea,ea,"Large, 4.3-5 lbs.",1,28,33.6,17
 Deck Family Farm,Chicken Hindquarter,Y,ea,ea,1.3 - 1.75 lbs,1,19.6,23.52,17
 Deck Family Farm,Chicken Liver,Y,ea,ea,1/2 lb,1,3.5,4.2,17
 Deck Family Farm,Sage and Sea Salt Pork Breakfast Sausage,Y,pk,pk,each,1,9.8,11.76,17
-Deck Family Farm,Smoked Polish Kielbasa Sausage,Y,pk,pk,12 oz,1,11.55,13.86,17
+Deck Family Farm,Chorizo Sausage,Y,pk,pk,12 oz 4 count,1,11.55,13.86,17
 Deck Family Farm,Stewing Hen,Y,ea,ea,2 - 3.8 lbs,1,10.85,13.02,17
 Deck Family Farm,Fresh Garlic Sausage Links,Y,pk,pk,12 oz / 4 count,1,11.55,13.86,17
 Deck Family Farm,Ground Beef - All Natural,Y,ea,ea,1 lb,1,9.28,11.14,17
@@ -29,40 +29,36 @@ Deck Family Farm,Sweet Italian Sausage Links,Y,pk,pk,12 oz 4 count,1,11.55,13.86
 Deck Family Farm,"Honey Maple Ham, Sliced",Y,pk,pk,8 oz,1,11.55,13.86,17
 Deck Family Farm,Tamari Pressed Beef Jerky,Y,pk,pk,3 oz,1,10.5,12.6,17
 Deck Family Farm,Hot Italian Sausage Links,Y,pk,pk,12 oz / 4 count,1,11.55,13.86,17
+Deck Family Farm,Western Beef Short Ribs,Y,ea,ea,2.5 - 3 lbs,1,34.65,41.58,17
 Deck Family Farm,Lamb Neck Slices,Y,ea,ea,1.4-1.8 lb,1,16.7,20.04,17
 Deck Family Farm,Lamb Shank - Whole,Y,ea,ea,2 - 2.5 lbs,1,28,33.6,17
 Deck Family Farm,Lamb Shoulder Roast,Y,ea,ea,2.5 - 3 lbs,1,42,50.4,17
 Deck Family Farm,Landgaeger Jerky,Y,pk,pk,3 count / 3 oz,1,9.8,11.76,17
-Deck Family Farm,New York Steak,Y,ea,ea,Double Pack 1.3 - 1.5 Lbs,1,32.55,39.06,17
+Deck Family Farm,New York Steak,Y,ea,ea,Small 0.4- 0.5 Lbs,1,10.85,13.02,17
 Deck Family Farm,Nitrite-Free Old World Hot Dogs,Y,pk,pk,14 oz / 4 count,1,12.6,15.12,17
 Deck Family Farm,Pork Bacon,Y,pk,pk,8 oz,1,10.33,12.4,17
 Deck Family Farm,Bulk Raw Honey,Y,ea,ea,4 gallon,1,245,294,17
 Deck Family Farm,Cracked Walnuts,Y,ea,ea,1 Lb,1,15.4,18.48,17
 Deck Family Farm,Raw Honey,Y,ea,ea,1 qt,1,28,33.6,17
-Deck Family Farm,Beef Tenderloin,Y,pk,pk,0.4 - 0.5 lbs.,1,11.9,14.28,17
-Deck Family Farm,Beef Osso Buco,Y,ea,ea,1-1.5 lbs.,1,17.33,20.8,17
-Deck Family Farm,Beef Back Ribs,Y,ea,ea,"Large, 3.5- 4.1 Lbs",1,38.03,45.64,17
+Deck Family Farm,Beef Osso Buco,Y,ea,ea,0.9 - 1.4  lbs.,1,16.17,19.4,17
+Deck Family Farm,Beef Back Ribs,Y,ea,ea,"Large, 3.4- 4.1 Lbs",1,38.03,45.64,17
 Deck Family Farm,Beef Flat Iron Steak,Y,ea,ea,.8 - 1.3 lbs.,1,20.02,24.02,17
 Deck Family Farm,Pork Bones,Y,ea,ea,3-5 lbs.,1,7,8.4,17
-Deck Family Farm,Chicken Feet,Y,ea,ea,2 lbs,1,11.2,13.44,17
 Deck Family Farm,Pet Food Pork and Lamb Ground Organ Blend,Y,ea,ea,1 lb,1,10.15,12.18,17
 Deck Family Farm,Beef Ground Organ Blend,Y,ea,ea,1 lb,1,10.15,12.18,17
 Deck Family Farm,Bratwurst Sausage,Y,ea,ea,12 oz.,1,11.55,13.86,17
 Deck Family Farm,Ground Country Sausage,Y,ea,ea,12 oz,1,9.28,11.14,17
 Deck Family Farm,Top Sirloin Steak,Y,ea,ea,1.2- 1.7 Lbs,1,24.99,29.99,17
 Deck Family Farm,Denver Spare Ribs,Y,pk,pk,2.5- 2.9 Lbs,1,24.36,29.23,17
-Deck Family Farm,Baby Back Ribs,Y,pk,pk,1 - 1.3 Lbs,1,13.2,15.84,17
+Deck Family Farm,Baby Back Ribs,Y,pk,pk,"Large, 1.4 - 1.8 Lbs",1,18.27,21.92,17
 Deck Family Farm,Fresh Pork Chaurice Sausage - made weekly in our farm kitchen!,Y,pk,pk,pk,1,12.6,15.12,17
 Deck Family Farm,Chicken Hearts,Y,pk,pk,1/2 lb. pk,1,8.4,10.08,17
 Deck Family Farm,Chicken Gizzards,Y,pk,pk,1/2 lb pk,1,7,8.4,17
 Deck Family Farm,Fresh Pork Loukaniko Sausage - made weekly in our farm kitchen!,Y,pk,pk,pk,1,12.6,15.12,17
 Deck Family Farm,Beef Heart,Y,pk,pk,2.5- 3 Lbs,1,16.8,20.16,17
 Deck Family Farm,Beef Kidney,Y,pk,pk,0.8 - 1 Lbs,1,15.4,18.48,17
-Deck Family Farm,Beef Tongue,Y,pk,pk,2.7 - 3.2 Lbs,1,17.92,21.5,17
-Deck Family Farm,Beef Marrow Bones,Y,pk,pk,4 - 4.2 Lbs,1,20.58,24.7,17
 Deck Family Farm,Lamb Bones,Y,pk,pk,3 - 5 Lbs,1,7,8.4,17
 Deck Family Farm,Lamb Rib Chops,Y,pk,pk,0.8 - 1 Lb,1,14,16.8,17
-Deck Family Farm,Lamb Kabob,Y,pk,pk,0.8 - 1.1 Lbs,1,13.86,16.63,17
 Deck Family Farm,Lamb Shank Osso Buco,Y,pk,pk,1.1 - 1.4 Lbs,1,15.68,18.82,17
 Deck Family Farm,Pork Frankfurter,Y,pk,pk,12 oz pk,1,11.9,14.28,17
 Reality Kitchen Nonprofit,Challah Sandwich Loaf,Y,ea,ea,each,1,4.85,6.25,22
@@ -94,7 +90,6 @@ Grazier's Garden,Alpine Daikon Radish,Y,ea,ea,1 Lb,1,2.35,3.13,25
 Grazier's Garden,Watermelon Radish,Y,lb,lb,Each,1,5,6.65,25
 Grazier's Garden,Yukon Potatoes,Y,lb,lb,1 lb,1,2.25,2.99,25
 Grazier's Garden,Blue Sweet Kabocha,Y,ea,ea,each,1,4,5.32,25
-Grazier's Garden,Green Curly Kale,Y,bu,bu,each,1,2.5,3.33,25
 OGC,Champion Club Microgreens Broccoli Mix 2 oz,Y,ea,ea,2 oz,1,5.45,7.25,25
 OGC,Champion Club Microgreens Power Mix,Y,ea,ea,2 oz,1,5.45,7.25,25
 OGC,Champion Club Microgreens Rainbow Mix,Y,ea,ea,2 oz,1,5.45,7.25,25
@@ -104,6 +99,8 @@ Grazier's Garden,Delicata Squash,Y,ea,ea,each,1,2.75,3.66,25
 OGC,Parsnips,Y,lb,lb,1 lb,1,2.2,2.93,25
 OGC,Shiitake Mushrooms,Y,1/2 lb,1/2 lb,1/2 lb,1,3.63,4.83,25
 Full Farm CSA,Shallots,Y,lb,lb,1 lb,1,3.5,4.66,25
+Grazier's Garden,Rainbow Chard,Y,bu,bu,each,1,3.5,4.66,25
+Full Farm CSA,Yacon Tuber,Y,lb,lb,1 lb,1,2.5,3.33,25
 Radiant Coffee Roasters,Vietnam Lotus - Light Roast Coffee,Y,ea,ea,16 oz,1,11,14.63,25
 Elegant Elephant Baking Co.,Blackberry Hand Pie,Y,ea,ea,each,1,2.95,3.92,25
 Elegant Elephant Baking Co.,Box of 5 Cupcakes,Y,ea,ea,each,1,6,7.98,25
@@ -129,17 +126,13 @@ Queen of Hearts Superfood,Queen of Hearts Sassy Italian Dressing,Y,ea,ea,each,1,
 Camas Country Mill,Organic Red Floriani Corn Flour,Y,ea,ea,2 lbs,1,6.12,8.14,25
 Queen of Hearts Superfood,Queen of Hearts Spicy Sesame Dressing,Y,ea,ea,each,1,6.6,8.78,25
 Queen of Hearts Superfood,Queen of Hearts Zesty Caesar Dressing,Y,ea,ea,each,1,6.6,8.78,25
-Sweet Creek,Paul's Dill Pickles,Y,ea,ea,24 oz,1,5.7,7.58,25
 Radiant Coffee Roasters,Brazil Cerrado Miniero - Dark Roast Coffee,Y,ea,ea,16 oz,1,11,14.63,25
 Sweet Creek,Pickled Beets,Y,ea,ea,16 oz,1,4.1,5.49,25
 Radiant Coffee Roasters,Radiant Balanced Blend - Medium Roast,Y,ea,ea,16 oz,1,11,14.63,25
 Radiant Coffee Roasters,Radiant Breakfast Blend - Light Roast,Y,ea,ea,16 oz,1,11,14.63,25
-Radiant Coffee Roasters,Radiant Decaf Columbia Coffee,Y,ea,ea,12 oz,1,11,14.63,25
 Radiant Coffee Roasters,Radiant Midnight Blend - Dark Roast,Y,ea,ea,16 oz,1,11,14.63,25
-Camas Country Mill,Sues Soup Mix,Y,ea,ea,2 lbs,1,9,11.97,25
 Sweet Creek,Roasted Garlic Tomato Sauce,Y,ea,ea,16 oz,1,3.76,5,25
 Sweet Creek,"Salsa, Hot",Y,ea,ea,16 oz,1,3.7,4.92,25
-Sweet Creek,"Salsa, Medium",Y,ea,ea,16 oz,1,3.7,4.92,25
 Creole Me Up,Creole Marinade with Sass,Y,ea,ea,8oz,1,7.5,9.98,25
 Sweet Creek,Sweet Relish,Y,ea,ea,12. 6 oz,1,4,5.32,25
 Creole Me Up,Pickleez with a Little Bit of Sass,Y,ea,ea,16.06oz,1,8.35,11.11,25
@@ -156,7 +149,6 @@ Grazier's Garden,Red Norland Potatoes,Y,pound,pound,ea,1,2.25,2.99,25
 Grazier's Garden,Orange Carrots,Y,bu,bu,1 lb,1,3,3.99,25
 Massimo's Fruit,Persimmon,Y,ea,ea,ea,1,1,1.33,25
 Grazier's Garden,Acorn squash,Y,ea,ea,Each,1,4,5.32,25
-Grazier's Garden,Purple curly kale,Y,ea,ea,ea,1,2.25,2.99,25
 Barrett Baking,Organic Artisan Sourdough Loaf,Y,ea,ea,ea,1,8,10.64,25
 Grazier's Garden,Russet potatoes,Y,pound,pound,pound,1,2,2.66,25
 Grazier's Garden,Purple Viking potatoes,Y,pound,pound,pound,1,2.25,2.99,25
@@ -174,6 +166,7 @@ Elegant Elephant Baking Co.,Gluten Free Cinnamon Roll Pan,Y,ea,ea,"6""",1,6,8.5,
 Elegant Elephant Baking Co.,Gluten Free Half Almond Loaf Sliced,Y,ea,ea,each,1,5,7,29
 Elegant Elephant Baking Co.,Gluten Free Mini Banana Bread Loaf,Y,ea,ea,each,1,5,7,29
 Elegant Elephant Baking Co.,Gluten Free Apple Pie,Y,ea,ea,"6""",1,7.5,10.5,29
+Grazier's Garden,Dill,Y,bu,bu,each,1,1.75,2.5,30
 Elegant Elephant Baking Co.,Pizza Dough,Y,ea,ea,each,1,4.75,6.89,31
 Reality Kitchen Nonprofit,Sourdough Rye Sandwich Loaf,Y,ea,ea,each,1,4.75,7,32
 Reality Kitchen Nonprofit,Wholewheat Multigrain Sandwich Loaf,Y,ea,ea,each,1,4.75,7,32
