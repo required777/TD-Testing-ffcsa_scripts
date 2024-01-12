@@ -361,6 +361,18 @@ function getOrderDay() {
     const yesterdayFormatted = `${year}-${month}-${day}`;
     return yesterdayFormatted;
 }
+function getOrderDayMinusSeven() {
+    const today = new Date();
+    const yesterday = new Date(today);
+    yesterday.setDate(today.getDate() - 7);
+
+    const year = yesterday.getFullYear();
+    const month = String(yesterday.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+    const day = String(yesterday.getDate()).padStart(2, '0');
+
+    const yesterdayFormatted = `${year}-${month}-${day}`;
+    return yesterdayFormatted;
+}
 
 function getToday() {
     const today = new Date();
@@ -412,6 +424,7 @@ module.exports = {
     sendErrorEmail,
     getNextFullfillmentDate,
     getOrderDay,
+    getOrderDayMinusSeven,
     getLastMonth,
     getToday,
     mailADocument

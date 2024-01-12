@@ -38,7 +38,7 @@ function writeEntryToCSV(filePath, newEntry) {
     }
 }
 
-async function run(filename, customerData, orderDayFormatted, accessToken) {
+async function run(filename, customerData, orderDayFormatted, lastWeekFormatted, accessToken) {
     return new Promise((resolve, reject) => {
         const pdf_file = 'data/subscriptions_' + orderDayFormatted + '.pdf';
         const order_data_success_file = 'data/order_data_' + process.env.ENVIRONMENT + '_success.csv'
@@ -129,18 +129,6 @@ async function run(filename, customerData, orderDayFormatted, accessToken) {
                     };
                 });
 
-                const allCombinedData = combinedData.concat(combinedDataIssues);
-
-                const table = {
-                    title: '',
-                    headers: ['Success', 'Status', 'CustomerID', 'OrderID', 'Customer', 'Email', 'Subscription Date', 'Level', 'Total'],
-                    rows: allCombinedData.map(item => [item.success, item.status, item.id, item.order, item.customer, item.email, item.subscription_date, item.level, item.amount]),
-                };
-                doc.text('Results for ' + orderDayFormatted)
-                doc.text("SUCCESS -- member will have their balance credited.")
-                doc.text("FAIL -- requires manual check later to see if their card was charged.")
-                doc.table(table);
-                doc.end();
 
                 // TODO: In this loop pull out id and call IP to increment by set amount
                 num_subscriptions = 0;
@@ -151,6 +139,7 @@ async function run(filename, customerData, orderDayFormatted, accessToken) {
                     // Track transactions by Order Number in PRODUCTION environment
                     if (process.env.ENVIRONMENT === 'PRODUCTION') {
                         if (orderDataSuccessFile.includes(entry.order.toString())) {
+			    entry.success = 'ENTERED';
                             console.log(`${entry.order} EXISTS, DO NOTHING (PRODUCTION ENVIRONMENT)`)
                         } else {
                             // storeCredit Function -- this is the part that Credits a customer
@@ -165,6 +154,7 @@ async function run(filename, customerData, orderDayFormatted, accessToken) {
 		            storeCredit( entry.id, amount, accessToken)
                             console.log(`${entry.order} CREDIT ACCOUNT! (PRODUCTION ENVIRONMENT)`)
                             writeEntryToCSV(order_data_success_file, entry);
+                    	    num_subscriptions = num_subscriptions + 1
                         }
                     } else {
                         if (orderDataSuccessFile.includes(entry.order.toString())) {
@@ -174,6 +164,7 @@ async function run(filename, customerData, orderDayFormatted, accessToken) {
                             }
                             amount = amount.toString()
                             entry.amount = amount
+			    entry.success = 'ENTERED';
                             console.log(`${entry.order} EXISTS, DO NOTHING (DEVELOPMENT ENVIRONMENT) = `+ amount)                         
                         } else {
                             amount = entry.amount
@@ -184,12 +175,10 @@ async function run(filename, customerData, orderDayFormatted, accessToken) {
                             entry.amount = amount
                             console.log(`${entry.order} DOES NOT EXIST -- (DEVELOPMENT ENVIRONMENT) amount to credit = ` + amount)
                             writeEntryToCSV(order_data_success_file, entry);
+                    	    num_subscriptions = num_subscriptions + 1
                         }
                     }
-                    num_subscriptions = num_subscriptions + 1
                 }
-
-                
                 for (const entry of combinedDataIssues) {                
                     if (orderDataFailFile.includes(entry.order.toString())) {
                         //if (orderDataFailFile.some(existingEntry => existingEntry.id === entry.id)) {
@@ -201,6 +190,24 @@ async function run(filename, customerData, orderDayFormatted, accessToken) {
                     num_subscriptions = num_subscriptions + 1
                 }
                 console.log(num_subscriptions + " subscriptions made, including ones with issues")
+
+
+                let allCombinedData = combinedData.concat(combinedDataIssues);
+
+    		allCombinedData = allCombinedData.filter(entry => entry.success !== "ENTERED");
+
+                const table = {
+                    title: '',
+                    headers: ['Success', 'Status', 'CustomerID', 'OrderID', 'Customer', 'Email', 'Subscription Date', 'Level', 'Total'],
+                    rows: allCombinedData.map(item => [item.success, item.status, item.id, item.order, item.customer, item.email, item.subscription_date, item.level, item.amount]),
+                };
+                doc.text('Results from ' + lastWeekFormatted + " to " + orderDayFormatted )
+                doc.text('# subscriptions = ' + num_subscriptions)
+                doc.text("SUCCESS - member will have their balance credited.")
+                //doc.text("ENTERED\tmember already has had their account credited.")
+                doc.text("FAIL - requires manual check later to see if their card was charged.")
+                doc.table(table);
+                doc.end();
 
                 const results = {
                     count: num_subscriptions,
@@ -257,14 +264,14 @@ async function populateCustomers(accessToken) {
 
 }
 
-async function subscriptions(yesterday) {
+async function subscriptions(yesterday,lastweek) {
     try {
         console.log("running subscriptions updater")
 
         url = 'https://localline.ca/api/backoffice/v2/orders/export/?' +
             'file_type=orders_list_view&' +
             'send_to_email=false&destination_email=fullfarmcsa%40deckfamilyfarm.com&direct=true&' +
-            `start_date=${yesterday}&` +
+            `start_date=${lastweek}&` +
             `end_date=${yesterday}&` +
             //'payment__status=PAID&payment__status=AUTHORIZED&' +
             'vendors=3148&price_lists=2719,2895&status=OPEN'
@@ -295,7 +302,7 @@ async function subscriptions(yesterday) {
                     utilities.downloadData(subscription_result_url, 'subscriptions_' + yesterday + ".csv", accessToken)
                         .then((subscription_file_path) => {
                             console.log('Downloaded file path:', subscription_file_path);
-                            run(subscription_file_path, customerData, yesterday, accessToken)
+                            run(subscription_file_path, customerData, yesterday, lastweek, accessToken)
                                 .then((results) => {
                                     try {
 
@@ -308,7 +315,7 @@ async function subscriptions(yesterday) {
                                         const emailOptions = {
                                             from: "jdeck88@gmail.com",
                                             to: "jdeck88@gmail.com",
-                                            subject: 'Subscriptions made on ... ' + yesterday,
+                                            subject: 'Subscriptions made on ... ' + lastweek + ' to ' + yesterday,
                                             text: bodytext,
                                         };
 
@@ -410,4 +417,4 @@ async function storeCredit(customerID, amount, accessToken) {
 // Run the delivery_order script
 //orderDayFormatted = '2023-10-31'
 
-subscriptions(utilities.getOrderDay());
+subscriptions(utilities.getOrderDay(),utilities.getOrderDayMinusSeven());
