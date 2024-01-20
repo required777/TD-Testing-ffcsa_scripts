@@ -54,7 +54,7 @@ async function run_analyzer(pricelist_name, url) {
 
         // Extract and filter the desired columns
         const result = Object.values(joinedData)
-          .filter(row => row[12] === 'Y') // Filter based on 'Visible' column
+          //.filter(row => row[12] === 'Y') // Filter based on 'Visible' column
           .map(row => ({
             Vendor: row[5], // Vendor
             Product: row[4], // Product
