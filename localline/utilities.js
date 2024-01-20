@@ -171,7 +171,6 @@ async function downloadBinaryData(url, fileName, accessToken) {
             'Authorization': `Bearer ${accessToken}`
         };
         const response = await axios.get(url, { responseType: 'arraybuffer', headers });
-
         // Write the binary data to a file
         fs.writeFileSync(fileName, response.data);
 
