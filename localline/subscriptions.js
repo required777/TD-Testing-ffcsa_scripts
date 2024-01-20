@@ -205,7 +205,7 @@ async function run(filename, customerData, orderDayFormatted, lastWeekFormatted,
                 doc.text('# subscriptions = ' + num_subscriptions)
                 doc.text("SUCCESS - member will have their balance credited.")
                 //doc.text("ENTERED\tmember already has had their account credited.")
-                doc.text("FAIL - requires manual check later to see if their card was charged.")
+                doc.text("FAIL - see status for more information. May require manual intervention.")
                 doc.table(table);
                 doc.end();
 
