@@ -25,6 +25,11 @@ scripts
 ##################################################
 # Run Subscriptions every day at 02:01 PT which is 10:00 UTC
 1 10 * * * /home/exouser/code/ffcsa_scripts/localline/run.sh subscriptions.js
+
+# Run new_subscribers report at 02:02 PT and 14:02 PT
+2 10 * * * /home/exouser/code/ffcsa_scripts/localline/run.sh new_subscribers.js
+2 22 * * * /home/exouser/code/ffcsa_scripts/localline/run.sh new_subscribers.js
+
 # download the subscriber metabase report from local line every day which keeps a log of
 # all upcoming subscriptions.  logging changes in git allows us to look back in time
 2 10 * * * /home/exouser/code/ffcsa_scripts/localline/download_subscriber_meta_report.sh
