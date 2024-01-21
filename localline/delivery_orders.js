@@ -186,7 +186,8 @@ async function delivery_order(fullfillmentDateStart, fullfillmentDateEnd) {
       'file_type=orders_list_view&send_to_email=false&destination_email=fullfarmcsa%40deckfamilyfarm.com&direct=true&' +
       `fulfillment_date_start=${fullfillmentDateStart}&` +
       `fulfillment_date_end=${fullfillmentDateEnd}&` +
-      '&status=OPEN&status=NEEDS_APPROVAL&status=CANCELLED&status=CLOSED'
+      '&status=OPEN'
+      //'&status=OPEN&status=NEEDS_APPROVAL&status=CANCELLED&status=CLOSED'
     data = await utilities.getRequestID(url, accessToken);
     const id = JSON.parse(data).id;
 
