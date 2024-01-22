@@ -133,5 +133,4 @@ async function new_subscribers(today) {
 }
 
 //today = '2023-10-31'
-//customers(utilities.getToday());
-new_subscribers('2024-01-02');
+new_subscribers(utilities.getToday());
