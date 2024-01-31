@@ -98,12 +98,13 @@ async function run(filename, customerData, orderDayFormatted, lastWeekFormatted,
 
 
                 // Combine the two arrays based on the "email" field and add "id" to the subscribers array
+		    //console.log(customerData)
                 const combinedData = subscribers.map(subscriber => {
                     const customer = customerData.find(cust => cust.email === subscriber.email);
                     return {
                         success: subscriber.Success,
                         status: subscriber.Status,
-                        id: customer ? customer.id : 999999,
+                        id: customer ? customer.id : null,
                         customer: subscriber.Customer,
                         email: subscriber.email,
                         subscription_date: subscriber.Date,
@@ -119,7 +120,7 @@ async function run(filename, customerData, orderDayFormatted, lastWeekFormatted,
                     return {
                         success: subscriber.Success,
                         status: subscriber.Status,
-                        id: customer ? customer.id : 999999,
+                        id: customer ? customer.id : null,
                         customer: subscriber.Customer,
                         email: subscriber.email,
                         subscription_date: subscriber.Date,
@@ -206,7 +207,13 @@ async function run(filename, customerData, orderDayFormatted, lastWeekFormatted,
                 doc.text("SUCCESS - member will have their balance credited.")
                 //doc.text("ENTERED\tmember already has had their account credited.")
                 doc.text("FAIL - see status for more information. May require manual intervention.")
-                doc.table(table);
+
+	        try {
+                	doc.table(table);
+        	} catch (error) {
+            		console.error('Error creating table:', error);
+            		throw new Error(error)
+        	}
                 doc.end();
 
                 const results = {
@@ -230,7 +237,9 @@ async function run(filename, customerData, orderDayFormatted, lastWeekFormatted,
 
 
 async function populateCustomers(accessToken) {
-    apiUrl = 'https://localline.ca/api/backoffice/v2/customers/?page=1&page_size=50'; // Initial API URL
+    // NOTE, i reported a bug in paging responses where certain results returned duplicate customers
+    // for now i set page_size to 1000 to work around
+    apiUrl = 'https://localline.ca/api/backoffice/v2/customers/?page=1&page_size=1000'; // Initial API URL
 
     let allCustomers = []; // Array to store customer data
 
@@ -288,7 +297,7 @@ async function subscriptions(yesterday,lastweek) {
             try {
                 console.log("fetching customers ...")
                 const customerData = await populateCustomers(accessToken);
-                //console.log('Customer data:', customerData);
+               // console.log('Customer data:', customerData);
 
                 // TODO: validate customerData makes sense
                 data = await utilities.getRequestID(url, accessToken);
