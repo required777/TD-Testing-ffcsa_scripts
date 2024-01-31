@@ -103,7 +103,7 @@ async function run(filename, customerData, orderDayFormatted, lastWeekFormatted,
                     return {
                         success: subscriber.Success,
                         status: subscriber.Status,
-                        id: customer ? customer.id : null,
+                        id: customer ? customer.id : 999999,
                         customer: subscriber.Customer,
                         email: subscriber.email,
                         subscription_date: subscriber.Date,
@@ -119,7 +119,7 @@ async function run(filename, customerData, orderDayFormatted, lastWeekFormatted,
                     return {
                         success: subscriber.Success,
                         status: subscriber.Status,
-                        id: customer ? customer.id : null,
+                        id: customer ? customer.id : 999999,
                         customer: subscriber.Customer,
                         email: subscriber.email,
                         subscription_date: subscriber.Date,
@@ -151,8 +151,8 @@ async function run(filename, customerData, orderDayFormatted, lastWeekFormatted,
                             amount = amount.toString()
                             entry.amount = amount
 
-		            storeCredit( entry.id, amount, accessToken)
                             console.log(`${entry.order} CREDIT ACCOUNT! (PRODUCTION ENVIRONMENT)`)
+		            storeCredit( entry.id, amount, accessToken);
                             writeEntryToCSV(order_data_success_file, entry);
                     	    num_subscriptions = num_subscriptions + 1
                         }
@@ -182,9 +182,9 @@ async function run(filename, customerData, orderDayFormatted, lastWeekFormatted,
                 for (const entry of combinedDataIssues) {                
                     if (orderDataFailFile.includes(entry.order.toString())) {
                         //if (orderDataFailFile.some(existingEntry => existingEntry.id === entry.id)) {
-                        console.log(`${entry.order} EXISTS FAIL FILE, DO NOTHING (DEVELOPMENT ENVIRONMENT)`)
+                        console.log(`${entry.order} EXISTS FAIL FILE, DO NOTHING`)
                     } else {
-                        console.log(`${entry.order} DOES NOT EXIST FAIL FILE, ADD... (DEVELOPMENT ENVIRONMENT)`)
+                        console.log(`${entry.order} DOES NOT EXIST FAIL FILE, ADD...`)
                         writeEntryToCSV(order_data_fail_file, entry);
                     }
                     num_subscriptions = num_subscriptions + 1
