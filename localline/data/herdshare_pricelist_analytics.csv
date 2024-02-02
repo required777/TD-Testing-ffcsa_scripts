@@ -153,7 +153,6 @@ Small is Beautiful Farm,German Butterball Potato,N,lb,lb,2 lb,1,3.25,2.75,-18
 Grazier's Garden,Red Gem Lettuce,N,ea,ea,each,1,3.25,2.75,-18
 Camas Swale Farm,Swiss Chard,N,bu,bu,each,1,3.25,2.75,-18
 Small is Beautiful Farm,Green Beans,N,lb,lb,1 lb,1,6.5,5.5,-18
-Small is Beautiful Farm,Winter Carrots,N,lb,lb,2 lbs,1,6.5,5.5,-18
 Sweet Leaf Organic Farm,Artichokes,N,lb,lb,each,1,3.25,2.75,-18
 ,Zucchini,N,lb,lb,1 lb,1,3.25,2.75,-18
 Grazier's Garden,Salad Turnip Raab,N,bu,bu,each,1,3.25,2.75,-18
@@ -202,19 +201,19 @@ Camas Swale Farm,Kale Mix,N,ea,ea,1/2 lb,1,3.5,4,13
 Little Wings,Orange Bell Pepper,N,lb,lb,1 lb,1,3,3.5,14
 The Extra Loaf,Country Loaf,N,ea,ea,ea,1,12,14,14
 "Creamy Cow, LLC",Raw Cultured Butter,Y,ea,ea,0.5 lbs,1,11,13,15
-"Creamy Cow, LLC",Raw Cultured Buttermilk,Y,ea,ea,1 qt,1,11,13,15
+"Creamy Cow, LLC",Raw Cultured Buttermilk,N,ea,ea,1 qt,1,11,13,15
 "Creamy Cow, LLC",Raw Farmer's Cheese,Y,ea,ea,12 oz,1,10,11.75,15
 "Creamy Cow, LLC",Raw Fresh Sweet Cream,Y,ea,ea,1 pt,1,10,11.75,15
 Camas Swale Farm,Sweet Italian Peppers,N,lb,lb,each,1,3.35,4,16
 Deck Family Farm,Organic Pasture Raised Chicken Eggs,Y,ea,ea,1 dozen,1,7.7,9.24,17
 Deck Family Farm,Rendered Pork Back Fat,Y,ea,ea,16 oz,1,8.4,10.08,17
-Deck Family Farm,Pork Chops Bone-In,Y,ea,ea,1.5- 1.8 lbs,1,20.79,24.95,17
+Deck Family Farm,Pork Chops Bone-In,N,ea,ea,1.5- 1.8 lbs,1,20.79,24.95,17
 Deck Family Farm,Bacon Ends & Pieces,Y,pk,pk,8 oz,1,8.4,10.08,17
-Deck Family Farm,Pork Shoulder Roast,Y,ea,ea,"Large, 3.2 - 3.8 Lbs",1,43.89,52.67,17
+Deck Family Farm,Pork Shoulder Roast,Y,ea,ea,"Large, 3.9-4.5Lbs",1,51.98,62.38,17
 Deck Family Farm,Beef Bones,Y,bag,bag,3 - 5 lbs,1,14,16.8,17
 Deck Family Farm,Beef Brisket,Y,ea,ea,"Xtra-Large, 5.2 -5.8 Lbs",1,62.93,75.52,17
 Deck Family Farm,Beef Chuck Roast,Y,ea,ea,2 - 3 lbs,1,32.55,39.06,17
-Deck Family Farm,Beef Heart,Y,ea,ea,2.5 - 3 lb,1,16.8,20.16,17
+Deck Family Farm,Beef Heart,N,ea,ea,2.5 - 3 lb,1,16.8,20.16,17
 Deck Family Farm,Red Ranger Roaster,Y,ea,ea,Large 5.1- 5.7 Lbs,1,39.9,47.88,17
 Deck Family Farm,Rendered Beef Tallow,Y,ea,ea,16 oz,1,8.4,10.08,17
 Deck Family Farm,Beef Patties,Y,pk,pk,1 lb / 3 Patties,1,9.28,11.14,17
@@ -242,7 +241,7 @@ Deck Family Farm,"Honey Maple Ham, Sliced",Y,pk,pk,8 oz,1,11.55,13.86,17
 Deck Family Farm,Tamari Pressed Beef Jerky,Y,pk,pk,3 oz,1,10.5,12.6,17
 Deck Family Farm,Hot Italian Sausage Links,N,pk,pk,12 oz / 4 count,1,11.55,13.86,17
 Deck Family Farm,Korean Beef Short Ribs,N,ea,ea,1.2- 1.3 lbs,1,16.38,19.66,17
-Deck Family Farm,Western Beef Short Ribs,Y,ea,ea,2.5 - 3 lbs,1,34.65,41.58,17
+Deck Family Farm,Western Beef Short Ribs,Y,ea,ea,2 - 2.6 lbs,1,30.03,36.04,17
 Deck Family Farm,Lamb Neck Slices,Y,ea,ea,1.4-1.8 lb,1,16.7,20.04,17
 Deck Family Farm,"Lamb Sausage Links, Sun-dried Tomato and Basil",N,pk,pk,12 oz 4 count,1,12.6,15.12,17
 Deck Family Farm,Lamb Shank - Whole,Y,ea,ea,2 - 2.5 lbs,1,28,33.6,17
@@ -258,8 +257,8 @@ Deck Family Farm,Cracked Walnuts,Y,ea,ea,1 Lb,1,15.4,18.48,17
 Deck Family Farm,Raw Honey,Y,ea,ea,1 qt,1,28,33.6,17
 Little Wings,Salad Mix,N,bag,bag,1/2 lb,1,4,5,20
 Little Wings,Red Serrano Peppers,N,lb,lb,1 lb,1,3.2,4,20
-BNF Kombucha and Jun,Ginger Turmeric Jun,Y,ea,ea,16 fl. oz,1,3.5,4.38,20
-BNF Kombucha and Jun,Hibiscus Mint Yerbe Mate Kombucha,Y,ea,ea,16. fl oz,1,3.99,4.99,20
+BNF Kombucha and Jun,Ginger Turmeric Jun,N,ea,ea,16 fl. oz,1,3.5,4.38,20
+BNF Kombucha and Jun,Hibiscus Mint Yerbe Mate Kombucha,N,ea,ea,16. fl oz,1,3.99,4.99,20
 BNF Kombucha and Jun,Pear Jun,Y,ea,ea,16 fl. oz,1,3.5,4.38,20
 Camas Country Mill,Organic Dark Northern Rye Flakes,N,ea,ea,3 lbs,1,4.2,5.25,20
 The Extra Loaf,Everyday Artisan Loaf,N,ea,ea,each,1,11,13.75,20
@@ -267,20 +266,21 @@ The Extra Loaf,Organic Granola,N,bag,bag,bag,1,15,18.75,20
 The Extra Loaf,Organic Sourdough Pumpkin Chocolate Chip Scones,N,pk,pk,pk,4,12,15,20
 Reality Kitchen Nonprofit,Challah Sandwich Loaf,Y,ea,ea,each,1,4.85,6.25,22
 Little Wings,Shishito Frying Pepper,N,pt,pt,each,1,2.7,3.5,23
-BNF Kombucha and Jun,Ginger Zen Kombucha,Y,ea,ea,16 fl. oz,1,3.09,3.99,23
+BNF Kombucha and Jun,Ginger Zen Kombucha,N,ea,ea,16 fl. oz,1,3.09,3.99,23
 BNF Kombucha and Jun,Mango Marigold Kombucha,N,ea,ea,16 fl. oz,1,3.09,3.99,23
 BNF Kombucha and Jun,Oregon Blueberry Kombucha,N,ea,ea,16 fl. oz,1,3.09,3.99,23
-BNF Kombucha and Jun,Raspberry Reishi Jun,Y,ea,ea,16 fl. oz,1,3.5,4.55,23
+BNF Kombucha and Jun,Raspberry Reishi Jun,N,ea,ea,16 fl. oz,1,3.5,4.55,23
 Sweet Creek,Tomatillo Salsa,N,ea,ea,16 oz,1,4.4,5.75,23
 Sweet Creek,Blackberry Fruit Spread,N,ea,ea,10 oz,1,3.8,5,24
 Sweet Creek,Strawberry Fruit Spread,N,ea,ea,10 oz,1,3.8,5,24
 Grazier's Garden,Serrano pepper,N,1/2 lb,1/2 lb,1/2 lb,1,3.6,4.75,24
-Grazier's Garden,Rainbow Chard,N,bu,bu,each,1,3.5,4.66,25
+Grazier's Garden,Rainbow Chard,Y,bu,bu,each,1,3.5,4.66,25
+Small is Beautiful Farm,Winter Carrots,Y,lb,lb,2 lbs bag,1,4,5.32,25
 Grazier's Garden,Carrots,N,lb,lb,1 lb,1,3,4,25
 Little Wings,Radicchio Chiogga Head,N,ea,ea,each,1,2.5,3.33,25
 Little Wings,Radicchio Fenice,N,ea,ea,each,1,2.5,3.33,25
 Camas Swale Farm,Braising Mix,N,bag,bag,1/2 lb,1,3,3.99,25
-Full Farm CSA,Yacon Tuber,Y,lb,lb,1 lb,1,2.5,3.33,25
+Full Farm CSA,Yacon Tuber,N,lb,lb,1 lb,1,2.5,3.33,25
 Radiant Coffee Roasters,Vietnam Lotus - Light Roast Coffee,N,ea,ea,16 oz,1,11,14.63,25
 Elegant Elephant Baking Co.,Blackberry Hand Pie,Y,ea,ea,each,1,2.95,3.92,25
 Elegant Elephant Baking Co.,Box of 5 Cupcakes,Y,ea,ea,each,1,6,7.98,25
@@ -301,11 +301,11 @@ Lonesome Whistle,Emmer Macaroni,Y,ea,ea,0.5 lb bag,1,3.33,4.43,25
 Sweet Creek,Blueberry Fruit Spread,N,ea,ea,10 oz,1,3.8,5.05,25
 Lonesome Whistle,Garlic Dill Popcorn,Y,ea,ea,0.4 lb bag,1,3.33,4.43,25
 Camas Country Mill,Organic All Purpose Low Gluten Flour,N,ea,ea,3.5 lbs,1,4.2,5.59,25
-Lonesome Whistle,Jalapeno Cheddar Popcorn,Y,ea,ea,0.4 lb bag,1,3.33,4.43,25
+Lonesome Whistle,Jalapeno Cheddar Popcorn,N,ea,ea,0.4 lb bag,1,3.33,4.43,25
 Sweet Creek,Dill Relish,Y,ea,ea,12.6 oz,1,4,5.32,25
 Lonesome Whistle,Lemon Lavender Popcorn,Y,ea,ea,0.4 lb bag,1,3.33,4.43,25
-Lonesome Whistle,Nutritional Yeast Popcorn,Y,ea,ea,0.4 lb bag,1,3.33,4.43,25
-Sweet Creek,"Enchilada Red Sauce, Medium",Y,ea,ea,16 oz,1,3.9,5.19,25
+Lonesome Whistle,Nutritional Yeast Popcorn,N,ea,ea,0.4 lb bag,1,3.33,4.43,25
+Sweet Creek,"Enchilada Red Sauce, Medium",N,ea,ea,16 oz,1,3.9,5.19,25
 Lonesome Whistle,Plain Kettle Corn,N,ea,ea,0.4 lb bag,1,3.33,4.43,25
 Camas Country Mill,Organic Flax Seeds,N,ea,ea,2.5 lbs,1,4.5,5.99,25
 Lonesome Whistle,Rise & Shine Gluten Free Pancake Mix,Y,ea,ea,1.6 lbs,1,5.33,7.09,25
@@ -343,7 +343,7 @@ The Extra Loaf,Blueberry Scones,N,ea,ea,4 pack,1,11,14.63,25
 The Fungi Pharm,Dual Extract Lions Mane Tincture,N,ea,ea,2 oz,1,25,33.25,25
 The Fungi Pharm,Dual Extract Reishi Tincture,N,ea,ea,2 oz,1,25,33.25,25
 The Fungi Pharm,Dual Extract Turkey Tail Tincture,N,ea,ea,2 oz,1,25,33.25,25
-Grazier's Garden,Red Russian Kale,Y,bu,bu,bu,1,2.33,3.1,25
+Grazier's Garden,Red Russian Kale,N,bu,bu,bu,1,2.33,3.1,25
 Full Farm CSA,Chioggia Beets,N,bu,bu,1 Lb,1,1,1.33,25
 Full Farm CSA,Red Beets,N,bu,bu,1 Lb,1,1,1.33,25
 Full Farm CSA,Wildcraft Hot Sauce,N,ea,ea,ea,1,9,11.97,25
@@ -367,14 +367,14 @@ Deck Family Farm,"Beef, Teres Major Steak",N,ea,ea,0.4- 0.5 lbs.,1,7.7,9.24,17
 Deck Family Farm,Beef Tri-Tip,N,ea,ea,2.2 - 2.4 lbs.,1,29.82,35.78,17
 Deck Family Farm,Beef Osso Buco,Y,ea,ea,0.9 - 1.4  lbs.,1,16.17,19.4,17
 Deck Family Farm,Beef Back Ribs,Y,ea,ea,"Large, 3.4- 4.1 Lbs",1,38.03,45.64,17
-Deck Family Farm,Beef Flank Steak,Y,ea,ea,1.2- 1.6 lbs.,1,24.64,29.57,17
+Deck Family Farm,Beef Flank Steak,N,ea,ea,1.2- 1.6 lbs.,1,24.64,29.57,17
 Deck Family Farm,Beef Flat Iron Steak,Y,ea,ea,.8 - 1.3 lbs.,1,20.02,24.02,17
-Deck Family Farm,Beef Oxtail,N,ea,ea,1.3- 2  lbs.,1,15.4,18.48,17
+Deck Family Farm,Beef Oxtail,N,ea,ea,1-1.2  lbs.,1,9.24,11.09,17
 Deck Family Farm,Pork Bones,Y,ea,ea,3-5 lbs.,1,7,8.4,17
 Deck Family Farm,Chicken Feet,N,ea,ea,2 lbs,1,11.2,13.44,17
 Deck Family Farm,Pet Food Pork and Lamb Ground Organ Blend,Y,ea,ea,1 lb,1,10.15,12.18,17
 Deck Family Farm,Beef Ground Organ Blend,Y,ea,ea,1 lb,1,10.15,12.18,17
-Deck Family Farm,Bratwurst Sausage,Y,ea,ea,12 oz.,1,11.55,13.86,17
+Deck Family Farm,Bratwurst Sausage,N,ea,ea,12 oz.,1,11.55,13.86,17
 Deck Family Farm,Ground Country Sausage,Y,ea,ea,12 oz,1,9.28,11.14,17
 Deck Family Farm,Sliced Smoked Turkey Breast,N,ea,ea,8 oz,1,11.55,13.86,17
 Deck Family Farm,Smoked Turkey Breast Ends and Pieces,N,ea,ea,8 oz,1,7,8.4,17
@@ -386,7 +386,7 @@ Deck Family Farm,Turkey Feet,N,ea,ea,2 Lbs.,1,13.3,15.96,17
 Deck Family Farm,Denver Spare Ribs,Y,pk,pk,2.5- 2.9 Lbs,1,24.36,29.23,17
 Deck Family Farm,Baby Back Ribs,Y,pk,pk,"Large, 1.4 - 1.8 Lbs",1,18.27,21.92,17
 Deck Family Farm,Pork Tenderloin Roast,Y,pk,pk,pk 0.9- 1.2  Lbs,1,14.91,17.89,17
-Deck Family Farm,HAPPY HEN SALE - Organic Pasture Raised Chicken Eggs,Y,ea,ea,2 dozen,2,7.7,9.24,17
+Deck Family Farm,HAPPY HEN SALE - Organic Pasture Raised Chicken Eggs,N,ea,ea,2 dozen,2,7.7,9.24,17
 Deck Family Farm,Fresh Pork Chaurice Sausage - made weekly in our farm kitchen!,Y,pk,pk,pk,1,12.6,15.12,17
 Deck Family Farm,Chicken Hearts,Y,pk,pk,1/2 lb. pk,1,8.4,10.08,17
 Deck Family Farm,Chicken Gizzards,Y,pk,pk,1/2 lb pk,1,7,8.4,17
@@ -435,7 +435,7 @@ OGC,Bosc Pear,Y,ea,ea,each,1,0.75,1,25
 OGC,Cranberries,N,lb,lb,1 lb,1,7,9.31,25
 OGC,Red D'Anjou Pears,Y,ea,ea,each,1,0.85,1.13,25
 Camas Swale Farm,Baby Mustard Salad Mix,N,bag,bag,1/2 lb,1,4,5.32,25
-Grazier's Garden,Spearmint,Y,bu,bu,each,1,3,3.99,25
+Grazier's Garden,Spearmint,N,bu,bu,each,1,3,3.99,25
 OGC,Rutabega,Y,lb,lb,each,1,1.76,2.34,25
 Grazier's Garden,Celeriac,Y,ea,ea,lb,1,3,3.99,25
 Little Wings,Collard Greens,N,bu,bu,each,1,2.25,2.99,25
@@ -465,7 +465,7 @@ Full Farm CSA,Shallots,Y,lb,lb,1 lb,1,3.5,4.66,25
 Grazier's Garden,Poblano Peppers,N,lb,lb,1 lb,1,3,4,25
 Camas Swale Farm,Sugarloaf Chicory,N,bu,bu,each,1,2.34,3.11,25
 Grazier's Garden,Purple Shvelisi Garlic,N,1/2 lb,1/2 lb,1/2 lb,1,5,6.65,25
-Full Farm CSA,Yellow Onions,N,lb,lb,1 lb,1,1,1.33,25
+Full Farm CSA,Yellow Onions,Y,lb,lb,1 lb,1,1,1.33,25
 Little Wings,Kohlrabi,N,bu,bu,1 lb,1,1.75,2.33,25
 Red Tail Growers,Braising Mix,N,ea,ea,1/2 lb,1,3,3.99,25
 Little Wings,Lacinato (Dino) Kale,N,bu,bu,bu.,1,2.25,3,25
@@ -487,7 +487,7 @@ Grazier's Garden,Acorn squash,Y,ea,ea,Each,1,4,5.32,25
 Grazier's Garden,Cone cabbage,N,ea,ea,ea,1,3,3.99,25
 Grazier's Garden,Purple curly kale,N,ea,ea,ea,1,2.25,2.99,25
 "Creamy Cow, LLC",Heidi of the Hills Cheese,N,pk,pk,5.8-7oz,1,10.89,14.48,25
-Barrett Baking,Organic Artisan Sourdough Loaf,Y,ea,ea,ea,1,8,10.64,25
+Barrett Baking,Organic Artisan Sourdough Loaf,N,ea,ea,ea,1,8,10.64,25
 Grazier's Garden,Russet potatoes,Y,pound,pound,pound,1,2,2.66,25
 Grazier's Garden,Purple Viking potatoes,N,pound,pound,pound,1,2.25,2.99,25
 MINYO KINOKO Foraged Goods,Matsutake mushrooms,N,1/2 lb,1/2 lb,1/2 lb,1,11.25,14.96,25
@@ -508,6 +508,8 @@ Full Farm CSA,Deck Family Farm and Full Farm CSA T-Shirt Medium,N,ea,ea,ea,1,17,
 Full Farm CSA,Deck Family Farm and Full Farm CSA T-Shirt Small,N,ea,ea,ea,1,17,22.61,25
 Full Farm CSA,Deck Family Farm and Full Farm CSA T-Shirt Xtra- Small,N,ea,ea,ea,1,17,22.61,25
 Full Farm CSA,Deck Family Farm and Full Farm CSA Hat,N,ea,ea,ea,1,17,22.61,25
+"Creamy Cow, LLC",Lucianna Toma Rustica,N,pk,pk,6.3-7.4oz,1,13.5,17.96,25
+Small is Beautiful Farm,Mixed Dried Fruit,Y,bag,bag,1/2 Lb. bag,1,6,7.98,25
 Elegant Elephant Baking Co.,Gluten Free Cheddar Rolls,Y,ea,ea,bag of 4,1,6.1,8.25,26
 Elegant Elephant Baking Co.,Gluten Free Potato Loaf with Teff,Y,ea,ea,each,1,6.25,8.5,26
 Little Wings,Rosemary,N,bu,bu,each,1,2,2.75,27
@@ -532,7 +534,7 @@ Grazier's Garden,Dill,N,bu,bu,each,1,1.75,2.5,30
 Grazier's Garden,Green Bell Pepper,N,lb,lb,1 lb,1,2.8,4,30
 Little Wings,Green Romaine Lettuce,N,ea,ea,each,1,1.75,2.5,30
 BNF Kombucha and Jun,Blackberry Herbalism Kombucha,N,ea,ea,16 fl. oz,1,3.09,4.42,30
-BNF Kombucha and Jun,Moonfruit Yerbe Mate Kombucha,Y,ea,ea,16 fl. oz,1,3.09,4.42,30
+BNF Kombucha and Jun,Moonfruit Yerbe Mate Kombucha,N,ea,ea,16 fl. oz,1,3.09,4.42,30
 BNF Kombucha and Jun,Peach Rose Kombucha,N,ea,ea,16 fl. oz,1,3.09,4.42,30
 Red Tail Growers,Collard Greens,N,bu,bu,bu,1,1.75,2.5,30
 BNF Kombucha and Jun,Chai Cider,N,ea,ea,ea,1,4.75,6.79,30
