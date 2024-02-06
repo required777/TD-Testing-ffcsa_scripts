@@ -67,10 +67,13 @@ async function run(filename, customerData, orderDayFormatted, lastWeekFormatted,
                 // payment__status=PAID&payment__status=AUTHORIZED&' +
                 if ([200.00, 300.00, 500.00, 86.00].includes(productSubtotal)) {
                     if (row['Payment Status'] === "PAID" || row['Payment Status'] === "AUTHORIZED") {
-                        //console.log(row)
+			let statusString = row['Payment Status']
+			if (row['Payment Method'] == 'SNAP') {
+				statusString += ' -SNAP';
+			}
                         subscribers.push({
                             Success: "SUCCESS",
-                            Status: row['Payment Status'],
+                            Status: statusString,
                             Date: row['Date'],
                             Customer: row['Customer'],
                             email: row['Email'],
@@ -79,9 +82,13 @@ async function run(filename, customerData, orderDayFormatted, lastWeekFormatted,
 							'Order': row['Order']
                         });
                     } else {
+			let statusString = row['Payment Status']
+			if (row['Payment Method'] == 'SNAP') {
+				statusString += '-SNAP';
+			}
                         subscribers_issues.push({
                             Success: "FAIL",
-                            Status: row['Payment Status'],
+                            Status: statusString,
                             Date: row['Date'],
                             Customer: row['Customer'],
                             email: row['Email'],
