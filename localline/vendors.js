@@ -58,7 +58,7 @@ async function writeVendorsPDF(products_file_path, vendors_file_path, filename) 
 
                                     //console.log(mergedObject)
                                     if (category !== 'Membership') {
-                                        vendors[vendorName].products.push({ productID, product, quantity, price, totalPrice, fullfillmentDate, packageName });
+                                        vendors[vendorName].products.push({ productID, product, quantity, price, totalPrice, fullfillmentDate, packageName, category });
                                     }
                                 });
 
@@ -86,6 +86,7 @@ async function writeVendorsPDF(products_file_path, vendors_file_path, filename) 
                                             quantity = itemRow.quantity;
                                             fullfillmentDate = itemRow.fullfillmentDate;
                                             packageName = itemRow.packageName;
+                                            category = itemRow.category;
 
                                             itemRow.price = lookupPackagePrice(productID, packageName, products_data);
                                             itemRow.totalPrice = quantity * itemRow.price;
@@ -96,7 +97,7 @@ async function writeVendorsPDF(products_file_path, vendors_file_path, filename) 
                                         doc.fontSize(16).text(vendorName, { bold: true });
 
                                         // Set the table column widths
-                                        const itemsAsData = items.map(item => [item.product, item.quantity, item.price, item.totalPrice]);
+                                        const itemsAsData = items.map(item => [item.product, item.quantity, item.price, item.totalPrice, item.category]);
 
                                         // Create an object to store the summary
                                         const summary = {};
@@ -107,6 +108,7 @@ async function writeVendorsPDF(products_file_path, vendors_file_path, filename) 
                                             const quantity = parseInt(row[1], 10);
                                             const price = parseFloat(row[2])
                                             const totalPrice = parseFloat(row[3]);
+                                            const category = row[4];
 
                                             if (!summary[key]) {
                                                 summary[key] = { quantity: 0, price: 0, totalPrice: 0 };
@@ -115,22 +117,59 @@ async function writeVendorsPDF(products_file_path, vendors_file_path, filename) 
                                             summary[key].quantity += quantity;
                                             summary[key].price = price;
                                             summary[key].totalPrice += totalPrice;
+                                            summary[key].category = category;
 
                                             sumTotal += totalPrice
                                         });
 
                                         // Convert the summary object to an array of arrays
-                                        const grouped = Object.entries(summary).map(([key, values]) => [key, values.quantity, values.price, values.totalPrice.toFixed(2)]);
+                                        const grouped = Object.entries(summary).map(([key, values]) => [values.category, key, values.quantity, values.price, values.totalPrice.toFixed(2)]);
+                                        // Function to calculate the subtotal for a category
+                                        const calculateSubtotal = (categoryItems) => {
+                                            return categoryItems.reduce((total, item) => total + parseFloat(item[4]), 0);
+                                        };
+
+                                        // Extract unique categories from the data
+                                        const uniqueCategories = [...new Set(grouped.map(item => item[0]))];
+
+                                        // Create a new array to store the rows with subtotals
+                                        const tableWithSubtotals = [];
+
+                                        // Iterate through each unique category
+                                        uniqueCategories.forEach(category => {
+                                            // Filter items belonging to the current category
+                                            const categoryItems = grouped.filter(item => item[0] === category);
+
+                                            // Calculate subtotal for the category
+                                            const subtotal = calculateSubtotal(categoryItems);
+
+                                            // Add items and subtotal row to the new array
+                                            tableWithSubtotals.push(...categoryItems, ['', '', '', 'Subtotal ' + category, subtotal.toFixed(2)]);
+                                        });
+
+
+                                        // Function to remove the first column from each row
+                                        function removeFirstColumn(rows) {
+                                            return rows.map(row => row.slice(1));
+                                        }
+
+                                        // Modified table data structure with the first column removed
+                                        let modifiedTableData = removeFirstColumn(tableWithSubtotals);
+
+
+                                        // Now 'tableWithSubtotals' contains rows sorted by category with subtotals
+                                        // You can use this new array in your PDF generation code
+
+                                        // Additional code for handling total price, new pages, and vendorDoc if needed
 
                                         const pageWidth = 600
 
-                                        table = {
+                                        const table = {
                                             title: '',
-                                            widths: [ 300, '*'],                                                
+                                            widths: [ 300, 300, 300, 300],
                                             headers: ['Product', 'Quantity', 'Price', 'Total Price'],
-                                            rows: grouped,
+                                            rows: modifiedTableData, 
                                         };
-
                                         doc.table(table);
                                         doc.text('Total Price ' + sumTotal.toFixed(2), { align: 'right', bold: true })
                                         doc.addPage();
@@ -150,13 +189,14 @@ async function writeVendorsPDF(products_file_path, vendors_file_path, filename) 
 
                                             const mailOptions = {
                                                 from: 'fullfarmcsa@deckfamilyfarm.com', // sender address
-                                                to: email,
+                                                to: email,                                            
                                                 cc: 'fullfarmcsa@deckfamilyfarm.com',
                                                 bcc: 'jdeck88@gmail.com',
                                                 subject: "Full Farm CSA - " + vendorName + " - " + utilities.getToday(), // Subject line
-                                                text: "The attached PDF file contains the Full Farm CSA Order for the next fulfillment Cycle.  "+
+                                                text: "The attached PDF file contains the Full Farm CSA Order for the next fulfillment Cycle.  " +
                                                     "Respond to this email (including both cc:ed addresses) with questions!"
                                             }
+                                            // JBD
                                             utilities.mailADocument(vendorDoc, mailOptions, 'vendor_fulfillment.pdf');
                                             setTimeout(() => {
                                                 console.log("waiting for emails to process")
@@ -292,7 +332,7 @@ async function vendors(fullfillmentDate) {
 
                                 // Email information
                                 const emailOptions = {
-                                    from: "jdeck88@gmail.com",
+                                    from: "jdeck88@gmail.com",                                    
                                     to: "fullfarmcsa@deckfamilyfarm.com",
                                     cc: "jdeck88@gmail.com",
                                     subject: 'FFCSA Reports: Vendors Data for ' + fullfillmentDate,
@@ -305,7 +345,6 @@ async function vendors(fullfillmentDate) {
                                         filename: "vendors.pdf",
                                         content: fs.readFileSync(vendors_pdf),
                                     }]
-
                                 utilities.sendEmail(emailOptions)
 
                             }).catch((error) => {
