@@ -63,7 +63,7 @@ async function customers(today) {
 
                 // Download File
                 if (url !== "") {
-                    utilities.downloadBinaryData(url, 'customers_' + today + ".csv", accessToken)
+                    utilities.downloadBinaryData(url, 'data/customers_' + today + ".csv", accessToken)
                         .then((customer_file_path) => {
                             console.log('Downloaded file path:', customer_file_path);
                             run(customer_file_path, today).then((balance) => {
