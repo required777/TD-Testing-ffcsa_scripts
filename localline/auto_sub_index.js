@@ -12,13 +12,34 @@ app.use(express.json());
 
 // Endpoint to handle creating orders
 app.post('/create-order', async (req, res) => {
-  const { email, first_name } = req.body;
+  const { email, first_name, last_name, phone, package } = req.body;
 
-  // Set constants.EMAIL and constants.FIRST_NAME based on request body
+  // Set constants
   constants.EMAIL = email;
   constants.FIRST_NAME = first_name;
+  constants.LAST_NAME = last_name;
+  constants.PHONE = phone;
+
+  if (!email || !first_name || !last_name || !phone || !package) {
+    return res.status(400).json({ error: "Missing required parameters. Please provide all parameters." });
+  }
+
+  // set first fullfillment date to tomorrow
+  constants.FIRST_FULFILLMENT_DATE = utilities.getTomorrow(); // must be in future
+  
+  if (package === "Forager") {
+    constants.SUBSCRIPTION_PRODUCT_PACKAGE_ID = 203529; // Forager
+  } else if (package === "Harvester") {
+    constants.SUBSCRIPTION_PRODUCT_PACKAGE_ID = 197861; // Harvester
+  } else if (package === "Grazer") {
+    constants.SUBSCRIPTION_PRODUCT_PACKAGE_ID = 203528; // Grazer
+  } else {
+    // Handle the case if the package name is not recognized
+    return res.status(400).json({ error: "Unknown package" });
+  }
 
   const authenticationHeader = await getAuthentication();
+
   // Create a subscription order
   const order = await createOrder(authenticationHeader);
   //await openOrder(order.id, authenticationHeader);

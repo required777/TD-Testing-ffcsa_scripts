@@ -384,6 +384,18 @@ function getToday() {
     return todayFormatted;
 }
 
+function getTomorrow() {
+    const tomorrow = new Date(new Date());
+
+    tomorrow.setDate(today.getDate() +1);
+
+    const year = tomorrow.getFullYear();
+    const month = String(tomorrow.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+    const day = String(tomorrow.getDate()).padStart(2, '0');
+
+    const tomorrowFormatted = `${year}-${month}-${day}`;
+    return tomorrowFormatted;
+}
 
 function mailADocument(doc, mailOptions, fileName) {
     // Create a buffer to store the PDF in-memory
@@ -426,5 +438,6 @@ module.exports = {
     getOrderDayMinusSeven,
     getLastMonth,
     getToday,
+    getTomorrow,
     mailADocument
 };

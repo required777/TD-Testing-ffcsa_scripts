@@ -12,15 +12,15 @@ exports.FIRST_FULFILLMENT_DATE = "2024-02-17"; // first day of subscription (mus
 exports.PAYMENT_STRATEGY_ID = 3625; // Local Pay Method
 
 // customer information
-exports.FIRST_NAME = "John";
-exports.LAST_NAME = "Deck";
-exports.EMAIL = "jdeck88@gmail.com";
+exports.FIRST_NAME = "TEST_FIRST";
+exports.LAST_NAME = "TEST_LAST";
+exports.EMAIL = "test@example.com.com";
 exports.PHONE = "5556667777";
 
 // subscription information
 exports.FREQUENCY = 30;
 exports.FREQUENCY_UNIT = "day";
-exports.SUBSCRIPTION_PRODUCT_PACKAGE_ID = 197861; // Harvester - 197861, Grazer - 203528, Forager - 203529, Raw Dairy - 204800
+exports.SUBSCRIPTION_PRODUCT_PACKAGE_ID = 203529; // Harvester - 197861, Grazer - 203528, Forager - 203529, Raw Dairy - 204800
 exports.SUBSCRIPTION_QUANTITY = 1; // increase for more shares
 
 // DO NOT CHANGE
