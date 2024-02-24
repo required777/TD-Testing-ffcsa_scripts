@@ -13,7 +13,7 @@ app.use(express.json());
 // Endpoint to handle creating orders
 app.post('/create-order', async (req, res) => {
   const { email, first_name, last_name, phone, package } = req.body;
-
+ console.log(req.body)
   // Set constants
   constants.EMAIL = email;
   constants.FIRST_NAME = first_name;
