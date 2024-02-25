@@ -386,6 +386,7 @@ function getToday() {
 
 function getTomorrow() {
     const tomorrow = new Date(new Date());
+    const today = new Date();
 
     tomorrow.setDate(today.getDate() +1);
 
