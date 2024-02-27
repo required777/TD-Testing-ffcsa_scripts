@@ -111,7 +111,7 @@ async function run(filename, customerData, orderDayFormatted, lastWeekFormatted,
                     return {
                         success: subscriber.Success,
                         status: subscriber.Status,
-                        id: customer ? customer.id : null,
+                        id: customer ? customer.id : '',
                         customer: subscriber.Customer,
                         email: subscriber.email,
                         subscription_date: subscriber.Date,
@@ -127,7 +127,7 @@ async function run(filename, customerData, orderDayFormatted, lastWeekFormatted,
                     return {
                         success: subscriber.Success,
                         status: subscriber.Status,
-                        id: customer ? customer.id : null,
+                        id: customer ? customer.id : '',
                         customer: subscriber.Customer,
                         email: subscriber.email,
                         subscription_date: subscriber.Date,
@@ -214,6 +214,18 @@ async function run(filename, customerData, orderDayFormatted, lastWeekFormatted,
                 doc.text("SUCCESS - member will have their balance credited.")
                 //doc.text("ENTERED\tmember already has had their account credited.")
                 doc.text("FAIL - see status for more information. May require manual intervention.")
+
+		    // 
+		  /*
+// Logging
+console.log("Title:", table.title);
+console.log("Headers:", table.headers.join("\t")); // Print headers separated by tabs
+
+// Print each row
+table.rows.forEach(row => {
+    console.log(row.join("\t")); // Print each row separated by tabs
+});
+		  */ 
 
 	        try {
                 	doc.table(table);
