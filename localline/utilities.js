@@ -296,6 +296,33 @@ function getNextTuesdayOrSaturday() {
     return nextTuesday < nextSaturday ? nextTuesday : nextSaturday;
 }
 
+function getPreviousWeek(dateString) {
+    const givenDate = new Date(dateString);
+    const dayOfWeek = givenDate.getDay();
+
+    // Calculate the difference in days from the given date to the previous Monday
+    const daysUntilPreviousMonday = (dayOfWeek === 0 ? 6 : dayOfWeek - 1);
+    
+    // Calculate the date for the previous Monday
+    const previousMonday = new Date(givenDate);
+    previousMonday.setDate(givenDate.getDate() - daysUntilPreviousMonday);
+
+    // Ensure the week starts on a Monday
+    previousMonday.setDate(previousMonday.getDate() - 7);
+
+    // Calculate the date for the previous Sunday
+    const previousSunday = new Date(previousMonday);
+    previousSunday.setDate(previousMonday.getDate() + 6);
+
+    return { start: formatDate(previousMonday), end: formatDate(previousSunday) };
+}
+
+function formatDate(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+}
 function formatDateToYYYYMMDD(date) {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -435,6 +462,7 @@ module.exports = {
     sendEmail,
     sendErrorEmail,
     getNextFullfillmentDate,
+    getPreviousWeek,
     getOrderDay,
     getOrderDayMinusSeven,
     getLastMonth,

@@ -50,3 +50,13 @@ if [ "$1" == "pricelist_checker.js" ]; then
     echo "No changes in data files."
   fi
 fi
+if [ "$1" == "weekly_kpi.js" ]; then
+  if [[ -n $(git status -s data/weekly_kpi.csv) ]]; then
+    git add data/weekly_kpi.csv
+    git commit -m "Update weekly kpi files"
+    git push
+    echo "Changes pushed to GitHub."
+  else
+    echo "No changes in data files."
+  fi
+fi

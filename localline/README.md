@@ -38,6 +38,7 @@ scripts
 0 11 * * 1  /home/exouser/code/ffcsa_scripts/localline/run.sh delivery_orders.js
 2 11 * * 1  /home/exouser/code/ffcsa_scripts/localline/run.sh checklists.js
 4 11 * * 1  /home/exouser/code/ffcsa_scripts/localline/run.sh vendors.js
+5 11 * * 1  /home/exouser/code/ffcsa_scripts/localline/run.sh weekly_kpi.js
 
 # Run all on Thursday at 03:00 PT which is 11:00 UTC
 0 11 * * 4 /home/exouser/code/ffcsa_scripts/localline/run.sh delivery_orders.js
