@@ -152,7 +152,8 @@ async function run(start, end) {
 			console.log(salesData)
 			const emailOptions = {
 				from: "jdeck88@gmail.com",
-				to: "jdeck88@gmail.com",
+				to: "fullfarmcsa@deckfamilyfarm.com",
+				cc: "jdeck88@gmail.com",
 				subject: subjectString,
 				text: JSON.stringify(salesData, null, 4)
 			};
