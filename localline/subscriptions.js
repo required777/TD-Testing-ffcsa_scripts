@@ -343,6 +343,7 @@ async function subscriptions(yesterday,lastweek) {
                                         const emailOptions = {
                                             from: "jdeck88@gmail.com",
                                             to: "jdeck88@gmail.com",
+                                            cc: "fullfarmcsa@deckfamilyfarm.com",
                                             subject: 'Subscriptions made on ... ' + lastweek + ' to ' + yesterday,
                                             text: bodytext,
                                         };
