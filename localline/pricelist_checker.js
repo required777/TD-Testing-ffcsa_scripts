@@ -7,11 +7,11 @@ require('dotenv').config();
 const utilities = require('./utilities');
 
 // Create a new workbook
-result =  run_analyzer('herdshare', 'https://localline.ca/api/backoffice/v2/price-lists/2966/products/export/?direct=true', output_file)
-result =  run_analyzer('guest', 'https://localline.ca/api/backoffice/v2/price-lists/3124/products/export/?direct=true', output_file)
-result =  run_analyzer('member', 'https://localline.ca/api/backoffice/v2/price-lists/2718/products/export/?direct=true', output_file)
+result =  run_analyzer('herdshare', 'https://localline.ca/api/backoffice/v2/price-lists/2966/products/export/?direct=true')
+result =  run_analyzer('guest', 'https://localline.ca/api/backoffice/v2/price-lists/3124/products/export/?direct=true')
+result =  run_analyzer('members', 'https://localline.ca/api/backoffice/v2/price-lists/2718/products/export/?direct=true')
 
-async function run_analyzer(pricelist_name, url, output_file) {
+async function run_analyzer(pricelist_name, url) {
 
 	data = await utilities.getAccessToken();
 	const accessToken = JSON.parse(data).access;
@@ -63,7 +63,7 @@ async function run_analyzer(pricelist_name, url, output_file) {
 				return value;
 			}).join(',')).join('\n');
 
-			output_file = 'data/' + pricelist_name =" _pricelist_analytics.csv'
+			output_file = 'data/' + pricelist_name +'_pricelist_analytics.csv'
 
 			// Write CSV data to file
 			fs.writeFileSync(output_file, header + csvData);
