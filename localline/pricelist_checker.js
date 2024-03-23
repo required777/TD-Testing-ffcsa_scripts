@@ -37,12 +37,12 @@ async function run_analyzer(pricelist_name, url) {
 				.filter(row => row[12] === 'Y')
 				.map(row => ({
 					Priceslist: pricelist_name, // Vendor
-					Vendor: row[3], // Vendor
-					Product: row[5], // Product
+					Vendor: row[3].replace(/["']/g, ''), // Vendor
+					Product: row[5].replace(/["']/g, ''), // Product
 					Visible: row[12], // Visible
 					'Item Unit': row[8], // Item Unit
 					'Charge Unit': row[9], // Charge Unit
-					'Package Name': row[16], // Package Name
+					'Package Name': row[16].replace(/["']/g, ''), // Package Name
 					'# of Items': row[17], // # of Items
 					'Purchase Price': row[20], // Package Price
 					'Retail Price': row[21], // Price List Adjusted Price
@@ -62,6 +62,8 @@ async function run_analyzer(pricelist_name, url) {
 				}
 				return value;
 			}).join(',')).join('\n');
+
+
 
 			output_file = 'data/' + pricelist_name +'_pricelist_analytics.csv'
 
