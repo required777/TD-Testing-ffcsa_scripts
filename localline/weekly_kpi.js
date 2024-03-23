@@ -137,7 +137,7 @@ async function run(start, end) {
 
 		// Download and Process Subscriber Data
 		url = 'https://localline.ca/api/backoffice/v2/order-subscriptions/export/'
-		file_path = await utilities.downloadBinaryData(url, 'subscribers.csv', accessToken)
+		file_path = await utilities.downloadBinaryData(url, 'data/subscribers_'+end+'.csv', accessToken)
 		subscribers(file_path).then(result => {
         	console.log('subscribers finished');
     	})
