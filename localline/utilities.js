@@ -314,7 +314,7 @@ function getPreviousWeek(dateString) {
     const previousSunday = new Date(previousMonday);
     previousSunday.setDate(previousMonday.getDate() + 6);
 
-    return { start: formatDate(previousMonday), end: formatDate(previousSunday) };
+    return { start: formatDateToYYYYMMDD(previousMonday), end: formatDateToYYYYMMDD(previousSunday) };
 }
 
 function formatDate(date) {
