@@ -26,5 +26,5 @@ else
     git commit -m "Update data file: $filename"
 
     # Push the changes to the remote repository
-    git push origin master  # Change "master" to your branch if needed
+    git push origin main # Change "master" to your branch if needed
 fi
