@@ -51,8 +51,8 @@ herdshare,Deck Family Farm,Pork Frankfurter,Y,pk,package,12 oz pk,1,11.9,14.28,1
 herdshare,Deck Family Farm,Pork Shoulder Roast,Y,ea,package,2.4- 3 lbs,1,34.65,41.58,17,20
 herdshare,Deck Family Farms Hyland Processing,Rendered Beef Tallow,Y,ea,package,8 oz,1,4.2,5.04,17,20
 herdshare,Deck Family Farms Hyland Processing,Rendered Beef Tallow,Y,ea,package,16 oz,1,8.4,10.08,17,20
-herdshare,Deck Family Farms Hyland Processing,Rendered Pork Back Fat,Y,ea,package,8 oz,1,4.2,5.04,17,20
 herdshare,Deck Family Farms Hyland Processing,Rendered Pork Back Fat,Y,ea,package,16 oz,1,8.4,10.08,17,20
+herdshare,Deck Family Farms Hyland Processing,Rendered Pork Back Fat,Y,ea,package,8 oz,1,4.2,5.04,17,20
 herdshare,Deck Family Farm,Ribeye Steak,Y,ea,package,0.8 - 1 lbs,1,23.1,27.72,17,20
 herdshare,Deck Family Farm,"Roast Beef, Sliced",Y,pk,package,8 oz,1,11.55,13.86,17,20
 herdshare,Deck Family Farm,Roasting Chicken,Y,ea,package,"Large, 4.3-5 Lbs.",1,28,33.6,17,20
@@ -63,17 +63,18 @@ herdshare,Deck Family Farm,Smoked Polish Kielbasa Sausage,Y,pk,package,12 oz,1,1
 herdshare,Deck Family Farm,Stewing Hen,Y,ea,package,2 - 3.8 lbs,1,10.85,13.02,17,20
 herdshare,Deck Family Farm,Sweet Italian Sausage Links,Y,pk,package,12 oz 4 count,1,11.55,13.86,17,20
 herdshare,Deck Family Farm,Tamari Pressed Beef Jerky,Y,pk,package,3 oz,1,10.5,12.6,17,20
+herdshare,Deck Family Farm,Top Sirloin Steak,Y,ea,package,"Xtra Large, 1.3-1.6 Lbs.",1,23.52,28.22,17,20
 herdshare,Deck Family Farm,Top Sirloin Steak,Y,ea,package,0.5-0.8 Lbs,1,11.76,14.11,17,20
 herdshare,Deck Family Farm,Top Sirloin Steak,Y,ea,package,"Large, 0.9-1.2 Lbs.",1,17.64,21.17,17,20
-herdshare,Deck Family Farm,Top Sirloin Steak,Y,ea,package,"Xtra Large, 1.3-1.6 Lbs.",1,23.52,28.22,17,20
 herdshare,Deck Family Farm,Western Beef Short Ribs,Y,ea,package,1.9-2.5 lbs,1,28.88,34.66,17,20
 herdshare,Deck Family Farm,"Western Beef Short Ribs, Large",Y,ea,package,2.7-3.5 lbs,1,40.43,48.52,17,20
 herdshare,Deck Family Farm,Baby Back Ribs,Y,pk,package,"Xtra Large, 3.8-4.5",1,45.68,56.19,19,23
-herdshare,Deck Family Farm,Baby Back Ribs,Y,pk,package,"Large, 2.3-2.8 Lbs",1,28.42,34.96,19,23
 herdshare,Deck Family Farm,Baby Back Ribs,Y,pk,package,0.9- 1.3  Lbs,1,13.2,16.24,19,23
+herdshare,Deck Family Farm,Baby Back Ribs,Y,pk,package,"Large, 2.3-2.8 Lbs",1,28.42,34.96,19,23
 herdshare,Deck Family Farm,Beef Flat Iron Steak,Y,ea,package,.6 - 1.1 lbs.,1,16.94,20.84,19,23
 herdshare,Deck Family Farm,"Beef Flat Iron Steak, Large",Y,ea,package,1.2 - 1.4 lbs.,1,21.56,26.52,19,23
 herdshare,Deck Family Farm,Beef Heart,Y,ea,package,2.1 - 2.7 lb,1,15.12,18.6,19,23
+herdshare,Deck Family Farm,Beef Kidney,Y,pk,package,0.8 - 1 Lbs,1,15.4,18.94,19,23
 herdshare,Deck Family Farm,Beef Oxtail,Y,ea,package,1.3-1.9  lbs.,1,14.63,17.99,19,23
 herdshare,Deck Family Farm,Beef Shank Osso Buco,Y,ea,package,1-1.4  lbs.,1,16.17,19.89,19,23
 herdshare,Deck Family Farm,"Beef Shank Osso Buco, Large",Y,ea,package,1.5-1.9  lbs.,1,21.95,27,19,23
@@ -91,17 +92,20 @@ herdshare,Deck Family Farm,Lamb Stew Meat,Y,ea,package,0.8  - 1.1 lbs,1,13.86,17
 herdshare,Deck Family Farm,"Olympia Provisions, Dog Treats",Y,pk,package,5 oz. pk,1,10.5,12.92,19,23
 herdshare,Deck Family Farm,Peppered Knife Cut Beef Jerky,Y,pk,package,3 oz,1,10.5,12.92,19,23
 herdshare,Deck Family Farm,Pork Belly,Y,pk,package,"pk, 1.7-2.2 Lbs.",1,22.33,27.47,19,23
+herdshare,Deck Family Farm,Pork Shank,Y,pk,package,2-3 Lb. pk,1,30.45,37.45,19,23
+herdshare,Deck Family Farm,Pork Tenderloin Roast,Y,pk,package,"Large, 1.6- 2.2 Lbs.",1,18.48,22.73,19,23
 herdshare,Deck Family Farm,Pork Tenderloin Roast,Y,pk,package,"Medium, 1- 1.4 Lbs.",1,11.76,14.46,19,23
 herdshare,Deck Family Farm,Pork Tenderloin Roast,Y,pk,package,"Small, pk 0.5- 0.8  Lbs",1,6.72,8.27,19,23
 herdshare,Deck Family Farm,Pork Tenderloin Roast,Y,pk,package,"Xtra-Large, 3.2-3.4   Lbs.",1,28.56,35.13,19,23
-herdshare,Deck Family Farm,Pork Tenderloin Roast,Y,pk,package,"Large, 1.6- 2.2 Lbs.",1,18.48,22.73,19,23
-herdshare,Deck Family Farm,Rack of Lamb *SALE*,Y,ea,package,2.5- 3.1 Lbs.,1,33.06,40.66,19,23
 herdshare,Deck Family Farm,Rack of Lamb *SALE*,Y,ea,package,"Small, 1.6-2.2 Lbs.",1,21.72,26.72,19,23
+herdshare,Deck Family Farm,Rack of Lamb *SALE*,Y,ea,package,2.5- 3.1 Lbs.,1,33.06,40.66,19,23
 herdshare,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Large, 5.1-5.7 Lbs.",1,39.9,49.08,19,23
 herdshare,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Medium, 4.1 - 5 Lbs",1,35,43.05,19,23
 herdshare,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Small, 3-4 Lbs",1,22.4,27.55,19,23
+herdshare,Deck Family Farm,Rosette D Oregon Salami,Y,ea,package,4.5 oz,1,12.6,15.5,19,23
 herdshare,Deck Family Farm,Sage and Sea Salt Pork Breakfast Sausage,Y,pk,package,each,1,9.8,12.05,19,23
 herdshare,Deck Family Farm,"Top Sirloin Steak, XXL",Y,ea,package,1.9- 2.1 Lbs.,1,30.87,37.97,19,23
+herdshare,Deck Family Farm,Turkey Feet,Y,ea,package,2 Lbs.,1,13.3,16.36,19,23
 herdshare,Reality Kitchen Nonprofit,Challah Sandwich Loaf,Y,ea,package,each,1,5,6.35,21,27
 herdshare,"Creamy Cow, LLC",Raw A2/A2 Milk,Y,ea,package,1/2 Gal.,1,15,19,21,27
 herdshare,Kiko Denzer,"Handcrafted Wooden Bowls, Small 14 oz",Y,ea,package,each,1,30,39.6,24,32
