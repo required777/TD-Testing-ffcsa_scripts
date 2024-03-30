@@ -8,6 +8,14 @@ const fastcsv = require('fast-csv');
 const utilities = require('./utilities');
 const ExcelJS = require('exceljs');
 
+function formatPhoneNumber(phoneNumber) {
+    // Remove all non-digit characters
+    const digits = phoneNumber.replace(/\D/g, '');
+
+    // Format into (XXX) XXX-XXXX
+    return `(${digits.substring(0, 3)}) ${digits.substring(3, 6)}-${digits.substring(6)}`;
+}
+
 async function readLocalExcelAndExtractColumnData(filePath) {
   try {
       // Load the Excel workbook from the local file
@@ -99,7 +107,7 @@ async function writeChecklistPDF(dairy_file_path, frozen_file_path, delivery_ord
                 updatedData.forEach((row) => {
                   dropsiteName = row['Fulfillment Name']
                   disposition = row['disposition']
-                  customerName = row['Customer']
+                  customerName = row['Customer'] + "\n" + formatPhoneNumber(row['Phone'])
                   fullfillmentDate = utilities.formatDate(row['Fulfillment Date'])
                   customerPhone = row['Phone']
                   category = row['Membership']
