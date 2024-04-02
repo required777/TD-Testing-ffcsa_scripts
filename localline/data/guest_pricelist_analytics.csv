@@ -17,8 +17,8 @@ guest,Deck Family Farm,Chicken Hearts,Y,pk,package,1/2 lb. pk,1,8.4,10.92,23,30
 guest,Deck Family Farm,Chicken Hindquarter,Y,ea,package,1 - 1.4 lbs,1,15.68,20.38,23,30
 guest,Deck Family Farm,Chicken Liver,Y,ea,package,1/2 lb,1,7,9.1,23,30
 guest,Deck Family Farm,Chorizo Sausage,Y,pk,package,12 oz 4 count,1,11.55,15.02,23,30
-guest,Deck Family Farm,Cracked Walnuts,Y,ea,package,1 Lb,1,15.4,20.02,23,30
 guest,Deck Family Farm,Cracked Walnuts,Y,ea,package,1/2 Lb,1,9.45,12.29,23,30
+guest,Deck Family Farm,Cracked Walnuts,Y,ea,package,1 Lb,1,15.4,20.02,23,30
 guest,Deck Family Farm,Denver Spare Ribs,Y,pk,package,2.5- 2.9 Lbs,1,24.36,31.67,23,30
 guest,Deck Family Farms Hyland Processing,Farm Made Bangers,Y,pk,package,4 links/pk,1,11.9,15.47,23,30
 guest,Deck Family Farms Hyland Processing,Farm Made Chaurice Sausage ( Unlinked ),Y,pk,package,12 oz. pk,1,9.8,12.74,23,30
@@ -31,9 +31,9 @@ guest,Deck Family Farm,Ground Country Sausage,Y,ea,package,12 oz,1,9.28,12.06,23
 guest,Deck Family Farm,Ground Lamb,Y,ea,package,1 lb,1,11.9,15.47,23,30
 guest,Deck Family Farm,"Honey Maple Ham, Sliced",Y,pk,package,8 oz,1,11.55,15.02,23,30
 guest,Deck Family Farm,"Honey, Bulk Raw",Y,ea,package,4 gallon,1,245,318.5,23,30
+guest,Deck Family Farm,"Honey, Raw",Y,ea,package,1/2 pt,1,10.15,13.2,23,30
 guest,Deck Family Farm,"Honey, Raw",Y,ea,package,1 pt,1,15.4,20.02,23,30
 guest,Deck Family Farm,"Honey, Raw",Y,ea,package,1 qt,1,28,36.4,23,30
-guest,Deck Family Farm,"Honey, Raw",Y,ea,package,1/2 pt,1,10.15,13.2,23,30
 guest,Deck Family Farm,Korean Beef Short Ribs,Y,ea,package,1.2-1.6 lbs,1,20.16,26.21,23,30
 guest,Deck Family Farm,Lamb Neck Slices,Y,ea,package,0.9-1.4lb,1,12.99,16.89,23,30
 guest,Deck Family Farm,Lamb Shank - Whole,Y,ea,package,2 - 2.5 lbs,1,28,36.4,23,30
@@ -48,10 +48,10 @@ guest,Deck Family Farm,Pork Bones,Y,ea,package,3-5 lbs.,1,7,9.1,23,30
 guest,Deck Family Farm,"Pork Chop, Boneless Thick Cut",Y,pk,package,1.3-1.9 Lb pk,1,21.95,28.54,23,30
 guest,Deck Family Farm,Pork Frankfurter,Y,pk,package,12 oz pk,1,11.9,15.47,23,30
 guest,Deck Family Farm,Pork Shoulder Roast,Y,ea,package,2.4- 3 lbs,1,34.65,45.05,23,30
-guest,Deck Family Farms Hyland Processing,Rendered Beef Tallow,Y,ea,package,8 oz,1,4.2,5.46,23,30
 guest,Deck Family Farms Hyland Processing,Rendered Beef Tallow,Y,ea,package,16 oz,1,8.4,10.92,23,30
-guest,Deck Family Farms Hyland Processing,Rendered Pork Back Fat,Y,ea,package,8 oz,1,4.2,5.46,23,30
+guest,Deck Family Farms Hyland Processing,Rendered Beef Tallow,Y,ea,package,8 oz,1,4.2,5.46,23,30
 guest,Deck Family Farms Hyland Processing,Rendered Pork Back Fat,Y,ea,package,16 oz,1,8.4,10.92,23,30
+guest,Deck Family Farms Hyland Processing,Rendered Pork Back Fat,Y,ea,package,8 oz,1,4.2,5.46,23,30
 guest,Deck Family Farm,Ribeye Steak,Y,ea,package,0.8 - 1 lbs,1,23.1,30.03,23,30
 guest,Deck Family Farm,"Roast Beef, Sliced",Y,pk,package,8 oz,1,11.55,15.02,23,30
 guest,Deck Family Farm,Roasting Chicken,Y,ea,package,"Large, 4.3-5 Lbs.",1,28,36.4,23,30
@@ -66,11 +66,10 @@ guest,Deck Family Farm,Top Sirloin Steak,Y,ea,package,0.5-0.8 Lbs,1,11.76,15.29,
 guest,Deck Family Farm,Top Sirloin Steak,Y,ea,package,"Xtra Large, 1.3-1.6 Lbs.",1,23.52,30.58,23,30
 guest,Deck Family Farm,Western Beef Short Ribs,Y,ea,package,1.9-2.5 lbs,1,28.88,37.54,23,30
 guest,Deck Family Farm,"Western Beef Short Ribs, Large",Y,ea,package,2.7-3.5 lbs,1,40.43,52.56,23,30
+guest,Deck Family Farm,Baby Back Ribs,Y,pk,package,"Xtra Large, 3.8-4.5",1,45.68,60.75,25,33
 guest,Deck Family Farm,Baby Back Ribs,Y,pk,package,0.9- 1.3  Lbs,1,13.2,17.56,25,33
 guest,Deck Family Farm,Baby Back Ribs,Y,pk,package,"Large, 2.3-2.8 Lbs",1,28.42,37.8,25,33
-guest,Deck Family Farm,Baby Back Ribs,Y,pk,package,"Xtra Large, 3.8-4.5",1,45.68,60.75,25,33
 guest,Deck Family Farm,Beef Flat Iron Steak,Y,ea,package,.6 - 1.1 lbs.,1,16.94,22.53,25,33
-guest,Deck Family Farm,"Beef Flat Iron Steak, Large",Y,ea,package,1.2 - 1.4 lbs.,1,21.56,28.67,25,33
 guest,Deck Family Farm,Beef Heart,Y,ea,package,2.1 - 2.7 lb,1,15.12,20.11,25,33
 guest,Deck Family Farm,Beef Kidney,Y,pk,package,0.8 - 1 Lbs,1,15.4,20.48,25,33
 guest,Deck Family Farm,Beef Oxtail,Y,ea,package,1.3-1.9  lbs.,1,14.63,19.46,25,33
@@ -94,16 +93,16 @@ guest,Deck Family Farm,Pork Tenderloin Roast,Y,pk,package,"Xtra-Large, 3.2-3.4  
 guest,Deck Family Farm,Pork Tenderloin Roast,Y,pk,package,"Medium, 1- 1.4 Lbs.",1,11.76,15.64,25,33
 guest,Deck Family Farm,Pork Tenderloin Roast,Y,pk,package,"Small, pk 0.5- 0.8  Lbs",1,6.72,8.94,25,33
 guest,Deck Family Farm,Pork Tenderloin Roast,Y,pk,package,"Large, 1.6- 2.2 Lbs.",1,18.48,24.58,25,33
-guest,Deck Family Farm,Rack of Lamb,Y,ea,package,2.5- 3.1 Lbs.,1,39.06,51.95,25,33
 guest,Deck Family Farm,Rack of Lamb,Y,ea,package,"Small, 1.6-2.2 Lbs.",1,27.72,36.87,25,33
+guest,Deck Family Farm,Rack of Lamb,Y,ea,package,2.5- 3.1 Lbs.,1,39.06,51.95,25,33
+guest,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Large, 5.1-5.7 Lbs.",1,39.9,53.07,25,33
 guest,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Small, 3-4 Lbs",1,22.4,29.79,25,33
 guest,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Medium, 4.1 - 5 Lbs",1,35,46.55,25,33
-guest,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Large, 5.1-5.7 Lbs.",1,39.9,53.07,25,33
 guest,Deck Family Farm,Rosette D Oregon Salami,Y,ea,package,4.5 oz,1,12.6,16.76,25,33
 guest,Deck Family Farm,Sage and Sea Salt Pork Breakfast Sausage,Y,pk,package,each,1,9.8,13.03,25,33
-guest,Deck Family Farm,"Top Sirloin Steak, XXL",Y,ea,package,1.9- 2.1 Lbs.,1,30.87,41.06,25,33
 guest,Deck Family Farm,Turkey Feet,Y,ea,package,2 Lbs.,1,13.3,17.69,25,33
 guest,Elegant Elephant Baking Co.,Blackberry Hand Pie,Y,ea,package,each,1,2.95,4.22,30,43
+guest,Spoiled Rotten Vinegar,Blackberry Vinegar,Y,ea,package,8 fl. oz,1,7,10.01,30,43
 guest,Spoiled Rotten Vinegar,Blackstrap Vinegar,Y,ea,package,8 fl. oz,1,8,11.44,30,43
 guest,Sweet Creek,Blueberry Fruit Spread,Y,ea,package,10 oz,1,3.8,5.43,30,43
 guest,Elegant Elephant Baking Co.,Box of 5 Cupcakes,Y,ea,package,each,1,6,8.58,30,43
@@ -144,9 +143,10 @@ guest,Kiko Denzer,"Handcrafted Wooden Bowls, Small 14 oz",Y,ea,package,each,1,30
 guest,Kiko Denzer,Handcrafted Wooden Fancy Egg Pushers,Y,ea,package,ea,1,12,17.04,30,42
 guest,Kiko Denzer,Handcrafted Wooden Plain Kitchen Stir Stix,Y,ea,package,each,1,9,12.78,30,42
 guest,RL Plants,Hen and Chicks Succulents,Y,ea,package,each,1,4,5.72,30,43
+guest,Spoiled Rotten Vinegar,Hibiscus Vinegar,Y,ea,package,8 fl. oz,1,8,11.44,30,43
+guest,Spoiled Rotten Vinegar,Honey Vinegar,Y,ea,package,8 fl. oz,1,8,11.44,30,43
 guest,Small is Beautiful Farm,Mixed Dried Fruit,Y,bag,package,1/2 Lb. bag,1,6,8.58,30,43
 guest,River Ranch Oregon Olive OIl,Olive Oil 2022 Arbequina,Y,ea,package,3.38oz (100mL),1,10.95,15.66,30,43
-guest,River Ranch Oregon Olive OIl,Olive Oil 2022 Arbequina,Y,ea,package,8.45oz (250mL),1,16.75,23.95,30,43
 guest,Camas Country Mill,Oregon Wild Rice,Y,ea,package,16 oz,1,12.49,17.86,30,43
 guest,Camas Country Mill,Organic 7-Grain Cereal,Y,ea,package,4 lbs,1,6.9,9.87,30,43
 guest,Camas Country Mill,Organic All Purpose Low Gluten Flour,Y,ea,package,3.5 lbs,1,4.2,6.01,30,43
@@ -158,7 +158,6 @@ guest,Camas Country Mill,Organic Sonora Soft White Wheat Flour,Y,ea,package,3.5 
 guest,Camas Country Mill,Pardina Brown Lentils,Y,ea,package,4.5 lbs,1,10,14.3,30,43
 guest,OGC,Parsnips,Y,lb,package,1 lb,1,2.2,3.15,30,43
 guest,Sweet Creek,Pauls Dill Pickles,Y,ea,package,24 oz,1,5.7,8.15,30,43
-guest,Graziers Garden,Pea Shoots,Y,bag,package,6 oz,1,4.5,6.44,30,43
 guest,Creole Me Up,Pickleez Zonyon in Purple (Pickled Onions),Y,ea,package,16oz,1,9,12.87,30,43
 guest,Graziers Garden,Purple Sprouting Broccoli,Y,bu,package,each,1,3.25,4.65,30,43
 guest,Graziers Garden,Purple curly kale,Y,ea,package,ea,1,2.25,3.22,30,43
@@ -167,6 +166,7 @@ guest,Queen of Hearts Superfood,Queen of Hearts Herb Ranch Dressing,Y,ea,package
 guest,Queen of Hearts Superfood,Queen of Hearts Sassy Italian Dressing,Y,ea,package,each,1,6.6,9.44,30,43
 guest,Queen of Hearts Superfood,Queen of Hearts Spicy Sesame Dressing,Y,ea,package,each,1,6.6,9.44,30,43
 guest,Queen of Hearts Superfood,Queen of Hearts Zesty Caesar Dressing,Y,ea,package,each,1,6.6,9.44,30,43
+guest,Spoiled Rotten Vinegar,Quince Vinegar,Y,ea,package,8 fl oz,1,8,11.44,30,43
 guest,Radiant Coffee Roasters,Radiant Balanced Blend - Medium Roast,Y,ea,package,16 oz,1,11,15.73,30,43
 guest,Radiant Coffee Roasters,Radiant Breakfast Blend - Light Roast,Y,ea,package,16 oz,1,11,15.73,30,43
 guest,Radiant Coffee Roasters,Radiant Decaf Columbia Coffee,Y,ea,package,12 oz,1,11,15.73,30,43
@@ -181,7 +181,6 @@ guest,Sweet Creek,"Salsa, Medium",Y,ea,package,16 oz,1,3.7,5.29,30,43
 guest,RL Plants,Sedum Palmeri Succulents,Y,ea,package,each,1,4,5.72,30,43
 guest,RL Plants,Sedum Rupestre Blue Spruce,Y,ea,package,each,1,4,5.72,30,43
 guest,OGC,Shiitake Mushrooms,Y,1/2 lb,package,1/2 lb,1,4.08,5.83,30,43
-guest,BNF Kombucha and Jun,Skullcap Lemon Yerbe Mate Kombucha,Y,ea,package,16 fl. oz,1,3.19,4.56,30,43
 guest,Graziers Garden,Spearmint,Y,bu,package,each,1,3,4.29,30,43
 guest,Small is Beautiful Farm,Spinach (1/2),Y,bag,package,each,1,4,5.72,30,43
 guest,Sweet Creek,Sweet Relish,Y,ea,package,12. 6 oz,1,4,5.72,30,43
@@ -191,9 +190,9 @@ guest,Camas Country Mill,Three Sisters Porridge,Y,ea,package,3 lbs,1,7.01,10.02,
 guest,Full Farm CSA,Tote Bag,Y,ea,package,ea,1,13,18.59,30,43
 guest,Lonesome Whistle,Up & At Em Pancake Mix,Y,ea,package,1.6 lbs,1,5.33,7.62,30,43
 guest,Radiant Coffee Roasters,Vietnam Lotus - Light Roast Coffee,Y,ea,package,16 oz,1,11,15.73,30,43
+guest,Small is Beautiful Farm,Winter Beets,Y,bu,package,2 Lb Bag,1,4,5.72,30,43
 guest,Small is Beautiful Farm,Winter Carrots,Y,lb,package,2 lbs bag,1,4,5.72,30,43
 guest,Deck Family Farm,Ground Pork,Y,ea,package,1 lb,1,10.15,14.62,31,44
-guest,Sweet Creek,Pickled Beets,Y,ea,package,16 oz,1,4.1,5.9,31,44
 guest,Reality Kitchen Nonprofit,Challah Sandwich Loaf,Y,ea,package,each,1,5,7.4,32,48
 guest,Elegant Elephant Baking Co.,Gluten Free Apple Pie,Y,ea,package,6,1,7.5,11.25,33,50
 guest,Elegant Elephant Baking Co.,Gluten Free Cheddar Rolls,Y,ea,package,bag of 4,1,6.1,9.25,34,52
@@ -201,6 +200,7 @@ guest,Elegant Elephant Baking Co.,Gluten Free Potato Loaf with Teff,Y,ea,package
 guest,Barrett Baking,Organic Artisan Sourdough Loaf,Y,ea,package,ea,1,8,12.4,35,55
 guest,Elegant Elephant Baking Co.,Gluten Free Cinnamon Roll Pan,Y,ea,package,6,1,6,9.5,37,58
 guest,Graziers Garden,Chives,Y,bu,package,each,1,2.5,4,38,60
+guest,Graziers Garden,Fresh Thyme,Y,bu,package,each,1,2.5,4,38,60
 guest,Elegant Elephant Baking Co.,Gluten Free Brownie Bite with Chocolate Chips,Y,ea,package,each,1,2.5,4,38,60
 guest,Elegant Elephant Baking Co.,Gluten Free Half Almond Loaf Sliced,Y,ea,package,each,1,5,8,38,60
 guest,Elegant Elephant Baking Co.,Gluten Free Mini Banana Bread Loaf,Y,ea,package,each,1,5,8,38,60
