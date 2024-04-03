@@ -83,7 +83,7 @@ function findStatusChanges(oldFilePath, newFilePath) {
 
 //const priorWeek = utilities.getPreviousWeek('2024-03-25'); // Date is formatted as "YYYY-MM-DD"
 const priorWeek = utilities.getPreviousWeek(utilities.getToday()); // Date is formatted as "YYYY-MM-DD"
-const { cancelledCustomers, newPlans } = findStatusChanges('data/subscribers_'+priorWeek.start+'.csv', 'data/subscribers_'+priorWeek.end+'.csv');
+const { cancelledCustomers, newPlans } = findStatusChanges('data/subscribers_'+priorWeek.sundaystart+'.csv', 'data/subscribers_'+priorWeek.end+'.csv');
 
 setTimeout(() => {
 	subjectString =  'FFCSA Reports: New and Cancelled Plans ' + priorWeek.start + " to " + priorWeek.end;

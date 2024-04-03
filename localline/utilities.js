@@ -310,11 +310,14 @@ function getPreviousWeek(dateString) {
     // Ensure the week starts on a Monday
     previousMonday.setDate(previousMonday.getDate() - 7);
 
+    const previousPreviousSunday = new Date(previousMonday);
+    previousPreviousSunday.setDate(previousMonday.getDate() -  1);
+
     // Calculate the date for the previous Sunday
     const previousSunday = new Date(previousMonday);
     previousSunday.setDate(previousMonday.getDate() + 6);
 
-    return { start: formatDateToYYYYMMDD(previousMonday), end: formatDateToYYYYMMDD(previousSunday) };
+    return { start: formatDateToYYYYMMDD(previousMonday), end: formatDateToYYYYMMDD(previousSunday), sundaystart: formatDateToYYYYMMDD(previousPreviousSunday) };
 }
 
 function formatDate(date) {
