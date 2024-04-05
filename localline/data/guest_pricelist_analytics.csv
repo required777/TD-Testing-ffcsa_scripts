@@ -31,9 +31,9 @@ guest,Deck Family Farm,Ground Country Sausage,Y,ea,package,12 oz,1,9.28,12.06,23
 guest,Deck Family Farm,Ground Lamb,Y,ea,package,1 lb,1,11.9,15.47,23,30
 guest,Deck Family Farm,"Honey Maple Ham, Sliced",Y,pk,package,8 oz,1,11.55,15.02,23,30
 guest,Deck Family Farm,"Honey, Bulk Raw",Y,ea,package,4 gallon,1,245,318.5,23,30
-guest,Deck Family Farm,"Honey, Raw",Y,ea,package,1 pt,1,15.4,20.02,23,30
-guest,Deck Family Farm,"Honey, Raw",Y,ea,package,1 qt,1,28,36.4,23,30
 guest,Deck Family Farm,"Honey, Raw",Y,ea,package,1/2 pt,1,10.15,13.2,23,30
+guest,Deck Family Farm,"Honey, Raw",Y,ea,package,1 qt,1,28,36.4,23,30
+guest,Deck Family Farm,"Honey, Raw",Y,ea,package,1 pt,1,15.4,20.02,23,30
 guest,Deck Family Farm,Korean Beef Short Ribs,Y,ea,package,1.2-1.6 lbs,1,20.16,26.21,23,30
 guest,Deck Family Farm,Lamb Neck Slices,Y,ea,package,0.9-1.4lb,1,12.99,16.89,23,30
 guest,Deck Family Farm,Lamb Shank - Whole,Y,ea,package,2 - 2.5 lbs,1,28,36.4,23,30
@@ -66,9 +66,9 @@ guest,Deck Family Farm,Top Sirloin Steak,Y,ea,package,0.5-0.8 Lbs,1,11.76,15.29,
 guest,Deck Family Farm,Top Sirloin Steak,Y,ea,package,"Large, 0.9-1.2 Lbs.",1,17.64,22.93,23,30
 guest,Deck Family Farm,Western Beef Short Ribs,Y,ea,package,1.9-2.5 lbs,1,28.88,37.54,23,30
 guest,Deck Family Farm,"Western Beef Short Ribs, Large",Y,ea,package,2.7-3.5 lbs,1,40.43,52.56,23,30
+guest,Deck Family Farm,Baby Back Ribs,Y,pk,package,0.9- 1.3  Lbs,1,13.2,17.56,25,33
 guest,Deck Family Farm,Baby Back Ribs,Y,pk,package,"Large, 2.3-2.8 Lbs",1,28.42,37.8,25,33
 guest,Deck Family Farm,Baby Back Ribs,Y,pk,package,"Xtra Large, 3.8-4.5",1,45.68,60.75,25,33
-guest,Deck Family Farm,Baby Back Ribs,Y,pk,package,0.9- 1.3  Lbs,1,13.2,17.56,25,33
 guest,Deck Family Farm,Beef Flat Iron Steak,Y,ea,package,.6 - 1.1 lbs.,1,16.94,22.53,25,33
 guest,Deck Family Farm,Beef Heart,Y,ea,package,2.1 - 2.7 lb,1,15.12,20.11,25,33
 guest,Deck Family Farm,Beef Kidney,Y,pk,package,0.8 - 1 Lbs,1,15.4,20.48,25,33
@@ -89,15 +89,15 @@ guest,Deck Family Farm,"Olympia Provisions, Dog Treats",Y,pk,package,5 oz. pk,1,
 guest,Deck Family Farm,Peppered Knife Cut Beef Jerky,Y,pk,package,3 oz,1,10.5,13.97,25,33
 guest,Deck Family Farm,Pork Belly,Y,pk,package,"pk, 1.7-2.2 Lbs.",1,22.33,29.7,25,33
 guest,Deck Family Farm,Pork Shank,Y,pk,package,2-3 Lb. pk,1,30.45,40.5,25,33
+guest,Deck Family Farm,Pork Tenderloin Roast,Y,pk,package,"Large, 1.6- 2.2 Lbs.",1,18.48,24.58,25,33
 guest,Deck Family Farm,Pork Tenderloin Roast,Y,pk,package,"Small, pk 0.5- 0.8  Lbs",1,6.72,8.94,25,33
 guest,Deck Family Farm,Pork Tenderloin Roast,Y,pk,package,"Medium, 1- 1.4 Lbs.",1,11.76,15.64,25,33
-guest,Deck Family Farm,Pork Tenderloin Roast,Y,pk,package,"Large, 1.6- 2.2 Lbs.",1,18.48,24.58,25,33
 guest,Deck Family Farm,Pork Tenderloin Roast,Y,pk,package,"Xtra-Large, 3.2-3.4   Lbs.",1,28.56,37.98,25,33
 guest,Deck Family Farm,Rack of Lamb,Y,ea,package,2.5- 3.1 Lbs.,1,39.06,51.95,25,33
 guest,Deck Family Farm,Rack of Lamb,Y,ea,package,"Small, 1.6-2.2 Lbs.",1,27.72,36.87,25,33
-guest,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Medium, 4.1 - 5 Lbs",1,35,46.55,25,33
 guest,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Small, 3-4 Lbs",1,22.4,29.79,25,33
 guest,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Large, 5.1-5.7 Lbs.",1,39.9,53.07,25,33
+guest,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Medium, 4.1 - 5 Lbs",1,35,46.55,25,33
 guest,Deck Family Farm,Rosette D Oregon Salami,Y,ea,package,4.5 oz,1,12.6,16.76,25,33
 guest,Deck Family Farm,Sage and Sea Salt Pork Breakfast Sausage,Y,pk,package,each,1,9.8,13.03,25,33
 guest,Deck Family Farm,Turkey Feet,Y,ea,package,2 Lbs.,1,13.3,17.69,25,33
@@ -156,7 +156,6 @@ guest,Camas Country Mill,Organic Red Floriani Corn Flour,Y,ea,package,2 lbs,1,6.
 guest,Camas Country Mill,Organic Sonora Soft White Wheat Flour,Y,ea,package,3.5 lbs,1,8.17,11.68,30,43
 guest,Camas Country Mill,Pardina Brown Lentils,Y,ea,package,4.5 lbs,1,10,14.3,30,43
 guest,OGC,Parsnips,Y,lb,package,1 lb,1,2.2,3.15,30,43
-guest,Sweet Creek,Pauls Dill Pickles,Y,ea,package,24 oz,1,5.7,8.15,30,43
 guest,Creole Me Up,Pickleez Zonyon in Purple (Pickled Onions),Y,ea,package,16oz,1,9,12.87,30,43
 guest,Graziers Garden,Purple Sprouting Broccoli,Y,bu,package,each,1,3.25,4.65,30,43
 guest,Graziers Garden,Purple curly kale,Y,ea,package,ea,1,2.25,3.22,30,43
@@ -189,8 +188,6 @@ guest,Camas Country Mill,Three Sisters Porridge,Y,ea,package,3 lbs,1,7.01,10.02,
 guest,Full Farm CSA,Tote Bag,Y,ea,package,ea,1,13,18.59,30,43
 guest,Lonesome Whistle,Up & At Em Pancake Mix,Y,ea,package,1.6 lbs,1,5.33,7.62,30,43
 guest,Radiant Coffee Roasters,Vietnam Lotus - Light Roast Coffee,Y,ea,package,16 oz,1,11,15.73,30,43
-guest,Small is Beautiful Farm,Winter Beets,Y,bu,package,2 Lb Bag,1,4,5.72,30,43
-guest,Small is Beautiful Farm,Winter Carrots,Y,lb,package,2 lbs bag,1,4,5.72,30,43
 guest,Deck Family Farm,Ground Pork,Y,ea,package,1 lb,1,10.15,14.62,31,44
 guest,Reality Kitchen Nonprofit,Challah Sandwich Loaf,Y,ea,package,each,1,5,7.4,32,48
 guest,Elegant Elephant Baking Co.,Gluten Free Apple Pie,Y,ea,package,6,1,7.5,11.25,33,50
