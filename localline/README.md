@@ -39,6 +39,7 @@ scripts
 2 11 * * 1  /home/exouser/code/ffcsa_scripts/localline/run.sh checklists.js
 4 11 * * 1  /home/exouser/code/ffcsa_scripts/localline/run.sh vendors.js
 5 11 * * 1  /home/exouser/code/ffcsa_scripts/localline/run.sh weekly_kpi.js
+6 11 * * 1  /home/exouser/code/ffcsa_scripts/localline/run.sh weekly_benefits.js
 
 # Run on Tuesday  at 03:00 PT which is 11:00 UTC wait for weekly_kpi to finish
 5 11 * * 2  /home/exouser/code/ffcsa_scripts/localline/run.sh status_change.js
