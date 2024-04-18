@@ -20,7 +20,7 @@ function formatCustomersList(customers) {
         // Append the customer's details in the specified format
         formattedList += `Customer: ${customer.customer}\n`;
         formattedList += `Email: ${customer.email}\n`;
-        formattedList += `Sum of Fees: $${customer.sumOfFees}\n\n`;
+        formattedList += `Sum of Fees to Credit: $${customer.sumOfFees}\n\n`;
     });
 
     // Return the formatted list
