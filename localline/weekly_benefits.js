@@ -164,7 +164,9 @@ async function run(start, end) {
                 to: "fullfarmcsa@deckfamilyfarm.com",
                 cc: "jdeck88@gmail.com",
                 subject: subjectString,
-                text: "Harvester level members who require reimbursement of delivery fees.\n" +
+                text: "The following report lists Harvester ($500) level members requiring \n"+
+		      "reimbursement of delivery fees. This report only returns Harvest-level\n" + 
+		      "members ordering less than the normal $125 minimum for free delivery.\n" +
 					"Fulfillment Dates spanning " + start + " to " +end +": \n\n" + 
 					formatCustomersList(subscribersResult)
             };
