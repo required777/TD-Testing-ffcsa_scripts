@@ -129,14 +129,14 @@ async function run(start, end) {
         // Execute the subscribers function and log the result
         const subscribersResult = await subscribers(file_path, result);
 
-		subjectString = "FFCSA Report: Weekly Benefit Accounting for " + start + " to " + end;
+		subjectString = "FFCSA Report: Weekly Benefit Accounting for Fulfmillment Dates " + start + " to " + end;
         setTimeout(() => {
             const emailOptions = {
                 from: "jdeck88@gmail.com",
                 to: "fullfarmcsa@deckfamilyfarm.com",
                 cc: "jdeck88@gmail.com",
                 subject: subjectString,
-                text: "Harvester level members who have paid delivery fees from " +start + " to " +end +": \n\n" + JSON.stringify(subscribersResult, null, 4) 
+                text: "Harvester level members who have paid delivery fees from Fulfillment Dates from " +start + " to " +end +": \n\n" + JSON.stringify(subscribersResult, null, 4) 
             };
             utilities.sendEmail(emailOptions)
         }, 3000);
