@@ -10,15 +10,40 @@ const utilities = require('./utilities');
 const { createObjectCsvWriter } = require('csv-writer');
 
 
+// Function to format the JSON object into a plain text list
+function formatCustomersList(customers) {
+    // Initialize an empty string to store the formatted list
+    let formattedList = '';
+
+    // Iterate through each customer in the JSON array
+    customers.forEach(customer => {
+        // Append the customer's details in the specified format
+        formattedList += `Customer: ${customer.customer}\n`;
+        formattedList += `Email: ${customer.email}\n`;
+        formattedList += `Sum of Fees: $${customer.sumOfFees}\n\n`;
+    });
+
+    // Return the formatted list
+    return formattedList;
+}
+
 async function subscribers(filename, fees) {
     return new Promise((resolve, reject) => {
         const sortedData = [];
         const matchingCustomers = [];
-        
+
         // Create a map from the fees array using emails as keys
         const emailToFeeMap = new Map();
         fees.forEach(feeEntry => {
-            emailToFeeMap.set(feeEntry.email, feeEntry);
+            const email = feeEntry.email;
+            const fee = feeEntry.fee;
+            if (emailToFeeMap.has(email)) {
+                // Sum the fees for each email
+                const existingFee = emailToFeeMap.get(email);
+                emailToFeeMap.set(email, existingFee + fee);
+            } else {
+                emailToFeeMap.set(email, fee);
+            }
         });
 
         // Read the CSV file and collect rows
@@ -35,15 +60,16 @@ async function subscribers(filename, fees) {
                         // Look for a matching email in the emailToFeeMap
                         const email = row.Email;
                         if (emailToFeeMap.has(email)) {
-                            // Add the Customer and Email to the matchingCustomers array
+                            // Add the customer, email, and summed fees to the matchingCustomers array
+                            const summedFee = emailToFeeMap.get(email);
                             matchingCustomers.push({
                                 customer: row.Customer,
-                                email: row.Email
+                                email: row.Email,
+                                sumOfFees: summedFee
                             });
                         }
                     }
                 });
-
                 // Resolve the promise with the matchingCustomers array
                 resolve(matchingCustomers);
             })
@@ -78,10 +104,12 @@ async function fees(filename, start, end) {
                         const fulfillmentFee = parseFloat(row['Fulfillment Fee']);
                         if (fulfillmentFee > 0) {
                             // Create an object with the desired properties and add it to resultArray
+							//console.log(row.Customer,fulfillmentFee)
                             resultArray.push({
                                 order: row.Order,
                                 customer: row.Customer,
                                 email: row.Email,
+								fee: fulfillmentFee
                             });
                         }
                     }
@@ -136,7 +164,9 @@ async function run(start, end) {
                 to: "fullfarmcsa@deckfamilyfarm.com",
                 cc: "jdeck88@gmail.com",
                 subject: subjectString,
-                text: "Harvester level members who have paid delivery fees from Fulfillment Dates from " +start + " to " +end +": \n\n" + JSON.stringify(subscribersResult, null, 4) 
+                text: "Harvester level members who require reimbursement of delivery fees.\n" +
+					"Fulfillment Dates spanning " + start + " to " +end +": \n\n" + 
+					formatCustomersList(subscribersResult)
             };
             utilities.sendEmail(emailOptions)
         }, 3000);
