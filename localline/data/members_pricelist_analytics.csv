@@ -38,10 +38,10 @@ members,Deck Family Farm,Pork Bones,Y,ea,package,3-5 lbs.,1,7,8.4,17,20
 members,Deck Family Farm,"Pork Chop, Boneless Thick Cut",Y,pk,package,1.3-1.9 Lb pk,1,21.95,26.34,17,20
 members,Deck Family Farm,Pork Frankfurter,Y,pk,package,12 oz pk,1,11.9,14.28,17,20
 members,Deck Family Farm,Pork Shoulder Roast,Y,ea,package,2.4- 3 lbs,1,34.65,41.58,17,20
-members,Deck Family Farms Hyland Processing,Rendered Beef Tallow,Y,ea,package,8 oz,1,4.2,5.04,17,20
 members,Deck Family Farms Hyland Processing,Rendered Beef Tallow,Y,ea,package,16 oz,1,8.4,10.08,17,20
-members,Deck Family Farms Hyland Processing,Rendered Pork Back Fat,Y,ea,package,16 oz,1,8.4,10.08,17,20
+members,Deck Family Farms Hyland Processing,Rendered Beef Tallow,Y,ea,package,8 oz,1,4.2,5.04,17,20
 members,Deck Family Farms Hyland Processing,Rendered Pork Back Fat,Y,ea,package,8 oz,1,4.2,5.04,17,20
+members,Deck Family Farms Hyland Processing,Rendered Pork Back Fat,Y,ea,package,16 oz,1,8.4,10.08,17,20
 members,Deck Family Farm,"Roast Beef, Sliced",Y,pk,package,8 oz,1,11.55,13.86,17,20
 members,Deck Family Farm,Smoked Polish Kielbasa Sausage,Y,pk,package,12 oz,1,11.55,13.86,17,20
 members,Deck Family Farm,Stewing Hen,Y,ea,package,2 - 3.8 lbs,1,10.85,13.02,17,20
@@ -62,8 +62,8 @@ members,Deck Family Farm,Lamb Shoulder Roast,Y,ea,package,3.8 -4 lbs,1,56,68.88,
 members,Deck Family Farm,"Olympia Provisions, Dog Treats",Y,pk,package,5 oz. pk,1,10.5,12.92,19,23
 members,Deck Family Farm,Peppered Knife Cut Beef Jerky,Y,pk,package,3 oz,1,10.5,12.92,19,23
 members,Deck Family Farm,Pork Shank,Y,pk,package,2-3 Lb. pk,1,30.45,37.45,19,23
-members,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Large, 5.1-5.7 Lbs.",1,39.9,49.08,19,23
 members,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Small, 3-4 Lbs",1,22.4,27.55,19,23
+members,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Large, 5.1-5.7 Lbs.",1,39.9,49.08,19,23
 members,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Medium, 4.1 - 5 Lbs",1,35,43.05,19,23
 members,Deck Family Farm,Sage and Sea Salt Pork Breakfast Sausage,Y,pk,package,each,1,9.8,12.05,19,23
 members,Deck Family Farm,Turkey Feet,Y,ea,package,2 Lbs.,1,13.3,16.36,19,23
@@ -141,8 +141,8 @@ members,Radiant Coffee Roasters,Radiant Decaf Columbia Coffee,Y,ea,package,12 oz
 members,Radiant Coffee Roasters,Radiant Midnight Blend - Dark Roast,Y,ea,package,16 oz,1,11,14.63,25,33
 members,Graziers Garden,Rainbow Chard,Y,bu,package,each,1,3.5,4.66,25,33
 members,Graziers Garden,Red Russian Kale,Y,bu,package,bu,1,2.33,3.1,25,33
-members,Deck Family Farms Hyland Processing,Rendered Pork Leaf Lard,Y,ea,package,8 oz.,1,4.2,5.63,25,34
 members,Deck Family Farms Hyland Processing,Rendered Pork Leaf Lard,Y,ea,package,16 oz.,1,8.4,11.26,25,34
+members,Deck Family Farms Hyland Processing,Rendered Pork Leaf Lard,Y,ea,package,8 oz.,1,4.2,5.63,25,34
 members,Lonesome Whistle,Rise & Shine Gluten Free Pancake Mix,Y,ea,package,1.6 lbs,1,5.33,7.09,25,33
 members,Graziers Garden,Russet potatoes,Y,pound,package,pound,1,2,2.66,25,33
 members,OGC,Rutabega,Y,lb,package,each,1,1.76,2.34,25,33
