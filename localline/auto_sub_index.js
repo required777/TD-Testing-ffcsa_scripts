@@ -51,11 +51,14 @@ app.use(cors({origin: '*'}), async function(req, res, body) {
     // Handle the case if the package name is not recognized
     return res.status(400).json({ error: "Unknown package" });
   }
-  const authenticationHeader = await getAuthentication();
+  const authenticationHeader = await getFrontOfficeAuthentication();
+  //data = await utilities.getAccessToken();
+  ////accessToken = JSON.parse(data).access;
+  //const authenticationHeader = `Bearer ${accessToken}`
 
   // Create a subscription order
   const order = await createOrder(authenticationHeader);
-  //await openOrder(order.id, authenticationHeader);
+  await openOrder(order.id, authenticationHeader);
 
   // Return the order or handle error as needed
   res.json(order);
@@ -63,10 +66,15 @@ app.use(cors({origin: '*'}), async function(req, res, body) {
 	 }
 })
 
-async function getAuthentication() {
-    data = await utilities.getAccessToken();
-    const accessToken = JSON.parse(data).access;
-    return `Bearer ${accessToken}`
+// Need front office authentication
+async function getFrontOfficeAuthentication() {
+  const response = await request.post(
+    constants.AUTH_URL,
+    {},
+    { subdomain: constants.SUBDOMAIN },
+  );
+  const access = JSON.parse(response)["access"];
+  return `Bearer ${access}`;
 }
 
 async function createOrder(authenticationHeader) {
@@ -101,12 +109,25 @@ async function createOrder(authenticationHeader) {
       frequency_unit: constants.FREQUENCY_UNIT,
     },
   }
-  console.log(orderJSON)
-    //const response = await request.post(
-    //    constants.ORDER_URL, orderJSON, { Authorization: authenticationHeader }
-    //);
-  //return JSON.parse(response);
-  return ''
+
+console.log("Request:", {
+    url: constants.ORDER_URL,
+    method: 'POST',
+    headers: {
+        Authorization: authenticationHeader,
+        // Add any other headers here if necessary
+    },
+    body: orderJSON // Assuming orderJSON is your request body
+});
+
+    const response = await request.post(
+        constants.ORDER_URL, orderJSON, { Authorization: authenticationHeader }
+    );
+	console.log("here is the response:")
+	console.log(response);
+
+  return JSON.parse(response);
+  //return ''
 }
 
 async function openOrder(orderId, authenticationHeader) {

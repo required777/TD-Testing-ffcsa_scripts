@@ -9,12 +9,12 @@ exports.FULFILLMENT_STRATEGY_ID = 10122; // ensure pickup, otherwise address req
 exports.FIRST_FULFILLMENT_DATE = "2024-02-17"; // first day of subscription (must be in future)
 
 // payment information
-exports.PAYMENT_STRATEGY_ID = 3625; // Local Pay Method
+exports.PAYMENT_STRATEGY_ID = 4227; // Local Pay Method
 
 // customer information
 exports.FIRST_NAME = "TEST_FIRST";
 exports.LAST_NAME = "TEST_LAST";
-exports.EMAIL = "test@example.com.com";
+exports.EMAIL = "test@example.com";
 exports.PHONE = "5556667777";
 
 // subscription information

@@ -447,5 +447,5 @@ async function storeCredit(customerID, amount, accessToken) {
 //orderDayFormatted = '2023-10-31'
 
 //subscriptions('2024-03-01','2024-02-26');
-//subscriptions('2024-03-12','2024-03-10');
+//subscriptions('2024-04-01','2024-03-24');
 subscriptions(utilities.getOrderDay(),utilities.getOrderDayMinusSeven());
