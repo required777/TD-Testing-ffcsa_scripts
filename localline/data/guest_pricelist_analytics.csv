@@ -142,8 +142,8 @@ guest,Deck Family Farm,Lamb Stew Meat,Y,ea,package,0.9 - 1.5 lbs,1,14.04,20.5,32
 guest,Deck Family Farm,Landgaeger Jerky,Y,pk,package,3 count / 3 oz,1,9.1,13.29,32,46
 guest,Deck Family Farm,New York Steak,Y,ea,package,0.6 - 0.8 lbs,1,14.11,20.6,32,46
 guest,Deck Family Farm,"Olympia Provisions, Dog Treats",Y,pk,package,5 oz. pk,1,9.75,14.24,32,46
-guest,Deck Family Farm,Organic Pasture Raised Chicken Eggs,Y,ea,package,1 dozen,1,7.15,10.44,32,46
 guest,Deck Family Farm,Organic Pasture Raised Chicken Eggs,Y,ea,package,1/2 dozen,1,4.23,6.18,32,46
+guest,Deck Family Farm,Organic Pasture Raised Chicken Eggs,Y,ea,package,1 dozen,1,7.15,10.44,32,46
 guest,Deck Family Farm,Peppered Knife Cut Beef Jerky,Y,pk,package,3 oz,1,9.75,14.24,32,46
 guest,Deck Family Farm,Pet Food Pork and Lamb Ground Organ Blend,Y,ea,package,1 lb,1,9.43,13.77,32,46
 guest,Deck Family Farm,Pork Bacon,Y,pk,package,8 oz,1,9.59,14,32,46
@@ -156,9 +156,9 @@ guest,Deck Family Farm,Pork Spare Ribs,Y,pk,package,"pk, 2 - 2.7",1,18.33,26.76,
 guest,Deck Family Farm,Pork Tenderloin Roast,Y,pk,package,"Large, 1.4- 2.2 Lbs.",1,14.04,20.5,32,46
 guest,Deck Family Farm,Pork Tenderloin Roast,Y,pk,package,"Medium, 0.8 - 1.3 Lbs.",1,8.19,11.96,32,46
 guest,Deck Family Farm,"Pork Tenderloin Roast, Extra-Large",Y,pk,package,3.4- 3.5   Lbs.,1,26.91,39.29,32,46
-guest,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Small, 3-4 Lbs",1,18.2,26.57,32,46
-guest,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Large, 5.1-5.7 Lbs.",1,35.1,51.25,32,46
 guest,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Medium, 4.1 - 5 Lbs",1,29.58,43.19,32,46
+guest,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Large, 5.1-5.7 Lbs.",1,35.1,51.25,32,46
+guest,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Small, 3-4 Lbs",1,18.2,26.57,32,46
 guest,Deck Family Farms Hyland Processing,Rendered Beef Tallow,Y,ea,package,16 oz,1,7.8,11.39,32,46
 guest,Deck Family Farms Hyland Processing,Rendered Pork Back Fat,Y,ea,package,16 oz,1,7.8,11.39,32,46
 guest,Deck Family Farm,"Roast Beef, Sliced",Y,pk,package,8 oz,1,10.73,15.67,32,46
