@@ -1,7 +1,15 @@
 Priceslist,Vendor,Product,Visible,Item Unit,Charge Unit,Package Name,# of Items,Purchase Price,Retail Price,Margin,Markup
 members,Graziers Garden,Edible Calendula Flower,Y,pt,package,each,1,4.75,4,-19,-16
+members,BNF Kombucha and Jun,Grape Lavender Kombucha,Y,ea,package,16 fl. oz,1,4.75,4.75,0,0
+members,BNF Kombucha and Jun,Ginger Turmeric Jun,Y,ea,package,16 fl. oz,1,3.5,4.38,20,25
+members,BNF Kombucha and Jun,Hibiscus Mint Yerbe Mate Kombucha,Y,ea,package,16. fl oz,1,3.99,4.99,20,25
+members,BNF Kombucha and Jun,Pear Jun,Y,ea,package,16 fl. oz,1,3.5,4.38,20,25
 members,Reality Kitchen Nonprofit,Challah Sandwich Loaf,Y,ea,package,each,1,5,6.35,21,27
 members,Deck Family Farm,"Pork Chop, Boneless Thick Cut *SALE*",Y,pk,package,1.3-1.9 Lb pk,1,15.86,20.12,21,27
+members,BNF Kombucha and Jun,Ginger Zen Kombucha,Y,ea,package,16 fl. oz,1,3.09,3.99,23,29
+members,BNF Kombucha and Jun,Mango Marigold Kombucha,Y,ea,package,16 fl. oz,1,3.09,3.99,23,29
+members,BNF Kombucha and Jun,Oregon Blueberry Kombucha,Y,ea,package,16 fl. oz,1,3.09,3.99,23,29
+members,BNF Kombucha and Jun,Raspberry Reishi Jun,Y,ea,package,16 fl. oz,1,3.5,4.55,23,30
 members,Kiko Denzer,Handcrafted  Wooden Bowls Large 20 Oz,Y,ea,package,each,1,35,46.2,24,32
 members,Kiko Denzer,Handcrafted Wooden Fancy Egg Pushers,Y,ea,package,ea,1,12,15.84,24,32
 members,Kiko Denzer,Handcrafted Wooden Plain Kitchen Stir Stix,Y,ea,package,each,1,9,11.88,24,32
@@ -16,6 +24,7 @@ members,Camas Country Mill,Camas Pizza Blend,Y,ea,package,3.5 lbs,1,4.9,6.52,25,
 members,OGC,Champion Club Microgreens Broccoli Mix 2 oz,Y,ea,package,2 oz,1,5.5,7.32,25,33
 members,OGC,Champion Club Microgreens Power Mix,Y,ea,package,2 oz,1,5.5,7.32,25,33
 members,OGC,Champion Club Microgreens Rainbow Mix,Y,ea,package,2 oz,1,5.5,7.32,25,33
+members,Little Wings,Cilantro,Y,bu,package,bu,1,1.5,2,25,33
 members,Creole Me Up,Creole Marinade with Sass,Y,ea,package,8oz,1,7.5,9.98,25,33
 members,OGC,Crimini Mushrooms,Y,lb,package,1 lb,1,3.95,5.25,25,33
 members,RL Plants,Dark Purple Iris Rhizome,Y,ea,package,each,1,5,6.65,25,33
@@ -27,7 +36,6 @@ members,Full Farm CSA,Deck Family Farm and Full Farm CSA Hoodie Small,Y,ea,packa
 members,Full Farm CSA,Deck Family Farm and Full Farm CSA T-Shirt  Extra-Large,Y,ea,package,ea,1,17,22.61,25,33
 members,Full Farm CSA,Deck Family Farm and Full Farm CSA T-Shirt Extra Small,Y,ea,package,ea,1,17,22.61,25,33
 members,Full Farm CSA,Deck Family Farm and Full Farm CSA T-Shirt Large,Y,ea,package,ea,1,17,22.61,25,33
-members,Full Farm CSA,Deck Family Farm and Full Farm CSA T-Shirt Medium,Y,ea,package,ea,1,17,22.61,25,33
 members,Full Farm CSA,Deck Family Farm and Full Farm CSA T-Shirt Small,Y,ea,package,ea,1,17,22.61,25,33
 members,Sweet Creek,Dill Relish,Y,ea,package,12.6 oz,1,4,5.32,25,33
 members,Camas Country Mill,Emmer Farro,Y,ea,package,5 lbs,1,15.12,20.11,25,33
@@ -57,9 +65,8 @@ members,Camas Country Mill,Organic Sonora Soft White Wheat Flour,Y,ea,package,3.
 members,Graziers Garden,Parsley,Y,bu,package,bu,1,2.5,3.33,25,33
 members,OGC,Parsnips,Y,lb,package,1 lb,1,2.2,2.93,25,33
 members,Spoiled Rotten Vinegar,Pear Vinegar,Y,ea,package,8 fl. oz,1,7,9.31,25,33
-members,Queen of Hearts Superfood,Queen of Hearts Herb Ranch Dressing,Y,ea,package,each,1,6.6,8.78,25,33
+members,BNF Kombucha and Jun,Pomegranate Cardamom Kombucha,Y,ea,package,16 fl. oz,1,3.19,4.24,25,33
 members,Queen of Hearts Superfood,Queen of Hearts Sassy Italian Dressing,Y,ea,package,each,1,6.6,8.78,25,33
-members,Queen of Hearts Superfood,Queen of Hearts Zesty Caesar Dressing,Y,ea,package,each,1,6.6,8.78,25,33
 members,Spoiled Rotten Vinegar,Quince Vinegar,Y,ea,package,8 fl oz,1,8,10.64,25,33
 members,Radiant Coffee Roasters,Radiant Balanced Blend - Medium Roast,Y,ea,package,16 oz,1,11,14.63,25,33
 members,Radiant Coffee Roasters,Radiant Breakfast Blend - Light Roast,Y,ea,package,16 oz,1,11,14.63,25,33
@@ -68,20 +75,23 @@ members,Radiant Coffee Roasters,Radiant Midnight Blend - Dark Roast,Y,ea,package
 members,Lonesome Whistle,Rise & Shine Gluten Free Pancake Mix,Y,ea,package,1.6 lbs,1,5.33,7.09,25,33
 members,Graziers Garden,Russet potatoes,Y,pound,package,pound,1,2,2.66,25,33
 members,OGC,Rutabega,Y,lb,package,each,1,1.76,2.34,25,33
+members,Little Wings,Salad Mix,Y,bag,package,1/2 lb,1,4.15,5.56,25,34
 members,RL Plants,Sedum Palmeri Succulents,Y,ea,package,each,1,4,5.32,25,33
 members,RL Plants,Sedum Rupestre Blue Spruce,Y,ea,package,each,1,4,5.32,25,33
 members,OGC,Shiitake Mushrooms,Y,1/2 lb,package,1/2 lb,1,4.08,5.43,25,33
+members,BNF Kombucha and Jun,Skullcap Lemon Yerbe Mate Kombucha,Y,ea,package,16 fl. oz,1,3.19,4.24,25,33
 members,Graziers Garden,Spearmint,Y,bu,package,each,1,3,3.99,25,33
 members,Sweet Creek,Sweet Relish,Y,ea,package,12. 6 oz,1,4,5.32,25,33
 members,Jar Joy Goods,The Daily Jar Tote/Jar Bag: Organic Waxed Canvas-WFTO Certified,Y,ea,package,each,1,41.95,55.79,25,33
 members,Jar Joy Goods,The Insulated Jar Tote/Jar Bag: Hemp + Natural Rubber (Yulex),Y,ea,package,each,1,110.5,146.97,25,33
-members,Camas Country Mill,Three Sisters Porridge,Y,ea,package,3 lbs,1,7.01,9.32,25,33
 members,Full Farm CSA,Tote Bag,Y,ea,package,ea,1,13,17.29,25,33
 members,Lonesome Whistle,Up & At Em Pancake Mix,Y,ea,package,1.6 lbs,1,5.33,7.09,25,33
 members,Radiant Coffee Roasters,Vietnam Lotus - Light Roast Coffee,Y,ea,package,16 oz,1,11,14.63,25,33
 members,RL Plants,Yellow Iris Rhizome,Y,ea,package,each,1,5,6.65,25,33
 members,Elegant Elephant Baking Co.,Gluten Free Cheddar Rolls,Y,ea,package,bag of 4,1,6.1,8.25,26,35
 members,Elegant Elephant Baking Co.,Gluten Free Potato Loaf with Teff,Y,ea,package,each,1,6.25,8.5,26,36
+members,Little Wings,Green Curly Kale,Y,bu,package,each,1,2.25,3.04,26,35
+members,Little Wings,Rhubarb,Y,lb,package,1 lb,1,3.5,4.73,26,35
 members,Deck Family Farm,Hikers Pepperoni Sticks,Y,pk,package,pk,1,4.88,6.73,27,38
 members,Deck Family Farm,Baby Back Ribs,Y,pk,package,0.9- 1.6  Lbs,1,11.78,16.26,28,38
 members,Deck Family Farm,Bacon Ends & Pieces,Y,pk,package,8 oz,1,7.8,10.76,28,38
@@ -120,12 +130,11 @@ members,Deck Family Farms Hyland Processing,Fresh Pork Loukaniko Sausage - made 
 members,Elegant Elephant Baking Co.,Gluten Free Blueberry Scone,Y,ea,package,each,1,2.9,4,28,38
 members,Deck Family Farm,Ground Beef - All Natural,Y,ea,package,1 lb,1,5.85,8.07,28,38
 members,Deck Family Farm,Ground Country Sausage,Y,ea,package,12 oz,1,8.61,11.88,28,38
-members,Deck Family Farm,Ground Lamb,Y,ea,package,1 lb,1,11.05,15.25,28,38
 members,Deck Family Farm,Ground Pork,Y,ea,package,1 lb,1,9.43,13.01,28,38
 members,Deck Family Farm,"Honey, Bulk Raw",Y,ea,package,4 gallon,1,245,338.1,28,38
-members,Deck Family Farm,"Honey, Raw",Y,ea,package,1 qt,1,26,35.88,28,38
-members,Deck Family Farm,"Honey, Raw",Y,ea,package,1/2 pt,1,9.43,13.01,28,38
 members,Deck Family Farm,"Honey, Raw",Y,ea,package,1 pt,1,14.3,19.73,28,38
+members,Deck Family Farm,"Honey, Raw",Y,ea,package,1/2 pt,1,9.43,13.01,28,38
+members,Deck Family Farm,"Honey, Raw",Y,ea,package,1 qt,1,26,35.88,28,38
 members,Deck Family Farm,Korean Beef Short Ribs,Y,ea,package,1.2-1.8 lbs,1,17.55,24.22,28,38
 members,Deck Family Farm,Lamb Bones,Y,pk,package,3 - 5 Lbs,1,5.2,7.18,28,38
 members,Deck Family Farm,Lamb Neck Slices,Y,ea,package,0.9-1.4lb,1,9.9,13.66,28,38
@@ -136,8 +145,8 @@ members,Deck Family Farm,Landgaeger Jerky,Y,pk,package,3 count / 3 oz,1,9.1,12.5
 members,Deck Family Farm,New York Steak,Y,ea,package,0.6 - 0.8 lbs,1,14.11,19.47,28,38
 members,Deck Family Farm,Nitrite-Free Old World Hot Dogs,Y,pk,package,14 oz / 4 count,1,11.7,16.15,28,38
 members,Deck Family Farm,"Olympia Provisions, Dog Treats",Y,pk,package,5 oz. pk,1,9.75,13.46,28,38
-members,Deck Family Farm,Organic Pasture Raised Chicken Eggs,Y,ea,package,1 dozen,1,7.15,9.87,28,38
 members,Deck Family Farm,Organic Pasture Raised Chicken Eggs,Y,ea,package,1/2 dozen,1,4.23,5.84,28,38
+members,Deck Family Farm,Organic Pasture Raised Chicken Eggs,Y,ea,package,1 dozen,1,7.15,9.87,28,38
 members,Deck Family Farm,Peppered Knife Cut Beef Jerky,Y,pk,package,3 oz,1,9.75,13.46,28,38
 members,Deck Family Farm,Pet Food Pork and Lamb Ground Organ Blend,Y,ea,package,1 lb,1,9.43,13.01,28,38
 members,Deck Family Farm,Pork Bacon,Y,pk,package,8 oz,1,9.59,13.23,28,38
@@ -152,17 +161,17 @@ members,Deck Family Farm,Pork Tenderloin Roast,Y,pk,package,"Medium, 0.8 - 1.3 L
 members,Deck Family Farm,Pork Tenderloin Roast,Y,pk,package,"Large, 1.4- 2.2 Lbs.",1,14.04,19.38,28,38
 members,Deck Family Farm,"Pork Tenderloin Roast, Extra-Large",Y,pk,package,3.4- 3.5   Lbs.,1,26.91,37.14,28,38
 members,Deck Family Farm,"Pork Tenderloin Roast, Small",Y,pk,package,pk 0.5- 0.7  Lbs,1,4.68,6.46,28,38
-members,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Small, 3-4 Lbs",1,18.2,25.12,28,38
-members,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Large, 5.1-5.7 Lbs.",1,35.1,48.44,28,38
 members,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Medium, 4.1 - 5 Lbs",1,29.58,40.82,28,38
+members,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Large, 5.1-5.7 Lbs.",1,35.1,48.44,28,38
+members,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Small, 3-4 Lbs",1,18.2,25.12,28,38
 members,Deck Family Farms Hyland Processing,Rendered Beef Tallow,Y,ea,package,16 oz,1,7.8,10.76,28,38
-members,Deck Family Farms Hyland Processing,Rendered Pork Back Fat,Y,ea,package,16 oz,1,7.8,10.76,28,38
 members,Deck Family Farms Hyland Processing,Rendered Pork Back Fat,Y,ea,package,8 oz,1,3.9,5.38,28,38
+members,Deck Family Farms Hyland Processing,Rendered Pork Back Fat,Y,ea,package,16 oz,1,7.8,10.76,28,38
 members,Deck Family Farms Hyland Processing,Rendered Pork Leaf Lard,Y,ea,package,16 oz.,1,7.8,10.76,28,38
 members,Deck Family Farms Hyland Processing,Rendered Pork Leaf Lard,Y,ea,package,8 oz.,1,3.9,5.38,28,38
 members,Deck Family Farm,"Roast Beef, Sliced",Y,pk,package,8 oz,1,10.73,14.81,28,38
-members,Deck Family Farm,Roasting Chicken,Y,ea,package,"Large, 4.3-5 Lbs.",1,24.18,33.37,28,38
 members,Deck Family Farm,Roasting Chicken,Y,ea,package,"Small, 2.5- 3.1",1,14.56,20.09,28,38
+members,Deck Family Farm,Roasting Chicken,Y,ea,package,"Large, 4.3-5 Lbs.",1,24.18,33.37,28,38
 members,Deck Family Farm,Rosette D Oregon Salami *SALE*,Y,ea,package,4.5 oz,1,9.75,13.46,28,38
 members,Deck Family Farm,Sage and Sea Salt Pork Breakfast Sausage,Y,pk,package,each,1,9.1,12.56,28,38
 members,Deck Family Farm,"Skirt Steak, Large",Y,pk,package,"Large, 1.2 -1.3 Lbs.",1,17.88,24.67,28,38
@@ -186,7 +195,10 @@ members,Elegant Elephant Baking Co.,Gluten Free Brownie Bite with Chocolate Chip
 members,Elegant Elephant Baking Co.,Gluten Free Cinnamon Roll Pan,Y,ea,package,6,1,6,8.5,29,42
 members,Elegant Elephant Baking Co.,Gluten Free Half Almond Loaf Sliced,Y,ea,package,each,1,5,7,29,40
 members,Elegant Elephant Baking Co.,Gluten Free Mini Banana Bread Loaf,Y,ea,package,each,1,5,7,29,40
+members,BNF Kombucha and Jun,Moonfruit Yerbe Mate Kombucha,Y,ea,package,16 fl. oz,1,3.09,4.42,30,43
+members,BNF Kombucha and Jun,Peach Rose Kombucha,Y,ea,package,16 fl. oz,1,3.09,4.42,30,43
 members,Elegant Elephant Baking Co.,Pizza Dough,Y,ea,package,each,1,4.75,6.89,31,45
+members,Little Wings,Rainbow Chard,Y,bu,package,each,1,2.25,3.26,31,45
 members,Reality Kitchen Nonprofit,Braided Challah (plain),Y,ea,package,each,1,5,7.4,32,48
 members,Reality Kitchen Nonprofit,Braided Challah (seeded),Y,ea,package,each,1,5,7.4,32,48
 members,Reality Kitchen Nonprofit,Sourdough Rye Sandwich Loaf,Y,ea,package,each,1,4.75,7,32,47
