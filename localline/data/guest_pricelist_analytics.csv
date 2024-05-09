@@ -1,6 +1,5 @@
 Priceslist,Vendor,Product,Visible,Item Unit,Charge Unit,Package Name,# of Items,Purchase Price,Retail Price,Margin,Markup
 guest,BNF Kombucha and Jun,Hibiscus Mint Yerbe Mate Kombucha,Y,ea,package,16. fl oz,1,3.99,5.39,26,35
-guest,Sweet Creek,Basil Tomato Sauce,Y,ea,package,16 oz,1,3.76,5.38,30,43
 guest,Elegant Elephant Baking Co.,Blackberry Hand Pie,Y,ea,package,each,1,2.95,4.22,30,43
 guest,Spoiled Rotten Vinegar,Blackberry Vinegar,Y,ea,package,8 fl. oz,1,7,10.01,30,43
 guest,Spoiled Rotten Vinegar,Blackstrap Vinegar,Y,ea,package,8 fl. oz,1,8,11.44,30,43
@@ -88,8 +87,8 @@ guest,Sweet Creek,Cinnamon Apple Sauce,Y,ea,package,23 oz,1,4.54,6.58,31,45
 guest,OGC,Fennel,Y,ea,package,each,1,2.4,3.46,31,44
 guest,Deck Family Farms Hyland Processing,Fresh Farm Made Bangers- made weekly in our farm kitchen!,Y,pk,package,4 links/pk,1,11.05,16.13,31,46
 guest,Deck Family Farms Hyland Processing,Fresh Farm Made Hot Italian Sausage- made weekly in our farm kitchen!,Y,pk,package,14 oz packs 4 links/pk,1,11.7,17.08,31,46
-guest,Deck Family Farms Hyland Processing,Fresh Farm Made Pork Chaurice Sausage - made weekly in our farm kitchen!,Y,pk,package,14 oz pk,1,11.7,17.08,31,46
-guest,Deck Family Farms Hyland Processing,Fresh Farm Made Pork Loukaniko Sausage - made weekly in our farm kitchen!,Y,pk,package,14 oz. pk,1,11.7,17.08,31,46
+guest,Deck Family Farms Hyland Processing,Fresh Farm Made Pork Chaurice Sausage - made weekly in our farm kitchen!,Y,pk,package,14 oz pk,1,11.05,16.13,31,46
+guest,Deck Family Farms Hyland Processing,Fresh Farm Made Pork Loukaniko Sausage - made weekly in our farm kitchen!,Y,pk,package,14 oz. pk,1,11.05,16.13,31,46
 guest,Little Wings,Green Curly Kale,Y,bu,package,each,1,2.25,3.26,31,45
 guest,Deck Family Farm,Ground Beef - All Natural,Y,ea,package,1 lb,1,5.85,8.54,31,46
 guest,Deck Family Farm,Hikers Pepperoni Sticks,Y,pk,package,pk,1,4.88,7.12,31,46
@@ -107,8 +106,8 @@ guest,OGC,Red Onion,Y,lb,package,1 lb,1,1.9,2.74,31,44
 guest,OGC,Red Radish,Y,bu,package,each,1,1.84,2.65,31,44
 guest,Little Wings,Red Russian Frills Kale,Y,bu,package,bu,1,2.25,3.24,31,44
 guest,Deck Family Farms Hyland Processing,Rendered Pork Back Fat,Y,ea,package,8 oz,1,3.9,5.69,31,46
-guest,Deck Family Farms Hyland Processing,Rendered Pork Leaf Lard,Y,ea,package,8 oz.,1,3.9,5.62,31,44
 guest,Deck Family Farms Hyland Processing,Rendered Pork Leaf Lard,Y,ea,package,16 oz.,1,7.8,11.23,31,44
+guest,Deck Family Farms Hyland Processing,Rendered Pork Leaf Lard,Y,ea,package,8 oz.,1,3.9,5.62,31,44
 guest,Little Wings,Rhubarb,Y,lb,package,1 lb,1,3.5,5.08,31,45
 guest,Little Wings,Salad Mix,Y,bag,package,1/2 lb,1,4.15,5.98,31,44
 guest,Deck Family Farm,Turkey Feet,Y,ea,package,2 Lbs.,1,10.4,15.18,31,46
@@ -137,8 +136,8 @@ guest,Deck Family Farm,Chicken Hindquarter,Y,ea,package,1 - 1.4 lbs,1,9.36,13.67
 guest,Deck Family Farm,Chicken Liver,Y,ea,package,1/2 lb,1,6.5,9.49,32,46
 guest,Deck Family Farm,Chicken Wings,Y,ea,package,2 - 2.8 lbs,1,15.6,22.78,32,46
 guest,Deck Family Farm,Chorizo Sausage,Y,pk,package,12 oz 4 count,1,10.73,15.67,32,46
-guest,Deck Family Farm,Cracked Walnuts,Y,ea,package,1/2 Lb,1,8.78,12.82,32,46
 guest,Deck Family Farm,Cracked Walnuts,Y,ea,package,1 Lb,1,14.3,20.88,32,46
+guest,Deck Family Farm,Cracked Walnuts,Y,ea,package,1/2 Lb,1,8.78,12.82,32,46
 guest,Deck Family Farm,Denver Spare Ribs,Y,pk,package,2.0- 2.7 Lbs,1,18.33,26.76,32,46
 guest,Deck Family Farms Hyland Processing,Fresh Farm Made Chaurice Sausage ( Unlinked )- made weekly in our farm kitchen!,Y,pk,package,12 oz. pk,1,9.1,13.29,32,46
 guest,Deck Family Farms Hyland Processing,Fresh Farm Made English Breakfast Sausage- made weekly in our farm kitchen!,Y,pk,package,12 oz pk,1,9.1,13.29,32,46
@@ -166,8 +165,8 @@ guest,Deck Family Farm,Pork Shoulder Roast,Y,ea,package,2.4- 3 lbs,1,28.96,42.28
 guest,Deck Family Farm,Pork Spare Ribs,Y,pk,package,"pk, 2 - 2.7",1,18.33,26.76,32,46
 guest,Deck Family Farm,Pork Tenderloin Roast,Y,pk,package,"Medium, 0.8 - 1.3 Lbs.",1,8.19,11.96,32,46
 guest,Deck Family Farm,Pork Tenderloin Roast,Y,pk,package,"Large, 1.4- 2.2 Lbs.",1,14.04,20.5,32,46
-guest,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Medium, 4.1 - 5 Lbs",1,29.58,43.19,32,46
 guest,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Small, 3-4 Lbs",1,18.2,26.57,32,46
+guest,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Medium, 4.1 - 5 Lbs",1,29.58,43.19,32,46
 guest,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Large, 5.1-5.7 Lbs.",1,35.1,51.25,32,46
 guest,Deck Family Farms Hyland Processing,Rendered Beef Tallow,Y,ea,package,16 oz,1,7.8,11.39,32,46
 guest,Deck Family Farms Hyland Processing,Rendered Pork Back Fat,Y,ea,package,16 oz,1,7.8,11.39,32,46
