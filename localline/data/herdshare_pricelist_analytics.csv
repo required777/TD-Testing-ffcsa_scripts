@@ -22,7 +22,6 @@ herdshare,Spoiled Rotten Vinegar,Blackstrap Vinegar,Y,ea,package,8 fl. oz,1,8,10
 herdshare,Sweet Creek,Blueberry Fruit Spread,Y,ea,package,10 oz,1,3.8,5.05,25,33
 herdshare,Elegant Elephant Baking Co.,Box of 5 Cupcakes,Y,ea,package,each,1,6,7.98,25,33
 herdshare,Radiant Coffee Roasters,Brazil Cerrado Miniero - Dark Roast Coffee,Y,ea,package,16 oz,1,11,14.63,25,33
-herdshare,Graziers Garden,Broccoli Greens,Y,bu,package,each,1,4.25,5.65,25,33
 herdshare,Camas Country Mill,Brown Teff Flour,Y,ea,package,4 lbs,1,7.08,9.42,25,33
 herdshare,Lonesome Whistle,Cayenne Kettle Corn,Y,ea,package,0.4 lb bag,1,3.33,4.43,25,33
 herdshare,OGC,Champion Club Microgreens Broccoli Mix 2 oz,Y,ea,package,2 oz,1,5.5,7.32,25,33
@@ -74,7 +73,6 @@ herdshare,Camas Country Mill,Organic Hard White Wheat Multi-Purpose Flour,Y,ea,p
 herdshare,Camas Country Mill,Organic Oat Flakes,Y,ea,package,3 lbs,1,5.71,7.59,25,33
 herdshare,Camas Country Mill,Organic Red Floriani Corn Flour,Y,ea,package,2 lbs,1,6.12,8.14,25,33
 herdshare,Camas Country Mill,Organic Sonora Soft White Wheat Flour,Y,ea,package,3.5 lbs,1,8.17,10.87,25,33
-herdshare,Graziers Garden,Parsley,Y,bu,package,bu,1,2.5,3.33,25,33
 herdshare,OGC,Parsnips,Y,lb,package,1 lb,1,2.2,2.93,25,33
 herdshare,Sweet Creek,Pauls Dill Pickles,Y,ea,package,24 oz,1,5.7,7.58,25,33
 herdshare,Spoiled Rotten Vinegar,Pear Vinegar,Y,ea,package,8 fl. oz,1,7,9.31,25,33
@@ -112,7 +110,6 @@ herdshare,Radiant Coffee Roasters,Vietnam Lotus - Light Roast Coffee,Y,ea,packag
 herdshare,RL Plants,Yellow Iris Rhizome,Y,ea,package,each,1,5,6.65,25,33
 herdshare,OGC,Yellow Onion,Y,lb,package,1lb,1,1,1.33,25,33
 herdshare,Sweet Creek,Apricot Fruit Spread,Y,ea,package,10 oz,1,3.8,5.13,26,35
-herdshare,Sweet Creek,Cinnamon Apple Sauce,Y,ea,package,23 oz,1,4.54,6.13,26,35
 herdshare,Elegant Elephant Baking Co.,Gluten Free Cheddar Rolls,Y,ea,package,bag of 4,1,6.1,8.25,26,35
 herdshare,Elegant Elephant Baking Co.,Gluten Free Potato Loaf with Teff,Y,ea,package,each,1,6.25,8.5,26,36
 herdshare,Little Wings,Green Curly Kale,Y,bu,package,each,1,2.25,3.04,26,35
@@ -190,10 +187,11 @@ herdshare,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Small, 3-4 Lbs",1,18
 herdshare,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Large, 5.1-5.7 Lbs.",1,35.1,48.44,28,38
 herdshare,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Medium, 4.1 - 5 Lbs",1,29.58,40.82,28,38
 herdshare,Deck Family Farms Hyland Processing,Rendered Beef Tallow,Y,ea,package,16 oz,1,7.8,10.76,28,38
-herdshare,Deck Family Farms Hyland Processing,Rendered Pork Back Fat,Y,ea,package,16 oz,1,7.8,10.76,28,38
+herdshare,Deck Family Farms Hyland Processing,Rendered Beef Tallow,Y,ea,package,8 oz.,1,3.9,5.38,28,38
 herdshare,Deck Family Farms Hyland Processing,Rendered Pork Back Fat,Y,ea,package,8 oz,1,3.9,5.38,28,38
-herdshare,Deck Family Farms Hyland Processing,Rendered Pork Leaf Lard,Y,ea,package,8 oz.,1,3.9,5.38,28,38
+herdshare,Deck Family Farms Hyland Processing,Rendered Pork Back Fat,Y,ea,package,16 oz,1,7.8,10.76,28,38
 herdshare,Deck Family Farms Hyland Processing,Rendered Pork Leaf Lard,Y,ea,package,16 oz.,1,7.8,10.76,28,38
+herdshare,Deck Family Farms Hyland Processing,Rendered Pork Leaf Lard,Y,ea,package,8 oz.,1,3.9,5.38,28,38
 herdshare,Deck Family Farm,"Roast Beef, Sliced",Y,pk,package,8 oz,1,10.73,14.81,28,38
 herdshare,Deck Family Farm,Roasting Chicken,Y,ea,package,"Small, 2.5- 3.1",1,14.56,20.09,28,38
 herdshare,Deck Family Farm,Sage and Sea Salt Pork Breakfast Sausage,Y,pk,package,each,1,9.1,12.56,28,38
@@ -205,7 +203,6 @@ herdshare,Deck Family Farm,Summer Sausage,Y,ea,package,10 oz,1,9.1,12.56,28,38
 herdshare,Deck Family Farm,Sweet Italian Sausage Links,Y,pk,package,12 oz 4 count,1,10.73,14.81,28,38
 herdshare,Deck Family Farm,Tamari Pressed Beef Jerky,Y,pk,package,3 oz,1,9.75,13.46,28,38
 herdshare,Deck Family Farm,Top Sirloin Steak,Y,ea,package,0.8 - 1.2 Lbs,1,13.65,18.84,28,38
-herdshare,Deck Family Farm,"Top Sirloin Steak, Large",Y,ea,package,1.25-1.6 Lbs.,1,19.45,26.84,28,38
 herdshare,Deck Family Farm,Turkey Feet,Y,ea,package,2 Lbs.,1,10.4,14.35,28,38
 herdshare,Deck Family Farm,"Western Beef Short Ribs, Large",Y,ea,package,2.7-3.5 lbs,1,33.2,45.82,28,38
 herdshare,Deck Family Farm,"Western Beef Short Ribs, Small",Y,ea,package,1.3-1.8 lbs,1,16.62,22.94,28,38
