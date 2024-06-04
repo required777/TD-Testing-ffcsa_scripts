@@ -68,11 +68,13 @@ async function run(filename, customerData, orderDayFormatted, lastWeekFormatted,
                 if ([200.00, 300.00, 500.00, 86.00].includes(productSubtotal)) {
                     if (row['Payment Status'] === "PAID" || row['Payment Status'] === "AUTHORIZED") {
 			let statusString = row['Payment Status']
+			successString = 'SUCCESS';
 			if (row['Payment Method'] == 'SNAP') {
-				statusString += ' -SNAP';
+				successString = 'PENDING';
+				statusString = 'SNAP';
 			}
                         subscribers.push({
-                            Success: "SUCCESS",
+                            Success: successString,
                             Status: statusString,
                             Date: row['Date'],
                             Customer: row['Customer'],
@@ -83,11 +85,13 @@ async function run(filename, customerData, orderDayFormatted, lastWeekFormatted,
                         });
                     } else {
 			let statusString = row['Payment Status']
+			successString = 'FAIL';
 			if (row['Payment Method'] == 'SNAP') {
-				statusString += '-SNAP';
+				statusString = 'SNAP';
+				successString = 'PENDING';
 			}
                         subscribers_issues.push({
-                            Success: "FAIL",
+                            Success: successString,
                             Status: statusString,
                             Date: row['Date'],
                             Customer: row['Customer'],
@@ -447,5 +451,5 @@ async function storeCredit(customerID, amount, accessToken) {
 //orderDayFormatted = '2023-10-31'
 
 //subscriptions('2024-03-01','2024-02-26');
-//subscriptions('2024-04-01','2024-03-24');
-subscriptions(utilities.getOrderDay(),utilities.getOrderDayMinusSeven());
+//subscriptions('2024-06-02','2024-06-01');
+subscriptions(utilities.getOrderDay(),utilities.getOrderDayMinusFourteen());
