@@ -1,6 +1,5 @@
 Priceslist,Vendor,Product,Visible,Item Unit,Charge Unit,Package Name,# of Items,Purchase Price,Retail Price,Margin,Markup
 guest,Graziers Garden,Spinach,Y,bu,package,each,1,4,4,0,0
-guest,Deck Family Farm,Beef Chuck Roast **SALE** 10% Off,Y,ea,package,2.5 - 3.3 lbs,1,27.77,37.77,26,36
 guest,Creole Me Up,Pickleez for Wimps,Y,ea,package,ea,1,8.35,11.69,29,40
 guest,RL Plants,Birch Wooden Coasters,Y,pk,package,2 pack,1,10,14.3,30,43
 guest,Elegant Elephant Baking Co.,Blackberry Hand Pie,Y,ea,package,each,1,2.95,4.22,30,43
@@ -40,7 +39,6 @@ guest,Kiko Denzer,Handcrafted Wooden Plain Kitchen Stir Stix,Y,ea,package,each,1
 guest,RL Plants,Hen and Chicks Succulents,Y,ea,package,each,1,4,5.72,30,43
 guest,Spoiled Rotten Vinegar,Hibiscus Vinegar,Y,ea,package,8 fl. oz,1,8,11.44,30,43
 guest,Spoiled Rotten Vinegar,Honey Vinegar,Y,ea,package,8 fl. oz,1,8,11.44,30,43
-guest,Graziers Garden,New Red Norland Potatoes,Y,pound,package,ea,1,3.5,5.01,30,43
 guest,Camas Country Mill,Organic Red Floriani Corn Flour,Y,ea,package,2 lbs,1,6.12,8.75,30,43
 guest,Camas Country Mill,Organic Sonora Soft White Wheat Flour,Y,ea,package,3.5 lbs,1,8.17,11.68,30,43
 guest,OGC,Parsnips,Y,lb,package,1 lb,1,2.2,3.15,30,43
@@ -66,6 +64,7 @@ guest,Jar Joy Goods,The Insulated Jar Tote/Jar Bag: Hemp + Natural Rubber (Yulex
 guest,Full Farm CSA,Tote Bag,Y,ea,package,ea,1,13,18.59,30,43
 guest,Radiant Coffee Roasters,Vietnam Lotus - Light Roast Coffee,Y,ea,package,16 oz,1,11,15.73,30,43
 guest,RL Plants,Yellow Iris Rhizome,Y,ea,package,each,1,5,7.15,30,43
+guest,Spoiled Rotten Vinegar,Apple Vinegar,Y,ea,package,8 fl. oz,1,5,7.25,31,45
 guest,Little Wings,Baby Bok Choi,Y,bu,package,each,1,2,2.9,31,45
 guest,Red Tail Growers,Baby Carrots,Y,bu,package,each,1,2.5,3.63,31,45
 guest,Sweet Creek,Basil Tomato Sauce,Y,ea,package,16 oz,1,3.76,5.45,31,45
@@ -75,18 +74,22 @@ guest,Red Tail Growers,Butterhead Lettuce,Y,ea,package,each,1,1.5,2.16,31,44
 guest,Sweet Creek,Cinnamon Apple Sauce,Y,ea,package,23 oz,1,4.54,6.58,31,45
 guest,Red Tail Growers,Collard Greens,Y,bu,package,each,1,1.75,2.54,31,45
 guest,Little Wings,Fennel,Y,ea,package,each,1,2,2.9,31,45
-guest,Deck Family Farms Hyland Processing,Fresh Farm Made Bangers- made weekly in our farm kitchen!,Y,pk,package,4 links/pk,1,11.05,16.13,31,46
-guest,Deck Family Farms Hyland Processing,Fresh Farm Made Hot Italian Sausage- made weekly in our farm kitchen!,Y,pk,package,14 oz packs 4 links/pk,1,11.7,17.08,31,46
-guest,Deck Family Farms Hyland Processing,Fresh Farm Made Pork Chaurice Sausage - made weekly in our farm kitchen!,Y,pk,package,14 oz pk/ 4links,1,11.05,16.13,31,46
-guest,Deck Family Farms Hyland Processing,Fresh Farm Made Pork Loukaniko Sausage - made weekly in our farm kitchen!,Y,pk,package,14 oz. pk/4 links,1,11.05,16.13,31,46
+guest,Deck Family Farms Hyland Processing,Fresh Farm Made Bangers- made weekly in our farm kitchen! **SALE**,Y,pk,package,4 links/pk,1,10.77,15.72,31,46
+guest,Deck Family Farms Hyland Processing,Fresh Farm Made Hot Italian Sausage- made weekly in our farm kitchen! **SALE**,Y,pk,package,14 oz packs 4 links/pk,1,10.77,15.72,31,46
+guest,Deck Family Farms Hyland Processing,Fresh Farm Made Pork Chaurice Sausage - made weekly in our farm kitchen! **SALE**,Y,pk,package,14 oz pk/ 4links,1,10.77,15.72,31,46
+guest,Deck Family Farms Hyland Processing,Fresh Farm Made Pork Loukaniko Sausage - made weekly in our farm kitchen!  **SALE**,Y,pk,package,14 oz. pk/4 links,1,10.77,15.72,31,46
 guest,Little Wings,Frisee Lettuce,Y,ea,package,each,1,2.25,3.24,31,44
 guest,Little Wings,Green Curly Kale,Y,bu,package,each,1,2.25,3.26,31,45
 guest,Deck Family Farm,Ground Beef - All Natural,Y,ea,package,1 lb,1,5.85,8.54,31,46
+guest,Deck Family Farm,Ground Lamb,Y,ea,package,1 lb,1,11.05,16.13,31,46
 guest,Deck Family Farm,Hikers Pepperoni Sticks,Y,pk,package,pk,1,4.88,7.12,31,46
+guest,Graziers Garden,Huckleberry gold potatoes,Y,lb,weight,lb,1,4,5.76,31,44
 guest,Sweet Creek,Just Apple Apple Sauce,Y,ea,package,26.5 oz,1,4.54,6.58,31,45
 guest,Deck Family Farm,Korean Beef Short Ribs,Y,ea,package,1.2-1.8 lbs,1,17.55,25.62,31,46
 guest,Red Tail Growers,Lacinato (Dino) Kale,Y,bu,package,bu.,1,1.75,2.54,31,45
 guest,Deck Family Farm,Lamb Bones,Y,pk,package,3 - 5 Lbs,1,5.2,7.59,31,46
+guest,Deck Family Farm,Lamb Garlic Sausage,Y,pk,package,pk,1,11.7,17.08,31,46
+guest,Deck Family Farm,Lamb Kabob,Y,pk,package,0.9- 1.6 Lb,1,14.64,21.37,31,46
 guest,Deck Family Farm,Lamb Neck Slices,Y,ea,package,0.9-1.4lb,1,9.9,14.45,31,46
 guest,Deck Family Farm,Lamb Shank - Whole,Y,ea,package,2 - 2.5 lbs,1,23.4,34.16,31,46
 guest,Sweet Creek,Mango Habanero Taco Sauce - Maggie Kitchen,Y,ea,package,each,1,3.49,5.06,31,45
@@ -102,8 +105,8 @@ guest,Little Wings,Red Beets,Y,bu,package,1 bunch,1,2.75,3.99,31,45
 guest,Little Wings,Red Butterhead Lettuce,Y,ea,package,each,1,2,2.88,31,44
 guest,Deck Family Farms Hyland Processing,Rendered Beef Tallow,Y,ea,package,8 oz.,1,3.9,5.69,31,46
 guest,Deck Family Farms Hyland Processing,Rendered Pork Back Fat,Y,ea,package,8 oz,1,3.9,5.69,31,46
-guest,Deck Family Farms Hyland Processing,Rendered Pork Leaf Lard,Y,ea,package,16 oz.,1,7.8,11.23,31,44
 guest,Deck Family Farms Hyland Processing,Rendered Pork Leaf Lard,Y,ea,package,8 oz.,1,3.9,5.62,31,44
+guest,Deck Family Farms Hyland Processing,Rendered Pork Leaf Lard,Y,ea,package,16 oz.,1,7.8,11.23,31,44
 guest,Sweet Creek,Roasted Garlic Tomato Sauce,Y,ea,package,16 oz,1,3.76,5.45,31,45
 guest,Little Wings,Romaine Lettuce,Y,bu,package,each,1,2,2.88,31,44
 guest,Little Wings,Salad Mix,Y,bag,package,1/2 lb,1,4.15,5.98,31,44
@@ -128,12 +131,13 @@ guest,Deck Family Farm,Chicken Hearts,Y,pk,package,1/2 lb. pk,1,7.8,11.39,32,46
 guest,Deck Family Farm,Chicken Liver,Y,ea,package,1/2 lb,1,6.5,9.49,32,46
 guest,Deck Family Farm,Chicken Wings,Y,ea,package,2 - 2.8 lbs,1,15.6,22.78,32,46
 guest,Deck Family Farm,Chorizo Sausage,Y,pk,package,12 oz 4 count,1,10.73,15.67,32,46
-guest,Deck Family Farm,Cracked Walnuts,Y,ea,package,1/2 Lb,1,8.78,12.82,32,46
 guest,Deck Family Farm,Cracked Walnuts,Y,ea,package,1 Lb,1,14.3,20.88,32,46
+guest,Deck Family Farm,Cracked Walnuts,Y,ea,package,1/2 Lb,1,8.78,12.82,32,46
 guest,Deck Family Farm,Denver Spare Ribs,Y,pk,package,2.0- 2.7 Lbs,1,18.33,26.76,32,46
-guest,Deck Family Farms Hyland Processing,Fresh Farm Made Chaurice Sausage ( Unlinked )- made weekly in our farm kitchen!,Y,pk,package,12 oz. pk,1,9.1,13.29,32,46
-guest,Deck Family Farms Hyland Processing,Fresh Farm Made English Breakfast Sausage- made weekly in our farm kitchen!,Y,pk,package,12 oz pk,1,9.1,13.29,32,46
-guest,Deck Family Farms Hyland Processing,Fresh Farm Made Lamb Merguez Ground Sausage- made weekly in our farm kitchen!,Y,ea,package,"12oz , Pack",1,10.08,14.72,32,46
+guest,Deck Family Farms Hyland Processing,Fresh Farm Made Chaurice Sausage ( Unlinked )- made weekly in our farm kitchen! **SALE**,Y,pk,package,12 oz. pk,1,8.87,12.95,32,46
+guest,Deck Family Farms Hyland Processing,Fresh Farm Made English Breakfast Sausage- made weekly in our farm kitchen! **SALE**,Y,pk,package,12 oz pk,1,8.87,12.95,32,46
+guest,Deck Family Farms Hyland Processing,Fresh Farm Made Lamb Merguez Ground Sausage- made weekly in our farm kitchen! **SALE**,Y,ea,package,"12oz , Pack",1,9.82,14.34,32,46
+guest,Deck Family Farms Hyland Processing,Fresh Farm Made Spring Herb Lamb Sausage- made weekly in our farm kitchen! **SALE**,Y,pk,package,14 oz 4 links per pk,1,11.73,17.13,32,46
 guest,Deck Family Farm,Fresh Garlic Sausage Links,Y,pk,package,12 oz / 4 count,1,10.73,15.67,32,46
 guest,Deck Family Farm,Ground Country Sausage,Y,ea,package,12 oz,1,8.61,12.57,32,46
 guest,Deck Family Farm,Ground Pork,Y,ea,package,1 lb,1,9.43,13.77,32,46
@@ -155,17 +159,15 @@ guest,Deck Family Farm,Pork Shoulder Roast,Y,ea,package,2.4- 3 lbs,1,28.96,42.28
 guest,Deck Family Farm,Pork Tenderloin Roast,Y,pk,package,"Medium, 0.8 - 1.3 Lbs.",1,8.19,11.96,32,46
 guest,Deck Family Farm,Pork Tenderloin Roast,Y,pk,package,"Large, 1.4- 2.2 Lbs.",1,14.04,20.5,32,46
 guest,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Small, 3-4 Lbs",1,18.2,26.57,32,46
-guest,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Large, 5.1-5.7 Lbs.",1,35.1,51.25,32,46
 guest,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Medium, 4.1 - 5 Lbs",1,29.58,43.19,32,46
+guest,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Large, 5.1-5.7 Lbs.",1,35.1,51.25,32,46
 guest,Red Tail Growers,Red Tail Salad  Mix,Y,bag,package,1/2 lb. bag,1,3.5,5.11,32,46
 guest,Deck Family Farms Hyland Processing,Rendered Beef Tallow,Y,ea,package,16 oz,1,7.8,11.39,32,46
 guest,Deck Family Farms Hyland Processing,Rendered Pork Back Fat,Y,ea,package,16 oz,1,7.8,11.39,32,46
 guest,Deck Family Farm,Roasting Chicken,Y,ea,package,"Small, 2.5- 3.1",1,14.56,21.26,32,46
-guest,Deck Family Farm,Roasting Chicken,Y,ea,package,"Med, 3.2-4.2 lbs.",1,19.24,28.09,32,46
 guest,Deck Family Farm,Roasting Chicken,Y,ea,package,"Large, 4.3-5 Lbs.",1,24.18,35.3,32,46
 guest,Deck Family Farm,Sage and Sea Salt Pork Breakfast Sausage,Y,pk,package,each,1,9.1,13.29,32,46
 guest,Deck Family Farm,Smoked Polish Kielbasa Sausage,Y,pk,package,12 oz,1,10.73,15.67,32,46
-guest,Deck Family Farm,Stewing Hen,Y,ea,package,2 - 3.8 lbs,1,10.08,14.72,32,46
 guest,Deck Family Farm,Summer Sausage,Y,ea,package,10 oz,1,9.1,13.29,32,46
 guest,Deck Family Farm,Sweet Italian Sausage Links,Y,pk,package,12 oz 4 count,1,10.73,15.67,32,46
 guest,Deck Family Farm,Tamari Pressed Beef Jerky,Y,pk,package,3 oz,1,9.75,14.24,32,46
@@ -179,7 +181,6 @@ guest,Elegant Elephant Baking Co.,Gluten Free Cheddar Rolls,Y,ea,package,bag of 
 guest,Elegant Elephant Baking Co.,Gluten Free Potato Loaf with Teff,Y,ea,package,each,1,6.25,9.5,34,52
 guest,Barrett Baking,Organic Artisan Sourdough Loaf,Y,ea,package,ea,1,8,12.4,35,55
 guest,Elegant Elephant Baking Co.,Gluten Free Cinnamon Roll Pan,Y,ea,package,6,1,6,9.5,37,58
-guest,Graziers Garden,Chives,Y,bu,package,each,1,2.5,4,38,60
 guest,Graziers Garden,Fresh Thyme,Y,bu,package,each,1,2.5,4,38,60
 guest,Elegant Elephant Baking Co.,Gluten Free Brownie Bite with Chocolate Chips,Y,ea,package,each,1,2.5,4,38,60
 guest,Elegant Elephant Baking Co.,Gluten Free Half Almond Loaf Sliced,Y,ea,package,each,1,5,8,38,60
