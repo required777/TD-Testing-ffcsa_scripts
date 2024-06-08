@@ -70,6 +70,7 @@ guest,Red Tail Growers,Baby Carrots,Y,bu,package,each,1,2.5,3.63,31,45
 guest,Sweet Creek,Basil Tomato Sauce,Y,ea,package,16 oz,1,3.76,5.45,31,45
 guest,Deck Family Farm,Beef Bones,Y,bag,package,3 - 5 lbs,1,10.4,15.18,31,46
 guest,Sweet Creek,Blueberry Apple Sauce,Y,ea,package,each,1,4.87,7.06,31,45
+guest,Little Wings,Broccolini,Y,bu,package,each,1,2.75,3.99,31,45
 guest,Red Tail Growers,Butterhead Lettuce,Y,ea,package,each,1,1.5,2.16,31,44
 guest,Sweet Creek,Cinnamon Apple Sauce,Y,ea,package,23 oz,1,4.54,6.58,31,45
 guest,Red Tail Growers,Collard Greens,Y,bu,package,each,1,1.75,2.54,31,45
@@ -93,6 +94,7 @@ guest,Deck Family Farm,Lamb Kabob,Y,pk,package,0.9- 1.6 Lb,1,14.64,21.37,31,46
 guest,Deck Family Farm,Lamb Neck Slices,Y,ea,package,0.9-1.4lb,1,9.9,14.45,31,46
 guest,Deck Family Farm,Lamb Shank - Whole,Y,ea,package,2 - 2.5 lbs,1,23.4,34.16,31,46
 guest,Sweet Creek,Mango Habanero Taco Sauce - Maggie Kitchen,Y,ea,package,each,1,3.49,5.06,31,45
+guest,Graziers Garden,Mixed salad greens,Y,1/2 lb,weight,1/2 lb,1,4.5,6.48,31,44
 guest,Sweet Creek,Mushroom Tomato Sauce,Y,ea,package,16 oz,1,3.76,5.45,31,45
 guest,Graziers Garden,Oregano,Y,bu,package,each,1,3.5,5.04,31,44
 guest,Red Tail Growers,Parsley,Y,bu,package,each,1,1.5,2.18,31,45
@@ -108,7 +110,6 @@ guest,Deck Family Farms Hyland Processing,Rendered Pork Back Fat,Y,ea,package,8 
 guest,Deck Family Farms Hyland Processing,Rendered Pork Leaf Lard,Y,ea,package,8 oz.,1,3.9,5.62,31,44
 guest,Deck Family Farms Hyland Processing,Rendered Pork Leaf Lard,Y,ea,package,16 oz.,1,7.8,11.23,31,44
 guest,Sweet Creek,Roasted Garlic Tomato Sauce,Y,ea,package,16 oz,1,3.76,5.45,31,45
-guest,Little Wings,Romaine Lettuce,Y,bu,package,each,1,2,2.88,31,44
 guest,Little Wings,Salad Mix,Y,bag,package,1/2 lb,1,4.15,5.98,31,44
 guest,Sweet Creek,"Salsa, Hot",Y,ea,package,16 oz,1,3.7,5.37,31,45
 guest,Sweet Creek,"Salsa, Medium",Y,ea,package,16 oz,1,3.7,5.37,31,45
@@ -142,15 +143,15 @@ guest,Deck Family Farm,Fresh Garlic Sausage Links,Y,pk,package,12 oz / 4 count,1
 guest,Deck Family Farm,Ground Country Sausage,Y,ea,package,12 oz,1,8.61,12.57,32,46
 guest,Deck Family Farm,Ground Pork,Y,ea,package,1 lb,1,9.43,13.77,32,46
 guest,Deck Family Farm,"Honey, Bulk Raw",Y,ea,package,4 gallon,1,245,357.7,32,46
-guest,Deck Family Farm,"Honey, Raw",Y,ea,package,1 pt,1,14.3,20.88,32,46
 guest,Deck Family Farm,"Honey, Raw",Y,ea,package,1/2 pt,1,9.43,13.77,32,46
 guest,Deck Family Farm,"Honey, Raw",Y,ea,package,1 qt,1,26,37.96,32,46
+guest,Deck Family Farm,"Honey, Raw",Y,ea,package,1 pt,1,14.3,20.88,32,46
 guest,Deck Family Farm,Lamb Shoulder Roast,Y,ea,package,3.2 -4 lbs,1,46.8,68.33,32,46
 guest,Deck Family Farm,Landgaeger Jerky,Y,pk,package,3 count / 3 oz,1,9.1,13.29,32,46
 guest,Deck Family Farm,New York Steak,Y,ea,package,0.6 - 0.8 lbs,1,14.11,20.6,32,46
 guest,Deck Family Farm,"Olympia Provisions, Dog Treats",Y,pk,package,5 oz. pk,1,9.75,14.24,32,46
-guest,Deck Family Farm,Organic Pasture Raised Chicken Eggs,Y,ea,package,1/2 dozen,1,4.23,6.18,32,46
 guest,Deck Family Farm,Organic Pasture Raised Chicken Eggs,Y,ea,package,1 dozen,1,7.15,10.44,32,46
+guest,Deck Family Farm,Organic Pasture Raised Chicken Eggs,Y,ea,package,1/2 dozen,1,4.23,6.18,32,46
 guest,Deck Family Farm,Peppered Knife Cut Beef Jerky,Y,pk,package,3 oz,1,9.75,14.24,32,46
 guest,Deck Family Farm,Pet Food Organ Mix,Y,ea,package,1 lb,1,9.43,13.77,32,46
 guest,Deck Family Farm,Pork Bacon,Y,pk,package,8 oz,1,9.59,14,32,46
@@ -158,8 +159,8 @@ guest,Deck Family Farm,Pork Shank,Y,pk,package,2-3 Lb. pk,1,23.56,34.4,32,46
 guest,Deck Family Farm,Pork Shoulder Roast,Y,ea,package,2.4- 3 lbs,1,28.96,42.28,32,46
 guest,Deck Family Farm,Pork Tenderloin Roast,Y,pk,package,"Medium, 0.8 - 1.3 Lbs.",1,8.19,11.96,32,46
 guest,Deck Family Farm,Pork Tenderloin Roast,Y,pk,package,"Large, 1.4- 2.2 Lbs.",1,14.04,20.5,32,46
-guest,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Small, 3-4 Lbs",1,18.2,26.57,32,46
 guest,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Medium, 4.1 - 5 Lbs",1,29.58,43.19,32,46
+guest,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Small, 3-4 Lbs",1,18.2,26.57,32,46
 guest,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Large, 5.1-5.7 Lbs.",1,35.1,51.25,32,46
 guest,Red Tail Growers,Red Tail Salad  Mix,Y,bag,package,1/2 lb. bag,1,3.5,5.11,32,46
 guest,Deck Family Farms Hyland Processing,Rendered Beef Tallow,Y,ea,package,16 oz,1,7.8,11.39,32,46
