@@ -51,10 +51,10 @@ async function writeDeliveryOrderPDF(filename) {
           const timeRange = startTime + ' to ' + endTime
 
           // If # of Items is > 1 and quantity is 1, then update quantity to be numItems
-		//           const numItems = Math.round(parseFloat(row['# of Items']));
 	  if (numItems > 1 && quantity == 1) {
 		  quantity = numItems
 	  }
+
           // If the customerName changes, start a new section
           if (customerName !== currentCustomerName) {
             currentCustomerName = customerName;
