@@ -36,7 +36,8 @@ async function writeDeliveryOrderPDF(filename) {
         sortedData.forEach((row) => {
           const customerName = row['Customer'];
           const product = row['Product'] + ' - ' + row['Package Name'];
-          const quantity = Math.round(parseFloat(row['Quantity']));
+          quantity = Math.round(parseFloat(row['Quantity']));
+          const numItems = Math.round(parseFloat(row['# of Items']));
           const itemUnit = row['Item Unit']
           const vendor = row['Vendor']
           const category = row['Category']
@@ -49,6 +50,11 @@ async function writeDeliveryOrderPDF(filename) {
           const endTime = row['Fulfillment - Pickup End Time']
           const timeRange = startTime + ' to ' + endTime
 
+          // If # of Items is > 1 and quantity is 1, then update quantity to be numItems
+		//           const numItems = Math.round(parseFloat(row['# of Items']));
+	  if (numItems > 1 && quantity == 1) {
+		  quantity = numItems
+	  }
           // If the customerName changes, start a new section
           if (customerName !== currentCustomerName) {
             currentCustomerName = customerName;

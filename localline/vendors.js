@@ -41,12 +41,16 @@ async function writeVendorsPDF(products_file_path, vendors_file_path, filename) 
                                     const vendorName = row['Vendor']
                                     const product = row['Item Unit'] + ',' + row['Product'] + ' - ' + row['Package Name'];
                                     const packageName = row['Package Name'];
-                                    const quantity = Math.round(parseFloat(row['Quantity']));
+                                    quantity = Math.round(parseFloat(row['Quantity']));
+                	            const numItems = Math.round(parseFloat(row['# of Items']));
                                     const price = (parseFloat(row['Product Subtotal']) / quantity).toFixed(2);
                                     const totalPrice = row['Product Subtotal']
                                     const category = row['Category']
                                     const fullfillmentDate = row['Fulfillment Date']
-
+  				   // If # of Items is > 1 and quantity is 1, then update quantity to be numItems
+                                   if (numItems > 1 && quantity == 1) {
+                  			quantity = numItems
+          			   }
 
                                     // If the customerName changes, start a new section
                                     if (vendorName !== currentVendorName) {
@@ -192,7 +196,7 @@ async function writeVendorsPDF(products_file_path, vendors_file_path, filename) 
                                                 to: email,                                            
                                                 cc: 'fullfarmcsa@deckfamilyfarm.com',
                                                 bcc: 'jdeck88@gmail.com',
-                                                subject: "Full Farm CSA - " + vendorName + " - " + utilities.getToday(), // Subject line
+                                                subject: "TEST Full Farm CSA - " + vendorName + " - " + utilities.getToday(), // Subject line
                                                 text: "The attached PDF file contains the Full Farm CSA Order for the next fulfillment Cycle.  " +
                                                     "Respond to this email (including both cc:ed addresses) with questions!"
                                             }
