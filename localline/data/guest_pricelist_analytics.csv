@@ -1,7 +1,6 @@
 Priceslist,Vendor,Product,Visible,Item Unit,Charge Unit,Package Name,# of Items,Purchase Price,Retail Price,Margin,Markup
 guest,Graziers Garden,Spinach,Y,bu,package,each,1,4,4,0,0
 guest,Creole Me Up,Pickleez for Wimps,Y,ea,package,ea,1,8.35,11.69,29,40
-guest,Little Wings,Basil,Y,bu,package,1 bu.,1,1.75,2.5,30,43
 guest,RL Plants,Birch Wooden Coasters,Y,pk,package,2 pack,1,10,14.3,30,43
 guest,Elegant Elephant Baking Co.,Blackberry Hand Pie,Y,ea,package,each,1,2.95,4.22,30,43
 guest,Spoiled Rotten Vinegar,Blackberry Vinegar,Y,ea,package,8 fl. oz,1,7,10.01,30,43
@@ -127,7 +126,6 @@ guest,Graziers Garden,Mixed salad greens,Y,1/2 lb,weight,1/2 lb,1,4.5,6.48,31,44
 guest,Sweet Creek,Mushroom Tomato Sauce,Y,ea,package,16 oz,1,3.76,5.45,31,45
 guest,Graziers Garden,Oregano,Y,bu,package,each,1,3.5,5.04,31,44
 guest,Red Tail Growers,Parsley,Y,bu,package,each,1,1.5,2.18,31,45
-guest,Sweet Creek,Pauls Dill Pickles,Y,ea,package,24 oz,1,5.7,8.27,31,45
 guest,Creole Me Up,Pickleez with a Little Bit of Sass,Y,ea,package,16.06oz,1,8.35,12.11,31,45
 guest,Deck Family Farm,Pork Bones,Y,ea,package,3-5 lbs.,1,5.2,7.59,31,46
 guest,Deck Family Farm,Pork Chops Bone-In,Y,ea,package,1.6-2.2 Lbs,1,20.38,29.75,31,46
@@ -138,8 +136,8 @@ guest,Camas Swale Farm,Rainbow Carrots,Y,bu,package,1 bunch,1,2.5,3.6,31,44
 guest,Red Tail Growers,Red Beets,Y,bu,package,1 bunch,1,2.5,3.6,31,44
 guest,Deck Family Farms Hyland Processing,Rendered Beef Tallow,Y,ea,package,8 oz.,1,3.9,5.69,31,46
 guest,Deck Family Farms Hyland Processing,Rendered Pork Back Fat,Y,ea,package,8 oz,1,3.9,5.69,31,46
-guest,Deck Family Farms Hyland Processing,Rendered Pork Leaf Lard,Y,ea,package,8 oz.,1,3.9,5.62,31,44
 guest,Deck Family Farms Hyland Processing,Rendered Pork Leaf Lard,Y,ea,package,16 oz.,1,7.8,11.23,31,44
+guest,Deck Family Farms Hyland Processing,Rendered Pork Leaf Lard,Y,ea,package,8 oz.,1,3.9,5.62,31,44
 guest,Sweet Creek,Roasted Garlic Tomato Sauce,Y,ea,package,16 oz,1,3.76,5.45,31,45
 guest,Sweet Creek,"Salsa, Hot",Y,ea,package,16 oz,1,3.7,5.37,31,45
 guest,Sweet Creek,"Salsa, Medium",Y,ea,package,16 oz,1,3.7,5.37,31,45
@@ -158,8 +156,8 @@ guest,Deck Family Farm,Bacon Ends & Pieces,Y,pk,package,8 oz,1,7.8,11.39,32,46
 guest,Deck Family Farm,Beef Back Ribs,Y,ea,package,2.5-2.9 Lbs,1,23.25,33.95,32,46
 guest,Deck Family Farm,Beef Back Ribs,Y,ea,package,"Large,  5-5.3 Lbs",1,44.35,64.75,32,46
 guest,Deck Family Farm,Beef Brisket,Y,ea,package,"Small, 1.9-2.8 lbs",1,23.68,34.57,32,46
-guest,Deck Family Farm,Beef Brisket,Y,ea,package,"Large, 4.3-4.9",1,46.35,67.67,32,46
 guest,Deck Family Farm,Beef Brisket,Y,ea,package,"Medium, 3-3.9",1,34.76,50.75,32,46
+guest,Deck Family Farm,Beef Brisket,Y,ea,package,"Large, 4.3-4.9",1,46.35,67.67,32,46
 guest,Deck Family Farm,Beef Chuck Roast,Y,ea,package,2 -2.7 lbs,1,23.68,34.57,32,46
 guest,Deck Family Farm,Beef Flat Iron Steak,Y,ea,package,.6 - 1.4 lbs.,1,14.3,20.88,32,46
 guest,Deck Family Farm,Beef Heart,Y,ea,package,2.8 -3.4 lb,1,16.12,23.54,32,46
@@ -217,8 +215,8 @@ guest,Red Tail Growers,Red Tail Salad  Mix,Y,bag,package,1/2 lb. bag,1,3.5,5.11,
 guest,Deck Family Farms Hyland Processing,Rendered Beef Tallow,Y,ea,package,16 oz,1,7.8,11.39,32,46
 guest,Deck Family Farms Hyland Processing,Rendered Pork Back Fat,Y,ea,package,16 oz,1,7.8,11.39,32,46
 guest,Deck Family Farm,Ribeye Steak,Y,ea,package,0.6 - 1.2 lbs,1,19.31,28.19,32,46
-guest,Deck Family Farm,Roasting Chicken,Y,ea,package,"Large, 4.3-5 Lbs.",1,24.18,35.3,32,46
 guest,Deck Family Farm,Roasting Chicken,Y,ea,package,"Small, 2.5- 3.1",1,14.56,21.26,32,46
+guest,Deck Family Farm,Roasting Chicken,Y,ea,package,"Large, 4.3-5 Lbs.",1,24.18,35.3,32,46
 guest,Deck Family Farm,Sage and Sea Salt Pork Breakfast Sausage,Y,pk,package,each,1,9.1,13.29,32,46
 guest,Deck Family Farm,Skirt Steak,Y,pk,package,"Large, 0.9 -1.1 Lbs.",1,14.3,20.88,32,46
 guest,Deck Family Farm,Smoked Polish Kielbasa Sausage,Y,pk,package,12 oz,1,10.73,15.67,32,46
