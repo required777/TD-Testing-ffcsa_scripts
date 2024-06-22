@@ -15,7 +15,7 @@ guest,OGC,Celery,Y,bu,package,each,1,3.5,5.01,30,43
 guest,OGC,Champion Club Microgreens Broccoli Mix 2 oz,Y,ea,package,2 oz,1,5.5,7.87,30,43
 guest,OGC,Champion Club Microgreens Power Mix,Y,ea,package,2 oz,1,5.5,7.87,30,43
 guest,OGC,Champion Club Microgreens Rainbow Mix,Y,ea,package,2 oz,1,5.5,7.87,30,43
-guest,OGC,Cherries,Y,bag,package,1.5 lb. bag,1,6.9,9.87,30,43
+guest,Graziers Garden,Cherries,Y,bag,package,1.5 lb. bag,1,6.9,9.87,30,43
 guest,Graziers Garden,Chives,Y,bu,package,each,1,1.5,2.15,30,43
 guest,Creole Me Up,Creole Marinade with Sass,Y,ea,package,8oz,1,7.5,10.73,30,43
 guest,OGC,Crimini Mushrooms,Y,lb,package,1 lb,1,3.95,5.65,30,43
@@ -61,7 +61,6 @@ guest,OGC,Parsnips,Y,lb,package,1 lb,1,2.2,3.15,30,43
 guest,Spoiled Rotten Vinegar,Pear Vinegar,Y,ea,package,8 fl. oz,1,7,10.01,30,43
 guest,Creole Me Up,Pickleez Zonyon in Purple (Pickled Onions),Y,ea,package,16oz,1,9,12.87,30,43
 guest,Lonesome Whistle,Plain Kettle Corn,Y,ea,package,0.4 lb bag,1,3.33,4.76,30,43
-guest,Queen of Hearts Superfood,Queen of Hearts Ginger Sesame Dressing,Y,ea,package,each,1,6.6,9.44,30,43
 guest,Queen of Hearts Superfood,Queen of Hearts Green Goddess Dressing,Y,ea,package,each,1,6.6,9.44,30,43
 guest,Queen of Hearts Superfood,Queen of Hearts Sassy Italian Dressing,Y,ea,package,each,1,6.6,9.44,30,43
 guest,Queen of Hearts Superfood,Queen of Hearts Zesty Caesar Dressing,Y,ea,package,each,1,6.6,9.44,30,43
@@ -149,8 +148,8 @@ guest,Deck Family Farm,Baby Back Ribs,Y,pk,package,1.3-2.1  Lbs,1,16.02,23.39,32
 guest,Deck Family Farm,Bacon Ends & Pieces,Y,pk,package,8 oz,1,7.8,11.39,32,46
 guest,Deck Family Farm,Beef Back Ribs,Y,ea,package,"Large,  5-5.3 Lbs",1,44.35,64.75,32,46
 guest,Deck Family Farm,Beef Back Ribs,Y,ea,package,2.5-2.9 Lbs,1,23.25,33.95,32,46
-guest,Deck Family Farm,Beef Brisket,Y,ea,package,"Small, 1.9-2.8 lbs",1,23.68,34.57,32,46
 guest,Deck Family Farm,Beef Brisket,Y,ea,package,"Large, 4.3-4.9",1,46.35,67.67,32,46
+guest,Deck Family Farm,Beef Brisket,Y,ea,package,"Small, 1.9-2.8 lbs",1,23.68,34.57,32,46
 guest,Deck Family Farm,Beef Brisket,Y,ea,package,"Medium, 3-3.9",1,34.76,50.75,32,46
 guest,Deck Family Farm,Beef Chuck Roast,Y,ea,package,2 -2.7 lbs,1,23.68,34.57,32,46
 guest,Deck Family Farm,Beef Flat Iron Steak,Y,ea,package,.6 - 1.4 lbs.,1,14.3,20.88,32,46
@@ -171,8 +170,8 @@ guest,Deck Family Farm,Chicken Gizzards,Y,pk,package,1/2 lb pk,1,6.5,9.49,32,46
 guest,Deck Family Farm,Chicken Hearts,Y,pk,package,1/2 lb. pk,1,7.8,11.39,32,46
 guest,Deck Family Farm,Chicken Liver,Y,ea,package,1/2 lb,1,6.5,9.49,32,46
 guest,Deck Family Farm,Chorizo Sausage,Y,pk,package,12 oz 4 count,1,10.73,15.67,32,46
-guest,Deck Family Farm,Cracked Walnuts,Y,ea,package,1 Lb,1,14.3,20.88,32,46
 guest,Deck Family Farm,Cracked Walnuts,Y,ea,package,1/2 Lb,1,8.78,12.82,32,46
+guest,Deck Family Farm,Cracked Walnuts,Y,ea,package,1 Lb,1,14.3,20.88,32,46
 guest,Deck Family Farm,Denver Spare Ribs,Y,pk,package,"Large, 2.6-3.6 Lbs",1,23.79,34.73,32,46
 guest,Deck Family Farms Hyland Processing,Fresh Farm Made Chaurice Sausage ( Unlinked )- made weekly in our farm kitchen! **SALE**,Y,pk,package,12 oz. pk,1,8.87,12.95,32,46
 guest,Deck Family Farms Hyland Processing,Fresh Farm Made English Breakfast Sausage- made weekly in our farm kitchen! **SALE**,Y,pk,package,12 oz pk,1,8.87,12.95,32,46
@@ -202,9 +201,9 @@ guest,Deck Family Farm,"Pork Chop, Boneless Thick Cut",Y,pk,package,1.3-2 Lb pk,
 guest,Deck Family Farm,Pork Shank,Y,pk,package,2-3 Lb. pk,1,23.56,34.4,32,46
 guest,Deck Family Farm,Pork Shoulder Roast,Y,ea,package,"Large, 3-3.5 Lbs",1,34.86,50.9,32,46
 guest,Deck Family Farm,Pork Shoulder Roast,Y,ea,package,2-2.5 lbs,1,24.13,35.23,32,46
+guest,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Medium, 4.1 - 5 Lbs",1,29.58,43.19,32,46
 guest,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Small, 3-4 Lbs",1,18.2,26.57,32,46
 guest,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Large, 5.1-5.7 Lbs.",1,35.1,51.25,32,46
-guest,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Medium, 4.1 - 5 Lbs",1,29.58,43.19,32,46
 guest,Red Tail Growers,Red Tail Salad  Mix,Y,bag,package,1/2 lb. bag,1,3.5,5.11,32,46
 guest,Deck Family Farms Hyland Processing,Rendered Beef Tallow,Y,ea,package,16 oz,1,7.8,11.39,32,46
 guest,Deck Family Farms Hyland Processing,Rendered Pork Back Fat,Y,ea,package,16 oz,1,7.8,11.39,32,46
