@@ -58,6 +58,7 @@ guest,OGC,Parsnips,Y,lb,package,1 lb,1,2.2,3.15,30,43
 guest,Spoiled Rotten Vinegar,Pear Vinegar,Y,ea,package,8 fl. oz,1,7,10.01,30,43
 guest,Creole Me Up,Pickleez Zonyon in Purple (Pickled Onions),Y,ea,package,16oz,1,9,12.87,30,43
 guest,Lonesome Whistle,Plain Kettle Corn,Y,ea,package,0.4 lb bag,1,3.33,4.76,30,43
+guest,Graziers Garden,Purple Shvelisi Garlic,Y,1/2 lb,package,1/2 lb,1,5,7.15,30,43
 guest,Queen of Hearts Superfood,Queen of Hearts Green Goddess Dressing,Y,ea,package,each,1,6.6,9.44,30,43
 guest,Queen of Hearts Superfood,Queen of Hearts Sassy Italian Dressing,Y,ea,package,each,1,6.6,9.44,30,43
 guest,Queen of Hearts Superfood,Queen of Hearts Zesty Caesar Dressing,Y,ea,package,each,1,6.6,9.44,30,43
@@ -113,7 +114,7 @@ guest,Deck Family Farm,Lamb Neck Slices,Y,ea,package,1.1-1.5 lb,1,11.2,16.35,31,
 guest,Deck Family Farm,Lamb Shank - Whole,Y,ea,package,2 - 2.5 lbs,1,23.4,34.16,31,46
 guest,Sweet Creek,Mango Habanero Taco Sauce - Maggie Kitchen,Y,ea,package,each,1,3.49,5.06,31,45
 guest,Red Tail Growers,Mild Mustard Salad Mix,Y,bag,package,1/2 lb,1,3.5,5.08,31,45
-guest,Graziers Garden,Mixed salad greens,Y,1/2 lb,weight,1/2 lb,1,4.5,6.48,31,44
+guest,Graziers Garden,Mixed salad greens,Y,1/2 lb,weight,1/2 lb,1,3.33,4.8,31,44
 guest,Sweet Creek,Mushroom Tomato Sauce,Y,ea,package,16 oz,1,3.76,5.45,31,45
 guest,Graziers Garden,Oregano,Y,bu,package,each,1,3.5,5.04,31,44
 guest,Red Tail Growers,Parsley,Y,bu,package,each,1,1.5,2.18,31,45
@@ -121,6 +122,7 @@ guest,Creole Me Up,Pickleez with a Little Bit of Sass,Y,ea,package,16.06oz,1,8.3
 guest,Deck Family Farm,Pork Bones,Y,ea,package,3-5 lbs.,1,5.2,7.59,31,46
 guest,Deck Family Farm,Pork Chops Bone-In,Y,ea,package,1.6-2.2 Lbs,1,20.38,29.75,31,46
 guest,Deck Family Farm,Pork Frankfurter,Y,pk,package,12 oz pk,1,11.05,16.13,31,46
+guest,Graziers Garden,Purple Sprouting Broccoli,Y,bu,package,each,1,2.75,3.96,31,44
 guest,Camas Swale Farm,Purple curly kale,Y,ea,package,ea,1,2,2.88,31,44
 guest,Camas Swale Farm,Rainbow Carrots,Y,bu,package,1 bunch,1,2.5,3.6,31,44
 guest,Red Tail Growers,Red Beets,Y,bu,package,1 bunch,1,2.5,3.6,31,44
@@ -143,8 +145,8 @@ guest,Reality Kitchen Nonprofit,Wholewheat Multigrain Sandwich Loaf,Y,ea,package
 guest,Red Tail Growers,Young Chicory,Y,pound,package,ea,1,1.5,2.18,31,45
 guest,Deck Family Farm,Baby Back Ribs,Y,pk,package,1.3-2.1  Lbs,1,16.02,23.39,32,46
 guest,Deck Family Farm,Bacon Ends & Pieces,Y,pk,package,8 oz,1,7.8,11.39,32,46
-guest,Deck Family Farm,Beef Back Ribs,Y,ea,package,2.5-2.9 Lbs,1,23.25,33.95,32,46
 guest,Deck Family Farm,Beef Back Ribs,Y,ea,package,"Large,  5-5.3 Lbs",1,44.35,64.75,32,46
+guest,Deck Family Farm,Beef Back Ribs,Y,ea,package,2.5-2.9 Lbs,1,23.25,33.95,32,46
 guest,Deck Family Farm,Beef Brisket,Y,ea,package,"Small, 1.9-2.8 lbs",1,23.68,34.57,32,46
 guest,Deck Family Farm,Beef Brisket,Y,ea,package,"Large, 4.3-4.9",1,46.35,67.67,32,46
 guest,Deck Family Farm,Beef Brisket,Y,ea,package,"Medium, 3-3.9",1,34.76,50.75,32,46
@@ -213,8 +215,8 @@ guest,Deck Family Farm,Sweet Italian Sausage Links,Y,pk,package,12 oz 4 count,1,
 guest,Deck Family Farm,Tamari Pressed Beef Jerky,Y,pk,package,3 oz,1,9.75,14.24,32,46
 guest,Deck Family Farm,Top Sirloin Steak,Y,ea,package,"Large, 1.3-1.9 Lbs",1,21.84,31.89,32,46
 guest,Deck Family Farm,Unrendered Beef Tallow,Y,pk,package,2-3.7 Lb pk,1,7.41,10.82,32,46
-guest,Deck Family Farm,Western Beef Short Ribs,Y,ea,package,"Large, 2.7-3.5 Lbs",1,33.25,48.55,32,46
 guest,Deck Family Farm,Western Beef Short Ribs,Y,ea,package,1.3-2.1 lbs,1,18.23,26.62,32,46
+guest,Deck Family Farm,Western Beef Short Ribs,Y,ea,package,"Large, 2.7-3.5 Lbs",1,33.25,48.55,32,46
 guest,Elegant Elephant Baking Co.,Gluten Free Apple Pie,Y,ea,package,6,1,7.5,11.25,33,50
 guest,Red Tail Growers,Rainbow Chard,Y,bu,package,each,1,1.75,2.61,33,49
 guest,Full Farm CSA,Wildcraft Hot Sauce,Y,ea,package,ea,1,8,12,33,50
@@ -234,6 +236,7 @@ guest,Reality Kitchen Nonprofit,Sourdough Rye Sandwich Loaf,Y,ea,package,each,1,
 guest,Reality Kitchen Nonprofit,Braided Challah (seeded),Y,ea,package,each,1,5,8.55,42,71
 guest,Red Tail Growers,"Dandelion, Green",Y,bu,package,bu,1,1.75,3,42,71
 guest,Red Tail Growers,"Dandelion, Red",Y,bu,package,bu,1,1.75,3,42,71
+guest,Graziers Garden,Fresh Sage,Y,bu,package,each,1,2.29,4,43,75
 guest,Elegant Elephant Baking Co.,Gluten Free Banana Cream Pie,Y,ea,package,6,1,8,14,43,75
 guest,Elegant Elephant Baking Co.,Gluten Free Chocolate Cream Pie,Y,ea,package,6,1,8,14,43,75
 guest,Elegant Elephant Baking Co.,Larry and Sons Bagels 4 pk- Plain,Y,ea,package,each,1,7.75,13.5,43,74
