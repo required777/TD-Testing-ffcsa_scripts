@@ -1,0 +1,244 @@
+{
+  "weeks": [
+    {
+      "dateRange": "2024-06-24 to 2024-06-30",
+      "data": [
+        {
+          "fulfillmentName": "Hollywood Farmers Market",
+          "total": 2623,
+          "count": 21
+        },
+        {
+          "fulfillmentName": "Farm - Friday",
+          "total": 576,
+          "count": 6
+        },
+        {
+          "fulfillmentName": "Cully",
+          "total": 432,
+          "count": 4
+        },
+        {
+          "fulfillmentName": "St Johns Farmers Market",
+          "total": 209,
+          "count": 1
+        },
+        {
+          "fulfillmentName": "LCFM",
+          "total": 726,
+          "count": 7
+        },
+        {
+          "fulfillmentName": "PSU Farmers Market",
+          "total": 988,
+          "count": 12
+        },
+        {
+          "fulfillmentName": "Irvington",
+          "total": 197,
+          "count": 3
+        },
+        {
+          "fulfillmentName": "Woodstock",
+          "total": 1086,
+          "count": 10
+        },
+        {
+          "fulfillmentName": "Corvallis",
+          "total": 197,
+          "count": 2
+        },
+        {
+          "fulfillmentName": "Home Delivery - Eugene/Springfield/Junction City",
+          "total": 4783,
+          "count": 36
+        },
+        {
+          "fulfillmentName": "W 11th",
+          "total": 477,
+          "count": 6
+        },
+        {
+          "fulfillmentName": "Friendly",
+          "total": 1017,
+          "count": 10
+        },
+        {
+          "fulfillmentName": "Home Delivery - Corvallis",
+          "total": 89,
+          "count": 1
+        },
+        {
+          "fulfillmentName": "Farm - Tuesday",
+          "total": 283,
+          "count": 6
+        },
+        {
+          "fulfillmentName": "Springfield",
+          "total": 385,
+          "count": 5
+        },
+        {
+          "fulfillmentName": "Beaverton",
+          "total": 151,
+          "count": 2
+        }
+      ]
+    },
+    {
+      "dateRange": "2024-06-10 to 2024-06-16",
+      "data": [
+        {
+          "fulfillmentName": "Farm - Friday",
+          "total": 764,
+          "count": 8
+        },
+        {
+          "fulfillmentName": "PSU Farmers Market",
+          "total": 833,
+          "count": 6
+        },
+        {
+          "fulfillmentName": "Irvington",
+          "total": 330,
+          "count": 4
+        },
+        {
+          "fulfillmentName": "Hollywood Farmers Market",
+          "total": 1389,
+          "count": 20
+        },
+        {
+          "fulfillmentName": "Cully",
+          "total": 613,
+          "count": 7
+        },
+        {
+          "fulfillmentName": "LCFM",
+          "total": 515,
+          "count": 6
+        },
+        {
+          "fulfillmentName": "St Johns Farmers Market",
+          "total": 624,
+          "count": 7
+        },
+        {
+          "fulfillmentName": "Woodstock",
+          "total": 309,
+          "count": 4
+        },
+        {
+          "fulfillmentName": "Home Delivery - Corvallis",
+          "total": 242,
+          "count": 1
+        },
+        {
+          "fulfillmentName": "Beaverton",
+          "total": 191,
+          "count": 2
+        },
+        {
+          "fulfillmentName": "Corvallis",
+          "total": 185,
+          "count": 1
+        },
+        {
+          "fulfillmentName": "Home Delivery - Eugene/Springfield/Junction City",
+          "total": 3921,
+          "count": 34
+        },
+        {
+          "fulfillmentName": "Friendly",
+          "total": 969,
+          "count": 13
+        },
+        {
+          "fulfillmentName": "W 11th",
+          "total": 558,
+          "count": 7
+        },
+        {
+          "fulfillmentName": "Springfield",
+          "total": 163,
+          "count": 2
+        },
+        {
+          "fulfillmentName": "Farm - Tuesday",
+          "total": 861,
+          "count": 10
+        }
+      ]
+    },
+    {
+      "dateRange": "2024-06-17 to 2024-06-23",
+      "data": [
+        {
+          "fulfillmentName": "PSU Farmers Market",
+          "total": 784,
+          "count": 8
+        },
+        {
+          "fulfillmentName": "Hollywood Farmers Market",
+          "total": 1277,
+          "count": 12
+        },
+        {
+          "fulfillmentName": "Cully",
+          "total": 1260,
+          "count": 11
+        },
+        {
+          "fulfillmentName": "Farm - Friday",
+          "total": 440,
+          "count": 6
+        },
+        {
+          "fulfillmentName": "Farm - Tuesday",
+          "total": 967,
+          "count": 13
+        },
+        {
+          "fulfillmentName": "Woodstock",
+          "total": 305,
+          "count": 4
+        },
+        {
+          "fulfillmentName": "St Johns Farmers Market",
+          "total": 771,
+          "count": 6
+        },
+        {
+          "fulfillmentName": "Beaverton",
+          "total": 188,
+          "count": 2
+        },
+        {
+          "fulfillmentName": "LCFM",
+          "total": 353,
+          "count": 4
+        },
+        {
+          "fulfillmentName": "Home Delivery - Eugene/Springfield/Junction City",
+          "total": 4323,
+          "count": 34
+        },
+        {
+          "fulfillmentName": "Friendly",
+          "total": 1037,
+          "count": 13
+        },
+        {
+          "fulfillmentName": "Springfield",
+          "total": 340,
+          "count": 4
+        },
+        {
+          "fulfillmentName": "W 11th",
+          "total": 637,
+          "count": 8
+        }
+      ]
+    }
+  ]
+}

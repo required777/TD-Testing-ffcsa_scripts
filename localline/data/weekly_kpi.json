@@ -1,0 +1,43 @@
+{
+  "weeks": [
+    {
+      "dateRange": "2024-06-24 to 2024-06-30",
+      "data": {
+        "totalSales": "14057.20",
+        "numOrders": 132,
+        "numSubscriberOrders": 129,
+        "numGuestOrders": 3,
+        "averageItemsPerOrder": 9,
+        "averageOrderAmount": "107.71",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    },
+    {
+      "dateRange": "2024-06-10 to 2024-06-16",
+      "data": {
+        "totalSales": "12247.27",
+        "numOrders": 132,
+        "numSubscriberOrders": 129,
+        "numGuestOrders": 3,
+        "averageItemsPerOrder": 7,
+        "averageOrderAmount": "94.45",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    },
+    {
+      "dateRange": "2024-06-17 to 2024-06-23",
+      "data": {
+        "totalSales": "12500.30",
+        "numOrders": 125,
+        "numSubscriberOrders": 122,
+        "numGuestOrders": 3,
+        "averageItemsPerOrder": 10,
+        "averageOrderAmount": "101.44",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    }
+  ]
+}
