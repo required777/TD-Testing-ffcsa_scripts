@@ -38,6 +38,500 @@
         "totalActiveSubscribers": 205,
         "projectedMonthlySubscriptionRevenue": 47902
       }
+    },
+    {
+      "dateRange": "2024-06-03 to 2024-06-09",
+      "data": {
+        "totalSales": "12187.32",
+        "numOrders": 137,
+        "numSubscriberOrders": 128,
+        "numGuestOrders": 9,
+        "averageItemsPerOrder": 8,
+        "averageOrderAmount": "91.00",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    },
+    {
+      "dateRange": "2024-05-27 to 2024-06-02",
+      "data": {
+        "totalSales": "12256.56",
+        "numOrders": 133,
+        "numSubscriberOrders": 129,
+        "numGuestOrders": 4,
+        "averageItemsPerOrder": 8,
+        "averageOrderAmount": "93.96",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    },
+    {
+      "dateRange": "2024-05-20 to 2024-05-26",
+      "data": {
+        "totalSales": "10827.17",
+        "numOrders": 124,
+        "numSubscriberOrders": 121,
+        "numGuestOrders": 3,
+        "averageItemsPerOrder": 8,
+        "averageOrderAmount": "89.01",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    },
+    {
+      "dateRange": "2024-05-13 to 2024-05-19",
+      "data": {
+        "totalSales": "12794.36",
+        "numOrders": 132,
+        "numSubscriberOrders": 128,
+        "numGuestOrders": 4,
+        "averageItemsPerOrder": 8,
+        "averageOrderAmount": "98.44",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    },
+    {
+      "dateRange": "2024-05-06 to 2024-05-12",
+      "data": {
+        "totalSales": "13974.91",
+        "numOrders": 157,
+        "numSubscriberOrders": 153,
+        "numGuestOrders": 4,
+        "averageItemsPerOrder": 8,
+        "averageOrderAmount": "91.05",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    },
+    {
+      "dateRange": "2024-04-29 to 2024-05-05",
+      "data": {
+        "totalSales": "12386.14",
+        "numOrders": 139,
+        "numSubscriberOrders": 134,
+        "numGuestOrders": 5,
+        "averageItemsPerOrder": 6,
+        "averageOrderAmount": "90.69",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    },
+    {
+      "dateRange": "2024-04-22 to 2024-04-28",
+      "data": {
+        "totalSales": "10599.65",
+        "numOrders": 134,
+        "numSubscriberOrders": 129,
+        "numGuestOrders": 5,
+        "averageItemsPerOrder": 6,
+        "averageOrderAmount": "81.04",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    },
+    {
+      "dateRange": "2024-04-15 to 2024-04-21",
+      "data": {
+        "totalSales": "11812.94",
+        "numOrders": 133,
+        "numSubscriberOrders": 127,
+        "numGuestOrders": 6,
+        "averageItemsPerOrder": 7,
+        "averageOrderAmount": "90.92",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    },
+    {
+      "dateRange": "2024-04-08 to 2024-04-14",
+      "data": {
+        "totalSales": "13560.02",
+        "numOrders": 135,
+        "numSubscriberOrders": 128,
+        "numGuestOrders": 7,
+        "averageItemsPerOrder": 7,
+        "averageOrderAmount": "102.37",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    },
+    {
+      "dateRange": "2024-04-01 to 2024-04-07",
+      "data": {
+        "totalSales": "12206.96",
+        "numOrders": 124,
+        "numSubscriberOrders": 120,
+        "numGuestOrders": 4,
+        "averageItemsPerOrder": 7,
+        "averageOrderAmount": "100.22",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    },
+    {
+      "dateRange": "2024-03-25 to 2024-03-31",
+      "data": {
+        "totalSales": "10108.85",
+        "numOrders": 110,
+        "numSubscriberOrders": 106,
+        "numGuestOrders": 4,
+        "averageItemsPerOrder": 6,
+        "averageOrderAmount": "93.44",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    },
+    {
+      "dateRange": "2024-03-18 to 2024-03-24",
+      "data": {
+        "totalSales": "10887.88",
+        "numOrders": 121,
+        "numSubscriberOrders": 116,
+        "numGuestOrders": 5,
+        "averageItemsPerOrder": 7,
+        "averageOrderAmount": "91.97",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    },
+    {
+      "dateRange": "2024-03-11 to 2024-03-17",
+      "data": {
+        "totalSales": "13272.67",
+        "numOrders": 134,
+        "numSubscriberOrders": 130,
+        "numGuestOrders": 4,
+        "averageItemsPerOrder": 7,
+        "averageOrderAmount": "100.24",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    },
+    {
+      "dateRange": "2024-03-04 to 2024-03-10",
+      "data": {
+        "totalSales": "12356.39",
+        "numOrders": 139,
+        "numSubscriberOrders": 134,
+        "numGuestOrders": 5,
+        "averageItemsPerOrder": 7,
+        "averageOrderAmount": "90.77",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    },
+    {
+      "dateRange": "2024-02-26 to 2024-03-03",
+      "data": {
+        "totalSales": "13201.46",
+        "numOrders": 141,
+        "numSubscriberOrders": 139,
+        "numGuestOrders": 2,
+        "averageItemsPerOrder": 7,
+        "averageOrderAmount": "95.12",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    },
+    {
+      "dateRange": "2024-02-19 to 2024-02-25",
+      "data": {
+        "totalSales": "10309.13",
+        "numOrders": 129,
+        "numSubscriberOrders": 122,
+        "numGuestOrders": 7,
+        "averageItemsPerOrder": 7,
+        "averageOrderAmount": "81.39",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    },
+    {
+      "dateRange": "2024-02-12 to 2024-02-18",
+      "data": {
+        "totalSales": "12064.31",
+        "numOrders": 140,
+        "numSubscriberOrders": 139,
+        "numGuestOrders": 1,
+        "averageItemsPerOrder": 6,
+        "averageOrderAmount": "88.03",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    },
+    {
+      "dateRange": "2024-02-05 to 2024-02-11",
+      "data": {
+        "totalSales": "12903.34",
+        "numOrders": 143,
+        "numSubscriberOrders": 140,
+        "numGuestOrders": 3,
+        "averageItemsPerOrder": 7,
+        "averageOrderAmount": "92.05",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    },
+    {
+      "dateRange": "2024-01-29 to 2024-02-04",
+      "data": {
+        "totalSales": "13892.97",
+        "numOrders": 159,
+        "numSubscriberOrders": 154,
+        "numGuestOrders": 5,
+        "averageItemsPerOrder": 7,
+        "averageOrderAmount": "89.26",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    },
+    {
+      "dateRange": "2024-01-22 to 2024-01-28",
+      "data": {
+        "totalSales": "14536.39",
+        "numOrders": 152,
+        "numSubscriberOrders": 147,
+        "numGuestOrders": 5,
+        "averageItemsPerOrder": 7,
+        "averageOrderAmount": "97.34",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    },
+    {
+      "dateRange": "2024-01-15 to 2024-01-21",
+      "data": {
+        "totalSales": "4477.63",
+        "numOrders": 51,
+        "numSubscriberOrders": 48,
+        "numGuestOrders": 3,
+        "averageItemsPerOrder": 7,
+        "averageOrderAmount": "88.19",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    },
+    {
+      "dateRange": "2024-01-08 to 2024-01-14",
+      "data": {
+        "totalSales": "12764.79",
+        "numOrders": 130,
+        "numSubscriberOrders": 125,
+        "numGuestOrders": 5,
+        "averageItemsPerOrder": 7,
+        "averageOrderAmount": "100.11",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    },
+    {
+      "dateRange": "2024-01-01 to 2024-01-07",
+      "data": {
+        "totalSales": "14432.32",
+        "numOrders": 143,
+        "numSubscriberOrders": 143,
+        "numGuestOrders": 0,
+        "averageItemsPerOrder": 9,
+        "averageOrderAmount": "102.46",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    },
+    {
+      "dateRange": "2023-12-25 to 2023-12-31",
+      "data": {
+        "totalSales": "119.60",
+        "numOrders": 1,
+        "numSubscriberOrders": 1,
+        "numGuestOrders": 0,
+        "averageItemsPerOrder": 1,
+        "averageOrderAmount": "119.60",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    },
+    {
+      "dateRange": "2023-12-18 to 2023-12-24",
+      "data": {
+        "totalSales": "14837.23",
+        "numOrders": 139,
+        "numSubscriberOrders": 138,
+        "numGuestOrders": 1,
+        "averageItemsPerOrder": 9,
+        "averageOrderAmount": "108.18",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    },
+    {
+      "dateRange": "2023-12-11 to 2023-12-17",
+      "data": {
+        "totalSales": "12467.72",
+        "numOrders": 140,
+        "numSubscriberOrders": 134,
+        "numGuestOrders": 6,
+        "averageItemsPerOrder": 9,
+        "averageOrderAmount": "90.77",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    },
+    {
+      "dateRange": "2023-12-04 to 2023-12-10",
+      "data": {
+        "totalSales": "13641.82",
+        "numOrders": 147,
+        "numSubscriberOrders": 142,
+        "numGuestOrders": 5,
+        "averageItemsPerOrder": 9,
+        "averageOrderAmount": "94.50",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    },
+    {
+      "dateRange": "2023-11-27 to 2023-12-03",
+      "data": {
+        "totalSales": "11118.98",
+        "numOrders": 137,
+        "numSubscriberOrders": 133,
+        "numGuestOrders": 4,
+        "averageItemsPerOrder": 8,
+        "averageOrderAmount": "82.62",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    },
+    {
+      "dateRange": "2023-11-20 to 2023-11-26",
+      "data": {
+        "totalSales": "10603.46",
+        "numOrders": 119,
+        "numSubscriberOrders": 114,
+        "numGuestOrders": 5,
+        "averageItemsPerOrder": 8,
+        "averageOrderAmount": "91.04",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    },
+    {
+      "dateRange": "2023-11-13 to 2023-11-19",
+      "data": {
+        "totalSales": "17067.17",
+        "numOrders": 185,
+        "numSubscriberOrders": 155,
+        "numGuestOrders": 30,
+        "averageItemsPerOrder": 8,
+        "averageOrderAmount": "93.77",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    },
+    {
+      "dateRange": "2023-11-06 to 2023-11-12",
+      "data": {
+        "totalSales": "13560.25",
+        "numOrders": 157,
+        "numSubscriberOrders": 157,
+        "numGuestOrders": 0,
+        "averageItemsPerOrder": 8,
+        "averageOrderAmount": "88.15",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    },
+    {
+      "dateRange": "2023-10-30 to 2023-11-05",
+      "data": {
+        "totalSales": "8566.83",
+        "numOrders": 112,
+        "numSubscriberOrders": 112,
+        "numGuestOrders": 0,
+        "averageItemsPerOrder": 8,
+        "averageOrderAmount": "78.19",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    },
+    {
+      "dateRange": "2023-10-23 to 2023-10-29",
+      "data": {
+        "totalSales": "14754.14",
+        "numOrders": 158,
+        "numSubscriberOrders": 158,
+        "numGuestOrders": 0,
+        "averageItemsPerOrder": 9,
+        "averageOrderAmount": "95.22",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    },
+    {
+      "dateRange": "2023-10-16 to 2023-10-22",
+      "data": {
+        "totalSales": "14425.89",
+        "numOrders": 139,
+        "numSubscriberOrders": 139,
+        "numGuestOrders": 0,
+        "averageItemsPerOrder": 9,
+        "averageOrderAmount": "105.15",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    },
+    {
+      "dateRange": "2023-10-09 to 2023-10-15",
+      "data": {
+        "totalSales": "11963.47",
+        "numOrders": 132,
+        "numSubscriberOrders": 132,
+        "numGuestOrders": 0,
+        "averageItemsPerOrder": 10,
+        "averageOrderAmount": "92.98",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    },
+    {
+      "dateRange": "2023-10-02 to 2023-10-08",
+      "data": {
+        "totalSales": "8419.97",
+        "numOrders": 104,
+        "numSubscriberOrders": 104,
+        "numGuestOrders": 0,
+        "averageItemsPerOrder": 9,
+        "averageOrderAmount": "82.40",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    },
+    {
+      "dateRange": "2023-09-25 to 2023-10-01",
+      "data": {
+        "totalSales": "0.00",
+        "numOrders": 0,
+        "numSubscriberOrders": 0,
+        "numGuestOrders": 0,
+        "averageItemsPerOrder": null,
+        "averageOrderAmount": "NaN",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
+    },
+    {
+      "dateRange": "2023-09-18 to 2023-09-24",
+      "data": {
+        "totalSales": "0.00",
+        "numOrders": 0,
+        "numSubscriberOrders": 0,
+        "numGuestOrders": 0,
+        "averageItemsPerOrder": null,
+        "averageOrderAmount": "NaN",
+        "totalActiveSubscribers": 205,
+        "projectedMonthlySubscriptionRevenue": 47902
+      }
     }
   ]
 }
