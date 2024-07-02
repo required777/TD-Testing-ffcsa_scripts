@@ -6,11 +6,13 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(data => {
             const weeks = data.weeks;
 
+            // Extracting data for chart
             const labels = weeks.map(week => week.dateRange);
             const totalSales = weeks.map(week => parseFloat(week.data.totalSales));
             const numOrders = weeks.map(week => week.data.numOrders);
             const averageOrderAmount = weeks.map(week => parseFloat(week.data.averageOrderAmount));
 
+            // Creating the chart
             const ctx = document.getElementById('salesChart').getContext('2d');
             const chart = new Chart(ctx, {
                 type: 'line',
