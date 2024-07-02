@@ -3,13 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sales Data Chart</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Sales and Fulfillment Data Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .data-link {
+            display: block;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #333;
+            transition: background-color 0.3s ease;
+        }
+        .data-link:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
 </head>
 <body>
-    <h1>Weekly Sales Data</h1>
-    <canvas id="salesChart" width="400" height="200"></canvas>
-    <script src="script.js"></script>
+    <div class="container">
+        <h1>Sales and Fulfillment Data Dashboard</h1>
+
+        <p>Welcome to the Full Farm CSA Sales and Fulfillment Data Dashboard. Here you can view and analyze weekly sales KPIs and fulfillment data.</p>
+
+        <a href="weekly.html" class="data-link">
+            <h2>Weekly Sales KPIs</h2>
+            <p>View detailed weekly Key Performance Indicators including total sales, number of orders, and more.</p>
+        </a>
+
+        <a href="fulfillment.html" class="data-link">
+            <h2>Fulfillment Data</h2>
+            <p>Explore fulfillment details across different locations and markets.</p>
+        </a>
+    </div>
 </body>
 </html>
 
