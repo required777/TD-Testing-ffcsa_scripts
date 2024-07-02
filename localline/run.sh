@@ -61,3 +61,13 @@ if [ "$1" == "weekly_kpi.js" ]; then
     echo "No changes in data files."
   fi
 fi
+if [ "$1" == "fulfillment_kpi.js" ]; then
+  if [[ -n $(git status -s data/fulfillment_summary_kpi.json) ]]; then
+    git add data/fulfillment_summary_kpi.json
+    git commit -m "Update fulfillment summary kpi file"
+    git push
+    echo "Changes pushed to GitHub."
+  else
+    echo "No changes in data files."
+  fi
+fi

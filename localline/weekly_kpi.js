@@ -65,19 +65,57 @@ async function orders(filename, start, end) {
 				let totalOrderAmount = 0;
 				let overallAmountPaid = 0;
 
+				const fulfillmentTotals = {};
+				const fulfillmentOrderCounts = {};
 
 				// Count number of unique orders and calculate total items and total order amount
 				const uniqueOrderIDs = new Set();
 				sortedData.forEach(row => {
 					const orderID = row.Order;
+				    	const orderTotal = parseFloat(row['Order Total']);
+					const productSubtotal = parseFloat(row['Product Subtotal']);
+					const fulfillmentName = row['Fulfillment Name'];
+
+				    	// Sum the order total by fulfillment name
+    					if (!fulfillmentTotals[fulfillmentName]) {
+        					fulfillmentTotals[fulfillmentName] = 0;
+    					}
+        				// Count unique orders by fulfillment name
+        				if (!fulfillmentOrderCounts[fulfillmentName]) {
+            					fulfillmentOrderCounts[fulfillmentName] = 0;
+        				}
+
 					if (!uniqueOrderIDs.has(orderID)) {
 						uniqueOrderIDs.add(orderID);
 						totalOrderAmount += parseFloat(row['Order Total']); // Assuming 'Order Total' is the column containing order total
+    						fulfillmentTotals[fulfillmentName] += orderTotal;
+					        fulfillmentOrderCounts[fulfillmentName] += 1;
 					}
 					totalItems += 1
-					const productSubtotal = parseFloat(row['Product Subtotal']);
 					overallAmountPaid += productSubtotal;
+					
 				});
+
+				// Add the week range to the results
+				//fulfillmentResults.push(priorWeek.start + ' to ' + priorWeek.end);
+
+				// Create an array of fulfillment data
+				const fulfillmentData = [];
+				for (const fulfillmentName in fulfillmentTotals) {
+				    fulfillmentData.push({
+				        fulfillmentName: fulfillmentName,
+        				total: Math.round(fulfillmentTotals[fulfillmentName]),
+        				count: fulfillmentOrderCounts[fulfillmentName] || 0
+    				    });
+				}
+
+				const fulfillmentDataObject = {
+					dateRange: priorWeek.start + ' to ' + priorWeek.end,
+  					data: fulfillmentData
+				};
+
+				// Update the results array
+				fulfillmentResults = fulfillmentDataObject
 
 				const uniqueOrderCount = uniqueOrderIDs.size;
 				const averageItemsPerOrder = totalItems / uniqueOrderCount;
@@ -105,14 +143,19 @@ async function orders(filename, start, end) {
 				salesData.averageItemsPerOrder = Math.round(averageItemsPerOrder);
 				salesData.averageOrderAmount = averageOrderAmount.toFixed(2);
 
+				// format the salesDataObject
+				const salesDataObject = {
+					dateRange: priorWeek.start + ' to ' + priorWeek.end,
+  					data: salesData 
+				};
+				salesResults = salesDataObject;
+
 			});
 	});
 }
 // Build customer delivery orders (picklists)
 async function run(start, end) {
 	try {
-		
-
 		data = {}
 		// Login
 		data = await utilities.getAccessToken();
@@ -147,9 +190,9 @@ async function run(start, end) {
 
  		setTimeout(() => {
 			subjectString =  'FFCSA Reports: Weekly KPIs for ' + start + " to " + end;
-			appendToCSV(salesData,start,end);
+			appendJSON(salesResults, 'data/weekly_kpi.json')
+			appendJSON(fulfillmentResults, 'data/fulfillment_kpi.json')
 			console.log(subjectString);
-			console.log(salesData)
 			const emailOptions = {
 				from: "jdeck88@gmail.com",
 				to: "fullfarmcsa@deckfamilyfarm.com",
@@ -157,7 +200,7 @@ async function run(start, end) {
 				subject: subjectString,
 				text: JSON.stringify(salesData, null, 4) + "\n\nRunning KPI stats viewable at:\nhttps://github.com/jdeck88/ffcsa_scripts/blob/main/localline/data/weekly_kpi.csv"
 			};
-			utilities.sendEmail(emailOptions)
+			//utilities.sendEmail(emailOptions)
   		}, 3000);
 
 
@@ -167,92 +210,58 @@ async function run(start, end) {
 	}
 }
 
+// Append to output JSON file
+function appendJSON(dataStructure, filename) {
+    //console.log('Fulfillment Totals:', JSON.stringify(dataStructure, null, 2));
 
-// Function to append data to the CSV file
-function appendToCSV(data,start,end) {
-    // Read existing CSV data
-    fs.readFile(csvFilePath, 'utf8', (err, existingData) => {
-        if (err) {
-            console.error('Error reading CSV file:', err);
-            return;
-        }
+  // Read the existing file
+  fs.readFile(filename, 'utf8', (err, fileData) => {
+    let jsonData;
+    
+    if (err) {
+      // If the file does not exist, initialize an empty structure
+      if (err.code === 'ENOENT') {
+        jsonData = { weeks: [] };
+      } else {
+        console.error('Error reading the file:', err);
+        return;
+      }
+    } else {
+      // Parse the existing file data
+      try {
+        jsonData = JSON.parse(fileData);
+      } catch (parseErr) {
+        console.error('Error parsing the file data:', parseErr);
+        return;
+      }
+    }
+    
+    // Ensure jsonData has a weeks array
+    if (!Array.isArray(jsonData.weeks)) {
+      jsonData.weeks = [];
+    }
 
-        const csvWriter = createObjectCsvWriter({
-            path: csvFilePath,
-            header: [
-                { id: 'week', title: 'Week' },
-                { id: 'totalSales', title: 'Total Sales' },
-                { id: 'numOrders', title: 'Num Orders' },
-                { id: 'numSubscriberOrders', title: 'Num Subscriber Orders' },
-                { id: 'numGuestOrders', title: 'Num Guest Orders' },
-                { id: 'averageItemsPerOrder', title: 'Average Itemns Per Order' },
-                { id: 'averageOrderAmount', title: 'Average Order Amount' },
-                { id: 'totalActiveSubscribers', title: 'Total Active Subscribers' },
-                { id: 'projectedMonthlySubscriptionRevenue', title: 'Projected Monthly Subscription Revenue' }
-            ]
-        });
+    // Find the index of the existing entry with the same dateRange, if it exists
+    const existingIndex = jsonData.weeks.findIndex(week => week.dateRange === dataStructure.dateRange);
+    
+    if (existingIndex >= 0) {
+      // Replace the existing entry
+      jsonData.weeks[existingIndex] = dataStructure;
+    } else {
+      // Append the new data structure
+      jsonData.weeks.push(dataStructure);
+    }
 
-        let records = [];
-        if (existingData) {
-            records = existingData.split('\n').map(line => {
-                const row = line.split(',');
-                return {
-                    week: row[0],
-                    totalSales: parseFloat(row[1]),
-                    numOrders: parseInt(row[2]),
-                    numSubscriberOrders: parseInt(row[3]),
-                    numGuestOrders: parseInt(row[4]),
-                    averageItemsPerOrder: parseFloat(row[5]),
-                    averageOrderAmount: parseFloat(row[6]),
-                    totalActiveSubscribers: parseInt(row[7]),
-                    projectedMonthlySubscriptionRevenue: parseFloat(row[8])
-                };
-            });
-        }
-
-        // Find and update existing data if week exists
-        const existingIndex = records.findIndex(record => record.week === data.week);
-        if (existingIndex !== -1) {
-            records[existingIndex] = data;
-        } else {
-            records.push(data);
-        }
-
-		// Filter out rows with empty week value
-		records = records.filter(record => record.week && record.week !== "Week");
-
-        // Sort by week
-        records.sort((a, b) => a.week.localeCompare(b.week));
-
-        csvWriter.writeRecords(records)
-            .then(() => console.log('Data appended to CSV file'))
-            .catch(err => console.error('Error appending data to CSV file:', err));
+    // Write the updated data back to the file
+    fs.writeFile(filename, JSON.stringify(jsonData, null, 2), 'utf8', (writeErr) => {
+      if (writeErr) {
+        console.error('Error writing to the file:', writeErr);
+      } else {
+        console.log('File updated successfully');
+      }
     });
+  });
 }
-
-// Define the CSV file path
-const csvFilePath = 'data/weekly_kpi.csv';
-
-// Check if the file exists, if not, create it with headers
-if (!fs.existsSync(csvFilePath)) {
-    const csvWriter = createObjectCsvWriter({
-        path: csvFilePath,
-        header: [
-            { id: 'week', title: 'Week' },
-            { id: 'totalSales', title: 'Total Sales' },
-            { id: 'numOrders', title: 'Num Orders' },
-            { id: 'numSubscriberOrders', title: 'Num Subscriber Orders' },
-            { id: 'numGuestOrders', title: 'Num Guest Orders' },
-            { id: 'averageItemsPerOrder', title: 'Average Items Per Order' },
-            { id: 'averageOrderAmount', title: 'Average Order Amount' },
-            { id: 'totalActiveSubscribers', title: 'Total Active Subscribers' },
-            { id: 'projectedMonthlySubscriptionRevenue', title: 'Projected Monthly Subscription Revenue' }
-        ]
-    });
-
-    csvWriter.writeRecords([]); // Create an empty CSV file with headers
-}
-
 
 // Extract command line arguments
 const commandLineArgs = process.argv.slice(2); // slice to remove first two default arguments
@@ -261,19 +270,20 @@ const commandLineArgs = process.argv.slice(2); // slice to remove first two defa
 const dateArg = commandLineArgs.length > 0 ? commandLineArgs[0] : utilities.getToday();
 const priorWeek = utilities.getPreviousWeek(dateArg); // Date is formatted as "YYYY-MM-DD"
 
-//priorWeek = utilities.getPreviousWeek(utilities.getToday())  // Date is formatted as "YYYY-MM-DD"
-
+// Create an array for the results
+fulfillmentResults = {};
+salesResults = {}
 const salesData = {
-	week: priorWeek.start + ' to ' + priorWeek.end,
     totalSales: 0,
     numOrders: 0,
     numSubscriberOrders: 0,
     numGuestOrders: 0,
     averageItemsPerOrder: 0,
-	averageOrderAmount: 0,
+    averageOrderAmount: 0,
     totalActiveSubscribers: 0,
     projectedMonthlySubscriptionRevenue: 0
 };
 
-//console.log(priorWeek.start)
+console.log(priorWeek.start+","+priorWeek.end)
+
 run(priorWeek.start, priorWeek.end);
