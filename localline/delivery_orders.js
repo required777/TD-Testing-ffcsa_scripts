@@ -25,7 +25,7 @@ function readVendorOrder(filePath) {
 		});
 	});
 }
-async function writeDeliveryOrderPDF(filename) {
+async function writeDeliveryOrderPDF(filename, fullfillmentDateEnd) {
 	const vendorOrder = await readVendorOrder('vendor_order.csv');
 	return new Promise((resolve, reject) => {
 		const pdf_file = 'data/delivery_order.pdf'
@@ -67,7 +67,11 @@ async function writeDeliveryOrderPDF(filename) {
 					const customerNote = row['Customer Note']
 					const startTime = row['Fulfillment - Pickup Start Time']
 					const endTime = row['Fulfillment - Pickup End Time']
-					const timeRange = startTime + ' to ' + endTime
+
+					let timeRange = '';
+					if (startTime && endTime) {
+  						timeRange = startTime + ' to ' + endTime;
+					}
 
 					// If # of Items is > 1 and quantity is 1, then update quantity to be numItems
 					if (numItems > 1 && quantity == 1) {
@@ -118,14 +122,23 @@ async function writeDeliveryOrderPDF(filename) {
 
 						doc.font('Helvetica') // Reset to regular font
 
-						doc.fontSize(12).text(`${customerData.fullfillmentDate}`, textX, textY + 10, { align: 'right' });
+						doc.fontSize(12).text(`${fullfillmentDateEnd}`, textX, textY + 10, { align: 'right' });
 						textY += lineSpacing
 						doc.fontSize(12).text(`Name:        ${customerName}`, textX, textY);
 						textY += lineSpacing
 						doc.fontSize(12).text(`Phone:       ${customerData.phone}`, textX, textY);
 						textY += lineSpacing
-						doc.fontSize(12).text(`Drop Site:   ${customerData.fullfillmentName} (${customerData.timeRange})`, textX, textY);
+
+						let timeRangeText = '';
+						// Check if timeRange is not an empty string
+						if (customerData.timeRange !== '') {
+							timeRangeText = ` (${customerData.timeRange})`;
+						}
+						// Construct the full text with optional parentheses
+						const fullText = `Drop Site:   ${customerData.fullfillmentName}${timeRangeText}`;
+						doc.fontSize(12).text(fullText, textX, textY);
 						textY += lineSpacing
+
 						doc.fontSize(12).text(`Address:     ${customerData.fullfillmentAddress}`, textX, textY);
 						textY += lineSpacing
 						if (customerData.customerNote !== '') {
@@ -242,7 +255,7 @@ async function delivery_order(fullfillmentDateStart, fullfillmentDateEnd) {
 			utilities.downloadData(orders_result_url, 'orders_list_' + fullfillmentDateEnd + ".csv")
 				.then((orders_file_path) => {
 					console.log('Downloaded file path:', orders_file_path);
-					writeDeliveryOrderPDF(orders_file_path)
+					writeDeliveryOrderPDF(orders_file_path, fullfillmentDateEnd)
 						.then((delivery_order_pdf) => {
 							// Email information
 							const emailOptions = {
