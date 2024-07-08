@@ -532,6 +532,19 @@
         "totalActiveSubscribers": 205,
         "projectedMonthlySubscriptionRevenue": 47902
       }
+    },
+    {
+      "dateRange": "2024-07-01 to 2024-07-07",
+      "data": {
+        "totalSales": "10732.97",
+        "numOrders": 112,
+        "numSubscriberOrders": 110,
+        "numGuestOrders": 2,
+        "averageItemsPerOrder": 9,
+        "averageOrderAmount": "97.88",
+        "totalActiveSubscribers": 207,
+        "projectedMonthlySubscriptionRevenue": 48702
+      }
     }
   ]
 }

@@ -3032,6 +3032,91 @@
     {
       "dateRange": "2023-09-18 to 2023-09-24",
       "data": []
+    },
+    {
+      "dateRange": "2024-07-01 to 2024-07-07",
+      "data": [
+        {
+          "fulfillmentName": "Hollywood Farmers Market",
+          "total": 1505,
+          "count": 17
+        },
+        {
+          "fulfillmentName": "Farm - Friday",
+          "total": 873,
+          "count": 5
+        },
+        {
+          "fulfillmentName": "Woodstock",
+          "total": 307,
+          "count": 5
+        },
+        {
+          "fulfillmentName": "Corvallis",
+          "total": 49,
+          "count": 1
+        },
+        {
+          "fulfillmentName": "St Johns Farmers Market",
+          "total": 106,
+          "count": 1
+        },
+        {
+          "fulfillmentName": "Irvington",
+          "total": 321,
+          "count": 5
+        },
+        {
+          "fulfillmentName": "Beaverton",
+          "total": 192,
+          "count": 2
+        },
+        {
+          "fulfillmentName": "PSU Farmers Market",
+          "total": 678,
+          "count": 7
+        },
+        {
+          "fulfillmentName": "Cully",
+          "total": 660,
+          "count": 4
+        },
+        {
+          "fulfillmentName": "Home Delivery - Eugene/Springfield/Junction City",
+          "total": 3920,
+          "count": 35
+        },
+        {
+          "fulfillmentName": "Friendly",
+          "total": 746,
+          "count": 12
+        },
+        {
+          "fulfillmentName": "Springfield",
+          "total": 113,
+          "count": 2
+        },
+        {
+          "fulfillmentName": "W 11th",
+          "total": 698,
+          "count": 8
+        },
+        {
+          "fulfillmentName": "Farm - Tuesday",
+          "total": 330,
+          "count": 4
+        },
+        {
+          "fulfillmentName": "LCFM",
+          "total": 338,
+          "count": 3
+        },
+        {
+          "fulfillmentName": "Home Delivery - Corvallis",
+          "total": 126,
+          "count": 1
+        }
+      ]
     }
   ]
 }
