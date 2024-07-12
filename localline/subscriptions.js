@@ -65,7 +65,7 @@ async function run(filename, customerData, orderDayFormatted, lastWeekFormatted,
                 const productSubtotal = parseFloat(row['Product Subtotal']);
 
                 // payment__status=PAID&payment__status=AUTHORIZED&' +
-                if ([200.00, 300.00, 500.00, 86.00].includes(productSubtotal)) {
+                if ([200.00, 300.00, 500.00, 86.00, 100.00, 150.00, 250.00].includes(productSubtotal)) {
                     if (row['Payment Status'] === "PAID" || row['Payment Status'] === "AUTHORIZED") {
 			let statusString = row['Payment Status']
 			successString = 'SUCCESS';
@@ -157,7 +157,8 @@ async function run(filename, customerData, orderDayFormatted, lastWeekFormatted,
                             // storeCredit Function -- this is the part that Credits a customer
                             amount = entry.amount
                             // account for Feed-a-Friend -- doubles the contribution
-                            if (entry.amount == 86.00) {
+                            //if (entry.amount == 86.00) {
+							if (entry.amount == 86.00 || entry.amount == 100.00 || entry.amount == 150.00 || entry.amount == 250.00) {
                                 amount = entry.amount * 2
                             }
                             amount = amount.toString()
@@ -171,7 +172,8 @@ async function run(filename, customerData, orderDayFormatted, lastWeekFormatted,
                     } else {
                         if (orderDataSuccessFile.includes(entry.order.toString())) {
                             amount = entry.amount
-                            if (entry.amount == 86.00) {
+							if (entry.amount == 86.00 || entry.amount == 100.00 || entry.amount == 150.00 || entry.amount == 250.00) {
+                            //if (entry.amount == 86.00) {
                                 amount = entry.amount * 2
                             }
                             amount = amount.toString()
@@ -180,7 +182,8 @@ async function run(filename, customerData, orderDayFormatted, lastWeekFormatted,
                             console.log(`${entry.order} EXISTS, DO NOTHING (DEVELOPMENT ENVIRONMENT) = `+ amount)                         
                         } else {
                             amount = entry.amount
-                            if (entry.amount == 86.00) {
+							if (entry.amount == 86.00 || entry.amount == 100.00 || entry.amount == 150.00 || entry.amount == 250.00) {
+                            //if (entry.amount == 86.00) {
                                 amount = entry.amount * 2
                             }
                             amount = amount.toString()
