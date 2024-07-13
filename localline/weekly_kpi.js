@@ -67,6 +67,10 @@ async function orders(filename, start, end) {
 
 				const fulfillmentTotals = {};
 				const fulfillmentOrderCounts = {};
+				const vendorTotals = {};
+				const categoryTotals = {};
+				const productTotals = {};
+
 
 				// Count number of unique orders and calculate total items and total order amount
 				const uniqueOrderIDs = new Set();
@@ -75,6 +79,9 @@ async function orders(filename, start, end) {
 				    	const orderTotal = parseFloat(row['Order Total']);
 					const productSubtotal = parseFloat(row['Product Subtotal']);
 					const fulfillmentName = row['Fulfillment Name'];
+  					const vendor = row.Vendor;
+  					const category = row.Category;
+  					const product = row.Product;
 
 				    	// Sum the order total by fulfillment name
     					if (!fulfillmentTotals[fulfillmentName]) {
@@ -91,6 +98,25 @@ async function orders(filename, start, end) {
     						fulfillmentTotals[fulfillmentName] += orderTotal;
 					        fulfillmentOrderCounts[fulfillmentName] += 1;
 					}
+
+					// vendor JSON
+  					if (!vendorTotals[vendor]) {
+    					vendorTotals[vendor] = 0;
+  					}
+  					vendorTotals[vendor] += productSubtotal;
+
+					// category JSON
+  					if (!categoryTotals[category]) {
+    					categoryTotals[category] = 0;
+  					}
+  					categoryTotals[category] += productSubtotal;
+
+					// product JSON
+  					if (!productTotals[product]) {
+    					productTotals[product] = 0;
+  					}
+  					productTotals[product] += productSubtotal;
+
 					totalItems += 1
 					overallAmountPaid += productSubtotal;
 					
@@ -142,6 +168,9 @@ async function orders(filename, start, end) {
 				salesData.numSubscriberOrders = Math.round(uniqueOrderCount - uniqueGuestOrderCount);
 				salesData.averageItemsPerOrder = Math.round(averageItemsPerOrder);
 				salesData.averageOrderAmount = averageOrderAmount.toFixed(2);
+				salesData.vendors = vendorTotals;
+				salesData.category = categoryTotals;
+				salesData.product = productTotals;
 
 				// format the salesDataObject
 				const salesDataObject = {
@@ -191,8 +220,9 @@ async function run(start, end) {
  		setTimeout(() => {
 			subjectString =  'FFCSA Reports: Weekly KPIs for ' + start + " to " + end;
 			appendJSON(salesResults, 'data/weekly_kpi.json')
-			appendJSON(fulfillmentResults, 'data/fulfillment_kpi.json')
-			console.log(subjectString);
+			//appendJSON(fulfillmentResults, 'data/fulfillment_kpi.json')
+			//console.log(salesResults)
+			//console.log(subjectString);
 			const emailOptions = {
 				from: "jdeck88@gmail.com",
 				to: "fullfarmcsa@deckfamilyfarm.com",
@@ -200,7 +230,7 @@ async function run(start, end) {
 				subject: subjectString,
 				text: JSON.stringify(salesData, null, 4) + "\n\nRunning KPI stats viewable at:\nhttps://github.com/jdeck88/ffcsa_scripts/blob/main/localline/data/weekly_kpi.csv"
 			};
-			utilities.sendEmail(emailOptions)
+			//utilities.sendEmail(emailOptions)
   		}, 3000);
 
 
@@ -281,9 +311,17 @@ const salesData = {
     averageItemsPerOrder: 0,
     averageOrderAmount: 0,
     totalActiveSubscribers: 0,
-    projectedMonthlySubscriptionRevenue: 0
+    projectedMonthlySubscriptionRevenue: 0,
+    vendors: {},
+    category: {},
+    product: {}
 };
 
-console.log(priorWeek.start+","+priorWeek.end)
 
+// NOTE: to run this from the command line, give a day in the future, like:
+// $node weekly_kpi.js 2024-07-10
+// can build a shell script to back populate all data
+
+console.log(priorWeek.start, priorWeek.end);
 run(priorWeek.start, priorWeek.end);
+//run('2024-07-01', '2024-07-07')
