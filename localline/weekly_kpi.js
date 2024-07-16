@@ -230,7 +230,7 @@ async function run(start, end) {
 				subject: subjectString,
 				text: JSON.stringify(salesData, null, 4) + "\n\nRunning KPI stats viewable at:\nhttps://github.com/jdeck88/ffcsa_scripts/blob/main/localline/data/weekly_kpi.csv"
 			};
-			//utilities.sendEmail(emailOptions)
+			utilities.sendEmail(emailOptions)
   		}, 3000);
 
 
