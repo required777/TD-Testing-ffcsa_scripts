@@ -167,7 +167,7 @@
             const data2023 = parsedData.filter(d => d.year === "2023");
 
             // Filter data for 2024 and fulfillment names containing "Farmers Market"
-            const data2024FarmersMarket = data2024.filter(d => d.fulfillmentName.includes("Farmers Market"));
+            const data2024FarmersMarket = data2024.filter(d => d.fulfillmentName.toLowerCase().includes("farmers market"));
 
             // Filter data for 2024 and specified fulfillment names
             const data2024PDXDropsites = data2024.filter(d => ["Beaverton", "Cully", "Zafar Residence", "Sherwood", "Woodstock", "Irvington"].includes(d.fulfillmentName));
