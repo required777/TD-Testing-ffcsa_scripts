@@ -2,6 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fulfillment Trends</title>
+    <script>
+        async function fetchFulfillmentData() {
+            const response = await fetch('https://raw.githubusercontent.com/jdeck88/ffcsa_scripts/main/localline/data/fulfillment_kpi.json');
+            const data = await response.json();
+            return data.weeks;
+        }
+<head>
+    <meta charset="UTF-8">
     <title>Bar Graph</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <style>
