@@ -50,6 +50,15 @@
                 const dateRanges = [...new Set(parsedData.map(d => d.dateRange))];
                 const fulfillmentNames = [...new Set(parsedData.map(d => d.fulfillmentName))];
 
+                // Sort date ranges in chronological order
+                dateRanges.sort((a, b) => new Date(`2024-${a}`) - new Date(`2024-${b}`));
+
+                // Calculate total quantity for each fulfillment name
+                const totalByFulfillment = d3.rollup(parsedData, v => d3.sum(v, d => d.total), d => d.fulfillmentName);
+
+                // Sort fulfillment names by total quantity in descending order
+                fulfillmentNames.sort((a, b) => totalByFulfillment.get(b) - totalByFulfillment.get(a));
+
                 // Prepare the data for stacking
                 const stackData = d3.stack()
                     .keys(fulfillmentNames)
