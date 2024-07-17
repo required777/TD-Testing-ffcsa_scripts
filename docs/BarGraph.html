@@ -28,174 +28,199 @@
     <div id="chart2023-3"></div>
     <script>
         async function fetchFulfillmentData() {
-            const response = await fetch('https://raw.githubusercontent.com/jdeck88/ffcsa_scripts/main/localline/data/fulfillment_kpi.json');
-            const data = await response.json();
-            return data.weeks;
-        }
+    const response = await fetch('https://raw.githubusercontent.com/jdeck88/ffcsa_scripts/main/localline/data/fulfillment_kpi.json');
+    const data = await response.json();
+    return data.weeks;
+}
 
-        fetchFulfillmentData().then(function(data) {
-            // Function to create chart
-            function createChart(container, parsedData, title) {
-                // Set the dimensions and margins of the graph
-                const margin = {top: 20, right: 160, bottom: 60, left: 60},
-                      width = 1200 - margin.left - margin.right,
-                      height = 600 - margin.top - margin.bottom;
+fetchFulfillmentData().then(function(data) {
+    // Function to create chart
+    function createChart(container, parsedData, title, dropdownDateId, dropdownFulfillmentId) {
+        // Set the dimensions and margins of the graph
+        const margin = {top: 20, right: 160, bottom: 60, left: 60},
+              width = 1200 - margin.left - margin.right,
+              height = 600 - margin.top - margin.bottom;
 
-                // Append the SVG object to the specified container
-                const svg = d3.select(container).append("svg")
-                    .attr("width", width + margin.left + margin.right)
-                    .attr("height", height + margin.top + margin.bottom)
-                  .append("g")
-                    .attr("transform", `translate(${margin.left},${margin.top})`);
+        // Append the SVG object to the specified container
+        const svg = d3.select(container).append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+          .append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
 
-                // Get unique date ranges and fulfillment names
-                const dateRanges = [...new Set(parsedData.map(d => d.dateRange))];
-                const fulfillmentNames = [...new Set(parsedData.map(d => d.fulfillmentName))];
+        // Get unique date ranges and fulfillment names
+        const dateRanges = [...new Set(parsedData.map(d => d.dateRange))];
+        const fulfillmentNames = [...new Set(parsedData.map(d => d.fulfillmentName))];
 
-                // Sort date ranges in chronological order
-                dateRanges.sort((a, b) => new Date(`2024-${a}`) - new Date(`2024-${b}`));
+        // Sort date ranges in chronological order
+        dateRanges.sort((a, b) => new Date(`2024-${a}`) - new Date(`2024-${b}`));
 
-                // Calculate total quantity for each fulfillment name
-                const totalByFulfillment = d3.rollup(parsedData, v => d3.sum(v, d => d.total), d => d.fulfillmentName);
+        // Calculate total quantity for each fulfillment name
+        const totalByFulfillment = d3.rollup(parsedData, v => d3.sum(v, d => d.total), d => d.fulfillmentName);
 
-                // Sort fulfillment names by total quantity in descending order
-                fulfillmentNames.sort((a, b) => totalByFulfillment.get(b) - totalByFulfillment.get(a));
+        // Sort fulfillment names by total quantity in descending order
+        fulfillmentNames.sort((a, b) => totalByFulfillment.get(b) - totalByFulfillment.get(a));
 
-                // Prepare the data for stacking
-                const stackData = d3.stack()
-                    .keys(fulfillmentNames)
-                    .value((d, key) => {
-                        const entry = d.values.find(e => e.fulfillmentName === key);
-                        return entry ? entry.total : 0;
-                    })(d3.groups(parsedData, d => d.dateRange).map(d => ({ dateRange: d[0], values: d[1] })));
+        // Prepare the data for stacking
+        const stackData = d3.stack()
+            .keys(fulfillmentNames)
+            .value((d, key) => {
+                const entry = d.values.find(e => e.fulfillmentName === key);
+                return entry ? entry.total : 0;
+            })(d3.groups(parsedData, d => d.dateRange).map(d => ({ dateRange: d[0], values: d[1] })));
 
-                // Set the x scale for date ranges
-                const x = d3.scaleBand()
-                    .domain(dateRanges)
-                    .range([0, width])
-                    .padding(0.1);
+        // Set the x scale for date ranges
+        const x = d3.scaleBand()
+            .domain(dateRanges)
+            .range([0, width])
+            .padding(0.1);
 
-                // Set the y scale
-                const y = d3.scaleLinear()
-                    .domain([0, d3.max(stackData, d => d3.max(d, d => d[1]))])
-                    .nice()
-                    .range([height, 0]);
+        // Set the y scale
+        const y = d3.scaleLinear()
+            .domain([0, d3.max(stackData, d => d3.max(d, d => d[1]))])
+            .nice()
+            .range([height, 0]);
 
-                // Set the color scale
-                const color = d3.scaleOrdinal(d3.schemeCategory10)
-                    .domain(fulfillmentNames);
+        // Set the color scale
+        const color = d3.scaleOrdinal(d3.schemeCategory10)
+            .domain(fulfillmentNames);
 
-                // Add the x axis
-                svg.append("g")
-                    .attr("class", "x axis")
-                    .attr("transform", `translate(0,${height})`)
-                    .call(d3.axisBottom(x))
-                  .append("text")
-                    .attr("class", "axis-label")
-                    .attr("x", width / 2)
-                    .attr("y", 40)
-                    .style("text-anchor", "middle")
-                    .text("Date Range");
+        // Add the x axis
+        svg.append("g")
+            .attr("class", "x axis")
+            .attr("transform", `translate(0,${height})`)
+            .call(d3.axisBottom(x))
+          .append("text")
+            .attr("class", "axis-label")
+            .attr("x", width / 2)
+            .attr("y", 40)
+            .style("text-anchor", "middle")
+            .text("Date Range");
 
-                // Add the y axis
-                svg.append("g")
-                    .attr("class", "y axis")
-                    .call(d3.axisLeft(y))
-                  .append("text")
-                    .attr("class", "axis-label")
-                    .attr("transform", "rotate(-90)")
-                    .attr("x", -height / 2)
-                    .attr("y", -50)
-                    .style("text-anchor", "middle")
-                    .text("Total");
+        // Add the y axis
+        svg.append("g")
+            .attr("class", "y axis")
+            .call(d3.axisLeft(y))
+          .append("text")
+            .attr("class", "axis-label")
+            .attr("transform", "rotate(-90)")
+            .attr("x", -height / 2)
+            .attr("y", -50)
+            .style("text-anchor", "middle")
+            .text("Total");
 
-                // Add the bars
-                svg.append("g")
-                    .selectAll("g")
-                    .data(stackData)
-                    .enter().append("g")
-                      .attr("fill", d => color(d.key))
-                    .selectAll("rect")
-                    .data(d => d)
-                    .enter().append("rect")
-                      .attr("x", d => x(d.data.dateRange))
-                      .attr("y", d => y(d[1]))
-                      .attr("height", d => y(d[0]) - y(d[1]))
-                      .attr("width", x.bandwidth());
+        // Add the bars
+        svg.append("g")
+            .selectAll("g")
+            .data(stackData)
+            .enter().append("g")
+              .attr("fill", d => color(d.key))
+            .selectAll("rect")
+            .data(d => d)
+            .enter().append("rect")
+              .attr("x", d => x(d.data.dateRange))
+              .attr("y", d => y(d[1]))
+              .attr("height", d => y(d[0]) - y(d[1]))
+              .attr("width", x.bandwidth());
 
-                // Add a legend
-                const legend = svg.selectAll(".legend")
-                    .data(color.domain())
-                  .enter().append("g")
-                    .attr("class", "legend")
-                    .attr("transform", (d, i) => `translate(0,${i * 20})`);
+        // Add a legend
+        const legend = svg.selectAll(".legend")
+            .data(color.domain())
+          .enter().append("g")
+            .attr("class", "legend")
+            .attr("transform", (d, i) => `translate(0,${i * 20})`);
 
-                legend.append("rect")
-                    .attr("x", width + 20)
-                    .attr("width", 18)
-                    .attr("height", 18)
-                    .style("fill", color);
+        legend.append("rect")
+            .attr("x", width + 20)
+            .attr("width", 18)
+            .attr("height", 18)
+            .style("fill", color);
 
-                legend.append("text")
-                    .attr("x", width + 45)
-                    .attr("y", 9)
-                    .attr("dy", ".35em")
-                    .style("text-anchor", "start")
-                    .text(d => d);
+        legend.append("text")
+            .attr("x", width + 45)
+            .attr("y", 9)
+            .attr("dy", ".35em")
+            .style("text-anchor", "start")
+            .text(d => d);
 
-                // Add chart title
-                svg.append("text")
-                    .attr("x", width / 2)
-                    .attr("y", -10)
-                    .attr("text-anchor", "middle")
-                    .style("font-size", "16px")
-                    .style("font-weight", "bold")
-                    .text(title);
+        // Add chart title
+        svg.append("text")
+            .attr("x", width / 2)
+            .attr("y", -10)
+            .attr("text-anchor", "middle")
+            .style("font-size", "16px")
+            .style("font-weight", "bold")
+            .text(title);
+
+        // Function to update chart based on dropdown selection
+        function updateChart() {
+            let filteredData = parsedData;
+
+            // Filter by date range
+            const selectedDate = document.getElementById(dropdownDateId).value;
+            if (selectedDate) {
+                filteredData = filteredData.filter(d => d.dateRange === selectedDate);
             }
 
-            // Parse the data to get the totals for each fulfillmentName and dateRange
-            const parsedData = [];
-            data.forEach(week => {
-                week.data.forEach(d => {
-                    const formattedDate = week.dateRange.split(" ")[0].replace(/(\d+)-(\d+)-(\d+)/, "$2/$3");
-                    parsedData.push({
-                        dateRange: formattedDate,
-                        fulfillmentName: d.fulfillmentName,
-                        total: d.total,
-                        year: week.dateRange.split("-")[0] // Extract the year
-                    });
-                });
+            // Filter by fulfillment name
+            const selectedFulfillment = document.getElementById(dropdownFulfillmentId).value;
+            if (selectedFulfillment) {
+                filteredData = filteredData.filter(d => d.fulfillmentName === selectedFulfillment);
+            }
+
+            // Update scales and redraw bars
+            const stackFilteredData = d3.stack()
+                .keys(fulfillmentNames)
+                .value((d, key) => {
+                    const entry = d.values.find(e => e.fulfillmentName === key);
+                    return entry ? entry.total : 0;
+                })(d3.groups(filteredData, d => d.dateRange).map(d => ({ dateRange: d[0], values: d[1] })));
+
+            y.domain([0, d3.max(stackFilteredData, d => d3.max(d, d => d[1]))]);
+            svg.select(".y.axis")
+                .transition()
+                .duration(500)
+                .call(d3.axisLeft(y));
+
+            svg.selectAll("rect")
+                .data(stackFilteredData, d => d.key)
+                .transition()
+                .duration(500)
+                .attr("x", d => x(d.data.dateRange))
+                .attr("y", d => y(d[1]))
+                .attr("height", d => y(d[0]) - y(d[1]));
+        }
+
+        // Bind update function to dropdown change events
+        document.getElementById(dropdownDateId).addEventListener("change", updateChart);
+        document.getElementById(dropdownFulfillmentId).addEventListener("change", updateChart);
+    }
+
+    // Parse the data to get the totals for each fulfillmentName and dateRange
+    const parsedData = [];
+    data.forEach(week => {
+        week.data.forEach(d => {
+            const formattedDate = week.dateRange.split(" ")[0].replace(/(\d+)-(\d+)-(\d+)/, "$2/$3");
+            parsedData.push({
+                dateRange: formattedDate,
+                fulfillmentName: d.fulfillmentName,
+                total: d.total,
+                year: week.dateRange.split("-")[0] // Extract the year
             });
-
-            // Filter data for 2024 and specific fulfillment names
-            const data2024 = parsedData.filter(d => d.year === "2024" && ["Corvallis", "Farm-Tuesday", "Farm-Friday", "Friendly", "Springfield", "W 11th", "Home Delivery - Eugene/Springfield/Junction City", "Home Delivery - Corvallis"].includes(d.fulfillmentName));
-            
-            // Filter data for 2024 and fulfillment names containing "Farmers Market"
-            const data2024FarmersMarket = parsedData.filter(d => d.year === "2024" && (d.fulfillmentName.toLowerCase().includes("farmers market") || d.fulfillmentName === "LCFM"));
-            
-            // Filter data for 2024 and specified fulfillment names
-            const data2024PDXDropsites = parsedData.filter(d => d.year === "2024" && ["Beaverton", "Cully", "Zafar Residence", "Sherwood", "Woodstock", "Irvington"].includes(d.fulfillmentName));
-            
-            // Filter data for 2023 and specific fulfillment names
-            const data2023 = parsedData.filter(d => d.year === "2023" && ["Corvallis", "Farm-Tuesday", "Farm-Friday", "Friendly", "Springfield", "W 11th", "Home Delivery - Eugene/Springfield/Junction City", "Home Delivery - Corvallis"].includes(d.fulfillmentName));
-            
-            // Filter data for 2023 and fulfillment names containing "Farmers Market"
-            const data2023FarmersMarket = parsedData.filter(d => d.year === "2023" && (d.fulfillmentName.toLowerCase().includes("farmers market") || d.fulfillmentName === "LCFM"));
-            
-            // Filter data for 2023 and specified fulfillment names
-            const data2023PDXDropsites = parsedData.filter(d => d.year === "2023" && ["Beaverton", "Cully", "Zafar Residence", "Sherwood", "Woodstock", "Irvington"].includes(d.fulfillmentName));
-
-
-            // Create the six charts
-            createChart("#chart2024", data2024, "EUG/COR/JC/SPRG-24");
-            createChart("#chart2024-2", data2024FarmersMarket, "Farmers Markets-24");
-            createChart("#chart2024-3", data2024PDXDropsites, "PDX Dropsites-24");
-            createChart("#chart2023", data2023, "EUG/COR/JC/SPRG-23");
-            createChart("#chart2023-2", data2023FarmersMarket, "Farmers Markets-23");
-            createChart("#chart2023-3", data2023PDXDropsites, "PDX Dropsites-23");
-        }).catch(error => {
-            console.error('Error loading or parsing data:', error);
         });
-    </script>
-</body>
-</html>
+    });
+
+    // Function to create and update charts
+    function createAndUpdateCharts() {
+        // Create the charts with initial filters (empty in this case)
+        createChart("#chart2024", parsedData, "EUG/COR/JC/SPRG-24", "chart2024-date", "chart2024-fulfillment");
+        createChart("#chart2024-2", parsedData, "Farmers Markets-24", "chart2024-2-date", "chart2024-2-fulfillment");
+        createChart("#chart2024-3", parsedData, "PDX Dropsites-24", "chart2024-3-date", "chart2024-3-fulfillment");
+        createChart("#chart2023", parsedData, "EUG/COR/JC/SPRG-23", "chart2023-date", "chart2023-fulfillment");
+        createChart("#chart2023-2", parsedData, "Farmers Markets-23", "chart2023-2-date", "chart2023-2-fulfillment");
+        createChart("#chart2023-3", parsedData, "PDX Dropsites-23", "chart2023-3-date", "chart2023-3-fulfillment");
+    }
+
+    // Call create and update charts function initially
+    createAndUpdateCharts();
+});
