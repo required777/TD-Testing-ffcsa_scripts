@@ -21,6 +21,8 @@
 </head>
 <body>
     <div id="chart2024"></div>
+    <div id="chart2024-2"></div>
+    <div id="chart2024-3"></div>
     <div id="chart2023"></div>
     <script>
         async function fetchFulfillmentData() {
@@ -164,8 +166,16 @@
             const data2024 = parsedData.filter(d => d.year === "2024");
             const data2023 = parsedData.filter(d => d.year === "2023");
 
-            // Create the two charts
+            // Filter data for 2024 and fulfillment names containing "Farmers Market"
+            const data2024FarmersMarket = data2024.filter(d => d.fulfillmentName.includes("Farmers Market"));
+
+            // Filter data for 2024 and specified fulfillment names
+            const data2024PDXDropsites = data2024.filter(d => ["Beaverton", "Cully", "Zafar Residence", "Sherwood", "Woodstock", "Irvington"].includes(d.fulfillmentName));
+
+            // Create the four charts
             createChart("#chart2024", data2024, "Fulfillment Trends 2024");
+            createChart("#chart2024-2", data2024FarmersMarket, "Farmers Markets");
+            createChart("#chart2024-3", data2024PDXDropsites, "PDX Dropsites");
             createChart("#chart2023", data2023, "Fulfillment Trends 2023");
         }).catch(error => {
             console.error('Error loading or parsing data:', error);
