@@ -44,8 +44,9 @@
             const parsedData = [];
             data.forEach(week => {
                 week.data.forEach(d => {
+                    const formattedDate = week.dateRange.split(" ")[0].replace(/(\d+)-(\d+)-(\d+)/, "$2/$3");
                     parsedData.push({
-                        dateRange: week.dateRange,
+                        dateRange: formattedDate,
                         fulfillmentName: d.fulfillmentName,
                         total: d.total
                     });
