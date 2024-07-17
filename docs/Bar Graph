@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bar Graph</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        .bar {
+            fill: steelblue;
+        }
+        .axis-label {
+            font: 10px sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Load the JSON data
+        d3.json("data.json").then(function(data) {
+            // Set the dimensions and margins of the graph
+            const margin = {top: 20, right: 30, bottom: 40, left: 40},
+                  width = 800 - margin.left - margin.right,
+                  height = 400 - margin.top - margin.bottom;
+
+            // Append the SVG object to the body of the page
+            const svg = d3.select("body").append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+              .append("g")
+                .attr("transform", `translate(${margin.left},${margin.top})`);
+
+            // Parse the data to get the totals for each fulfillmentName and dateRange
+            const parsedData = [];
+            data.weeks.forEach(week => {
+                week.data.forEach(d => {
+                    parsedData.push({
+                        dateRange: week.dateRange,
+                        fulfillmentName: d.fulfillmentName,
+                        total: d.total
+                    });
+                });
+            });
+
+            // Set the x scale
+            const x = d3.scaleBand()
+                .domain(parsedData.map(d => d.dateRange))
+                .range([0, width])
+                .padding(0.1);
+
+            // Set the y scale
+            const y = d3.scaleLinear()
+                .domain([0, d3.max(parsedData, d => d.total)])
+                .nice()
+                .range([height, 0]);
+
+            // Set the color scale
+            const color = d3.scaleOrdinal(d3.schemeCategory10)
+                .domain(parsedData.map(d => d.fulfillmentName));
+
+            // Add the x axis
+            svg.append("g")
+                .attr("class", "x axis")
+                .attr("transform", `translate(0,${height})`)
+                .call(d3.axisBottom(x))
+              .append("text")
+                .attr("class", "axis-label")
+                .attr("x", width / 2)
+                .attr("y", 35)
+                .style("text-anchor", "middle")
+                .text("Date Range");
+
+            // Add the y axis
+            svg.append("g")
+                .attr("class", "y axis")
+                .call(d3.axisLeft(y))
+              .append("text")
+                .attr("class", "axis-label")
+                .attr("transform", "rotate(-90)")
+                .attr("x", -height / 2)
+                .attr("y", -35)
+                .style("text-anchor", "middle")
+                .text("Total");
+
+            // Add the bars
+            svg.selectAll(".bar")
+                .data(parsedData)
+              .enter().append("rect")
+                .attr("class", "bar")
+                .attr("x", d => x(d.dateRange))
+                .attr("width", x.bandwidth())
+                .attr("y", d => y(d.total))
+                .attr("height", d => height - y(d.total))
+                .attr("fill", d => color(d.fulfillmentName));
+
+            // Add a legend
+            const legend = svg.selectAll(".legend")
+                .data(color.domain())
+              .enter().append("g")
+                .attr("class", "legend")
+                .attr("transform", (d, i) => `translate(0,${i * 20})`);
+
+            legend.append("rect")
+                .attr("x", width + 20)
+                .attr("width", 18)
+                .attr("height", 18)
+                .style("fill", color);
+
+            legend.append("text")
+                .attr("x", width + 45)
+                .attr("y", 9)
+                .attr("dy", ".35em")
+                .style("text-anchor", "start")
+                .text(d => d);
+        }).catch(error => {
+            console.error('Error loading or parsing data.json:', error);
+        });
+    </script>
+</body>
+</html>
