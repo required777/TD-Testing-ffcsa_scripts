@@ -10,7 +10,7 @@
             fill: steelblue;
         }
         .axis-label {
-            font: 10px sans-serif;
+            font: 12px sans-serif;
         }
     </style>
 </head>
@@ -24,9 +24,9 @@
 
         fetchFulfillmentData().then(function(data) {
             // Set the dimensions and margins of the graph
-            const margin = {top: 20, right: 30, bottom: 40, left: 40},
-                  width = 800 - margin.left - margin.right,
-                  height = 400 - margin.top - margin.bottom;
+            const margin = {top: 20, right: 30, bottom: 40, left: 50},
+                  width = 1200 - margin.left - margin.right,
+                  height = 600 - margin.top - margin.bottom;
 
             // Append the SVG object to the body of the page
             const svg = d3.select("body").append("svg")
@@ -47,9 +47,13 @@
                 });
             });
 
+            // Get unique date ranges and fulfillment names
+            const dateRanges = [...new Set(parsedData.map(d => d.dateRange))];
+            const fulfillmentNames = [...new Set(parsedData.map(d => d.fulfillmentName))];
+
             // Set the x scale
             const x = d3.scaleBand()
-                .domain(parsedData.map(d => d.dateRange))
+                .domain(dateRanges)
                 .range([0, width])
                 .padding(0.1);
 
@@ -61,7 +65,7 @@
 
             // Set the color scale
             const color = d3.scaleOrdinal(d3.schemeCategory10)
-                .domain(parsedData.map(d => d.fulfillmentName));
+                .domain(fulfillmentNames);
 
             // Add the x axis
             svg.append("g")
@@ -83,7 +87,7 @@
                 .attr("class", "axis-label")
                 .attr("transform", "rotate(-90)")
                 .attr("x", -height / 2)
-                .attr("y", -35)
+                .attr("y", -40)
                 .style("text-anchor", "middle")
                 .text("Total");
 
