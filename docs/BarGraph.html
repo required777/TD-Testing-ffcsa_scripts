@@ -20,26 +20,12 @@
     </style>
 </head>
 <body>
-    <div id="dropdown2024">
-        <select id="select2024">
-            <option value="all">All</option>
-            <option value="EUG/COR/JC/SPRG-24">EUG/COR/JC/SPRG-24</option>
-            <option value="Farmers Markets-24">Farmers Markets-24</option>
-            <option value="PDX Dropsites-24">PDX Dropsites-24</option>
-        </select>
-    </div>
     <div id="chart2024"></div>
-    
-    <div id="dropdown2023">
-        <select id="select2023">
-            <option value="all">All</option>
-            <option value="EUG/COR/JC/SPRG-23">EUG/COR/JC/SPRG-23</option>
-            <option value="Farmers Markets-23">Farmers Markets-23</option>
-            <option value="PDX Dropsites-23">PDX Dropsites-23</option>
-        </select>
-    </div>
+    <div id="chart2024-2"></div>
+    <div id="chart2024-3"></div>
     <div id="chart2023"></div>
-
+    <div id="chart2023-2"></div>
+    <div id="chart2023-3"></div>
     <script>
         async function fetchFulfillmentData() {
             const response = await fetch('https://raw.githubusercontent.com/jdeck88/ffcsa_scripts/main/localline/data/fulfillment_kpi.json');
@@ -60,14 +46,14 @@
                     .attr("width", width + margin.left + margin.right)
                     .attr("height", height + margin.top + margin.bottom)
                   .append("g")
-                    .attr("transform", `translate(${margin.left},${margin.top})`);
+                    .attr("transform", translate(${margin.left},${margin.top}));
 
                 // Get unique date ranges and fulfillment names
                 const dateRanges = [...new Set(parsedData.map(d => d.dateRange))];
                 const fulfillmentNames = [...new Set(parsedData.map(d => d.fulfillmentName))];
 
                 // Sort date ranges in chronological order
-                dateRanges.sort((a, b) => new Date(`2024-${a}`) - new Date(`2024-${b}`));
+                dateRanges.sort((a, b) => new Date(2024-${a}) - new Date(2024-${b}));
 
                 // Calculate total quantity for each fulfillment name
                 const totalByFulfillment = d3.rollup(parsedData, v => d3.sum(v, d => d.total), d => d.fulfillmentName);
@@ -102,7 +88,7 @@
                 // Add the x axis
                 svg.append("g")
                     .attr("class", "x axis")
-                    .attr("transform", `translate(0,${height})`)
+                    .attr("transform", translate(0,${height}))
                     .call(d3.axisBottom(x))
                   .append("text")
                     .attr("class", "axis-label")
@@ -142,7 +128,7 @@
                     .data(color.domain())
                   .enter().append("g")
                     .attr("class", "legend")
-                    .attr("transform", (d, i) => `translate(0,${i * 20})`);
+                    .attr("transform", (d, i) => translate(0,${i * 20}));
 
                 legend.append("rect")
                     .attr("x", width + 20)
@@ -165,41 +151,6 @@
                     .style("font-size", "16px")
                     .style("font-weight", "bold")
                     .text(title);
-
-                // Function to update chart based on selected date range
-                function updateChart(selectedData) {
-                    const filteredData = parsedData.filter(d => selectedData === "all" || d.dateRange === selectedData);
-                    const updatedStackData = d3.stack()
-                        .keys(fulfillmentNames)
-                        .value((d, key) => {
-                            const entry = d.values.find(e => e.fulfillmentName === key);
-                            return entry ? entry.total : 0;
-                        })(d3.groups(filteredData, d => d.dateRange).map(d => ({ dateRange: d[0], values: d[1] })));
-
-                    // Update x domain
-                    x.domain(filteredData.map(d => d.dateRange));
-
-                    // Update y domain
-                    y.domain([0, d3.max(updatedStackData, d => d3.max(d, d => d[1]))]);
-
-                    // Update bars
-                    svg.selectAll("g")
-                        .data(updatedStackData)
-                        .selectAll("rect")
-                        .data(d => d)
-                        .transition()
-                        .duration(500)
-                        .attr("x", d => x(d.data.dateRange))
-                        .attr("y", d => y(d[1]))
-                        .attr("height", d => y(d[0]) - y(d[1]))
-                        .attr("width", x.bandwidth());
-                }
-
-                // Attach event listener to dropdown menu
-                d3.select(`#select${title.slice(-2)}`).on("change", function() {
-                    const selectedData = this.value;
-                    updateChart(selectedData);
-                });
             }
 
             // Parse the data to get the totals for each fulfillmentName and dateRange
