@@ -24,6 +24,8 @@
     <div id="chart2024-2"></div>
     <div id="chart2024-3"></div>
     <div id="chart2023"></div>
+    <div id="chart2023-2"></div>
+    <div id="chart2023-3"></div>
     <script>
         async function fetchFulfillmentData() {
             const response = await fetch('https://raw.githubusercontent.com/jdeck88/ffcsa_scripts/main/localline/data/fulfillment_kpi.json');
@@ -173,15 +175,24 @@
             
             // Filter data for 2024 and specified fulfillment names
             const data2024PDXDropsites = parsedData.filter(d => d.year === "2024" && ["Beaverton", "Cully", "Zafar Residence", "Sherwood", "Woodstock", "Irvington"].includes(d.fulfillmentName));
+            
+            // Filter data for 2023 and specific fulfillment names
+            const data2024 = parsedData.filter(d => d.year === "2023" && ["Corvallis", "Farm-Tuesday", "Farm-Friday", "Friendly", "Springfield", "W 11th", "Home Delivery - Eugene/Springfield/Junction City", "Home Delivery - Corvallis"].includes(d.fulfillmentName));
+            
+            // Filter data for 2023 and fulfillment names containing "Farmers Market"
+            const data2024FarmersMarket = parsedData.filter(d => d.year === "2023" && (d.fulfillmentName.toLowerCase().includes("farmers market") || d.fulfillmentName === "LCFM"));
+            
+            // Filter data for 2023 and specified fulfillment names
+            const data2024PDXDropsites = parsedData.filter(d => d.year === "2023" && ["Beaverton", "Cully", "Zafar Residence", "Sherwood", "Woodstock", "Irvington"].includes(d.fulfillmentName));
 
-            // Filter data for 2023
-            const data2023 = parsedData.filter(d => d.year === "2023");
 
             // Create the four charts
-            createChart("#chart2024", data2024, "EUG/COR/JC/SPRG");
-            createChart("#chart2024-2", data2024FarmersMarket, "Farmers Markets");
-            createChart("#chart2024-3", data2024PDXDropsites, "PDX Dropsites");
-            createChart("#chart2023", data2023, "Fulfillment Trends 2023");
+            createChart("#chart2024", data2024, "EUG/COR/JC/SPRG-24");
+            createChart("#chart2024-2", data2024FarmersMarket, "Farmers Markets-24");
+            createChart("#chart2024-3", data2024PDXDropsites, "PDX Dropsites-24");
+            createChart("#chart2023", data2024, "EUG/COR/JC/SPRG-23");
+            createChart("#chart2023-2", data2024FarmersMarket, "Farmers Markets-23");
+            createChart("#chart2023-3", data2024PDXDropsites, "PDX Dropsites-23");
         }).catch(error => {
             console.error('Error loading or parsing data:', error);
         });
