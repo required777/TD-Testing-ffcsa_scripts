@@ -7,10 +7,15 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <style>
         .bar {
-            fill: steelblue;
+            stroke: #000;
+            stroke-width: 1px;
         }
         .axis-label {
             font: 12px sans-serif;
+        }
+        .legend rect {
+            stroke: #000;
+            stroke-width: 1px;
         }
     </style>
 </head>
@@ -24,7 +29,7 @@
 
         fetchFulfillmentData().then(function(data) {
             // Set the dimensions and margins of the graph
-            const margin = {top: 20, right: 30, bottom: 40, left: 50},
+            const margin = {top: 20, right: 160, bottom: 60, left: 60},
                   width = 1200 - margin.left - margin.right,
                   height = 600 - margin.top - margin.bottom;
 
@@ -51,11 +56,17 @@
             const dateRanges = [...new Set(parsedData.map(d => d.dateRange))];
             const fulfillmentNames = [...new Set(parsedData.map(d => d.fulfillmentName))];
 
-            // Set the x scale
-            const x = d3.scaleBand()
+            // Set the x scale for date ranges
+            const x0 = d3.scaleBand()
                 .domain(dateRanges)
                 .range([0, width])
                 .padding(0.1);
+
+            // Set the x scale for fulfillment names within each date range
+            const x1 = d3.scaleBand()
+                .domain(fulfillmentNames)
+                .range([0, x0.bandwidth()])
+                .padding(0.05);
 
             // Set the y scale
             const y = d3.scaleLinear()
@@ -71,11 +82,11 @@
             svg.append("g")
                 .attr("class", "x axis")
                 .attr("transform", `translate(0,${height})`)
-                .call(d3.axisBottom(x))
+                .call(d3.axisBottom(x0))
               .append("text")
                 .attr("class", "axis-label")
                 .attr("x", width / 2)
-                .attr("y", 35)
+                .attr("y", 40)
                 .style("text-anchor", "middle")
                 .text("Date Range");
 
@@ -87,17 +98,22 @@
                 .attr("class", "axis-label")
                 .attr("transform", "rotate(-90)")
                 .attr("x", -height / 2)
-                .attr("y", -40)
+                .attr("y", -50)
                 .style("text-anchor", "middle")
                 .text("Total");
 
             // Add the bars
-            svg.selectAll(".bar")
+            svg.selectAll(".dateRange")
                 .data(parsedData)
+              .enter().append("g")
+                .attr("class", "dateRange")
+                .attr("transform", d => `translate(${x0(d.dateRange)},0)`)
+              .selectAll(".bar")
+                .data(d => fulfillmentNames.map(name => ({dateRange: d.dateRange, fulfillmentName: name, total: d.total})))
               .enter().append("rect")
                 .attr("class", "bar")
-                .attr("x", d => x(d.dateRange))
-                .attr("width", x.bandwidth())
+                .attr("x", d => x1(d.fulfillmentName))
+                .attr("width", x1.bandwidth())
                 .attr("y", d => y(d.total))
                 .attr("height", d => height - y(d.total))
                 .attr("fill", d => color(d.fulfillmentName));
