@@ -46,14 +46,14 @@
                     .attr("width", width + margin.left + margin.right)
                     .attr("height", height + margin.top + margin.bottom)
                   .append("g")
-                    .attr("transform", translate(${margin.left},${margin.top}));
+                    .attr("transform", `translate(${margin.left},${margin.top})`);
 
                 // Get unique date ranges and fulfillment names
                 const dateRanges = [...new Set(parsedData.map(d => d.dateRange))];
                 const fulfillmentNames = [...new Set(parsedData.map(d => d.fulfillmentName))];
 
                 // Sort date ranges in chronological order
-                dateRanges.sort((a, b) => new Date(2024-${a}) - new Date(2024-${b}));
+                dateRanges.sort((a, b) => new Date(`2024-${a}`) - new Date(`2024-${b}`));
 
                 // Calculate total quantity for each fulfillment name
                 const totalByFulfillment = d3.rollup(parsedData, v => d3.sum(v, d => d.total), d => d.fulfillmentName);
@@ -88,7 +88,7 @@
                 // Add the x axis
                 svg.append("g")
                     .attr("class", "x axis")
-                    .attr("transform", translate(0,${height}))
+                    .attr("transform", `translate(0,${height})`)
                     .call(d3.axisBottom(x))
                   .append("text")
                     .attr("class", "axis-label")
@@ -128,7 +128,7 @@
                     .data(color.domain())
                   .enter().append("g")
                     .attr("class", "legend")
-                    .attr("transform", (d, i) => translate(0,${i * 20}));
+                    .attr("transform", (d, i) => `translate(0,${i * 20})`);
 
                 legend.append("rect")
                     .attr("x", width + 20)
