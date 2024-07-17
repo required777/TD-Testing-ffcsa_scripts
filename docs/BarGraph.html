@@ -50,15 +50,23 @@
                 const dateRanges = [...new Set(parsedData.map(d => d.dateRange))];
                 const fulfillmentNames = [...new Set(parsedData.map(d => d.fulfillmentName))];
 
+                // Prepare the data for stacking
+                const stackData = d3.stack()
+                    .keys(fulfillmentNames)
+                    .value((d, key) => {
+                        const entry = d.values.find(e => e.fulfillmentName === key);
+                        return entry ? entry.total : 0;
+                    })(d3.groups(parsedData, d => d.dateRange).map(d => ({ dateRange: d[0], values: d[1] })));
+
                 // Set the x scale for date ranges
-                const x0 = d3.scaleBand()
+                const x = d3.scaleBand()
                     .domain(dateRanges)
                     .range([0, width])
                     .padding(0.1);
 
                 // Set the y scale
                 const y = d3.scaleLinear()
-                    .domain([0, d3.max(parsedData, d => d.total)])
+                    .domain([0, d3.max(stackData, d => d3.max(d, d => d[1]))])
                     .nice()
                     .range([height, 0]);
 
@@ -70,7 +78,7 @@
                 svg.append("g")
                     .attr("class", "x axis")
                     .attr("transform", `translate(0,${height})`)
-                    .call(d3.axisBottom(x0))
+                    .call(d3.axisBottom(x))
                   .append("text")
                     .attr("class", "axis-label")
                     .attr("x", width / 2)
@@ -90,33 +98,19 @@
                     .style("text-anchor", "middle")
                     .text("Total");
 
-                // Group the data by date range
-                const groupedData = d3.group(parsedData, d => d.dateRange);
-
                 // Add the bars
-                svg.selectAll(".dateRange")
-                    .data(groupedData)
-                  .enter().append("g")
-                    .attr("class", "dateRange")
-                    .attr("transform", d => `translate(${x0(d[0])},0)`)
-                  .each(function(d) {
-                    const group = d3.select(this);
-                    const dateRange = d[0];
-                    const data = d[1];
-                    const x1 = d3.scaleBand()
-                        .domain(fulfillmentNames)
-                        .range([0, x0.bandwidth()])
-                        .padding(0.05);
-                    group.selectAll(".bar")
-                        .data(data)
-                      .enter().append("rect")
-                        .attr("class", "bar")
-                        .attr("x", d => x1(d.fulfillmentName))
-                        .attr("width", x1.bandwidth())
-                        .attr("y", d => y(d.total))
-                        .attr("height", d => height - y(d.total))
-                        .attr("fill", d => color(d.fulfillmentName));
-                  });
+                svg.append("g")
+                    .selectAll("g")
+                    .data(stackData)
+                    .enter().append("g")
+                      .attr("fill", d => color(d.key))
+                    .selectAll("rect")
+                    .data(d => d)
+                    .enter().append("rect")
+                      .attr("x", d => x(d.data.dateRange))
+                      .attr("y", d => y(d[1]))
+                      .attr("height", d => y(d[0]) - y(d[1]))
+                      .attr("width", x.bandwidth());
 
                 // Add a legend
                 const legend = svg.selectAll(".legend")
@@ -137,7 +131,7 @@
                     .attr("dy", ".35em")
                     .style("text-anchor", "start")
                     .text(d => d);
-                
+
                 // Add chart title
                 svg.append("text")
                     .attr("x", width / 2)
