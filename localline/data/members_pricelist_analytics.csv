@@ -1,6 +1,6 @@
 Priceslist,Vendor,Product,Visible,Item Unit,Charge Unit,Package Name,# of Items,Purchase Price,Retail Price,Margin,Markup
 members,Graziers Garden,Yellow Summer Squash,Y,lb,package,each,1,3.5,3,-17,-14
-members,Deck Family Farm,Baby Back Ribs **SALE**,Y,pk,package,1.3-2.1  Lbs,1,16.02,18.91,15,18
+members,Deck Family Farm,Pork Frankfurter **SALE**,Y,pk,package,12 oz pk,1,11.05,13.65,19,24
 members,Kiko Denzer,Handcrafted Wooden Fancy Egg Pushers,Y,ea,package,ea,1,12,15.84,24,32
 members,Kiko Denzer,Handcrafted Wooden Plain Kitchen Stir Stix,Y,ea,package,each,1,9,11.88,24,32
 members,Sweet Creek,Strawberry Fruit Spread,Y,ea,package,10 oz,1,3.8,5,24,32
@@ -40,13 +40,13 @@ members,Full Farm CSA,Deck Family Farm and Full Farm CSA Hoodie Small,Y,ea,packa
 members,Full Farm CSA,Deck Family Farm and Full Farm CSA T-Shirt  Extra-Large,Y,ea,package,ea,1,17,22.61,25,33
 members,Full Farm CSA,Deck Family Farm and Full Farm CSA T-Shirt Extra Small,Y,ea,package,ea,1,17,22.61,25,33
 members,Full Farm CSA,Deck Family Farm and Full Farm CSA T-Shirt Large,Y,ea,package,ea,1,17,22.61,25,33
+members,Full Farm CSA,Deck Family Farm and Full Farm CSA T-Shirt Medium,Y,ea,package,ea,1,17,22.61,25,33
 members,Full Farm CSA,Deck Family Farm and Full Farm CSA T-Shirt Small,Y,ea,package,ea,1,17,22.61,25,33
 members,Sweet Creek,Dill Relish,Y,ea,package,12.6 oz,1,4,5.32,25,33
 members,Graziers Garden,Edible Calendula Flower,Y,pt,package,each,1,4,5.32,25,33
 members,Camas Country Mill,Emmer Farro,Y,ea,package,5 lbs,1,15.12,20.11,25,33
 members,Lonesome Whistle,Emmer Macaroni,Y,ea,package,0.5 lb bag,1,3.33,4.43,25,33
 members,Sweet Creek,"Enchilada Red Sauce, Medium",Y,ea,package,16 oz,1,3.9,5.19,25,33
-members,Little Wings,Fava Beans,Y,lb,package,1 lb,1,2,2.68,25,34
 members,Little Wings,Fennel,Y,ea,package,each,1,2.25,3.02,25,34
 members,River Ranch Oregon Olive OIl,Flavor Infused Olive Oil- Rosemary and Basil,Y,ea,package,3.38oz (100mL),1,10.95,14.56,25,33
 members,Camas Swale Farm,French fingerling potatoes,Y,pound,package,pound,1,2.5,3.35,25,34
@@ -107,7 +107,6 @@ members,Jar Joy Goods,The Insulated Jar Tote/Jar Bag: Hemp + Natural Rubber (Yul
 members,Camas Country Mill,Three Sisters Porridge,Y,ea,package,3 lbs,1,7.01,9.32,25,33
 members,Full Farm CSA,Tote Bag,Y,ea,package,ea,1,13,17.29,25,33
 members,Lonesome Whistle,Up & At Em Pancake Mix,Y,ea,package,1.6 lbs,1,5.33,7.09,25,33
-members,Radiant Coffee Roasters,Vietnam Lotus - Light Roast Coffee Beans New 12 oz Bags,Y,ea,package,12 oz,1,11,14.63,25,33
 members,RL Plants,Yellow Iris Rhizome,Y,ea,package,each,1,5,6.65,25,33
 members,Queen of Hearts Superfood,Zesty Caesar Dressing,Y,ea,package,each,1,6.6,8.78,25,33
 members,Spoiled Rotten Vinegar,Apple Vinegar,Y,ea,package,8 fl. oz,1,5,6.75,26,35
@@ -143,23 +142,24 @@ members,Camas Swale Farm,Tropea onion,Y,bu,package,bu,1,2.5,3.38,26,35
 members,Little Wings,Walla Walla Onions,Y,bu,package,1 bunch,1,2.25,3.04,26,35
 members,Reality Kitchen Nonprofit,Wholewheat Multigrain Sandwich Loaf,Y,ea,package,each,1,5.25,7.09,26,35
 members,Deck Family Farm,Hikers Pepperoni Sticks,Y,pk,package,pk,1,4.88,6.73,27,38
-members,Full Farm CSA,Wildcraft Hot Sauce,Y,ea,package,ea,1,8,11,27,38
 members,Deck Family Farm,Bacon Ends & Pieces,Y,pk,package,8 oz,1,7.8,10.76,28,38
+members,Deck Family Farm,Beef Back Ribs,Y,ea,package,3-3.8 Lbs,1,29.28,40.41,28,38
 members,Deck Family Farm,Beef Bones,Y,bag,package,3 - 5 lbs,1,10.4,14.35,28,38
 members,Deck Family Farm,Beef Brisket,Y,ea,package,"Medium, 3-3.9",1,34.76,47.97,28,38
-members,Deck Family Farm,Beef Brisket,Y,ea,package,"Small, 1.9-2.8 lbs",1,23.68,32.68,28,38
 members,Deck Family Farm,Beef Brisket,Y,ea,package,"Large, 4.3-4.9",1,46.35,63.96,28,38
-members,Deck Family Farm,Beef Chuck Roast,Y,ea,package,2 -2.7 lbs,1,23.68,32.68,28,38
+members,Deck Family Farm,Beef Brisket,Y,ea,package,"Small, 2.3-2.9 lbs",1,26.2,36.16,28,38
+members,Deck Family Farm,Beef Chuck Roast,Y,ea,package,2.3 -2.9 lbs,1,26.2,36.16,28,38
+members,Deck Family Farm,Beef Flat Iron Steak,Y,ea,package,.9 - 1.4 lbs.,1,16.45,22.7,28,38
 members,Deck Family Farm,Beef Kidney,Y,pk,package,0.8 - 1 Lbs,1,12.87,17.76,28,38
 members,Deck Family Farm,Beef Liver,Y,pk,package,0.9-1.3 Lb. pk,1,15.73,21.71,28,38
-members,Deck Family Farm,Beef Patties,Y,pk,package,1 lb / 3 Patties,1,8.61,11.88,28,38
+members,Deck Family Farm,Beef Oxtail,Y,ea,package,1.8-2.3  lbs.,1,14.66,20.23,28,38
+members,Deck Family Farm,Beef Patties **SALE**,Y,pk,package,1 lb / 3 Patties,1,7.2,9.94,28,38
 members,Deck Family Farm,Beef Shank Osso Buco,Y,ea,package,1.3-2.4  lbs.,1,19.84,27.38,28,38
 members,Deck Family Farm,Beef Stew Meat,Y,ea,package,0.9- 1.3 lbs,1,11.08,15.29,28,38
-members,Deck Family Farm,"Beef Tri-Tip,",Y,ea,package,2.1-2.9 lbs.,1,28.84,39.8,28,38
-members,Deck Family Farm,Bone-In Chicken Breast,Y,ea,package,1.7 -2.2 lbs,1,17.75,24.5,28,38
+members,Deck Family Farm,"Beef Tri-Tip,",Y,ea,package,2-2.4 lbs.,1,25.38,35.02,28,38
+members,Deck Family Farm,"Beef Tri-Tip, Large",Y,ea,package,2.9-3.4 Lbs.,1,36.34,50.15,28,38
 members,Deck Family Farm,Bratwurst Sausage,Y,ea,package,12 oz.,1,10.73,14.81,28,38
 members,Deck Family Farm,Chicken Feet,Y,ea,package,1 lb.,1,4.55,6.28,28,38
-members,Deck Family Farm,Chicken Hearts,Y,pk,package,1/2 lb. pk,1,7.8,10.76,28,38
 members,Deck Family Farm,Chicken Hindquarter,Y,ea,package,1.3 - 2 lbs,1,12.87,17.76,28,38
 members,Deck Family Farm,Chicken Liver,Y,ea,package,1/2 lb,1,6.5,8.97,28,38
 members,Deck Family Farm,Chicken Wings,Y,ea,package,2 - 2.7 lbs,1,15.28,21.09,28,38
@@ -179,13 +179,13 @@ members,Elegant Elephant Baking Co.,Gluten Free Blueberry Scone,Y,ea,package,eac
 members,Deck Family Farm,Ground Beef - All Natural,Y,ea,package,1 lb,1,5.85,8.07,28,38
 members,Deck Family Farm,Ground Country Sausage,Y,ea,package,12 oz,1,8.61,11.88,28,38
 members,Deck Family Farm,Ground Pork,Y,ea,package,1 lb,1,9.43,13.01,28,38
+members,Deck Family Farm,Hanger Steak,Y,ea,package,0.7-0.8 Lbs.,1,10.73,14.81,28,38
 members,Deck Family Farm,"Honey, Bulk Raw",Y,ea,package,4 gallon,1,245,338.1,28,38
-members,Deck Family Farm,"Honey, Raw",Y,ea,package,1/2 pt,1,9.43,13.01,28,38
 members,Deck Family Farm,"Honey, Raw",Y,ea,package,1 pt,1,14.3,19.73,28,38
 members,Deck Family Farm,"Honey, Raw",Y,ea,package,1 qt,1,26,35.88,28,38
-members,Deck Family Farm,Korean Beef Short Ribs,Y,ea,package,.9-1.9 lbs,1,16.38,22.6,28,38
+members,Deck Family Farm,"Honey, Raw",Y,ea,package,1/2 pt,1,9.43,13.01,28,38
+members,Deck Family Farm,Korean Beef Short Ribs,Y,ea,package,.9-1.3 lbs,1,11.8,16.28,28,38
 members,Deck Family Farm,Lamb Garlic Sausage,Y,pk,package,12 oz pk,1,11.7,16.15,28,38
-members,Deck Family Farm,Lamb Kabob,Y,pk,package,0.8- 1.2 Lb,1,11.7,16.15,28,38
 members,Deck Family Farm,Lamb Neck Slices,Y,ea,package,1.1-1.5 lb,1,11.2,15.46,28,38
 members,Deck Family Farm,Lamb Ribs,Y,ea,package,1.4-1.9 lb,1,16.62,22.94,28,38
 members,Deck Family Farm,Lamb Shank - Whole,Y,ea,package,2 - 2.5 lbs,1,23.4,32.29,28,38
@@ -199,28 +199,29 @@ members,Deck Family Farm,Pet Food Organ Mix,Y,ea,package,1 lb,1,6.5,8.97,28,38
 members,Deck Family Farm,Pork Bacon,Y,pk,package,8 oz,1,9.59,13.23,28,38
 members,Deck Family Farm,Pork Bones,Y,ea,package,3-5 lbs.,1,5.2,7.18,28,38
 members,Deck Family Farm,"Pork Chop, Boneless Thick Cut",Y,pk,package,1-1.8 Lb pk,1,20.55,28.36,28,38
-members,Deck Family Farm,Pork Frankfurter,Y,pk,package,12 oz pk,1,11.05,15.25,28,38
+members,Deck Family Farm,Pork Chops Bone-In,Y,ea,package,1-1.5 Lbs,1,13.41,18.51,28,38
 members,Deck Family Farm,Pork Shank,Y,pk,package,3-4 Lb. pk,1,32.99,45.53,28,38
-members,Deck Family Farm,Pork Shoulder Roast,Y,ea,package,2-2.5 lbs,1,24.13,33.3,28,38
-members,Deck Family Farm,Pork Shoulder Roast,Y,ea,package,"Large, 3-3.5 Lbs",1,34.86,48.11,28,38
+members,Deck Family Farm,Pork Shoulder Roast,Y,ea,package,2.7-3.3 lbs,1,32.18,44.41,28,38
 members,Sweet Creek,Raspberry Fruit Spread,Y,ea,package,10 oz,1,3.8,5.25,28,38
 members,Deck Family Farm,Red Ranger Roaster,Y,ea,package,"Medium, 4.1 - 5 Lbs",1,29.58,40.82,28,38
-members,Deck Family Farms Hyland Processing,Rendered Beef Tallow,Y,ea,package,8 oz.,1,5.53,7.63,28,38
 members,Deck Family Farms Hyland Processing,Rendered Beef Tallow,Y,ea,package,16 oz,1,11.05,15.25,28,38
-members,Deck Family Farms Hyland Processing,Rendered Pork Back Fat,Y,ea,package,8 oz,1,3.9,5.38,28,38
 members,Deck Family Farms Hyland Processing,Rendered Pork Back Fat,Y,ea,package,16 oz,1,7.8,10.76,28,38
-members,Deck Family Farms Hyland Processing,Rendered Pork Leaf Lard,Y,ea,package,8 oz.,1,3.9,5.38,28,38
+members,Deck Family Farms Hyland Processing,Rendered Pork Back Fat,Y,ea,package,8 oz,1,3.9,5.38,28,38
 members,Deck Family Farms Hyland Processing,Rendered Pork Leaf Lard,Y,ea,package,16 oz.,1,7.8,10.76,28,38
+members,Deck Family Farms Hyland Processing,Rendered Pork Leaf Lard,Y,ea,package,8 oz.,1,3.9,5.38,28,38
+members,Deck Family Farm,Ribeye Steak,Y,ea,package,0.8 - 1.1 lbs,1,21,28.98,28,38
 members,Deck Family Farm,Roasting Chicken,Y,ea,package,"Large, 4.3-5 Lbs.",1,24.18,33.37,28,38
 members,Deck Family Farm,Sage and Sea Salt Pork Breakfast Sausage,Y,pk,package,each,1,9.1,12.56,28,38
-members,Deck Family Farm,Smoked Polish Kielbasa Sausage,Y,pk,package,12 oz,1,10.73,14.81,28,38
+members,Deck Family Farm,Skirt Steak,Y,pk,package,0.3-0.5 Lb,1,5.72,7.89,28,38
+members,Deck Family Farm,"Skirt Steak, Large",Y,pk,package,1.2-1.5 Lb,1,19.31,26.65,28,38
 members,Deck Family Farm,Stewing Hen,Y,ea,package,2 - 3.8 lbs,1,10.08,13.91,28,38
 members,Deck Family Farm,Summer Sausage,Y,ea,package,8 oz,1,7.8,10.76,28,38
 members,Deck Family Farm,Sweet Italian Sausage Links,Y,pk,package,12 oz 4 count,1,10.73,14.81,28,38
 members,Deck Family Farm,Tamari Pressed Beef Jerky,Y,pk,package,3 oz,1,9.75,13.46,28,38
+members,Deck Family Farm,Top Sirloin Steak,Y,ea,package,0.7- 1.3 Lbs,1,13.65,18.84,28,38
 members,Deck Family Farm,Unrendered Beef Tallow,Y,pk,package,2-3.7 Lb pk,1,7.41,10.23,28,38
-members,Deck Family Farm,Western Beef Short Ribs,Y,ea,package,"Large, 2.7-3.5 Lbs",1,33.25,45.89,28,38
 members,Deck Family Farm,Western Beef Short Ribs,Y,ea,package,1.3-2.1 lbs,1,18.23,25.16,28,38
+members,Deck Family Farm,"Western Beef Short Ribs, Large",Y,ea,package,"Large, 2.7-3.5 Lbs",1,33.25,45.89,28,38
 members,Graziers Garden,Fresh Thyme,Y,bu,package,each,1,2.5,3.5,29,40
 members,Elegant Elephant Baking Co.,Gluten Free Apple Pie,Y,ea,package,6,1,7.5,10.5,29,40
 members,Elegant Elephant Baking Co.,Gluten Free Brownie Bite with Chocolate Chips,Y,ea,package,each,1,2.5,3.5,29,40
