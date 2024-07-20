@@ -69,79 +69,78 @@ async function orders(filename, start, end) {
 				const fulfillmentOrderCounts = {};
 				const vendorTotals = {};
 				const categoryTotals = {};
-				const productTotals = {};
+				productTotals = {};
+				const dropsiteTotals = {};
 
 
 				// Count number of unique orders and calculate total items and total order amount
 				const uniqueOrderIDs = new Set();
 				sortedData.forEach(row => {
 					const orderID = row.Order;
-				    	const orderTotal = parseFloat(row['Order Total']);
+					const orderTotal = parseFloat(row['Order Total']);
 					const productSubtotal = parseFloat(row['Product Subtotal']);
 					const fulfillmentName = row['Fulfillment Name'];
-  					const vendor = row.Vendor;
-  					const category = row.Category;
-  					const product = row.Product;
+					const vendor = row.Vendor;
+					const category = row.Category;
+					const product = row.Product;
+					const dropsite = fulfillmentName;
 
-				    	// Sum the order total by fulfillment name
-    					if (!fulfillmentTotals[fulfillmentName]) {
-        					fulfillmentTotals[fulfillmentName] = 0;
-    					}
-        				// Count unique orders by fulfillment name
-        				if (!fulfillmentOrderCounts[fulfillmentName]) {
-            					fulfillmentOrderCounts[fulfillmentName] = 0;
-        				}
+					// Sum the order total by fulfillment name
+					if (!fulfillmentTotals[fulfillmentName]) {
+						fulfillmentTotals[fulfillmentName] = 0;
+					}
+					// Count unique orders by fulfillment name
+					if (!fulfillmentOrderCounts[fulfillmentName]) {
+						fulfillmentOrderCounts[fulfillmentName] = 0;
+					}
 
 					if (!uniqueOrderIDs.has(orderID)) {
 						uniqueOrderIDs.add(orderID);
 						totalOrderAmount += parseFloat(row['Order Total']); // Assuming 'Order Total' is the column containing order total
-    						fulfillmentTotals[fulfillmentName] += orderTotal;
-					        fulfillmentOrderCounts[fulfillmentName] += 1;
+						fulfillmentTotals[fulfillmentName] += orderTotal;
+						fulfillmentOrderCounts[fulfillmentName] += 1;
 					}
 
 					// vendor JSON
-  					if (!vendorTotals[vendor]) {
-    					vendorTotals[vendor] = 0;
-  					}
-  					vendorTotals[vendor] += productSubtotal;
+					if (!vendorTotals[vendor]) {
+						vendorTotals[vendor] = 0;
+					}
+					vendorTotals[vendor] += productSubtotal;
 
 					// category JSON
-  					if (!categoryTotals[category]) {
-    					categoryTotals[category] = 0;
-  					}
-  					categoryTotals[category] += productSubtotal;
+					if (!categoryTotals[category]) {
+						categoryTotals[category] = 0;
+					}
+					categoryTotals[category] += productSubtotal;
+
+					// dropsite JSON
+					if (!dropsiteTotals[dropsite]) {
+						dropsiteTotals[dropsite] = 0;
+					}
+					dropsiteTotals[dropsite] += productSubtotal;
 
 					// product JSON
-  					if (!productTotals[product]) {
-    					productTotals[product] = 0;
-  					}
-  					productTotals[product] += productSubtotal;
+					if (!productTotals[product]) {
+						productTotals[product] = 0;
+					}
+					productTotals[product] += productSubtotal;
 
 					totalItems += 1
 					overallAmountPaid += productSubtotal;
-					
+
 				});
 
-				// Add the week range to the results
-				//fulfillmentResults.push(priorWeek.start + ' to ' + priorWeek.end);
+				// Convert the object into an array of [key, value] pairs
+				const entries = Object.entries(productTotals);
 
-				// Create an array of fulfillment data
-				const fulfillmentData = [];
-				for (const fulfillmentName in fulfillmentTotals) {
-				    fulfillmentData.push({
-				        fulfillmentName: fulfillmentName,
-        				total: Math.round(fulfillmentTotals[fulfillmentName]),
-        				count: fulfillmentOrderCounts[fulfillmentName] || 0
-    				    });
-				}
+				// Sort the array by the values (sales) in descending order
+				entries.sort((a, b) => b[1] - a[1]);
 
-				const fulfillmentDataObject = {
-					dateRange: priorWeek.start + ' to ' + priorWeek.end,
-  					data: fulfillmentData
-				};
+				// Extract the top 20 highest sellers
+				const top20 = entries.slice(0, 20);
 
-				// Update the results array
-				fulfillmentResults = fulfillmentDataObject
+				// Convert the top 10 array back to an object (if needed)
+				productTotals = Object.fromEntries(top20);
 
 				const uniqueOrderCount = uniqueOrderIDs.size;
 				const averageItemsPerOrder = totalItems / uniqueOrderCount;
@@ -171,16 +170,30 @@ async function orders(filename, start, end) {
 				salesData.vendors = vendorTotals;
 				salesData.category = categoryTotals;
 				salesData.product = productTotals;
+				salesData.dropsite = dropsiteTotals;
 
 				// format the salesDataObject
 				const salesDataObject = {
 					dateRange: priorWeek.start + ' to ' + priorWeek.end,
-  					data: salesData 
+					data: salesData 
 				};
 				salesResults = salesDataObject;
 
+				formatNumbers(salesResults);
+
 			});
 	});
+}
+
+
+function formatNumbers(obj) {
+  for (let key in obj) {
+    if (typeof obj[key] === 'number') {
+      obj[key] = parseFloat(obj[key].toFixed(2));
+    } else if (typeof obj[key] === 'object') {
+      formatNumbers(obj[key]);
+    }
+  }
 }
 // Build customer delivery orders (picklists)
 async function run(start, end) {
@@ -201,23 +214,23 @@ async function run(start, end) {
 		results_url = await utilities.pollStatus(id, accessToken);
 		orders_file_path = await utilities.downloadData(results_url, 'kpi_orders_list_' + end + ".csv")
 		orders(orders_file_path, start,end).then(result => {
-        	console.log('orders finished');
+			console.log('orders finished');
 		})
-		.catch(error => {
-        	console.error(error);
-		});
+			.catch(error => {
+				console.error(error);
+			});
 
 		// Download and Process Subscriber Data
 		url = 'https://localline.ca/api/backoffice/v2/order-subscriptions/export/'
 		file_path = await utilities.downloadBinaryData(url, 'data/subscribers_'+end+'.csv', accessToken)
 		subscribers(file_path).then(result => {
-        	console.log('subscribers finished');
-    	})
-    	.catch(error => {
-        	console.error(error);
-    	});
+			console.log('subscribers finished');
+		})
+			.catch(error => {
+				console.error(error);
+			});
 
- 		setTimeout(() => {
+		setTimeout(() => {
 			subjectString =  'FFCSA Reports: Weekly KPIs for ' + start + " to " + end;
 			appendJSON(salesResults, 'data/weekly_kpi.json')
 			//appendJSON(fulfillmentResults, 'data/fulfillment_kpi.json')
@@ -225,13 +238,14 @@ async function run(start, end) {
 			//console.log(subjectString);
 			const emailOptions = {
 				from: "jdeck88@gmail.com",
-				to: "fullfarmcsa@deckfamilyfarm.com",
-				cc: "jdeck88@gmail.com",
+				//to: "fullfarmcsa@deckfamilyfarm.com",
+				//cc: "jdeck88@gmail.com",
+				to: "jdeck88@gmail.com",
 				subject: subjectString,
 				text: JSON.stringify(salesData, null, 4) + "\n\nRunning KPI stats viewable at:\nhttps://github.com/jdeck88/ffcsa_scripts/blob/main/localline/data/weekly_kpi.csv"
 			};
 			utilities.sendEmail(emailOptions)
-  		}, 3000);
+		}, 3000);
 
 
 	} catch (error) {
@@ -242,55 +256,55 @@ async function run(start, end) {
 
 // Append to output JSON file
 function appendJSON(dataStructure, filename) {
-    //console.log('Fulfillment Totals:', JSON.stringify(dataStructure, null, 2));
+	//console.log('Fulfillment Totals:', JSON.stringify(dataStructure, null, 2));
 
-  // Read the existing file
-  fs.readFile(filename, 'utf8', (err, fileData) => {
-    let jsonData;
-    
-    if (err) {
-      // If the file does not exist, initialize an empty structure
-      if (err.code === 'ENOENT') {
-        jsonData = { weeks: [] };
-      } else {
-        console.error('Error reading the file:', err);
-        return;
-      }
-    } else {
-      // Parse the existing file data
-      try {
-        jsonData = JSON.parse(fileData);
-      } catch (parseErr) {
-        console.error('Error parsing the file data:', parseErr);
-        return;
-      }
-    }
-    
-    // Ensure jsonData has a weeks array
-    if (!Array.isArray(jsonData.weeks)) {
-      jsonData.weeks = [];
-    }
+	// Read the existing file
+	fs.readFile(filename, 'utf8', (err, fileData) => {
+		let jsonData;
 
-    // Find the index of the existing entry with the same dateRange, if it exists
-    const existingIndex = jsonData.weeks.findIndex(week => week.dateRange === dataStructure.dateRange);
-    
-    if (existingIndex >= 0) {
-      // Replace the existing entry
-      jsonData.weeks[existingIndex] = dataStructure;
-    } else {
-      // Append the new data structure
-      jsonData.weeks.push(dataStructure);
-    }
+		if (err) {
+			// If the file does not exist, initialize an empty structure
+			if (err.code === 'ENOENT') {
+				jsonData = { weeks: [] };
+			} else {
+				console.error('Error reading the file:', err);
+				return;
+			}
+		} else {
+			// Parse the existing file data
+			try {
+				jsonData = JSON.parse(fileData);
+			} catch (parseErr) {
+				console.error('Error parsing the file data:', parseErr);
+				return;
+			}
+		}
 
-    // Write the updated data back to the file
-    fs.writeFile(filename, JSON.stringify(jsonData, null, 2), 'utf8', (writeErr) => {
-      if (writeErr) {
-        console.error('Error writing to the file:', writeErr);
-      } else {
-        console.log('File updated successfully');
-      }
-    });
-  });
+		// Ensure jsonData has a weeks array
+		if (!Array.isArray(jsonData.weeks)) {
+			jsonData.weeks = [];
+		}
+
+		// Find the index of the existing entry with the same dateRange, if it exists
+		const existingIndex = jsonData.weeks.findIndex(week => week.dateRange === dataStructure.dateRange);
+
+		if (existingIndex >= 0) {
+			// Replace the existing entry
+			jsonData.weeks[existingIndex] = dataStructure;
+		} else {
+			// Append the new data structure
+			jsonData.weeks.push(dataStructure);
+		}
+
+		// Write the updated data back to the file
+		fs.writeFile(filename, JSON.stringify(jsonData, null, 2), 'utf8', (writeErr) => {
+			if (writeErr) {
+				console.error('Error writing to the file:', writeErr);
+			} else {
+				console.log('File updated successfully');
+			}
+		});
+	});
 }
 
 // Extract command line arguments
@@ -301,20 +315,21 @@ const dateArg = commandLineArgs.length > 0 ? commandLineArgs[0] : utilities.getT
 const priorWeek = utilities.getPreviousWeek(dateArg); // Date is formatted as "YYYY-MM-DD"
 
 // Create an array for the results
-fulfillmentResults = {};
+//nfulfillmentResults = {};
 salesResults = {}
 const salesData = {
-    totalSales: 0,
-    numOrders: 0,
-    numSubscriberOrders: 0,
-    numGuestOrders: 0,
-    averageItemsPerOrder: 0,
-    averageOrderAmount: 0,
-    totalActiveSubscribers: 0,
-    projectedMonthlySubscriptionRevenue: 0,
-    vendors: {},
-    category: {},
-    product: {}
+	totalSales: 0,
+	numOrders: 0,
+	numSubscriberOrders: 0,
+	numGuestOrders: 0,
+	averageItemsPerOrder: 0,
+	averageOrderAmount: 0,
+	totalActiveSubscribers: 0,
+	projectedMonthlySubscriptionRevenue: 0,
+	vendors: {},
+	category: {},
+	product: {},
+	dropsite: {}
 };
 
 
