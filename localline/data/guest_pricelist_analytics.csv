@@ -1,4 +1,5 @@
 Priceslist,Vendor,Product,Visible,Item Unit,Charge Unit,Package Name,# of Items,Purchase Price,Retail Price,Margin,Markup
+guest,Graziers Garden,Red Slicer Tomato,Y,lb,package,lb,1,2,2,0,0
 guest,Deck Family Farm,Pork Frankfurter **SALE**,Y,pk,package,12 oz pk,1,11.05,14.52,24,31
 guest,River Ranch Oregon Olive OIl,2022 Arbequina  Olive Oil,Y,ea,package,100mL,1,8.95,12.8,30,43
 guest,Little Wings,Asian Long Black Eggplant,Y,lb,package,1 lb,1,3,4.29,30,43
@@ -130,7 +131,6 @@ guest,Little Wings,Persian Cucumber,Y,pound,package,1 lb,1,2.4,3.46,31,44
 guest,Creole Me Up,Pickleez with a Little Bit of Sass,Y,ea,package,16.06oz,1,8.35,12.11,31,45
 guest,Graziers Garden,Pickling Cucumber,Y,lb,package,1 lb,1,2.5,3.6,31,44
 guest,Deck Family Farm,Pork Bones,Y,ea,package,3-5 lbs.,1,5.2,7.59,31,46
-guest,Graziers Garden,Purple Sprouting Broccoli,Y,bu,package,each,1,2.75,3.96,31,44
 guest,Camas Swale Farm,Purple curly kale,Y,ea,package,ea,1,2,2.88,31,44
 guest,Graziers Garden,Purslane,Y,bu,package,bu,1,4,5.76,31,44
 guest,Red Tail Growers,Red Beets,Y,lb,package,1 lb,1,1,1.45,31,45
@@ -157,9 +157,9 @@ guest,Little Wings,Walla Walla Onions,Y,bu,package,1 bunch,1,2.25,3.26,31,45
 guest,Reality Kitchen Nonprofit,Wholewheat Multigrain Sandwich Loaf,Y,ea,package,each,1,5.25,7.61,31,45
 guest,Deck Family Farm,Bacon Ends & Pieces,Y,pk,package,8 oz,1,7.8,11.39,32,46
 guest,Deck Family Farm,Beef Back Ribs,Y,ea,package,3-3.8 Lbs,1,29.28,42.75,32,46
-guest,Deck Family Farm,Beef Brisket,Y,ea,package,"Medium, 3-3.9",1,34.76,50.75,32,46
-guest,Deck Family Farm,Beef Brisket,Y,ea,package,"Large, 4.3-4.9",1,46.35,67.67,32,46
 guest,Deck Family Farm,Beef Brisket,Y,ea,package,"Small, 2.3-2.9 lbs",1,26.2,38.25,32,46
+guest,Deck Family Farm,Beef Brisket,Y,ea,package,"Large, 4.3-4.9",1,46.35,67.67,32,46
+guest,Deck Family Farm,Beef Brisket,Y,ea,package,"Medium, 3-3.9",1,34.76,50.75,32,46
 guest,Deck Family Farm,Beef Chuck Roast,Y,ea,package,2.3 -2.9 lbs,1,26.2,38.25,32,46
 guest,Deck Family Farm,Beef Flat Iron Steak,Y,ea,package,.9 - 1.4 lbs.,1,16.45,24.02,32,46
 guest,Deck Family Farm,Beef Kidney,Y,pk,package,0.8 - 1 Lbs,1,12.87,18.79,32,46
@@ -190,8 +190,8 @@ guest,Deck Family Farm,Lamb Shoulder Roast,Y,ea,package,3.2 -4 lbs,1,39.78,58.08
 guest,Deck Family Farm,Landgaeger Jerky,Y,pk,package,3 count / 3 oz,1,9.1,13.29,32,46
 guest,Deck Family Farm,New York Steak,Y,ea,package,0.5 - 0.9 lbs,1,14.11,20.6,32,46
 guest,Deck Family Farm,"Olympia Provisions, Dog Treats",Y,pk,package,5 oz. pk,1,9.75,14.24,32,46
-guest,Deck Family Farm,Organic Pasture Raised Chicken Eggs,Y,ea,package,1 dozen,1,7.15,10.44,32,46
 guest,Deck Family Farm,Organic Pasture Raised Chicken Eggs,Y,ea,package,1/2 dozen,1,4.23,6.18,32,46
+guest,Deck Family Farm,Organic Pasture Raised Chicken Eggs,Y,ea,package,1 dozen,1,7.15,10.44,32,46
 guest,Deck Family Farm,Pet Food Organ Mix,Y,ea,package,1 lb,1,6.5,9.49,32,46
 guest,Deck Family Farm,Pork Bacon,Y,pk,package,8 oz,1,9.59,14,32,46
 guest,Deck Family Farm,"Pork Chop, Boneless Thick Cut",Y,pk,package,1-1.8 Lb pk,1,20.55,30,32,46
