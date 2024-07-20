@@ -238,9 +238,8 @@ async function run(start, end) {
 			//console.log(subjectString);
 			const emailOptions = {
 				from: "jdeck88@gmail.com",
-				//to: "fullfarmcsa@deckfamilyfarm.com",
-				//cc: "jdeck88@gmail.com",
-				to: "jdeck88@gmail.com",
+				to: "fullfarmcsa@deckfamilyfarm.com",
+				cc: "jdeck88@gmail.com",
 				subject: subjectString,
 				text: JSON.stringify(salesData, null, 4) + "\n\nRunning KPI stats viewable at:\nhttps://github.com/jdeck88/ffcsa_scripts/blob/main/localline/data/weekly_kpi.csv"
 			};
