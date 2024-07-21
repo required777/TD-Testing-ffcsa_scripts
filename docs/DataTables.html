@@ -85,8 +85,17 @@
     </table>
 
     <script>
-        // Assuming the JSON data is available as a JavaScript object
-        const jsonData = {https://raw.githubusercontent.com/required777/TD-Testing-ffcsa_scripts/1.1.1/localline/data/weekly_kpi.json };
+        // Fetching the JSON data
+        fetch('https://raw.githubusercontent.com/required777/TD-Testing-ffcsa_scripts/1.1.1/localline/data/weekly_kpi.json')
+            .then(response => response.json())
+            .then(jsonData => {
+                createDataTable1(jsonData);
+                createTable(jsonData, 'dataTable2', 'vendors');
+                createTable(jsonData, 'dataTable3', 'category');
+                createTable(jsonData, 'dataTable4', 'product');
+                createTable(jsonData, 'dataTable5', 'dropsite');
+            })
+            .catch(error => console.error('Error fetching the JSON data:', error));
 
         function createTable(jsonData, tableId, dataKey) {
             const table = document.getElementById(tableId);
@@ -138,13 +147,6 @@
                 table.appendChild(tr);
             });
         }
-
-        createDataTable1(jsonData);
-        createTable(jsonData, 'dataTable2', 'vendors');
-        createTable(jsonData, 'dataTable3', 'category');
-        createTable(jsonData, 'dataTable4', 'product');
-        createTable(jsonData, 'dataTable5', 'dropsite');
     </script>
 </body>
 </html>
-
