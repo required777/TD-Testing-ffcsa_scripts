@@ -1,1 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly KPI Data Tables</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Weekly KPI Data Tables</h1>
+
+    <h2>Data Table 1: Data</h2>
+    <table id="dataTable1">
+        <thead>
+            <tr>
+                <th>Week</th>
+                <th>Total Sales</th>
+                <th>Num Orders</th>
+                <th>Num Subscriber Orders</th>
+                <th>Num Guest Orders</th>
+                <th>Average Items Per Order</th>
+                <th>Average Order Amount</th>
+                <th>Total Active Subscribers</th>
+                <th>Projected Monthly Subscription Revenue</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <h2>Data Table 2: Vendors</h2>
+    <table id="dataTable2">
+        <thead>
+            <tr>
+                <th>Week</th>
+                <!-- Vendors headers will be inserted dynamically -->
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <h2>Data Table 3: Categories</h2>
+    <table id="dataTable3">
+        <thead>
+            <tr>
+                <th>Week</th>
+                <!-- Categories headers will be inserted dynamically -->
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <h2>Data Table 4: Products</h2>
+    <table id="dataTable4">
+        <thead>
+            <tr>
+                <th>Week</th>
+                <!-- Products headers will be inserted dynamically -->
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <h2>Data Table 5: Dropsites</h2>
+    <table id="dataTable5">
+        <thead>
+            <tr>
+                <th>Week</th>
+                <!-- Dropsites headers will be inserted dynamically -->
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        // Assuming the JSON data is available as a JavaScript object
+        const jsonData = { };
+
+        function createTable(jsonData, tableId, dataKey) {
+            const table = document.getElementById(tableId);
+            const thead = table.querySelector('thead tr');
+            const tbody = table.querySelector('tbody');
+
+            const headers = new Set();
+            jsonData.weeks.forEach(week => {
+                Object.keys(week.data[dataKey]).forEach(key => headers.add(key));
+            });
+
+            headers.forEach(header => {
+                const th = document.createElement('th');
+                th.textContent = header;
+                thead.appendChild(th);
+            });
+
+            jsonData.weeks.forEach(week => {
+                const tr = document.createElement('tr');
+                const weekTd = document.createElement('td');
+                weekTd.textContent = week.dateRange;
+                tr.appendChild(weekTd);
+
+                headers.forEach(header => {
+                    const td = document.createElement('td');
+                    td.textContent = week.data[dataKey][header] || '';
+                    tr.appendChild(td);
+                });
+
+                tbody.appendChild(tr);
+            });
+        }
+
+        function createDataTable1(jsonData) {
+            const table = document.getElementById('dataTable1').querySelector('tbody');
+            jsonData.weeks.forEach(week => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${week.dateRange}</td>
+                    <td>${week.data.totalSales}</td>
+                    <td>${week.data.numOrders}</td>
+                    <td>${week.data.numSubscriberOrders}</td>
+                    <td>${week.data.numGuestOrders}</td>
+                    <td>${week.data.averageItemsPerOrder}</td>
+                    <td>${week.data.averageOrderAmount}</td>
+                    <td>${week.data.totalActiveSubscribers}</td>
+                    <td>${week.data.projectedMonthlySubscriptionRevenue}</td>
+                `;
+                table.appendChild(tr);
+            });
+        }
+
+        createDataTable1(jsonData);
+        createTable(jsonData, 'dataTable2', 'vendors');
+        createTable(jsonData, 'dataTable3', 'category');
+        createTable(jsonData, 'dataTable4', 'product');
+        createTable(jsonData, 'dataTable5', 'dropsite');
+    </script>
+</body>
+</html>
 
