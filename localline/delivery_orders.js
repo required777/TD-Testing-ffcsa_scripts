@@ -1,3 +1,4 @@
+// Using the following get  the "access" property
 var request = require('request');
 const fs = require('fs');
 const path = require('path');
@@ -11,188 +12,19 @@ const utilities = require('./utilities');
 // Function to read a list of vendors from a file and return a promise with the ordered vendor list
 function readVendorOrder(filePath) {
 	return new Promise((resolve, reject) => {
-		const vendorOrder = [];
-
-		fs.createReadStream(filePath)
-			.pipe(fastcsv.parse({ headers: true }))
-			.on('data', (row) => {
-				if (row.vendor) {
-					vendorOrder.push(row);
-				}
-			})
-			.on('end', () => {
-				//console.log('Vendor order loaded:', vendorOrder);
-				resolve(vendorOrder);
-			})
-			.on('error', (err) => {
+		fs.readFile(filePath, 'utf8', (err, data) => {
+			if (err) {
 				reject(err);
-			});
+				return;
+			}
+
+			// Split the file content by new lines and filter out any empty lines
+			const vendorOrder = data.split('\n').filter(line => line.trim() !== '');
+			console.log('Vendor order loaded:', vendorOrder);
+			resolve(vendorOrder);
+		});
 	});
 }
-
-
-
-async function writeSetupPDF(filename, fullfillmentDateEnd) {
-	const vendorOrder = await readVendorOrder('vendor_order.csv');
-	return new Promise((resolve, reject) => {
-		const pdf_file = 'data/setup.pdf'
-
-		// Create a new PDF document
-		const doc = new PDFDocument();
-		doc.pipe(fs.createWriteStream(pdf_file));
-		const vendors = {}; // Store customer data including attributes
-		let currentVendor = null;
-		const sortedData = [];
-
-		// Read the CSV file and sort by "Customer Name" before processing
-		fs.createReadStream(filename)
-			.pipe(fastcsv.parse({ headers: true }))
-			.on('data', (row) => {
-				sortedData.push(row);
-			})
-			.on('end', () => {
-				sortedData.sort((a, b) => a['Vendor'].localeCompare(b['Vendor']));
-				sortedData.forEach((row) => {
-					const product = row['Product'] + ' - ' + row['Package Name'];
-					quantity = Math.round(parseFloat(row['Quantity']));
-					const numItems = Math.round(parseFloat(row['# of Items']));
-					const itemUnit = row['Item Unit']
-					const vendor = row['Vendor']
-					const category = row['Category']
-					if (numItems > 1 && quantity == 1) {
-						quantity = numItems
-					}
-					if (vendor !== currentVendor) {
-						currentVendor = vendor;
-						vendors[vendor] = {
-							products: [],
-							//		quantity: quantity,
-							//		category: category,
-							//		vendor: vendor
-						};
-					}
-					if (category !== 'Membership') {
-						vendors[vendor].products.push({ product, quantity, category, vendor });
-					}
-				});
-
-
-				const aggregatedData = {};
-				const vendorLocations = {};
-
-				// Create a map for vendor locations
-				vendorOrder.forEach(entry => {
-					vendorLocations[entry.vendor] = entry.location;
-				});
-
-				// Aggregate data by vendor and product
-				for (const vendor in vendors) {
-					const data = vendors[vendor];
-					if (!aggregatedData[vendor]) {
-						aggregatedData[vendor] = {};
-					}
-					data.products.forEach(product => {
-						const productName = product.product;
-						const category = product.category;
-						const quantity = product.quantity;
-						if (!aggregatedData[vendor][productName]) {
-							aggregatedData[vendor][productName] = { category, total_quantity: 0 };
-						}
-						aggregatedData[vendor][productName].total_quantity += quantity;
-					});
-				}
-
-				// Group vendors by location and sort products within each vendor
-				const sortedDataByLocation = {};
-
-				// Initialize the buckets for each location
-				Object.values(vendorLocations).forEach(location => {
-					sortedDataByLocation[location] = {};
-				});
-
-				// Populate the buckets with vendors and their sorted products
-				for (const vendor in aggregatedData) {
-					const location = vendorLocations[vendor];
-					if (location) {
-						sortedDataByLocation[location][vendor] = aggregatedData[vendor];
-
-						// Sort the products within each vendor
-						const sortedProducts = {};
-						Object.keys(aggregatedData[vendor]).sort().forEach(productName => {
-							sortedProducts[productName] = aggregatedData[vendor][productName];
-						});
-
-						sortedDataByLocation[location][vendor] = sortedProducts;
-					}
-				}
-
-				// Create PDF document
-				doc.pipe(fs.createWriteStream('report.pdf'));
-
-				doc.fontSize(24).font('Helvetica-Bold').text('Setup Instructions for ' + fullfillmentDateEnd + ' Packout', { align: 'center', underline: true });
-				doc.moveDown(1);
-
-				for (const location in sortedDataByLocation) {
-					// Print the location name
-					// Draw the line across the page
-					doc.moveTo(doc.page.margins.left, doc.y)
-						.lineTo(doc.page.width - doc.page.margins.right, doc.y)
-						.stroke();
-					doc.moveDown(0.35);
-
-					doc.fontSize(18).font('Helvetica-Bold').fillColor('#000000').text(location, { align: 'center' });
-
-					// Draw the line across the page
-					doc.moveTo(doc.page.margins.left, doc.y)
-						.lineTo(doc.page.width - doc.page.margins.right, doc.y)
-						.stroke();
-					doc.moveDown(0.5);
-
-					// Loop through each vendor within the current location
-					for (const vendor in sortedDataByLocation[location]) {
-						// Print the vendor name
-						doc.fontSize(16).font('Helvetica-Bold').fillColor('#000000').text(vendor);
-						doc.moveDown(0.3);
-
-						const products = sortedDataByLocation[location][vendor];
-						const productNames = Object.keys(products);
-						const productQuantities = productNames.map(productName => products[productName].total_quantity);
-						const productCategories = productNames.map(productName => products[productName].category);
-
-						// Print the table rows without headers using a thinner font
-						for (let i = 0; i < productNames.length; i++) {
-							doc.fontSize(12).font('Helvetica').fillColor('#333333').text(`  ${productQuantities[i]}`, { continued: true }).text('  ', { continued: true }).text(`${productNames[i]} (${productCategories[i]})`);
-						}
-						doc.moveDown(1);
-					}
-					doc.moveDown(1); // Add extra space after each location
-				}
-
-
-				doc.end();
-
-
-				// Wait for the stream to finish and then resolve with the file path
-				doc.on('finish', () => {
-					console.log('PDF created successfully.');
-					console.log(pdf_file);
-				});
-
-				doc.on('error', (error) => {
-					console.error('PDF creation error:', error);
-					reject(error);
-				});
-
-				// TODO: figure out appropriate aync methods to enable finishing PDF creation
-				setTimeout(() => {
-					console.log("Success!")
-					resolve(pdf_file); // Promise is resolved with "Success!"
-				}, 1000);
-			})
-	});
-}
-
-
 async function writeDeliveryOrderPDF(filename, fullfillmentDateEnd) {
 	const vendorOrder = await readVendorOrder('vendor_order.csv');
 	return new Promise((resolve, reject) => {
@@ -238,7 +70,7 @@ async function writeDeliveryOrderPDF(filename, fullfillmentDateEnd) {
 
 					let timeRange = '';
 					if (startTime && endTime) {
-						timeRange = startTime + ' to ' + endTime;
+  						timeRange = startTime + ' to ' + endTime;
 					}
 
 					// If # of Items is > 1 and quantity is 1, then update quantity to be numItems
@@ -323,17 +155,14 @@ async function writeDeliveryOrderPDF(filename, fullfillmentDateEnd) {
 
 						// This section sorts on vendors in the order they appear in the file vendor_order.csv
 						// Create a map for quick lookup of vendor order
-
-
-						// Create a map of vendor to its order index
 						const vendorOrderMap = {};
-						vendorOrder.forEach((vendorObj, index) => {
-							vendorOrderMap[vendorObj.vendor] = index;
+						vendorOrder.forEach((vendor, index) => {
+							vendorOrderMap[vendor] = index;
 						});
 
+						// Add a default high value for vendors not in the vendorOrder
 						const defaultOrderValue = vendorOrder.length;
 
-						// Sort items based on the vendor order
 						items.sort((a, b) => {
 							const vendorOrderA = vendorOrderMap.hasOwnProperty(a.vendor) ? vendorOrderMap[a.vendor] : defaultOrderValue;
 							const vendorOrderB = vendorOrderMap.hasOwnProperty(b.vendor) ? vendorOrderMap[b.vendor] : defaultOrderValue;
@@ -370,7 +199,14 @@ async function writeDeliveryOrderPDF(filename, fullfillmentDateEnd) {
 						doc.moveDown();
 
 						doc.fontSize(8).font('Helvetica-Oblique').text(' Missing an item? Send an email to fullfarmcsa@deckfamilyfarm.com and we\'ll issue you a credit.', doc.x, doc.y);
+   table = {
+                            title: '',
+                            widths: [pageWidth], // Set the width to the page width
+                            headers: ['Product', 'Quantity', 'Unit', 'Vendor', 'Packed'],
+                            rows: itemsAsData,
+                        };
 
+                        doc.table(table);
 						doc.addPage();
 					}
 
@@ -426,42 +262,22 @@ async function delivery_order(fullfillmentDateStart, fullfillmentDateEnd) {
 			utilities.downloadData(orders_result_url, 'orders_list_' + fullfillmentDateEnd + ".csv")
 				.then((orders_file_path) => {
 					console.log('Downloaded file path:', orders_file_path);
-
 					writeDeliveryOrderPDF(orders_file_path, fullfillmentDateEnd)
 						.then((delivery_order_pdf) => {
+							// Email information
 							const emailOptions = {
 								from: "jdeck88@gmail.com",
 								to: "fullfarmcsa@deckfamilyfarm.com",
-								cc: "jdeck88@gmail.com, nancy.barrettbaking@gmail.com",
+								cc: "jdeck88@gmail.com, nancy.barrettbaking@gmail.com, summer.m.spell@gmail.com",
 								subject: 'FFCSA Reports: Delivery Orders for ' + fullfillmentDateEnd,
 								text: "Please see the attached file.  Reports are generated twice per week in advance of fullfillment dates.",
 							};
+
+							// Attach the file to the email
 							emailOptions.attachments = [
 								{
 									filename: 'delivery_orders.pdf', // Change the filename as needed
 									content: fs.readFileSync(delivery_order_pdf), // Attach the file buffer
-								},
-							];
-							utilities.sendEmail(emailOptions)
-
-						}).catch((error) => {
-							console.error("Error in writeDeliveryOrderPDF:", error);
-							utilities.sendErrorEmail(error)
-						});
-
-					writeSetupPDF(orders_file_path, fullfillmentDateEnd)
-						.then((setup_pdf) => {
-							const emailOptions = {
-								from: "jdeck88@gmail.com",
-								to: "fullfarmcsa@deckfamilyfarm.com",
-								cc: "jdeck88@gmail.com, summer.m.spell@gmail.com",
-								subject: 'FFCSA Reports: Setup Instructions for ' + fullfillmentDateEnd,
-								text: "Please see the attached file.  Reports are generated twice per week in advance of fullfillment dates.",
-							};
-							emailOptions.attachments = [
-								{
-									filename: 'setup.pdf', // Change the filename as needed
-									content: fs.readFileSync(setup_pdf), // Attach the file buffer
 								},
 							];
 							utilities.sendEmail(emailOptions)
