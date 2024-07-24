@@ -314,11 +314,10 @@ function sendEmail(file_location, filename, subject) {
 	// Email information
 	const emailOptions = {
 		from: "jdeck88@gmail.com",
-		//to: "fullfarmcsa@deckfamilyfarm.com",
-		//cc: "jdeck88@gmail.com",
-		to: "jdeck88@gmail.com",
+		to: "fullfarmcsa@deckfamilyfarm.com",
+		cc: "jdeck88@gmail.com",
 		subject: subject,
-		text: "Please see the attached file.  This is the Excel file to load to optimaroute.",
+		text: "Please see the attached file.  This is the Excel file to load to optimaroute. Rebecca, please try and use this file for loading to optimaroute, it contains data for all current orders for this day.",
 	};
 
 	// Attach the file to the email
