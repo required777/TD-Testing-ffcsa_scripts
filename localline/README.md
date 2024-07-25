@@ -37,6 +37,7 @@ scripts
 # Run all on Monday at 03:00 PT which is 11:00 UTC
 0 11 * * 1  /home/exouser/code/ffcsa_scripts/localline/run.sh delivery_orders.js
 2 11 * * 1  /home/exouser/code/ffcsa_scripts/localline/run.sh checklists.js
+3 11 * * 1  /home/exouser/code/ffcsa_scripts/localline/run.sh optimaroute.js
 4 11 * * 1  /home/exouser/code/ffcsa_scripts/localline/run.sh vendors.js
 5 11 * * 1  /home/exouser/code/ffcsa_scripts/localline/run.sh weekly_kpi.js
 6 11 * * 1  /home/exouser/code/ffcsa_scripts/localline/run.sh weekly_benefits.js
@@ -47,6 +48,7 @@ scripts
 # Run all on Thursday at 03:00 PT which is 11:00 UTC
 0 11 * * 4 /home/exouser/code/ffcsa_scripts/localline/run.sh delivery_orders.js
 2 11 * * 4 /home/exouser/code/ffcsa_scripts/localline/run.sh checklists.js
+3 11 * * 4 /home/exouser/code/ffcsa_scripts/localline/run.sh optimaroute.js
 4 11 * * 4 /home/exouser/code/ffcsa_scripts/localline/run.sh vendors.js
 
 # Run pricelist check script to print results Friday morning 03:10 PT which is 11:10 UTC
