@@ -4,7 +4,31 @@ const path = require('path');
 const axios = require('axios');
 const nodemailer = require("nodemailer");
 
+function getJsonFromUrl(url, accessToken) {
+    return new Promise((resolve, reject) => {
+        var options = {
+            'method': 'GET',
+            'url': url,
+            'headers': {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${accessToken}`
+            }
+        };
 
+        request(options, (error, response, body) => {
+            if (error) {
+                reject(error);
+            } else {
+                try {
+                    const json = JSON.parse(body);
+                    resolve(json);
+                } catch (e) {
+                    reject(e);
+                }
+            }
+        });
+    });
+}
 
 // Utilitiy functions for date formatting
 function formatDate(inputDate) {
@@ -510,5 +534,6 @@ module.exports = {
     getToday,
     getTomorrow,
     getYesterday,
-    mailADocument
+    mailADocument,
+    getJsonFromUrl
 };

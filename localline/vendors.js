@@ -338,7 +338,7 @@ async function vendors(fullfillmentDate) {
                                 const emailOptions = {
                                     from: "jdeck88@gmail.com",                                    
                                     to: "fullfarmcsa@deckfamilyfarm.com",
-                                    cc: "jdeck88@gmail.com",
+                                    cc: "jdeck88@gmail.com, summer.m.spell@gmail.com",
                                     subject: 'FFCSA Reports: Vendors Data for ' + fullfillmentDate,
                                     text: "Please see the attached file.  Reports are generated twice per week in advance of fullfillment dates.",
                                 };
