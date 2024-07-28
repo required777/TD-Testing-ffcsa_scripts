@@ -46,9 +46,9 @@
 
                 const svg = d3.select(container).append("svg")
                     .attr("width", width + pieWidth + margin.left + margin.right)
-                    .attr("height", height + margin.top + margin.bottom)
+                    .attr("height", height + pieWidth + margin.top + margin.bottom)
                   .append("g")
-                    .attr("transform", `translate(${margin.left},${margin.top})`);
+                    .attr("transform", `translate(${margin.left},${margin.top + 100})`);
 
                 const dateRanges = [...new Set(parsedData.map(d => d.dateRange))];
                 const dropsiteNames = [...new Set(parsedData.map(d => d.dropsite))];
@@ -147,7 +147,7 @@
 
                 const pieRadius = Math.min(pieWidth, height) / 2;
                 const pieGroup = svg.append("g")
-                    .attr("transform", `translate(${width + pieRadius + margin.right / 2}, ${height / 2})`);
+                    .attr("transform", `translate(${width + pieRadius + margin.right / 2}, ${height / 2 + 100})`);
 
                 const arc = d3.arc()
                     .outerRadius(pieRadius)
@@ -172,7 +172,8 @@
                     .attr('class', 'pie-label')
                     .text(d => {
                         const percentage = ((d.data.total / totalSum) * 100).toFixed(1);
-                        return `${d.data.total} (${percentage}%)`;
+                        const totalFormatted = `$${Math.round(d.data.total).toFixed(2)}`;
+                        return `${totalFormatted} (${percentage}%)`;
                     });
             }
 
