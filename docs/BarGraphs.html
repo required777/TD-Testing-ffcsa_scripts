@@ -18,7 +18,14 @@
             stroke-width: 1px;
         }
         .pie-label {
-            font: 10px sans-serif;
+            font: 12px sans-serif;
+            text-anchor: start;
+        }
+        .legend-item {
+            font: 12px sans-serif;
+        }
+        .pie-legend {
+            font: 12px sans-serif;
             text-anchor: middle;
         }
     </style>
@@ -153,6 +160,10 @@
                     .outerRadius(pieRadius)
                     .innerRadius(0);
 
+                const labelArc = d3.arc()
+                    .outerRadius(pieRadius + 10)
+                    .innerRadius(pieRadius + 10);
+
                 pieGroup.selectAll('path')
                     .data(pieData)
                     .enter()
@@ -164,18 +175,36 @@
 
                 const totalSum = d3.sum(pieData, d => d.data.total);
 
-                const formatCurrency = d3.format("$.2f");
+                const formatCurrency = d3.format(",.2f");
 
                 pieGroup.selectAll('.pie-label')
                     .data(pieData)
                     .enter()
                     .append('text')
-                    .attr('transform', d => `translate(${arc.centroid(d)})`)
+                    .attr('transform', d => `translate(${labelArc.centroid(d)})`)
                     .attr('class', 'pie-label')
+                    .style('text-anchor', 'start')
                     .text(d => {
                         const percentage = ((d.data.total / totalSum) * 100).toFixed(1);
                         const totalFormatted = formatCurrency(d.data.total);
                         return `${totalFormatted} (${percentage}%)`;
+                    });
+
+                // Add pie chart legend
+                const legendGroup = svg.append("g")
+                    .attr("transform", `translate(${width + pieWidth + margin.right / 2}, ${height / 2 + pieWidth + 150})`);
+
+                legendGroup.selectAll(".pie-legend")
+                    .data(pieData)
+                    .enter().append("text")
+                    .attr("class", "pie-legend")
+                    .attr("x", 0)
+                    .attr("y", (d, i) => i * 20)
+                    .style("text-anchor", "start")
+                    .text(d => {
+                        const percentage = ((d.data.total / totalSum) * 100).toFixed(1);
+                        const totalFormatted = formatCurrency(d.data.total);
+                        return `${d.data.dropsite}: ${totalFormatted} (${percentage}%)`;
                     });
             }
 
@@ -192,22 +221,12 @@
                 });
             });
 
-            // Filter data for 2024 and specific dropsite names
+            // Filter data for each case
             const data2024 = parsedData.filter(d => d.year === "2024" && ["Corvallis", "Farm - Tuesday", "Farm - Friday", "Friendly", "Springfield", "W 11th", "Home Delivery - Eugene/Springfield/Junction City", "Home Delivery - Corvallis"].includes(d.dropsite));
-            
-            // Filter data for 2024 and dropsite names containing "Farmers Market"
             const data2024FarmersMarket = parsedData.filter(d => d.year === "2024" && (d.dropsite.toLowerCase().includes("farmers market") || d.dropsite === "LCFM"));
-            
-            // Filter data for 2024 and specified dropsite names
             const data2024PDXDropsites = parsedData.filter(d => d.year === "2024" && ["Beaverton", "Cully", "Zafar Residence", "Sherwood", "Woodstock", "Irvington"].includes(d.dropsite));
-            
-            // Filter data for 2023 and specific dropsite names
             const data2023 = parsedData.filter(d => d.year === "2023" && ["Corvallis", "Farm - Tuesday", "Farm - Friday", "Friendly", "Springfield", "W 11th", "Home Delivery - Eugene/Springfield/Junction City", "Home Delivery - Corvallis"].includes(d.dropsite));
-            
-            // Filter data for 2023 and dropsite names containing "Farmers Market"
             const data2023FarmersMarket = parsedData.filter(d => d.year === "2023" && (d.dropsite.toLowerCase().includes("farmers market") || d.dropsite === "LCFM"));
-            
-            // Filter data for 2023 and specified dropsite names
             const data2023PDXDropsites = parsedData.filter(d => d.year === "2023" && ["Beaverton", "Cully", "Zafar Residence", "Sherwood", "Woodstock", "Irvington"].includes(d.dropsite));
 
             createChart("#chart2024", data2024, "Dropsite Trends 2024 - Group 1");
