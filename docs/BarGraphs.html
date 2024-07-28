@@ -164,6 +164,8 @@
 
                 const totalSum = d3.sum(pieData, d => d.data.total);
 
+                const formatCurrency = d3.format("$.2f");
+
                 pieGroup.selectAll('.pie-label')
                     .data(pieData)
                     .enter()
