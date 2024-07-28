@@ -26,25 +26,7 @@
 <body>
     <h1>Weekly KPI Data Tables</h1>
 
-    <h2>Data Table 1: Data</h2>
-    <table id="dataTable1">
-        <thead>
-            <tr>
-                <th>Week</th>
-                <th>Total Sales</th>
-                <th>Num Orders</th>
-                <th>Num Subscriber Orders</th>
-                <th>Num Guest Orders</th>
-                <th>Average Items Per Order</th>
-                <th>Average Order Amount</th>
-                <th>Total Active Subscribers</th>
-                <th>Projected Monthly Subscription Revenue</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
-
-    <h2>Data Table 2: Vendors</h2>
+    <h2>Vendors</h2>
     <table id="dataTable2">
         <thead>
             <tr>
@@ -55,7 +37,7 @@
         <tbody></tbody>
     </table>
 
-    <h2>Data Table 3: Categories</h2>
+    <h2>Categories</h2>
     <table id="dataTable3">
         <thead>
             <tr>
@@ -66,7 +48,7 @@
         <tbody></tbody>
     </table>
 
-    <h2>Data Table 4: Products</h2>
+    <h2>Products</h2>
     <table id="dataTable4">
         <thead>
             <tr>
@@ -77,7 +59,7 @@
         <tbody></tbody>
     </table>
 
-    <h2>Data Table 5: Dropsites</h2>
+    <h2>Dropsites</h2>
     <table id="dataTable5">
         <thead>
             <tr>
@@ -93,7 +75,6 @@
         fetch('https://raw.githubusercontent.com/required777/TD-Testing-ffcsa_scripts/1.1.1/localline/data/weekly_kpi.json')
             .then(response => response.json())
             .then(jsonData => {
-                createDataTable1(jsonData);
                 createTable(jsonData, 'dataTable2', 'vendors');
                 createTable(jsonData, 'dataTable3', 'category');
                 createTable(jsonData, 'dataTable4', 'product');
@@ -130,25 +111,6 @@
                 });
 
                 tbody.appendChild(tr);
-            });
-        }
-
-        function createDataTable1(jsonData) {
-            const table = document.getElementById('dataTable1').querySelector('tbody');
-            jsonData.weeks.forEach(week => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td>${week.dateRange}</td>
-                    <td>${week.data.totalSales}</td>
-                    <td>${week.data.numOrders}</td>
-                    <td>${week.data.numSubscriberOrders}</td>
-                    <td>${week.data.numGuestOrders}</td>
-                    <td>${week.data.averageItemsPerOrder}</td>
-                    <td>${week.data.averageOrderAmount}</td>
-                    <td>${week.data.totalActiveSubscribers}</td>
-                    <td>${week.data.projectedMonthlySubscriptionRevenue}</td>
-                `;
-                table.appendChild(tr);
             });
         }
     </script>
