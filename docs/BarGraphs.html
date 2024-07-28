@@ -148,12 +148,24 @@
                 });
             });
 
-            const data2024 = parsedData.filter(d => d.year === "2024" && ["St Johns Farmers Market", "PSU Farmers Market", "Hollywood Farmers Market"].includes(d.dropsite));
-            const data2024FarmersMarket = parsedData.filter(d => d.year === "2024" && (d.dropsite.toLowerCase().includes("farmers market") || d.dropsite === "LCFM"));
-            const data2024PDXDropsites = parsedData.filter(d => d.year === "2024" && ["Beaverton", "Cully"].includes(d.dropsite));
-            const data2023 = parsedData.filter(d => d.year === "2023" && ["St Johns Farmers Market", "PSU Farmers Market", "Hollywood Farmers Market"].includes(d.dropsite));
-            const data2023FarmersMarket = parsedData.filter(d => d.year === "2023" && (d.dropsite.toLowerCase().includes("farmers market") || d.dropsite === "LCFM"));
-            const data2023PDXDropsites = parsedData.filter(d => d.year === "2023" && ["Beaverton", "Cully"].includes(d.dropsite));
+ // Filter data for 2024 and specific dropsite names
+    const data2024 = parsedData.filter(d => d.year === "2024" && ["Corvallis", "Farm - Tuesday", "Farm - Friday", "Friendly", "Springfield", "W 11th", "Home Delivery - Eugene/Springfield/Junction City", "Home Delivery - Corvallis"].includes(d.dropsite));
+    
+    // Filter data for 2024 and dropsite names containing "Farmers Market"
+    const data2024FarmersMarket = parsedData.filter(d => d.year === "2024" && (d.dropsite.toLowerCase().includes("farmers market") || d.dropsite === "LCFM"));
+    
+    // Filter data for 2024 and specified dropsite names
+    const data2024PDXDropsites = parsedData.filter(d => d.year === "2024" && ["Beaverton", "Cully", "Zafar Residence", "Sherwood", "Woodstock", "Irvington"].includes(d.dropsite));
+    
+    // Filter data for 2023 and specific dropsite names
+    const data2023 = parsedData.filter(d => d.year === "2023" && ["Corvallis", "Farm - Tuesday", "Farm - Friday", "Friendly", "Springfield", "W 11th", "Home Delivery - Eugene/Springfield/Junction City", "Home Delivery - Corvallis"].includes(d.dropsite));
+    
+    // Filter data for 2023 and dropsite names containing "Farmers Market"
+    const data2023FarmersMarket = parsedData.filter(d => d.year === "2023" && (d.dropsite.toLowerCase().includes("farmers market") || d.dropsite === "LCFM"));
+    
+    // Filter data for 2023 and specified dropsite names
+    const data2023PDXDropsites = parsedData.filter(d => d.year === "2023" && ["Beaverton", "Cully", "Zafar Residence", "Sherwood", "Woodstock", "Irvington"].includes(d.dropsite));
+
 
             createChart("#chart2024", data2024, "Dropsite Trends 2024 - Group 1");
             createChart("#chart2024-2", data2024FarmersMarket, "Dropsite Trends 2024 - Farmers Markets");
