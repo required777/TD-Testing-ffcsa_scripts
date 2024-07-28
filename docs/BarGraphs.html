@@ -34,34 +34,24 @@
         }
 
         fetchFulfillmentData().then(function(data) {
-            // Function to create chart
             function createChart(container, parsedData, title) {
-                // Set the dimensions and margins of the graph
                 const margin = {top: 20, right: 160, bottom: 60, left: 60},
                       width = 1200 - margin.left - margin.right,
                       height = 600 - margin.top - margin.bottom;
 
-                // Append the SVG object to the specified container
                 const svg = d3.select(container).append("svg")
                     .attr("width", width + margin.left + margin.right)
                     .attr("height", height + margin.top + margin.bottom)
                   .append("g")
                     .attr("transform", `translate(${margin.left},${margin.top})`);
 
-                // Get unique date ranges and dropsite names
                 const dateRanges = [...new Set(parsedData.map(d => d.dateRange))];
                 const dropsiteNames = [...new Set(parsedData.map(d => d.dropsite))];
 
-                // Sort date ranges in chronological order
                 dateRanges.sort((a, b) => new Date(`2024-${a}`) - new Date(`2024-${b}`));
-
-                // Calculate total quantity for each dropsite
                 const totalByDropsite = d3.rollup(parsedData, v => d3.sum(v, d => d.total), d => d.dropsite);
-
-                // Sort dropsite names by total quantity in descending order
                 dropsiteNames.sort((a, b) => totalByDropsite.get(b) - totalByDropsite.get(a));
 
-                // Prepare the data for stacking
                 const stackData = d3.stack()
                     .keys(dropsiteNames)
                     .value((d, key) => {
@@ -69,23 +59,19 @@
                         return entry ? entry.total : 0;
                     })(d3.groups(parsedData, d => d.dateRange).map(d => ({ dateRange: d[0], values: d[1] })));
 
-                // Set the x scale for date ranges
                 const x = d3.scaleBand()
                     .domain(dateRanges)
                     .range([0, width])
                     .padding(0.1);
 
-                // Set the y scale
                 const y = d3.scaleLinear()
                     .domain([0, d3.max(stackData, d => d3.max(d, d => d[1]))])
                     .nice()
                     .range([height, 0]);
 
-                // Set the color scale
                 const color = d3.scaleOrdinal(d3.schemeCategory10)
                     .domain(dropsiteNames);
 
-                // Add the x axis
                 svg.append("g")
                     .attr("class", "x axis")
                     .attr("transform", `translate(0,${height})`)
@@ -97,7 +83,6 @@
                     .style("text-anchor", "middle")
                     .text("Date Range");
 
-                // Add the y axis
                 svg.append("g")
                     .attr("class", "y axis")
                     .call(d3.axisLeft(y))
@@ -109,7 +94,6 @@
                     .style("text-anchor", "middle")
                     .text("Total");
 
-                // Add the bars
                 svg.append("g")
                     .selectAll("g")
                     .data(stackData)
@@ -123,7 +107,6 @@
                       .attr("height", d => y(d[0]) - y(d[1]))
                       .attr("width", x.bandwidth());
 
-                // Add a legend
                 const legend = svg.selectAll(".legend")
                     .data(color.domain())
                   .enter().append("g")
@@ -143,7 +126,6 @@
                     .style("text-anchor", "start")
                     .text(d => d);
 
-                // Add chart title
                 svg.append("text")
                     .attr("x", width / 2)
                     .attr("y", -10)
@@ -153,39 +135,26 @@
                     .text(title);
             }
 
-            // Parse the data to get the totals for each dropsite and dateRange
             const parsedData = [];
             data.forEach(week => {
-                week.data.forEach(d => {
-                    const formattedDate = week.dateRange.split(" ")[0].replace(/(\d+)-(\d+)-(\d+)/, "$2/$3");
+                const dateRange = week.dateRange.split(" ")[0].replace(/(\d+)-(\d+)-(\d+)/, "$2/$3");
+                Object.entries(week.data.dropsite).forEach(([dropsite, total]) => {
                     parsedData.push({
-                        dateRange: formattedDate,
-                        dropsite: d.dropsite, // Use the dropsite field instead of fulfillmentName
-                        total: d.total,
-                        year: week.dateRange.split("-")[0] // Extract the year
+                        dateRange,
+                        dropsite,
+                        total: +total,
+                        year: week.dateRange.split("-")[0]
                     });
                 });
             });
 
-            // Filter data for 2024 and specific dropsites
-            const data2024 = parsedData.filter(d => d.year === "2024" && ["Dropsite1", "Dropsite2", "Dropsite3"].includes(d.dropsite));
-            
-            // Filter data for 2024 and dropsites containing specific keywords
+            const data2024 = parsedData.filter(d => d.year === "2024" && ["St Johns Farmers Market", "PSU Farmers Market", "Hollywood Farmers Market"].includes(d.dropsite));
             const data2024FarmersMarket = parsedData.filter(d => d.year === "2024" && (d.dropsite.toLowerCase().includes("farmers market") || d.dropsite === "LCFM"));
-            
-            // Filter data for 2024 and specified dropsites
-            const data2024PDXDropsites = parsedData.filter(d => d.year === "2024" && ["Dropsite4", "Dropsite5"].includes(d.dropsite));
-            
-            // Filter data for 2023 and specific dropsites
-            const data2023 = parsedData.filter(d => d.year === "2023" && ["Dropsite1", "Dropsite2", "Dropsite3"].includes(d.dropsite));
-            
-            // Filter data for 2023 and dropsites containing specific keywords
+            const data2024PDXDropsites = parsedData.filter(d => d.year === "2024" && ["Beaverton", "Cully"].includes(d.dropsite));
+            const data2023 = parsedData.filter(d => d.year === "2023" && ["St Johns Farmers Market", "PSU Farmers Market", "Hollywood Farmers Market"].includes(d.dropsite));
             const data2023FarmersMarket = parsedData.filter(d => d.year === "2023" && (d.dropsite.toLowerCase().includes("farmers market") || d.dropsite === "LCFM"));
-            
-            // Filter data for 2023 and specified dropsites
-            const data2023PDXDropsites = parsedData.filter(d => d.year === "2023" && ["Dropsite4", "Dropsite5"].includes(d.dropsite));
+            const data2023PDXDropsites = parsedData.filter(d => d.year === "2023" && ["Beaverton", "Cully"].includes(d.dropsite));
 
-            // Create the six charts
             createChart("#chart2024", data2024, "Dropsite Trends 2024 - Group 1");
             createChart("#chart2024-2", data2024FarmersMarket, "Dropsite Trends 2024 - Farmers Markets");
             createChart("#chart2024-3", data2024PDXDropsites, "Dropsite Trends 2024 - PDX Dropsites");
