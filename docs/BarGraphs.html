@@ -172,7 +172,7 @@
                     .attr('class', 'pie-label')
                     .text(d => {
                         const percentage = ((d.data.total / totalSum) * 100).toFixed(1);
-                        const totalFormatted = `$${Math.round(d.data.total).toFixed(2)}`;
+                        const totalFormatted = formatCurrency(d.data.total);
                         return `${totalFormatted} (${percentage}%)`;
                     });
             }
