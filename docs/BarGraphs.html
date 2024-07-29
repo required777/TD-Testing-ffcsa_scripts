@@ -159,8 +159,8 @@
                     .innerRadius(0);
 
                 const labelArc = d3.arc()
-                    .outerRadius(pieRadius - 10) // Move inside for better placement
-                    .innerRadius(pieRadius - 10);
+                    .outerRadius(pieRadius - 50) // Move inside for better placement
+                    .innerRadius(pieRadius - 50);
 
                 pieGroup.selectAll('path')
                     .data(pieData)
