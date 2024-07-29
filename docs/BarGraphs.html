@@ -50,7 +50,7 @@
 
                 const svg = d3.select(container).append("svg")
                     .attr("width", width + pieWidth + margin.left + margin.right)
-                    .attr("height", height + pieWidth + 200 + margin.top + margin.bottom) // Increased height
+                    .attr("height", height + pieWidth + 100 + margin.top + margin.bottom) // Increased height for space
                   .append("g")
                     .attr("transform", `translate(${margin.left},${margin.top})`);
 
@@ -151,7 +151,7 @@
 
                 const pieRadius = Math.min(pieWidth, height) / 2;
                 const pieGroup = svg.append("g")
-                    .attr("transform", `translate(${(width + pieWidth + margin.right) / 2}, ${height + pieWidth + 100})`); // Adjusted vertical position
+                    .attr("transform", `translate(${width + pieWidth / 2 + 40}, ${height + 20 + pieWidth / 2})`); // Adjusted vertical and horizontal position
 
                 const arc = d3.arc()
                     .outerRadius(pieRadius)
@@ -171,7 +171,6 @@
                     .style('stroke-width', '2px');
 
                 const totalSum = d3.sum(pieData, d => d.data.total);
-
                 const formatCurrency = d3.format(",.2f");
 
                 pieGroup.selectAll('.pie-label')
@@ -189,7 +188,7 @@
 
                 // Add pie chart legend
                 const legendGroup = svg.append("g")
-                    .attr("transform", `translate(${(width + pieWidth + margin.right) / 2}, ${height + pieWidth + 150})`); // Adjusted vertical position
+                    .attr("transform", `translate(${width + pieWidth / 2 - 100}, ${height + 50 + pieWidth / 2})`); // Positioned to the left of pie chart
 
                 legendGroup.selectAll(".pie-legend")
                     .data(pieData)
