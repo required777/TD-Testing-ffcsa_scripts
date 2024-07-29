@@ -19,7 +19,8 @@
         }
         .pie-label {
             font: 12px sans-serif;
-            text-anchor: start;
+            text-anchor: middle;
+            pointer-events: none; /* Prevent labels from interfering with mouse events */
         }
         .pie-legend {
             font: 12px sans-serif;
@@ -50,7 +51,7 @@
 
                 const svg = d3.select(container).append("svg")
                     .attr("width", width + pieWidth + margin.left + margin.right)
-                    .attr("height", height + pieWidth + 100 + margin.top + margin.bottom) // Increased height for space
+                    .attr("height", height + pieWidth + 150 + margin.top + margin.bottom) // Increased height for space
                   .append("g")
                     .attr("transform", `translate(${margin.left},${margin.top})`);
 
@@ -158,8 +159,8 @@
                     .innerRadius(0);
 
                 const labelArc = d3.arc()
-                    .outerRadius(pieRadius + 10)
-                    .innerRadius(pieRadius + 10);
+                    .outerRadius(pieRadius - 10) // Move inside for better placement
+                    .innerRadius(pieRadius - 10);
 
                 pieGroup.selectAll('path')
                     .data(pieData)
@@ -177,13 +178,17 @@
                     .data(pieData)
                     .enter()
                     .append('text')
-                    .attr('transform', d => `translate(${labelArc.centroid(d)})`)
+                    .attr('transform', d => {
+                        const centroid = labelArc.centroid(d);
+                        return `translate(${centroid[0]},${centroid[1]})`;
+                    })
                     .attr('class', 'pie-label')
-                    .style('text-anchor', 'start')
+                    .style('text-anchor', 'middle')
+                    .style('font-size', '12px')
+                    .style('fill', 'black')
                     .text(d => {
                         const percentage = ((d.data.total / totalSum) * 100).toFixed(1);
-                        const totalFormatted = formatCurrency(d.data.total);
-                        return `${totalFormatted} (${percentage}%)`;
+                        return percentage + '%';
                     });
 
                 // Add pie chart legend
@@ -199,8 +204,8 @@
                     .style("text-anchor", "start")
                     .text(d => {
                         const percentage = ((d.data.total / totalSum) * 100).toFixed(1);
-                        const totalFormatted = formatCurrency(d.data.total);
-                        return `${d.data.dropsite}: ${totalFormatted} (${percentage}%)`;
+                        const total = formatCurrency(d.data.total);
+                        return `${d.data.dropsite}: ${percentage}% (${total})`;
                     });
             }
 
