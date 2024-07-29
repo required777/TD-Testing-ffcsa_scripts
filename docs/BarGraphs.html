@@ -50,7 +50,7 @@
 
                 const svg = d3.select(container).append("svg")
                     .attr("width", width + pieWidth + margin.left + margin.right)
-                    .attr("height", height + pieWidth + margin.top + margin.bottom)
+                    .attr("height", height + pieWidth + 200 + margin.top + margin.bottom) // Increased height
                   .append("g")
                     .attr("transform", `translate(${margin.left},${margin.top})`);
 
@@ -151,7 +151,7 @@
 
                 const pieRadius = Math.min(pieWidth, height) / 2;
                 const pieGroup = svg.append("g")
-                    .attr("transform", `translate(${(width + pieWidth + margin.right) / 2}, ${height + pieWidth / 2 + 120})`);
+                    .attr("transform", `translate(${(width + pieWidth + margin.right) / 2}, ${height + pieWidth + 100})`); // Adjusted vertical position
 
                 const arc = d3.arc()
                     .outerRadius(pieRadius)
@@ -189,7 +189,7 @@
 
                 // Add pie chart legend
                 const legendGroup = svg.append("g")
-                    .attr("transform", `translate(${(width + pieWidth + margin.right) / 2}, ${height + pieWidth + 170})`);
+                    .attr("transform", `translate(${(width + pieWidth + margin.right) / 2}, ${height + pieWidth + 150})`); // Adjusted vertical position
 
                 legendGroup.selectAll(".pie-legend")
                     .data(pieData)
@@ -218,7 +218,7 @@
                 });
             });
 
-            // Filter data for each case
+            // Filter data
             const data2024 = parsedData.filter(d => d.year === "2024" && ["Corvallis", "Farm - Tuesday", "Farm - Friday", "Friendly", "Springfield", "W 11th", "Home Delivery - Eugene/Springfield/Junction City", "Home Delivery - Corvallis"].includes(d.dropsite));
             const data2024FarmersMarket = parsedData.filter(d => d.year === "2024" && (d.dropsite.toLowerCase().includes("farmers market") || d.dropsite === "LCFM"));
             const data2024PDXDropsites = parsedData.filter(d => d.year === "2024" && ["Beaverton", "Cully", "Zafar Residence", "Sherwood", "Woodstock", "Irvington"].includes(d.dropsite));
