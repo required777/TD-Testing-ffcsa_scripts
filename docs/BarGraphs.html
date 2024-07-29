@@ -50,7 +50,7 @@
 
                 const svg = d3.select(container).append("svg")
                     .attr("width", width + pieWidth + margin.left + margin.right)
-                    .attr("height", height + pieWidth + 100 + margin.top + margin.bottom) // Increased height for space
+                    .attr("height", height + pieWidth + 150 + margin.top + margin.bottom) // Increased height for space
                   .append("g")
                     .attr("transform", `translate(${margin.left},${margin.top})`);
 
@@ -151,7 +151,7 @@
 
                 const pieRadius = Math.min(pieWidth, height) / 2;
                 const pieGroup = svg.append("g")
-                    .attr("transform", `translate(${width + pieWidth / 2 + 40}, ${height + 20 + pieWidth / 2})`); // Adjusted vertical and horizontal position
+                    .attr("transform", `translate(${width + pieWidth / 2 }, ${height + pieWidth / 2})`); // Adjusted vertical and horizontal position
 
                 const arc = d3.arc()
                     .outerRadius(pieRadius)
