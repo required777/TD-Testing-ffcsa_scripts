@@ -193,7 +193,7 @@
 
                 // Add pie chart legend
                 const legendGroup = svg.append("g")
-                    .attr("transform", `translate(${width / 2 + pieWidth / 2 + 50}, ${height + 10 + pieWidth / 2 })`); // Positioned to the right of pie chart
+                    .attr("transform", `translate(${width / 2 + pieWidth / 2 + 50}, ${height + pieWidth / 2 })`); // Positioned to the right of pie chart
 
                 legendGroup.selectAll(".pie-legend")
                     .data(pieData)
